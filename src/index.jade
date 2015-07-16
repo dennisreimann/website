@@ -1,0 +1,82 @@
+extends includes/layout
+
+block main
+  section#intro.profile
+    img(alt="Dennis Reimann", height="190", src="images/dennis_reimann.png", width="146")
+    p
+      | Als Softwareentwickler unterst&Atilde;&frac14;tze ich Unternehmen bei der Realisierung
+      | von Webanwendungen und Apps f&Atilde;&frac14;r mobile Endger&Atilde;&curren;te wie das iPhone und iPad.
+      br
+      | Mein Schwerpunkt liegt dabei auf der Entwicklung mit Ruby on Rails sowie
+      | JavaScript und HTML5.
+      br
+      | Hier finden Sie Informationen zu meiner Arbeit und den von mir realisierten
+      | Projekten.
+  section#projects
+    header
+      h2 Kunden und Projekte
+    ol#projects_list
+      li.iphone
+        .info
+          .meta.veiled
+            a(href="http://ioctocat.com/")
+              img(alt="GitHub iPhone App", src="/images/portfolio/ioctocat.jpg")
+          header
+            h3
+              a(href="http://ioctocat.com/") iOctocat
+          .content
+            p
+              a(href="http://ioctocat.com/") GitHub iOS App
+              | f&Atilde;&frac14;r das iPhone, iPad und iPod Touch. Um auch unterwegs
+              | in Projekten auf dem Laufenden zu bleiben l&Atilde;&curren;sst die App keinen Wunsch offen: News- und Activity-Feed, &Atilde;&para;ffentliche
+              | und private Repositories, Benutzerprofile und Suche f&Atilde;&frac14;r Repositories und Benutzer.
+            p
+              | Die Anwendung wurde als
+              a(href="https://github.com/dennisreimann/ioctocat") Open Source
+              | -Projekt ver&Atilde;&para;ffentlicht
+              | und ist
+              a(href="http://ioctocat.com/appstore-iphone") im iTunes App Store erh&Atilde;&curren;ltlich
+              | .
+      li.ipad.invert
+        .info
+          .meta.veiled
+            img(alt="3Suisses Tablet Shop", src="/images/portfolio/3suisses_tablet.jpg")
+          header
+            h3
+              a(href="http://www.3suisses.de/t/") 3Suisses Tablet Shop
+          .content
+            p
+              | Die f&Atilde;&frac14;r Tablets optimierte Version des
+              a(href="http://www.3suisses.de/t/") 3Suisses Webshop
+              | bietet die beliebtesten Features der Desktop-Variante
+              | plus zus&Atilde;&curren;tzliche Funktionen, die speziell f&Atilde;&frac14;r die
+              | Benutzung mit iPad und Co. entwickelt wurden. So erlaubt
+              | beispielsweise das Smartmatch-Tool die Zusammenstellung
+              | der Lieblingsartikel per Drag and Drop.
+      li.iphone
+        .info
+          header
+            h3
+              a(href="http://m.ftd.de/") FTD MOBIL
+          .meta.veiled
+            img(alt="Mobile Version der Financial Times Deutschland", height="169", src="/images/portfolio/ftd_iphone.jpg", width="114")
+          .content
+            p
+              | Die
+              a(href="http://m.ftd.de/") mobile Version der Financial Times Deutschland
+              | ist auf Basis von Webtechnologie realisiert und wurde f&Atilde;&frac14;r das iPhone, Android
+              | und BlackBerry entwickelt.
+            blockquote
+              p
+                | Dennis, die Zusammenarbeit mit Dir war wirklich klasse! Dein umfangreiches Know-How
+                | auf dem Gebiet Webapps und Deine fokussierte Arbeitsweise haben das Projekt super
+                | vorangetrieben. Es ist erstaunlich, wie Du in so kurzer Zeit so viel
+                | hochwertigen Code produzieren und dabei gleichzeitig die Fehlerrate so niedrig halten
+                | konntest. Ich freue mich, wenn wir m&Atilde;&para;glichst bald wieder mit einander zu tun haben.
+                | Es hat wirklich Spa&Atilde;&Yuml; gemacht!
+              p.tar
+                | &acirc;&euro;&ldquo; Oliver Kutsche,
+                a(href="http://www.guj.de/") Gruner + Jahr AG &amp; Co KG
+    p
+      small
+        a(href="/projects") Alle Projekte

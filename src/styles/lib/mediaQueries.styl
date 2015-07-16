@@ -1,0 +1,27 @@
+S_width   = 480px
+M_width   = 640px
+L_width   = 960px
+XL_width  = 1320px
+
+mq_to(to)
+  s("all and (max-width: %s)", to - 1)
+mq_from(from)
+  s("all and (min-width: %s)", from)
+mq_from_to(from, to)
+  s("all and (min-width: %s) and (max-width: %s)", from, to - 1)
+
+up_to_S = mq_to(S_width)
+up_to_M = mq_to(M_width)
+up_to_L = mq_to(L_width)
+up_to_XL = mq_to(XL_width)
+
+S_and_up = mq_from(S_width)
+M_and_up = mq_from(M_width)
+L_and_up = mq_from(L_width)
+XL_and_up = mq_from(XL_width)
+
+S_to_M = mq_from_to(S_width, M_width)
+S_to_L = mq_from_to(S_width, L_width)
+M_to_L = mq_from_to(M_width, L_width)
+M_to_XL = mq_from_to(M_width, XL_width)
+L_to_XL = mq_from_to(L_width, XL_width)
