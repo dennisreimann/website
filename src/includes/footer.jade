@@ -1,4 +1,5 @@
-#contact.vcard
+.vcard
+  h2 Kontakt
   span.fn Dennis Reimann
   p.adr
     span.street-address Ottjen-Alldag-Str. 32
@@ -12,14 +13,14 @@
     span.mail
       a.email(href="mailto:mail@dennisreimann.de" rel="me") mail@dennisreimann.de
     br
-    span.tel +49 (0)151 22 63 03 17
-  p
-    small
-      a(href="/contact") Kontaktdetails
+    span.tel
+      a.email(href="tel:+4915122630317" rel="me") +49 (0)151 22 63 03 17
   ul.social
-    li
+    li.social__item
       a(href="https://github.com/dennisreimann" rel="me") GitHub
-    li
+    li.social__item
       a(href="https://twitter.com/dennisreimann" rel="me") Twitter
-    li
+    li.social__item
       a(href="http://www.xing.com/profile/Dennis_Reimann5" rel="me") XING
+  p.more
+    a.more__link(href="/contact") Kontaktdetails &amp; Impressum
