@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+echo "Building..."
+./node_modules/.bin/gulp production
+
+rm -rf dist/includes
+
+echo "Uploading..."
+rsync -ravzulO dist/ uberdennis:html
+

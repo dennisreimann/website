@@ -1,10 +1,13 @@
 doctype html
 html
   head
-    title Softwareentwicklung mit Ruby on Rails, JavaScript, HTML5 | Dennis Reimann, Softwareentwickler
-    meta(name="google-site-verification" content="BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8")
-    meta(name="description" content="Ich bin freiberuflicher Softwareentwickler für Webanwendungen. Mein Schwerpunkt ist die Frontendentwicklung mit JavaScript, CSS und HTML")
-    meta(name="keywords" content="Responsive,JavaScript,CSS,HTML,HTML5,CoffeeScript,Angular.js,Git,Mobile")
+    block title
+      title Frontend-Entwicklung mit JavaScript, CSS und HTML
+    block meta
+      meta(name="description" content="Dennis Reimann ist freiberuflicher Softwareentwickler für Webanwendungen: Frontend-Entwicklung mit JavaScript, CSS und HTML.")
+      meta(name="keywords" content="Responsive,JavaScript,CSS,HTML,HTML5,Angular.js,Mobile")
+      meta(name="google-site-verification" content="BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8")
+      meta(http-equiv="Content-Type" content="text/html;charset=UTF-8")
     link(href="/styles/main.css" media="screen" rel="stylesheet")
     link(href="/styles/print.css" media="print" rel="stylesheet")
     link(href="http://openid.dennisreimann.de/server" rel="openid2.provider openid.server")
@@ -16,5 +19,4 @@ html
       block main
     footer
       include footer
-
     include analytics
