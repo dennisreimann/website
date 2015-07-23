@@ -1,51 +1,27 @@
-html
-  font 14px / 1.4 Helvetica, Arial, Tahoma, Verdana, sans-serif
-  padding 2em 2.5em
-
-body
-  margin 0 auto
-  color #222
-  background #FFF
-  max-width 55em
-
-h2
-  font-family DINLight
-  font-weight normal
-  font-size fontSizeLarge
-  margin-bottom marginSmall
-
-section
-  margin-bottom marginLarge
-
-main
-footer
-  p
-    margin-bottom marginNormal
-  ul
-  ol
-    margin-bottom marginNormal
-    list-style none
-
-a
-  text-decoration none
-  &:hover
-  &:active
-    text-decoration underline
-  main &
-    color colorHighlight
-  footer &
-    color colorSubtle
-
-@media M_and_up
+@media up_to_L
+  body
+    max-width widthMain
   header
+    margin-bottom marginLarge
+
+@media L_and_up
+  body
+    width widthMain + widthSpace + widthAside
+  header
+    overflow hidden
+    margin-bottom marginHuge
     .logo
       float right
       width widthAside
       margin-right logoJump
+  main
+    clear both
+    width widthMain
   footer
+    overflow hidden
+    margin-top marginHuge
+    h2
+      display none
     .vcard
       float right
       width widthAside
-  main
-    clear both
-    padding-right widthAside + marginAside
