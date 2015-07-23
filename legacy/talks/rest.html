@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>RESTful Web Services</title>
+<!-- metadata -->
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20060717" />
+<meta name="author" content="Dennis Reimann" />
+<meta name="company" content="//dennisbloete" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/pretty.css" type="text/css" media="screen, projection" id="prettyProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<link rel="stylesheet" href="ui/default/standard.css" type="text/css" media="screen, projection" id="presentationStyles" />
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<!-- Master -->
+	<div class="layout">
+		<div id="controls"><!-- DO NOT EDIT --></div>
+		<div id="currentSlide"><!-- DO NOT EDIT --></div>
+		<div id="header">
+		</div>
+		<div id="footer">
+			<h1>Bremen Inside, 30.03.2007</h1>
+			<h2>RESTful Web Services</h2>
+		</div>
+	</div>
+	
+	<!-- Folien -->
+	<div class="presentation">
+		
+		<div class="slide">
+			<h1>RESTful Web Services</h1>
+			<h2>Embracing the CRUD (and beyond)</h2>
+			<h3>Bremen Inside, 30.03.2007</h3>
+		</div>
+		
+		<div class="slide">
+			<h1>Was ist REST?</h1>
+			<ul class="incremental show-first up">
+				<li>REpresentational State Transfer</li>
+				<li>Entwurfsmuster f&uuml;r Web Service-Architektur</li>
+				<li>zentraler Begriff: Ressourcen</li>
+				<li>zum Beispiel User, Geonotes, Gruppen, ...</li>
+			</ul>
+		</div>
+		
+		<div class="slide">
+			<h1>Prinzipien der Architektur</h1>
+			<ul class="incremental show-first up">
+				<li>HTTP: zustandslose Client/Server-Kommunikation</li>
+				<li>Ressourcen &uuml;ber URI eindeutig referenzierbar:
+					<ul>
+					 	<li>http://www.bremen-inside.info/geonotes/1</li>
+					</ul>
+				</li>
+				<li>uniforme Schnittstelle:
+					<ul>
+					 	<li>CRUD (Create, Read, Update, Delete)</li>
+						<li>HTTP (POST, GET, PUT, DELETE)</li>
+						<li>SQL  (Insert, Select, Update, Delete)</li>
+					</ul>
+				</li>
+				<li>Operationen lassen sich (teilweise) durch die HTTP-Methoden beschreiben.</li>
+				<li>Wie ein Satz: HTTP-Methoden = Verb, URI = Nomen</li>
+			</ul>
+		</div>
+		
+		<div class="slide">
+			<h1>Was ist in diesem Fall falsch?</h1>
+			<p>GET http://www.bremen-inside.info/geonotes/update/1</p>
+			<ul class="incremental">
+				<li>Operation wird in der URI mitgeteilt</li>
+				<li>Konflikt: HTTP-Verb widerspricht der Action in der URI</li>
+			</ul>
+		</div>
+		
+		<div class="slide">
+			<h1>HTTP-Methoden</h1>
+			<ul class="incremental show-first up">
+				<li>POST - neue Ressource erzeugen (create)
+					<ul>
+						<li>POST http://www.bremen-inside.info/geonotes</li>
+					</ul>
+				</li>
+				<li>GET - Ressource abfragen (read)
+					<ul>
+						<li>GET http://www.bremen-inside.info/geonotes (Liste aller Geonotes)</li>
+						<li>GET http://www.bremen-inside.info/geonotes/1 (Geonote mit ID 1)</li>
+					</ul>
+				</li>
+				<li>PUT - bestehende Ressource bearbeiten (update)
+					<ul>
+						<li>PUT http://www.bremen-inside.info/geonotes/1</li>
+					</ul>
+				</li>
+				<li>DELETE - Ressource l&ouml;schen (delete)
+					<ul>
+						<li>DELETE http://www.bremen-inside.info/geonotes/1</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="slide">
+			<h1>Beispiel (Java)</h1>
+			<img src="rest/beispiel_java.png" alt="" />
+		</div>
+		
+		<div class="slide">
+			<h1>Wo sind die Daten?</h1>
+			<ul class="incremental show-first up">
+				<li>Im Body des HTTP-Requests (bzw. Response)</li>
+				<li>Beispiel eines Bodys für eine neue Geonote:
+					<ul>
+						<li>
+<pre>&lt;geonote&gt;
+  &lt;message&gt;Dies ist Nachrichtentext&lt;/message&gt;
+  &lt;coordinate&gt;
+    &lt;latitude&gt;53.07&lt;/latitude&gt;
+    &lt;longitude&gt;8.8013&lt;/longitude&gt;
+  &lt;/coordinate&gt;
+  &lt;groups&gt;
+    &lt;group&gt;
+      &lt;id&gt;7&lt;/id&gt;
+    &lt;/group&gt;
+  &lt;/groups&gt;
+&lt;/geonote&gt;</pre>
+						</li>
+					</ul>
+				</li>
+				<li>POST http://www.bremen-inside.info/geonotes</li>
+			</ul>
+		</div>
+		
+		<div class="slide">
+			<h1>Okay, also nur vier Methoden?</h1>
+			<ul class="incremental show-first up">
+				<li>Wie kann ich die Repr&auml;sentation (XML, JSON, HTML, ...) der Daten beeinflussen?</li>
+				<li>Wie kann ich Nicht-CRUD-Operationen aufrufen?</li>
+				<li>Auf Basis der vier semantischen Methoden kann die Syntax erweitert werden:
+					<ul>
+						<li>GET http://www.bremen-inside.info/geonotes.xml;within?reach=100m</li>
+						<li>Liste aller Geonotes innerhalb einer Reichweite von hundert Metern.</li>
+					</ul>
+				</li>
+				<li>xml > eine m&ouml;gliche Form der Repr&auml;sentation</li>
+				<li>within > erweiterte Action (basiert semantisch auf einer der vier HTTP-Methoden)</li>
+				<li>reach > Parameter</li>
+			</ul>
+		</div>
+		
+		<div class="slide">
+			<h1>&nbsp;</h1>
+			<p class="big">Danke f&uuml;r die Aufmerksamkeit!</p>
+			<p class="incremental big">Fragen?</p>
+		</div>
+		
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+			<div id="content">
+				<h1>Zufall</h1>
+				<blockquote>Zufall ist das unberechenbare Geschehen, das sich unserer Vernunft und Absicht 
+				entzieht. <span class="author">-- Gebr&uuml;der Grimm (Deutsches W&ouml;rterbuch)</span></blockquote>
+				<p>Der Volksmund bezeichnet Dinge als Zufall, welche wir nicht vorhersagen k&ouml;nnen - etwas, was sich Planung und
+				Berechenbarkeit entzieht. Zuf&auml;llig geschehene Dinge waren so nicht abzusehen und sie geschehen scheinbar willk&uuml;rlich.</p>
+				<p>Erfahrungen mit jener Art von Zufall machen wir allt&auml;glich - mal trifft man v&ouml;llig unverhofft einen alten Bekannten
+				oder ein pl&ouml;tzlich eintretendes Ereignis beeinflu&szlig;t den Rest unseres eigentlich geplanten Tagesablaufs. In diesen
+				F&auml;llen greifen wir auch oft auf zwei weitere Begriffe zur&uuml;ck, um solches Geschehen greifbar zu machen: Gl&uuml;ck und Pech.</p>
+				<p>In der Wissenschaft hingegen ist der Begriff Zufall deutlicher besetzt:</p>
+				<blockquote>Man spricht von Zufall - oder noch klarer von reinem Zufall -, wenn ein Ereignis nicht 
+				kausal notwendig auftritt. Vom heutigen Standpunkt aus sind die Ph&auml;nomene der Quantenphysik der 
+				einzige Bereich, in dem es einen reinen Zufall geben k&ouml;nnte.<sup><a href="#sources">[1]</a></sup></blockquote>
+				<p>Dies macht deutlich, dass Zufall nicht etwa als allt&auml;gliches Ph&auml;nomen anzusehen ist, sondern als Begriff, 
+				welcher einzig und treffend nicht konkret berechenbare Dinge beschreibt. Wenn wir also sagen, dass ein Computer Zufallszahlen
+				generiert (oder deutlicher: berechnet), dann ist dies absurd: Zufall und Berechenbarkeit schlie&szlig;en sich gegenseitig aus.
+				Keine Berechnung kann zuf&auml;llige Ergebnisse liefern, da sie auf dem Einsatz von <a href="<?= url_for("funktionen_und_parameter"); ?>#was_sind_parameter">Parametern</a> 
+				oder Variablen basiert, welche zwar beliebig sein k&ouml;nnen, aber dennoch f&uuml;r die Berechnung festgelegt sind. Dadurch
+				wird das Ergebnis bei erneuter Berechnung nicht willk&uuml;rlich variieren, sondern gleich sein.</p>
+				<p>Um dennoch einen treffenden Namen f&uuml;r scheinbar wahllose (welche allgemeinem Anschein nach auf zuf&auml;lligen
+				Berechnungen beruhen) Ergebnisse zu haben, bezeichnet man sie in der Informatik als 
+				<strong><a href="http://de.wikipedia.org/wiki/Pseudozufall">Pseudozufallszahlen</a></strong>. Generierte Zahlen also, welche wir
+				nicht von wirklichem Zufall unterscheiden k&ouml;nnen, welche aber durch die Notwendigkeit der Berechnung immer auf einem
+				<?= link_to("algorithmus"); ?> beruhen.</p>
+				<div class="sidebar align-right">
+					<h4>Schon gewusst?</h4>
+					<p>Dar&uuml;ber hinaus gibt es auch <a href="http://de.wikipedia.org/wiki/Physikalischer_Zufallszahlengenerator">physikalische
+					Zufallszahlengeneratoren</a>, welche auf physikalische Prozessen, wie bspw. thermischem Rauschen basieren.</p>
+				</div>
+				<p>In der Praxis werden dazu <a href="http://de.wikipedia.org/wiki/Rekursiver_arithmetischer_Zufallszahlengenerator">auf Arithmetik 
+				basierende Zufallszahlengeneratoren</a> eingesetzt, um solche Pseudozufallszahlen zu berechnen. Ihre Zuf&auml;lligkeit ist nicht durch
+				die Entstehung, sondern durch die Statistik begr&uuml;ndet (Normalverteilung, Gleichverteilung, Unabh&auml;ngigkeit aufeinanderfolgender 
+				Zahlen)<sup><a href="#sources">[2]</a></sup>.</p>
+				<p id="seed">Diese algorithmischen Zufallszahlengeneratoren werden meistens mit einem Startwert, dem sogenannten <strong>Seed</strong> initialisiert, welcher als
+				Basis der Berechnungen dient - bei gleichem Seed, produziert der Generator immer das gleiche Ergebnis. In der Praxis werden ofmals Werte
+				wie der zur Programmlaufzeit aktuelle Zeitstempel oder &auml;hnliches genutzt.</p>
+				<h2 class="clear">Was macht die Processing-Funktion random()?</h2>
+				<p>Die Funktion <a href="http://processing.org/reference/random_.html">random()</a> berechnet eine solche Pseudozufallszahl: Jeder Aufruf 
+				der Funktion gibt einen Wert vom 
+				Typ <code>float</code> (<a href="<?= url_for("mengen_und_zahlen"); ?>#gleitkommazahlen">Gleitkommazahl</a>) zur&uuml;ck,
+				welcher innerhalb des Intervalls <code>[0, 1]</code> liegt.</p>
+				<p>Will man den Wertebereich beeinfluﬂen, so kann man random() auch mit entweder einem oder zwei <a href="<?= url_for("funktionen_und_parameter"); ?>#was_sind_parameter">Parametern</a> 
+				aufgerufen. Wird ein Parameter <code>n</code> &uuml;bergeben, so befindet sich die Zufallszahl innerhalb des Intervalls <code>[0, n]</code>, also
+				zwischen 0 und dem Wert des Parameters (einschlie&szlig;lich). Werden zwei Parameter (m und n) &uuml;bergeben, so wird die errechnete Pseudozufallszahl
+				im Intervall <code>[m, n]</code> liegen.</p>
+				<p>In Processing l&auml;sst sich mit der Funktion <a href="http://processing.org/reference/randomSeed_.html">randomSeed()</a> der 
+				<a href="#seed">Seed</a>, also der Ausgangswert f&uuml;r die Berechnung der Pseudozufallszahl setzen.</p>
+				<h3 id="was_ist_ein_parameter">Was ist ein Parameter einer Funktion?</h3>
+				<p>Bei einem Funktionsparameter handelt es sich um einen Wert, welcher einer Funktion &uuml;bergeben wird und auf 
+				Basis dessen diese Funktion den zur&uuml;ckzugebenden Wert berechnet. Ein Parameter dient also dazu, bestimmte Gr&ouml;&szlig;en
+				in die Funktion einzuf&uuml;hren, die den zu errechnenden Wert beeinflu&szlig;en.</p>
+				<p>Parameter m&uuml;ssen der im Funktionskopf angegebenen <a href="<?= url_for("algorithmus"); ?>#spezifikation">Anforderungsspezifikation</a> 
+				folgen. Das bedeutet, dass sie in einer festgelegten Reihenfolge &uuml;bergeben werden und von einem bestimmten Typ (Bsp.: 
+				<code>Integer</code> oder <code>String</code>) sein m&uuml;ssen.</p>
+				<h3>Ein Programm zur Erzeugung zuf&auml;lliger Bilder</h3>
+<pre>void setup() {
+  // Breite und H&ouml;he
+  int width = 200;
+  int height = 200;
+  // Bildaufbau
+  size(width, height);
+  background(255);
+  stroke(0);
+  strokeWeight(1);
+  int count = 1000; // Parameter: Anzahl der Punkte
+  random_points(count); // Zufallsfunktion aufrufen
+} 	
+
+/**
+ *  random_points() setzt zuf&auml;llig die als
+ *  Parameter &uuml;bergebene Anzahl an Punkten
+ */
+void random_points(int count) {
+  for(int i=0; i&lt;count; i++){
+    // zuf&auml;llige Berechnung der Werte innerhalb des Wertebereichs
+    float x = random(0, width);
+    float y = random(0, height);
+    // Setzen der Punkte
+    point(int(x), int(y));
+  }
+}</pre>
+				<p>Die vom Programm erzeugten Bilder k&ouml;nnen je nach &uuml;bergebenem Parameter folgenderma&szlig;en aussehen:</p>
+				<p><img src="img/screenshot_zufall.png" alt="" style="width:534px;height:564px;"/></p>
+				<p>Die Bilder weisen insofern Gemeinsamkeiten auf, als dass sie keine erkennbare Struktur bieten. Mit zunehmender Anzahl von Punkten, 
+				bilden sich in unserer Wahrnehmung allerdings kleinere weisse Fl&auml;chen, welche zwischen mehreren sie umgebenden Punkten liegen 
+				(<a href="http://de.wikipedia.org/wiki/Gestaltpsychologie#Gestaltgesetze">Gesetz der N&auml;he, Gesetz der Pr&auml;gnanz</a>).</p>
+				<p>Sie unterscheiden sich in ihrem Grauwert, was sich mit zunehmendem Betrachtungsabstand besser nachvollziehen l&auml;sst: Je mehr 
+				Punkte sich in zuf&auml;lliger Anordnung auf der Fl&auml;che befinden, desto dunkler/grauer wirkt die Fll&auml;che, da die Punkte nicht 
+				mehr als einzelne Elemente wahrzunehmen sind. Diesen Umstand macht man sich unter anderem in der Drucktechnik zu Nutze 
+				(<a href="http://de.wikipedia.org/wiki/Frequenzmoduliertes_Raster">frequenzmoduliertes Raster</a>).</p>
+				<h3>Weiteres dazu...</h3>
+				<p>Auf madeasy.de gibt es eine <a href="http://www.madeasy.de/2/zufall.htm">ausf&uuml;hrliche Betrachtung des Begriffs Zufall</a>,
+				bei der auf weitere Betrachtungswinkel eingegangen wird.</p>
+			</div>
+			<ul class="go">
+				<li>&laquo; <?= link_to("turing_berechenbarkeit"); ?> <span class="space">|</span> </li>
+				<li><a href="<?= url_for("start"); ?>#contents">Inhaltsverzeichnis</a> <span class="space">|</span> </li>
+				<li><?= link_to("bild_text_maschine_medium"); ?> &raquo;</li>
+			</ul>
+			<div id="sources">
+				<h3>Quellen</h3>
+				<ol>
+					<li>Wikipedia: Zufall. <a href="http://de.wikipedia.org/wiki/Zufall">http://de.wikipedia.org/wiki/Zufall</a>. Aufgerufen am 23.11.2006.</li>
+					<li>Wikipedia: Pseudozufallszahlengenerator. <a href="http://de.wikipedia.org/wiki/Pseudozufallszahlengenerator">http://de.wikipedia.org/wiki/Pseudozufallszahlengenerator</a>. Aufgerufen am 21.02.2007.</li>
+				</ol>
+			</div>

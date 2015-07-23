@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My nodeJS deployment approach | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/my-nodejs-deployment-approach' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='Softwareentwicklung mit JavaScript' name='description' />
+    <meta content='Deployment, ExpressJS, monit, ndistro, nodeJS, Vlad' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Software developer
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2010-09-04T13:05:00+02:00'>
+            <div class='top'>Sep '10</div>
+            <div class='day'> 4</div>
+          </time>
+          <h1>My nodeJS deployment approach</h1>
+        </header>
+        <div class='content'><p>A <a href="/blog/codeshelver-tag-github-repositories/">while back</a> I said I wasn&#8217;t really satisfied with how I was deploying node applications, in this case <a href="http://codeshelver.com">Codeshelver</a>. After dealing with the problem for some more time I&#8217;ve now arrived at a more general solution that I&#8217;d like to share with you. Having a strong Ruby background some of this will seem familiar to you Ruby developers: I&#8217;m deploying to a nginx server, the node process gets monitored with monit and the basic deployment stack includes <a href="http://rubyhitsquad.com/Vlad_the_Deployer.html">Vlad</a> as a deployment tool, a <a href="https://github.com/fairwinds/ndistro">ndistro</a> file that contains the app dependencies (think of it as a <a href="http://gembundler.com">Gemfile</a>) and a self-written start/stop script for my node applications (with a little <a href="http://expressjs.com/">Express</a> flavor).<!--more--></p>&#x000A;&#x000A;<h4>Rakefile</h4>&#x000A;&#x000A;&#x000A;<p>This is a standard Rakefile that just loads Vlad and sets it to use git for source control.</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;rake&#39;</span>&#x000A;&#x000A;<span class="k">begin</span>&#x000A;  <span class="nb">require</span> <span class="s1">&#39;vlad&#39;</span>&#x000A;  <span class="no">Vlad</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="ss">:app</span> <span class="o">=&gt;</span> <span class="kp">nil</span><span class="p">,</span> <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="kp">nil</span><span class="p">,</span> <span class="ss">:scm</span> <span class="o">=&gt;</span> <span class="s1">&#39;git&#39;</span><span class="p">)</span>&#x000A;<span class="k">rescue</span> <span class="no">LoadError</span>&#x000A;  <span class="nb">puts</span> <span class="s2">&quot;Could not load Vlad - please run &#39;gem install vlad vlad-git&#39;&quot;</span>&#x000A;<span class="k">end</span>&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;&#x000A;&#x000A;<h4>deploy.rb</h4>&#x000A;&#x000A;&#x000A;<p>This is Vlad&#8217;s config file that contains some configuration as well as some recipes I wrote for ndistro and the deployment process:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="n">set</span> <span class="ss">:user</span><span class="p">,</span> <span class="s2">&quot;deploy&quot;</span>&#x000A;<span class="n">set</span> <span class="ss">:application</span><span class="p">,</span> <span class="s2">&quot;myapp&quot;</span>&#x000A;<span class="n">set</span> <span class="ss">:domain</span><span class="p">,</span> <span class="s2">&quot;myapp.com&quot;</span>&#x000A;<span class="n">set</span> <span class="ss">:deploy_to</span><span class="p">,</span> <span class="s2">&quot;/var/www/</span><span class="si">#{</span><span class="n">application</span><span class="si">}</span><span class="s2">&quot;</span>&#x000A;<span class="n">set</span> <span class="ss">:repository</span><span class="p">,</span> <span class="s2">&quot;git@github.com:myuser/</span><span class="si">#{</span><span class="n">application</span><span class="si">}</span><span class="s2">.git&quot;</span>&#x000A;&#x000A;<span class="n">namespace</span> <span class="ss">:vlad</span> <span class="k">do</span>&#x000A;  <span class="c1"># overrides</span>&#x000A;  <span class="n">set</span> <span class="ss">:shared_paths</span><span class="p">,</span> <span class="p">{</span> <span class="p">}</span>&#x000A;  <span class="n">set</span> <span class="ss">:mkdirs</span><span class="p">,</span> <span class="o">[]</span>&#x000A;&#x000A;  <span class="n">namespace</span> <span class="ss">:ndistro</span> <span class="k">do</span>&#x000A;    <span class="n">desc</span> <span class="s2">&quot;Install ndistro&quot;</span>&#x000A;    <span class="n">remote_task</span> <span class="ss">:setup</span><span class="p">,</span> <span class="ss">:roles</span> <span class="o">=&gt;</span> <span class="ss">:web</span> <span class="k">do</span>&#x000A;      <span class="n">set</span> <span class="ss">:use_sudo</span><span class="p">,</span> <span class="kp">true</span>&#x000A;      <span class="n">run</span> <span class="s2">&quot;cd /usr/local/bin &amp;&amp; curl https://github.com/fairwinds/ndistro/raw/master/install | sh&quot;</span>&#x000A;    <span class="k">end</span>&#x000A;&#x000A;    <span class="n">desc</span> <span class="s2">&quot;Install dependencies&quot;</span>&#x000A;    <span class="n">remote_task</span> <span class="ss">:install_deps</span><span class="p">,</span> <span class="ss">:roles</span> <span class="o">=&gt;</span> <span class="ss">:web</span> <span class="k">do</span>&#x000A;      <span class="sx">%w(bin lib modules)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">dir</span><span class="o">|</span>&#x000A;        <span class="n">shared_dir_path</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">shared_path</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span>&#x000A;        <span class="n">release_dir_path</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_release</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span>&#x000A;        <span class="n">run</span> <span class="s2">&quot;mkdir -p </span><span class="si">#{</span><span class="n">shared_dir_path</span><span class="si">}</span><span class="s2">&quot;</span>&#x000A;        <span class="n">run</span> <span class="s2">&quot;ln -s </span><span class="si">#{</span><span class="n">shared_dir_path</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">release_dir_path</span><span class="si">}</span><span class="s2">&quot;</span>&#x000A;      <span class="k">end</span>&#x000A;      <span class="n">run</span> <span class="s2">&quot;cd </span><span class="si">#{</span><span class="n">current_release</span><span class="si">}</span><span class="s2"> &amp;&amp; ndistro&quot;</span>&#x000A;    <span class="k">end</span>&#x000A;&#x000A;    <span class="n">desc</span> <span class="s2">&quot;Clean dependencies&quot;</span>&#x000A;    <span class="n">remote_task</span> <span class="ss">:clean_deps</span><span class="p">,</span> <span class="ss">:roles</span> <span class="o">=&gt;</span> <span class="ss">:web</span> <span class="k">do</span>&#x000A;      <span class="sx">%w(bin lib modules)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">dir</span><span class="o">|</span>&#x000A;        <span class="n">shared_dir_path</span> <span class="o">=</span> <span class="no">Filec</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">shared_path</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span>&#x000A;        <span class="n">run</span> <span class="s2">&quot;rm -r </span><span class="si">#{</span><span class="n">shared_dir_path</span><span class="si">}</span><span class="s2">&quot;</span>&#x000A;      <span class="k">end</span>&#x000A;    <span class="k">end</span>&#x000A;  <span class="k">end</span>&#x000A;&#x000A;  <span class="n">desc</span> <span class="s1">&#39;Start the app&#39;</span>&#x000A;  <span class="n">remote_task</span> <span class="ss">:start_app</span><span class="p">,</span> <span class="ss">:roles</span> <span class="o">=&gt;</span> <span class="ss">:app</span> <span class="k">do</span>&#x000A;    <span class="n">run</span> <span class="s2">&quot;/etc/init.d/express_app </span><span class="si">#{</span><span class="n">application</span><span class="si">}</span><span class="s2"> start&quot;</span>&#x000A;  <span class="k">end</span>&#x000A;&#x000A;  <span class="n">desc</span> <span class="s1">&#39;Stop the app&#39;</span>&#x000A;  <span class="n">remote_task</span> <span class="ss">:stop_app</span><span class="p">,</span> <span class="ss">:roles</span> <span class="o">=&gt;</span> <span class="ss">:app</span> <span class="k">do</span>&#x000A;    <span class="n">run</span> <span class="s2">&quot;/etc/init.d/express_app </span><span class="si">#{</span><span class="n">application</span><span class="si">}</span><span class="s2"> stop&quot;</span>&#x000A;  <span class="k">end</span>&#x000A;&#x000A;  <span class="n">desc</span> <span class="s1">&#39;Restart the app&#39;</span>&#x000A;  <span class="n">remote_task</span> <span class="ss">:restart_app</span><span class="p">,</span> <span class="ss">:roles</span> <span class="o">=&gt;</span> <span class="ss">:app</span> <span class="k">do</span>&#x000A;    <span class="sx">%w(stop_app start_app)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">task</span><span class="o">|</span> <span class="ss">Rake</span><span class="p">:</span><span class="ss">:Task</span><span class="o">[</span><span class="s2">&quot;vlad:</span><span class="si">#{</span><span class="n">task</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">].</span><span class="n">invoke</span> <span class="p">}</span>&#x000A;  <span class="k">end</span>&#x000A;&#x000A;  <span class="n">desc</span> <span class="s2">&quot;Full deployment cycle: Update, ndistro:install_deps, restart, cleanup&quot;</span>&#x000A;  <span class="n">remote_task</span> <span class="ss">:deploy</span><span class="p">,</span> <span class="ss">:roles</span> <span class="o">=&gt;</span> <span class="ss">:app</span> <span class="k">do</span>&#x000A;    <span class="sx">%w(update ndistro:install_deps restart_app cleanup)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">task</span><span class="o">|</span>&#x000A;      <span class="ss">Rake</span><span class="p">:</span><span class="ss">:Task</span><span class="o">[</span><span class="s2">&quot;vlad:</span><span class="si">#{</span><span class="n">task</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">].</span><span class="n">invoke</span>&#x000A;    <span class="k">end</span>&#x000A;  <span class="k">end</span>&#x000A;<span class="k">end</span>&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;&#x000A;&#x000A;<h4>.ndistro</h4>&#x000A;&#x000A;&#x000A;<p>The <a href="https://github.com/fairwinds/ndistro">ndistro</a> file contains the module and node dependencies of your app. This one is pretty simple - here you can read up <a href="http://tjholowaychuk.com/post/864064044/ndistro-node-distribution-toolkit">more on ndistro</a> and there also is a short <a href="http://screenr.com/sV0">screencast</a> about it.</p>&#x000A;&#x000A;<pre>module senchalabs connect&#x000A;module visionmedia express&#x000A;module visionmedia expresso&#x000A;module visionmedia haml.js&#x000A;module visionmedia sass.js</pre>&#x000A;&#x000A;&#x000A;&#x000A;&#x000A;<h4>express_app</h4>&#x000A;&#x000A;&#x000A;<p>This is the script I use to start/stop the server, I keep it under <code>/etc/init.d/</code> so that I can use it like any other system script. You use it like this: <code>/etc/init.d/express_app {app_name} {start|stop}</code></p>&#x000A;&#x000A;<div class="highlight"><pre><span class="c">#!/bin/bash</span>&#x000A;<span class="nv">user</span><span class="o">=</span>deploy&#x000A;<span class="nv">dir</span><span class="o">=</span>/var/www/<span class="nv">$1</span>/current&#x000A;<span class="nv">srv_file</span><span class="o">=</span><span class="nv">$dir</span>/server.js&#x000A;<span class="nv">pid_file</span><span class="o">=</span><span class="nv">$dir</span>/log/server.pid&#x000A;<span class="nv">log_file</span><span class="o">=</span><span class="nv">$dir</span>/log/server.log&#x000A;&#x000A;<span class="k">case</span> <span class="nv">$2</span> in&#x000A;  start<span class="o">)</span>&#x000A;    sudo -u <span class="s2">&quot;$user&quot;</span> <span class="nv">EXPRESS_ENV</span><span class="o">=</span>production node <span class="s2">&quot;$srv_file&quot;</span> &gt;&gt; <span class="s2">&quot;$log_file&quot;</span> 2&gt;&amp;1 &amp;&#x000A;    <span class="nb">echo</span> <span class="sb">`</span>ps ax | grep <span class="nv">$srv_file</span> | grep -v grep | awk <span class="s1">&#39;{print $1}&#39;</span><span class="sb">`</span> &gt; <span class="s2">&quot;$pid_file&quot;</span>&#x000A;    chown <span class="s2">&quot;$user&quot;</span>:<span class="s2">&quot;$user&quot;</span> <span class="s2">&quot;$log_file&quot;</span>&#x000A;    chown <span class="s2">&quot;$user&quot;</span>:<span class="s2">&quot;$user&quot;</span> <span class="s2">&quot;$pid_file&quot;</span> ;;&#x000A;  stop<span class="o">)</span>&#x000A;    <span class="nb">kill</span> <span class="sb">`</span>cat <span class="s2">&quot;$pid_file&quot;</span><span class="sb">`</span>&#x000A;    rm <span class="s2">&quot;$pid_file&quot;</span> ;;&#x000A;  *<span class="o">)</span>&#x000A;    <span class="nb">echo</span> <span class="s2">&quot;usage: /etc/init.d/express_app {app_name} {start|stop}&quot;</span> ;;&#x000A;<span class="k">esac</span>&#x000A;<span class="nb">exit </span>0&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;&#x000A;&#x000A;<h4>monit</h4>&#x000A;&#x000A;&#x000A;<p>This is pretty simple as it just keeps an eye on the server pid file and utilizes the start/stop script to keep the app running.</p>&#x000A;&#x000A;<div class="highlight"><pre>check process myapp with pidfile /var/www/myapp/current/log/server.pid&#x000A;  start <span class="nv">program</span> <span class="o">=</span> <span class="s2">&quot;/etc/init.d/express_app myapp start&quot;</span>&#x000A;  stop <span class="nv">program</span>  <span class="o">=</span> <span class="s2">&quot;/etc/init.d/express_app myapp stop&quot;</span>&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;&#x000A;&#x000A;<h4>nginx.conf</h4>&#x000A;&#x000A;&#x000A;<p>Last but not least here&#8217;s an excerpt from the nginx config file:</p>&#x000A;&#x000A;<div class="highlight"><pre>http <span class="o">{</span>&#x000A;  upstream myapp_cluster <span class="o">{</span>&#x000A;    server localhost:3000;&#x000A;  <span class="o">}</span>&#x000A;&#x000A;  server <span class="o">{</span>&#x000A;    listen 80;&#x000A;    server_name myapp.com;&#x000A;    root /var/www/myapp/current;&#x000A;&#x000A;    location / <span class="o">{</span>&#x000A;      proxy_set_header X-Real-IP <span class="nv">$remote_addr</span>;&#x000A;      proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span>;&#x000A;      proxy_set_header Host <span class="nv">$http_host</span>;&#x000A;      proxy_pass http://myapp_cluster/;&#x000A;      proxy_redirect off;&#x000A;    <span class="o">}</span>&#x000A;  <span class="o">}</span>&#x000A;<span class="o">}</span>&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>I hope this helps you figuring out your deployment and maybe you got some tips for me on how to enhance this. Of course there are many other valid approaches like <a href="http://howtonode.org/deploying-node-upstart-monit">using upstart</a> or <a href="http://depold.com/wordpress/124/deploying-a-node-js-web-application-with-express-and-ndistro">with an Apache as webserver</a>.</p></div>
+        <div class='follow'>
+          <p>
+            Liked this post? Follow me on
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            or
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iPhone app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>
+              iOctocat
+            </a>
+          </h3>
+          <p itemprop='description'>
+            is GitHub in your pocket: The go to app for staying up to date with your
+            projects on your
+            <span itemprop='device'>iPhone, and iPod Touch.</span>
+            <br />
+            It is
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">available on the App Store</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Contact details</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

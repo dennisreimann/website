@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Referencing Rails Assets in CoffeeScript | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/referencing-rails-assets-in-coffeescript' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='Software mit Ruby on Rails' name='description' />
+    <meta content='Ruby, Rails, Ruby on Rails, Asset Pipeline, Assets, CoffeeScript, JavaScript' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Software developer
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2011-12-06T00:45:00+01:00'>
+            <div class='top'>Dec '11</div>
+            <div class='day'> 6</div>
+          </time>
+          <h1>Referencing Rails Assets in CoffeeScript</h1>
+        </header>
+        <div class='content'><p>Sometimes you&#8217;ll want to refer to your image assets from inside of your CoffeeScript (or JavaScript). While we have <a href="http://guides.rubyonrails.org/asset_pipeline.html#coding-links-to-assets">nice helpers for that in SASS</a> (namely <code>image-path</code> and <code>image-url</code>), we would have to resort to appending .erb to every .js or .coffee file, we want to reference images in, so that we could use something like this in there:</p>&#x000A;&#x000A;<pre><code>icon = &lt;%= image_path('icon.png') %&gt;&#x000A;</code></pre>&#x000A;&#x000A;<p>I didn&#8217;t like it that way, because ERB inside of CoffeeScript looks odd and having the file end with .erb messes up syntax highlighting. But we can circumvent this easily by adding this (admittedly not the most beautiful) piece of code to one single file that ends on .erb (i.e. <code>images.js.coffee.erb</code>) and let it provide the helper method we need:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="cp">&lt;%</span>&#x000A;<span class="n">imgs</span> <span class="o">=</span> <span class="p">{}</span>&#x000A;<span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/app/assets/images/&quot;</span><span class="p">)</span> <span class="k">do</span>&#x000A;  <span class="n">imgs</span> <span class="o">=</span> <span class="no">Dir</span><span class="o">[</span><span class="s2">&quot;**&quot;</span><span class="o">].</span><span class="n">inject</span><span class="p">({})</span> <span class="p">{</span><span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">f</span><span class="o">|</span> <span class="n">h</span><span class="o">.</span><span class="n">merge!</span> <span class="n">f</span> <span class="o">=&gt;</span> <span class="n">image_path</span><span class="p">(</span><span class="n">f</span><span class="p">)}</span>&#x000A;<span class="k">end</span>&#x000A;<span class="cp">%&gt;</span><span class="x"></span>&#x000A;&#x000A;<span class="x">window.image_path = (name) -&gt;</span>&#x000A;<span class="x">  </span><span class="cp">&lt;%=</span> <span class="n">imgs</span><span class="o">.</span><span class="n">to_json</span> <span class="cp">%&gt;</span><span class="x">[name]</span>&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>This adds up all images inside of <code>app/assets/images</code> and makes them available via the global helper method <code>image_path</code> - your milage may vary, but you get the idea. From there on it&#8217;s simply</p>&#x000A;&#x000A;<pre><code>icon = image_path('icon.png')&#x000A;</code></pre>&#x000A;&#x000A;<p>inside of your CoffeeScript (or JavaScript) files and it also works in production as the returned filename contains the digest.</p></div>
+        <div class='follow'>
+          <p>
+            Liked this post? Follow me on
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            or
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iPhone app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>
+              iOctocat
+            </a>
+          </h3>
+          <p itemprop='description'>
+            is GitHub in your pocket: The go to app for staying up to date with your
+            projects on your
+            <span itemprop='device'>iPhone, and iPod Touch.</span>
+            <br />
+            It is
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">available on the App Store</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Contact details</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

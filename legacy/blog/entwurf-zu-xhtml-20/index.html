@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Entwurf zu XHTML 2.0 | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/entwurf-zu-xhtml-20' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='Seit gestern gibt es einen neuen Entwurf zu XHTML 2.0, welcher sich recht vielversprechend anhört: Nicht nur, dass es viele wirklich Sinn machende Verbesserungen geben wird - nein, das Ganze soll auch noch abwärtskompatibel sein.' name='description' />
+    <meta content='XHTML' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Softwareentwickler
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2006-07-27T21:47:00+02:00'>
+            <div class='top'>Jul '06</div>
+            <div class='day'>27</div>
+          </time>
+          <h1>Entwurf zu XHTML 2.0</h1>
+        </header>
+        <div class='content'><p>Seit gestern gibt es einen neuen <a href="http://www.w3.org/TR/2006/WD-xhtml2-20060726/">Entwurf zu XHTML 2.0</a>, welcher sich recht vielversprechend anhört: Nicht nur, dass es viele wirklich Sinn machende Verbesserungen geben wird - nein, das Ganze soll auch noch abwärtskompatibel sein.</p>&#x000A;&#x000A;<!--more-->&#x000A;&#x000A;&#x000A;<p>Um mal gleich einige der wichtigen Neuerungen rauszupicken:</p>&#x000A;&#x000A;<h4>Alles ist ein Link</h4>&#x000A;&#x000A;&#x000A;<p>Na ja, sagen wir besser: Alles kann ein Link sein. Jedes Element kann in XHTML 2.0 das Attribut <a href="http://www.w3.org/TR/2006/WD-xhtml2-20060726/mod-hyperAttributes.html#adef_hyperAttributes_href">href</a> haben, wodurch das Anchor-Tag in vielen Fällen entfallen kann: Bilder und Überschriften lassen sich also direkt verlinken, ohne dass man sie extra in einen Anker wickeln muss - gleiches gilt natürlich auch für (Navigations-) Listen: nice :)</p>&#x000A;&#x000A;<h4>Meine Quelle&#8230;</h4>&#x000A;&#x000A;&#x000A;<p>Gleiches gilt für das <a href="http://www.w3.org/TR/2006/WD-xhtml2-20060726/mod-embedding.html#adef_embedding_src"><code>src</code>-Attribut</a>: Mit XHTML 2.0 lassen sich Bilddaten nicht mehr nur durch das <code>img</code>-Element darstellen, sondern man kann beispielsweise einem Absatz ein Bild zuordnen. Der im Paragraph enthaltene Text dient dann somit als Fallback bzw. Altenativtext - somit entfallen auch die img-Attribute alt und longdesc.</p>&#x000A;&#x000A;<h4>Kein Headline-Gewurschtel mehr</h4>&#x000A;&#x000A;&#x000A;<p>Die <code>H1</code> bis <code>H6</code> Elemente werden auch ausgedient haben: Fortan läuft die Strukturierung von Dokumenten über sogenannte <a href="http://www.w3.org/TR/2006/WD-xhtml2-20060726/mod-structural.html#edef_structural_section">Sections</a> ab (dem ein oder anderen vielleicht aus LaTeX bekannt). Dabei befinden sich die einzelnen Teilabschnitte des Contents in <code>section</code>&#8217;s welche Headlines, Paragraphen etc. und wiederum Untersektionen enthalten können. Daraus ergibt sich auch, dass man nicht mehr auf nur sechs Überschriftentypen beschränkt ist - aber wenn man sich dadurch bisher eingeschränkt gefühlt hat, sollte man seinen Content sowieso besser überdenken ;)</p>&#x000A;&#x000A;<h4>Absätze</h4>&#x000A;&#x000A;&#x000A;<p>Nun wurde auch ein eher unverständlicher Syntaxfehler aus dem Weg geräumt: Ab XHTML 2.0 validieren auch Absätze, welche Blocklevel-Elemente wie <code>p</code>, <code>pre</code> oder <code>table</code> enthalten - ich hab sowieso nie verstanden, warum eine Liste nicht teil eines Paragraphen sein durfte.</p>&#x000A;&#x000A;<h4>Einzelne Zeilen kennzeichnen</h4>&#x000A;&#x000A;&#x000A;<p>&#8230;ging bisher auch nicht - außer per <code>div</code> oder das semantisch eher unbedeutende <code>br</code>. Dafür gibt es in der neuen Spezifikation dann das <a href="http://www.w3.org/TR/2006/WD-xhtml2-20060726/mod-text.html#sec_9.7.">Line-Element</a> <code>l</code>. Damit lassen sich einzelne Zeilen als solche kennzeichnen, nützlich zum Beispiel bei Songtexten oder Gedichten.</p>&#x000A;&#x000A;<h4>XML Events</h4>&#x000A;&#x000A;&#x000A;<p>Was einmal die JavaScript-EventHandler waren, werden in Zukunft XML Events sein: Per seperatem <a href="http://www.w3.org/TR/2006/WD-xhtml2-20060726/mod-handler.html#sec_19.1."><code>handler</code></a>-Element lassen sich dann Eigenschaften an Objekte binden um Scripte verschiedener Sprachen (JavaScript, VB) aufzurufen.</p>&#x000A;&#x000A;<h4>So weit so gut</h4>&#x000A;&#x000A;&#x000A;<p>Sehr feine Sachen dabei - endlich mehr und vor allem klarere Struktur. Es wurde viel aufgeräumt und der Entwurf wirkt sehr durchdacht. Leider gilt trotz der angestrebten Abwärtskompatibilität auch hier wieder, dass es seine Zeit dauern wird, bis das Ganze praxistauglich wird. Bis dahin warten wir aber alle gespannt, ob es vielleicht noch die ein oder andere sinnvolle Ergänzung geben wird.</p></div>
+        <div class='follow'>
+          <p>
+            Guter Artikel? Folge mir auf
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            oder
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iOS app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>iOctocat</a>
+          </h3>
+          <p itemprop='description'>
+            ist GitHub für die Hosentasche - deine Projekte und das was dort passiert
+            immer dabei mit deinem
+            <span itemprop='device'>iPhone und iPod Touch.</span>
+            <br />
+            Die App ist
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">im App Store erhältlich</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Kontaktdetails</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

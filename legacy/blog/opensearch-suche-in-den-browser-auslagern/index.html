@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenSearch: Suche in den Browser auslagern | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/opensearch-suche-in-den-browser-auslagern' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='OpenSearch ist eine Technologie, mit der sich - kurz gesagt - Suchergebnisse von verschiedensten Websites aggregieren lassen. Was man alles damit machen kann, wollen wir in unserem nächsten Podcast beschreiben. Heute soll es um eine Möglichkeit gehen, mit der sich die Suchfunktion der eigenen Website in den Browser integrieren lässt.' name='description' />
+    <meta content='Browser, Firefox, IE, OpenSearch' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Softwareentwickler
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2006-11-11T12:13:00+01:00'>
+            <div class='top'>Nov '06</div>
+            <div class='day'>11</div>
+          </time>
+          <h1>OpenSearch: Suche in den Browser auslagern</h1>
+        </header>
+        <div class='content'><p><a href="http://www.opensearch.org/Home">OpenSearch</a> ist eine Technologie, mit der sich - kurz gesagt - Suchergebnisse von verschiedensten Websites aggregieren lassen. Was man alles damit machen kann, wollen wir in unserem nächsten Podcast beschreiben. Heute soll es um eine Möglichkeit gehen, mit der sich die Suchfunktion der eigenen Website in den Browser integrieren lässt.</p>&#x000A;&#x000A;<p>Im Firefox war dieses Feature bisher schon länger über das <a href="http://labnol.blogspot.com/2006/09/learn-to-create-firefox-search-plugin.html">Einbinden eines Search Plugins</a> möglich. Das hat den Nachteil, dass man seine Nutzer erstmal darauf hinweisen und diese das Plugin dann selbst installieren mussten. Mit OpenSearch lässt sich die eigene Suche direkt in das Suchfeld des Browsers integrieren - das Beste daran: Sowohl der Firefox 2 als auch der IE 7 unterstützen es.</p>&#x000A;&#x000A;<p><img alt="OpenSearch im Browser" title="OpenSearch im Browser" src="http://static.flickr.com/118/294337608_d9127d0457.jpg?v=0" /></p>&#x000A;&#x000A;<p>Wie im Screenshot zu sehen, leuchtet im Firefox 2 der kleine Pfeil neben der Standardsuchmaschine, sobald der Browser OpenSearch auf der Seite entdeckt und dem Benutzer wird die Möglichkeit geboten, die Suche der aktuellen Seite zu den Suchmaschinen hinzuzufügen. Das dürfte aktuell noch ein ziemlich unbekanntes Feature sein, da es sich aber in zwei Minuten implementieren lässt, hier die kleine Anleitung dazu.</p>&#x000A;&#x000A;<h4>Schritt 1: Beschreibung erstellen</h4>&#x000A;&#x000A;&#x000A;<p>Zunächst muss man eine kleine XML-Datei erstellen, in der ein paar Parameter zur Suche stehen. Der Browser muss wissen, wo der Suchbegriff hingeschickt werden soll, welchen Namen die Suche hat und wo er das fancy Icon dafür finden kann.</p>&#x000A;&#x000A;<p>Die Datei muss dann auf den Webserver geladen und wie im nächsten Schritt beschrieben verlinkt werden.</p>&#x000A;&#x000A;<h4>Schritt 2: Suche verlinken</h4>&#x000A;&#x000A;&#x000A;<p>Die OpenSearch-Beschreibung bindet man wie beispielsweise auch CSS-Datein über ein link-Tag im Head der Seite ein.</p>&#x000A;&#x000A;<pre><<span class="start-tag">link</span><span class="attribute-name"> title</span>=<span class="attribute-value">"//dopefreshtightblog" </span><span class="attribute-name">type</span>=<span class="attribute-value">"application/opensearchdescription+xml" </span><span class="attribute-name" /></pre>&#x000A;&#x000A;&#x000A;<pre style="margin-bottom: 1.7em"><span class="attribute-name">rel</span>=<span class="attribute-value">"search" </span><span class="attribute-name">href</span>=<span class="attribute-value">"/opensearch.xml" </span><span class="attribute-name">/</span>></pre>&#x000A;&#x000A;&#x000A;<p>Falls das alles nicht so selbsterklärend sein sollte, wie ich annehme, könnt ihr gerne Fragen dazu posten!</p>&#x000A;&#x000A;<p>Die Möglichkeiten von OpenSearch gehen wie gesagt weit darüber hinaus und wir werden in unserem nächsten Podcast versuchen, eines davon zu erklären :)</p></div>
+        <div class='follow'>
+          <p>
+            Guter Artikel? Folge mir auf
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            oder
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iOS app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>iOctocat</a>
+          </h3>
+          <p itemprop='description'>
+            ist GitHub für die Hosentasche - deine Projekte und das was dort passiert
+            immer dabei mit deinem
+            <span itemprop='device'>iPhone und iPod Touch.</span>
+            <br />
+            Die App ist
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">im App Store erhältlich</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Kontaktdetails</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

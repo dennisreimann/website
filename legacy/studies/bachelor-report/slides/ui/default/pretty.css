@@ -1,0 +1,56 @@
+/* Following are the presentation styles -- edit away! */
+html, body {margin: 0; padding: 0; }
+body {background: #000 -16px 0 no-repeat; color: #fff; font-size: 2em; font-family: "DIN Light", Verdana, Helvetica, Arial, Tahoma, "Trebuchet MS", sans-serif; }
+:link, :visited {text-decoration: none; color: #fff;}
+h1, h2, h3, h4 { font-size: 100%; font-weight: normal; margin: 0; padding: 0; }
+pre {margin: 0;line-height: 1em;}
+img {border: 0;}
+
+/* Layout */
+#header {background: #fff url(bgline.gif) 0 100% repeat-x; }
+#header img { position: absolute; top: 15px; right: 20px; }
+
+/* Slides */
+
+.slide {line-height: 1.8em;}
+.slide h1 {position: absolute; top: 5px; left: 50px; color: #000; white-space: nowrap; }
+.slide h2 {margin: 0 0 0.3em 0; font-size: 120%; }
+.slide img {margin-bottom: 0.9em;}
+.slide p {margin: 0 0 0.9em 0;}
+.slide code {padding: 2px 0.25em; }
+.slide code.bad, code del {color: red;}
+.slide code.old {color: silver;}
+.slide pre {padding: 0; margin: 0.25em 0 0.5em 0.5em; font-size: 90%;}
+.slide pre code {display: block;}
+.slide ul {margin: 0 7% 1.8em -16px; list-style: disc;}
+.slide ul ul {margin-bottom: 0;}
+.slide ul ul li {margin-left: 2em; font-size: 90%; list-style: square;}
+.slide li.no_bullet {list-style:none;}
+
+/* Controls */
+div#controls {position: absolute; left: 50%; bottom: 0; width: 50%; text-align: right; font: bold 0.9em Verdana, Helvetica, sans-serif;}
+html>body div#controls {position: fixed; padding: 0 0 1em 0; top: auto;}
+div#controls form {position: absolute; bottom: 0; right: 0; width: 100%; margin: 0; padding: 0;}
+#controls #navLinks a {padding: 0 7px; margin: 0 0.5em; background: #333; border: none; cursor: pointer;}
+#controls #navLinks a:hover { background: #6C3; }
+#controls #navList {height: 1em;}
+#controls #navList #jumplist {position: absolute; bottom: 0; right: 0;}
+#currentSlide {text-align: center; font-size: 0.5em; }
+
+/* Title */
+#slide0    {padding-top: 3.5em; font-size: 90%;}
+#slide0 h1 {position: static; color: #FFF; font-size: 200% !important; margin: 1em 0 0; padding: 0; white-space: normal;}
+#slide0 h2 {margin: 0.7em 0 0 0; font-size: 110%; }
+#slide0 h3 {margin-top: 4.5em;}
+#slide0 h4 {margin-top: 0;}
+
+/* Specials */
+ul.urls {list-style: none; display: inline; margin: 0;}
+.urls li {display: inline; margin: 0;}
+.note { color: #BBB; }
+.external {border-bottom: 1px dotted gray;}
+html>body .external {border-bottom: none;}
+.external:after {content: " \274F"; font-size: smaller; }
+.incremental, .incremental *, .incremental *:after {color: #000 !important; visibility: visible;}
+img.incremental { visibility: hidden !important; border: 3em solid grey; }
+.slide .current { }

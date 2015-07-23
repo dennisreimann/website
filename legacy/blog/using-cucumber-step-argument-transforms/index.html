@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Using Cucumber Step Argument Transforms | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/using-cucumber-step-argument-transforms' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='Programmierung mit HTML5' name='description' />
+    <meta content='cucumber, rspec, ruby on rails, ruby, rails, testing, bdd, tdd, test-driven' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Software developer
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2011-03-24T10:25:00+01:00'>
+            <div class='top'>Mar '11</div>
+            <div class='day'>24</div>
+          </time>
+          <hgroup>
+            <h1>Using Cucumber Step Argument Transforms</h1>
+            <h2>For Fun and Profit</h2>
+          </hgroup>
+        </header>
+        <div class='content'><p>In a recent project that is tested with Cucumber we were using „within“ steps with CSS selectors.&#x000A;Though <a href="http://mislav.uniqpath.com/2010/09/cuking-it-right/">this isn&#8217;t basically considered a good idea</a>&#x000A;I&#8217;d say it made sense for us, because we had to select specific parts of the page. Cuking it like that, our steps&#x000A;usually looked something like this:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="k">Scenario:</span><span class="nf"> Edit something</span>&#x000A;<span class="k">  Given </span><span class="nf">there is something</span>&#x000A;<span class="nf">  </span><span class="k">And </span><span class="nf">another something</span>&#x000A;<span class="nf">  </span><span class="k">When </span><span class="nf">I go to the page of somethings</span>&#x000A;<span class="nf">  </span><span class="k">And </span><span class="nf">I follow &quot;</span><span class="s">edit</span><span class="nf">&quot; within &quot;</span><span class="s">ul.somethings li:nth-child(1)</span><span class="nf">&quot;</span>&#x000A;<span class="nf">  </span><span class="k">Then </span><span class="nf">I should be on the edit page for &quot;</span><span class="s">something</span><span class="nf">&quot;</span>&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>Besides looking just ugly, CSS selectors also don&#8217;t offer any business value and are likely to change. Cucumber&#8217;s&#x000A;<a href="https://github.com/cucumber/cucumber/wiki/Step-Argument-Transforms">Step Argument Transforms</a> can help you&#x000A;avoid that by refactoring common operations.</p>&#x000A;&#x000A;<p>Transforms are defined with the <code>Transform</code> keyword and can be a part of your step definition files. Cucumber matches&#x000A;the captures in your steps (i.e. <code>the 1st something</code>) against the defined transforms. If the regexp matches, it yields&#x000A;the transformed value as an argument to the step definition block. This sounds complicated, so here&#8217;s an example:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nf">Transform /^the (\d+)(?:st|nd|rd|th) something$/ do</span><span class="k"> |</span><span class="s">num</span><span class="k">|</span><span class="s"></span>&#x000A;<span class="s">  &quot;ul.somethings li:nth-child(</span><span class="c">#{num})&quot;</span><span class="s"></span>&#x000A;<span class="s">end</span>&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>This transform allows us to refactor the scenario above to be more readable and maintainable:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="k">Scenario:</span><span class="nf"> Edit something</span>&#x000A;<span class="nf">  …</span>&#x000A;<span class="k">  When </span><span class="nf">I go to the page of somethings</span>&#x000A;<span class="nf">  </span><span class="k">And </span><span class="nf">I follow &quot;</span><span class="s">edit</span><span class="nf">&quot; within &quot;</span><span class="s">the 1st something</span><span class="nf">&quot;</span>&#x000A;<span class="nf">  …</span>&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>We can even abstract this a little further and make it usable on a common level:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nf">Transform /^the (\d+)(?:st|nd|rd|th) (.+)$/ do</span><span class="k"> |</span><span class="s">num, type</span><span class="k">|</span><span class="s"></span>&#x000A;<span class="s">  &quot;ul.</span><span class="c">#{type.pluralize} li:nth-child(#{num})&quot;</span><span class="s"></span>&#x000A;<span class="s">end</span>&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>This is just a basic example of how this often unknown Cucumber feature might help you to refactor your step definitions.&#x000A;For more information and decent examples check out the wiki page on <a href="https://github.com/cucumber/cucumber/wiki/Step-Argument-Transforms">Step Argument Transforms</a>.</p></div>
+        <div class='follow'>
+          <p>
+            Liked this post? Follow me on
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            or
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iPhone app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>
+              iOctocat
+            </a>
+          </h3>
+          <p itemprop='description'>
+            is GitHub in your pocket: The go to app for staying up to date with your
+            projects on your
+            <span itemprop='device'>iPhone, and iPod Touch.</span>
+            <br />
+            It is
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">available on the App Store</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Contact details</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

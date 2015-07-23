@@ -1,0 +1,36 @@
+			<div id="content">
+				<h1>Was ist ein Programm?</h1>
+				<p>Programme sind <a href="<?= url_for("algorithmus"); ?>">Algorithmen</a> in maschinenlesbarer Form - also die Beschreibung eines Rechenvorgangs.
+				Damit der Rechner ein Programm verarbeiten kann, muss es <a href="<?= url_for("algorithmus"); ?>#exakt_praezise_effektiv_und_endlich">exakt, 
+				pr&auml;zise, effektiv, endlich</a> und im Idealfall effizient (ressourcensparend) sein.</p>
+				<p>Programme sind separat ausf&uuml;hrbare Einheiten, bestehend aus einer Abfolge von Anweisungen/Statements. Sie &bdquo;lassen sich mittels 
+				der Strukturelemente Sequent, Alternative und Iteration konstruieren, wobei man sich auf eine Menge von elementaren Operatoren
+				st&uuml;tzt.&rdquo;<sup><a href="#sources">[1]</a></sup></p>
+				<p><img src="img/programm_konstrukte.png" alt="" style="width:582px;height:187px;" /></p>
+				<blockquote cite="http://www.masswerk.at/algol60/report.htm">A sequence of declarations followed by a sequence of statements and enclosed
+				between <strong>begin</strong> and <strong>end</strong> constitutes a block. [...]<br />
+				A program is a block or compound statement which is not contained within another statement and which makes no use of other statements not
+				contained within it.<sup><a href="#sources">[2]</a></sup></blockquote>
+				<p>Ein Programm liegt meistens als <a href="<?= url_for("programmiersprachen"); ?>#compiler_interpreter">ausf&uuml;hrbare</a> Datei vor und 
+				wird zur Verarbeitung in den Arbeitsspeicher des Computers geladen.</p>
+				<h2 id="was_ist_ein_prozess">Was ist ein Prozess?</h2>
+				<p>Der Ablauf eines Programms wird als Prozess bezeichnet - ein Prozess ist also ein <em>Programm in Ausf&uuml;hrung</em>. Die Verarbeitung 
+				des Programms findet auf dem Prozessor des Computers statt.</p><p>Jedes ausgef&uuml;hrte Programm beansprucht also den Prozessor und Ressourcen des
+				Systems, wie z.B. Speicher. Durch den Umstand, dass ein Prozessor mehrere Prozesse quasi gleichzeitig verarbeiten k&ouml;nnen muss 
+				(<a href="http://de.wikipedia.org/wiki/Nebenl%C3%A4ufigkeit">Nebenl&auml;ufigkeit</a>), besteht ein Verwaltungsbedarf der verschiedenen Prozesse
+				(Identifikation, aktueller Verarbeitungszustand, Ressourcen). Die Verwaltung der Prozesse ist eine der Hauptaufgaben des Betriebssystems.</p>
+				<p>Ein Prozess hat immer einen Kontext (Adressraum, reservierter Speicherbereich, ...) in welchem er l&auml;uft und einen aktuellen Zustand
+				(offene Datein, aktuelles Verzeichnis, ...) - angestrebt wird dabei ein definierter Zielzustand.</p>
+			</div>
+			<ul class="go">
+				<li>&laquo; <?= link_to("algorithmus"); ?> <span class="space">|</span> </li>
+				<li><a href="<?= url_for("start"); ?>#contents">Inhaltsverzeichnis</a> <span class="space">|</span> </li>
+				<li><?= link_to("programmiersprachen"); ?> &raquo;</li>
+			</ul>
+			<div id="sources">
+				<h3>Quellen</h3>
+				<ol>
+					<li><a href="<?= url_for("literatur"); ?>#nake-algorithmus">Frieder Nake: Funktion Algorithmus Programm und so</a></li>
+					<li>Revised Report on the Algorithmic Language ALGOL 60: <a href="http://www.masswerk.at/algol60/report.htm">http://www.masswerk.at/algol60/report.htm</a>. Aufgerufen am 15.02.2007.</li>
+				</ol>
+			</div>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Installing a current CouchDB (and Erlang) from source on Ubuntu 8.04 LTS | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/installing-couchdb-and-erlang-on-ubuntu-hardy' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='Webentwicklung mit Ruby on Rails' name='description' />
+    <meta content='CouchDB, Erlang, Server, Ubuntu, Deployment' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Software developer
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2010-07-14T20:13:00+02:00'>
+            <div class='top'>Jul '10</div>
+            <div class='day'>14</div>
+          </time>
+          <h1>Installing a current CouchDB (and Erlang) from source on Ubuntu 8.04 LTS</h1>
+        </header>
+        <div class='content'><p>Two weeks ago I had quite a hard time getting CouchDB up and running on my VPS, but with some help from <a href="http://twitter.com/jweiss">Jonathan</a> and <a href="http://twitter.com/kangguru">Lars</a> it finally worked. My main problem was that Erlang wasn&#8217;t configured with SSL support and that the CouchDB version I was using (0.11.0) did not play nice with the latest Erland (R14A), so that I had to get CouchDB from the SVN repository. Now that <a href="http://www.couch.io/">CouchDB 1.0</a> is here, I thought it might be a good opportunity  to summarize the steps I had to take to install the latest Erlang and CouchDB 1.0 on my Ubuntu Hardy system…</p>&#x000A;&#x000A;<!--more-->&#x000A;&#x000A;&#x000A;<p><strong>UPDATE:</strong> Here is a <a href="https://gist.github.com/501039">gist</a> that looks like there is a more hassle-free way to do the installation, please try it first and see the rest of this tutorial as a reference point if the gist does not work out for you.</p>&#x000A;&#x000A;<p>I usually keep my source installs at <code>/usr/local/src/</code>, your milage may vary, adjust the steps accordingly.</p>&#x000A;&#x000A;<h4>Installing the dependencies</h4>&#x000A;&#x000A;&#x000A;<p>First of we got to install the dependencies for Erland and CouchDB:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install -y automake autoconf libtool help2man&#x000A;<span class="nv">$ </span>sudo apt-get install -y build-essential erlang libicu-dev&#x000A;<span class="nv">$ </span>sudo apt-get install -y libmozjs-dev libcurl4-openssl-dev&#x000A;<span class="nv">$ </span>sudo apt-get install -y openssl libssl-dev&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;&#x000A;&#x000A;<h4>Installing Erlang</h4>&#x000A;&#x000A;&#x000A;<p><a href="http://www.erlang.org/download.html">Download</a> and unpack the current Erlang version, in my case it&#8217;s R14A:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /usr/local/src&#x000A;<span class="nv">$ </span>wget http://www.erlang.org/download/otp_src_R14A.tar.gz&#x000A;<span class="nv">$ </span>tar xzf otp_src_R14A.tar.gz&#x000A;<span class="nv">$ </span><span class="nb">cd </span>otp_src_R14A&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>Maybe you would like to see the config options and need to checkout which openssl should be used:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nv">$ </span>./configure -h&#x000A;<span class="nv">$ </span>which openssl&#x000A;/usr/bin/openssl&#x000A;<span class="nv">$ </span>./configure --with-ssl<span class="o">=</span>/usr/include/openssl/&#x000A;<span class="nv">$ </span>make&#x000A;<span class="nv">$ </span>sudo make install&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>Once you installed Erlang, check whether its cryptography library (OpenSSL) are functioning correctly.</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nv">$ </span>erl&#x000A;Erlang R14A <span class="o">(</span>erts-5.8<span class="o">)</span> …&#x000A;&#x000A;Eshell V5.8  <span class="o">(</span>abort with ^G<span class="o">)</span>&#x000A;1&gt; crypto:start<span class="o">()</span>.&#x000A;ok&#x000A;2&gt; q<span class="o">()</span>.&#x000A;ok&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<h4>Installing CouchDB</h4>&#x000A;&#x000A;&#x000A;<p><a href="http://couchdb.apache.org/downloads.html">Download</a> and unpack the current CouchDB version, in my case it&#8217;s 1.0:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /usr/local/src&#x000A;<span class="nv">$ </span>wget http://apache.linux-mirror.org/couchdb/1.0.0/apache-couchdb-1.0.0.tar.gz&#x000A;<span class="nv">$ </span>tar xzf apache-couchdb-1.0.0.tar.gz&#x000A;<span class="nv">$ </span><span class="nb">cd </span>apache-couchdb-1.0.0&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>Here you might like to see the config options to and export some of the variables:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nv">$ </span>./configure -h&#x000A;<span class="nv">$ </span><span class="nb">export </span><span class="nv">ERL</span><span class="o">=</span>/usr/local/bin/erl&#x000A;<span class="nv">$ </span><span class="nb">export </span><span class="nv">ERLC</span><span class="o">=</span>/usr/local/bin/erlc&#x000A;<span class="nv">$ </span>./configure --with-erlang<span class="o">=</span>/usr/local/lib/erlang/usr/include/&#x000A;<span class="nv">$ </span>make&#x000A;<span class="nv">$ </span>sudo make install&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>For security reasons it makes sense to have a separate <code>couchdb</code> user that runs the process, go ahead and create it:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nv">$ </span>sudo adduser --system <span class="se">\</span>&#x000A;        --home /usr/local/var/lib/couchdb --no-create-home <span class="se">\</span>&#x000A;        --shell /bin/bash <span class="se">\</span>&#x000A;        --group --gecos <span class="s2">&quot;CouchDB&quot;</span> couchdb&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>You will also have to give this user access to some directories:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nv">$ </span>sudo chown -R couchdb:couchdb /usr/local/etc/couchdb&#x000A;<span class="nv">$ </span>sudo chown -R couchdb:couchdb /usr/local/var/lib/couchdb&#x000A;<span class="nv">$ </span>sudo chown -R couchdb:couchdb /usr/local/var/log/couchdb&#x000A;<span class="nv">$ </span>sudo chown -R couchdb:couchdb /usr/local/var/run/couchdb&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>… and change the permissions for the directories:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nv">$ </span>chmod -R 0770 /usr/local/etc/couchdb&#x000A;<span class="nv">$ </span>chmod -R 0770 /usr/local/var/lib/couchdb&#x000A;<span class="nv">$ </span>chmod -R 0770 /usr/local/var/log/couchdb&#x000A;<span class="nv">$ </span>chmod -R 0770 /usr/local/var/run/couchdb&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<p>After that, verify that it finally works:</p>&#x000A;&#x000A;<div class="highlight"><pre><span class="nv">$ </span>couchdb&#x000A;Apache CouchDB is running as process …, <span class="nb">time </span>to relax.&#x000A;<span class="nv">$ </span>curl -X GET http://127.0.0.1:5984/&#x000A;<span class="o">{</span><span class="s2">&quot;couchdb&quot;</span>:<span class="s2">&quot;Welcome&quot;</span>,<span class="s2">&quot;version&quot;</span>:<span class="s2">&quot;1.0.0&quot;</span><span class="o">}</span>&#x000A;<span class="nv">$ </span>/usr/local/etc/init.d/couchdb start&#x000A; * Starting database server couchdb&#x000A;   ...done.&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;&#x000A;<h4>Caveats</h4>&#x000A;&#x000A;&#x000A;<p>If CouchDB does not work and it does not write into the log it is likely a permission problem, see if the couchdb directories belong to the <code>couchdb</code> user and that the permissions are set correctly.</p>&#x000A;&#x000A;<p>Another thing that occured to me was an error that resulted from still having leftovers from previous installations at <code>/usr/lib/couchdb/erlang/lib</code>. Older version, especially of <code>mochiweb-r97</code> or couchdb can lead to &#8220;Bad Request&#8221; errors, so clean up the erlang lib directory.</p></div>
+        <div class='follow'>
+          <p>
+            Liked this post? Follow me on
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            or
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iPhone app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>
+              iOctocat
+            </a>
+          </h3>
+          <p itemprop='description'>
+            is GitHub in your pocket: The go to app for staying up to date with your
+            projects on your
+            <span itemprop='device'>iPhone, and iPod Touch.</span>
+            <br />
+            It is
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">available on the App Store</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Contact details</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

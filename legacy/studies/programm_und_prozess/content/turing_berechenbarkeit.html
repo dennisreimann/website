@@ -1,0 +1,51 @@
+			<div id="content">
+				<h1>Turing-Berechenbarkeit</h1>
+				<h2>Was ist Berechenbarkeit?</h2>
+				<p>Ein <a href="<?= url_for("funktionen_und_parameter"); ?>">Funktion</a> <code>f</code> ist berechenbar, wenn es 
+				einen <?= link_to("algorithmus"); ?> gibt, welcher f&uuml;r jedes Element <code>m</code> der Menge <code>M</code>
+				das ihm zugeordnete Element <code>f(m)</code> in endlich vielen Schritten berechnen kann.</p>
+				<blockquote>&bdquo;Effektiv berechenbar&rdquo; ist eine Funktion dann, wenn ich in jedem Augenblick eindeutig
+				wei&szlig;, was als n&auml;chstes zu tun ist, und wenn jeder solche Schritt mechanisch mit eindeutig feststellbarem
+				Ergebnis ausf&uuml;hrbar ist.<sup><a href="#sources">[1]</a></sup></blockquote>
+				<p>Vermutlich w&uuml;rde man davon ausgehen, dass jede Funktion auch berechenbar ist, dem ist jedoch nicht der Fall.
+				Entgegen dem Allgemeinglauben l&auml;sst sich jedoch fast gar nichts berechnen. Der <a href="#church-these">Church-
+				These</a> nach lassen sich allerdings die Funktionen, welche man berechnen kann, verh&auml;ltnism&auml;&szlig;ig einfach 
+				berechnen: N&auml;mlich mit einer Turingmaschine.</p>
+				<h2 id="turingmaschine">Turingmaschine</h2>
+				<p>Die <a href="http://de.wikipedia.org/wiki/Turingmaschine">Turingmaschine</a> ist das Modell einer Maschine, welches 
+				<a href="http://de.wikipedia.org/wiki/Alan_Turing">Alan Turing</a> 1936 eingef&uuml;hrte, um Algorithmen und Fragen der 
+				Berechenbarkeit und Entscheidbarkeit zu untersuchen.<br />Dabei handelt es sich um eine Zustandsmaschine, welche sich mit
+				einem Lesekopf in zwei Richtungen auf einem Band bewegt und drei einfache Operationen ausf&uuml;hrt.</p>
+				<blockquote>eine Maschine, die ein Band vor- und zur&uuml;ckf&auml;hrt, Markierungen auf einem Bandabschnitt
+				list, l&ouml;scht und durch andere ersetzt und die von einem Zustand in den anderen &uuml;bergeht, wird heute
+				als Turingmaschine bezeichnet. Eine solche Maschine ist vollst&auml;ndig beschrieben, wenn die Beschreibung
+				f&uuml;r jeden Zustand, den sie erreichen, und f&uuml;r jedes Symbol, das sich hinter ihrem Tonkopf befinden
+				kann angibt, welches Symbol auf das Band aufgenommen werden, in welchen Zustand sie &uuml;bergehen und in 
+				welche Richtung das Band bewegt werden soll.<sup><a href="#sources">[2]</a></sup></blockquote>
+				<p><img src="img/turingmaschine.png" alt="" class="align-right" />Die Maschine hat immer einen Zustand. Die Kontrolleinheit liest das aktuelle (das sich unter dem
+				Lesekopf befindende) Zeichen auf dem Band aus und referenziert eine Tabelle, in welcher der n&auml;chste Zustand
+				der Maschine vermerkt ist. Dieser n&auml;chste Zustand ergibt sich also immer aus dem aktuellen Zustand und dem
+				gelesenen Zeichen.</p>
+				<blockquote>Die Turing-Maschine ist ein ungeheuer einfaches, unglaublich anschauliches und riesig m&auml;chtig
+				abstraktes Konzept. In ihm feierte der europ&auml;ische Geist einen erstaunlichen H&ouml;hepunkt an pr&auml;ziser
+				Schlichtheit. Niemand rechnet <em>im Kopf</em> so wie eine Turing-Maschine ihre Zust&auml;nde aufeinander folgen
+				l&auml;sst. und doch beschreibt die Turing-Maschine - vom Ergebnis her betrachtet! - alle unsere Berechnungsprozess!<sup><a href="#sources">[1]</a></sup></blockquote>
+				<h2 id="church-these">Church-These</h2>
+				<p>Die Church These besagt sinngem&auml;&szlig;, dass sich jede berechenbare Funktion auch nach Turing berechnen l&auml;sst.</p>
+				<p>Analog zum Wittgenstein-Zitat &bdquo;Was sich &uuml;berhaupt sagen l&auml;sst, l&auml;sst sich klar sagen, 
+				und wovon man nicht sprechen kann, dar&uuml;ber muss man schweigen&rdquo; lie&szlig;e sich die Church-These auch
+				folgenderma&szlig;en formulieren: <em>Was sich &uuml;berhaupt berechnen l&auml;sst, l&auml;sst sich nach
+				Turing berechnen.</em></p>
+			</div>
+			<ul class="go">
+				<li>&laquo; <?= link_to("processing"); ?> <span class="space">|</span> </li>
+				<li><a href="<?= url_for("start"); ?>#contents">Inhaltsverzeichnis</a> <span class="space">|</span> </li>
+				<li><?= link_to("zufall"); ?> &raquo;</li>
+			</ul>
+			<div id="sources">
+				<h3>Quellen</h3>
+				<ol>
+					<li><a href="<?= url_for("literatur"); ?>#nake-algorithmus">Frieder Nake: Funktion Algorithmus Programm und so</a></li>
+					<li><a href="<?= url_for("literatur"); ?>#weiz78">[Weiz78, 89 f]</a></li>
+				</ol>
+			</div>

@@ -1,0 +1,49 @@
+			<div id="content">
+				<h1>Was ist eine Funktion?</h1>
+				<p>In der Mathematik sind Funktionen Vorschriften zur Transformation einer Eingangsgr&ouml;&szlig;e (Argument) in 
+				eine Ausgangsgr&ouml;&szlig;e (Funktionswert)<sup><a href="#sources">[1]</a></sup>. Eine Funktion dient der eindeutigen 
+				Zuweisung von Elementen der Menge <code>A</code> zu einer Menge <code>B</code> - man schreibt <code>f: A -> B</code>.</p>
+				<blockquote>So k&ouml;nnte <code>A</code> die Menge der Teilnehmenden an unserem Kurs sein und <code>f</code> das Alter 
+				in vollen Jahren angeben. Dann w&auml;re <code>B</code> die Menge der positiven ganzen Zahlen (oder auch nur eines Teiles 
+				davon, da wir sicher sind, dass niemand &auml;lter als 200 Jahre wird).<sup><a href="#sources">[2]</a></sup></blockquote>
+				<p>Aus Sicht der Informatik werden Funktionen als Programmierkonzepte verwendet, ihre genaue Bedeutung h&auml;ngt dabei von der
+				Art der Programmiersprache ab<sup><a href="#sources">[3]</a></sup>: <a href="http://de.wikipedia.org/wiki/Funktionale_Programmierung">Funktionale 
+				Programmierung</a> setzt Funktionen als Abbildungsvorschriften ein, &auml;hnlich der Mathematik.<br />In der imperativen (und somit auch
+				objektorientierten) Programmierung dienen sie hingegen der Modularisierung von Programmabl&auml;ufen. Funktionen sind eigene
+				Unterprogramme, welche &uuml;ber ihren Namen referenziert und aufgerufen werden k&ouml;nnen.</p>
+				<p>Durch die &Uuml;bergabe von <a href="#was_sind_parameter">Parametern</a> k&ouml;nnen sie Eingabewerten erhalten, welche als Faktoren zur
+				Berechnung eines Ausgabewertes (Ergebnis) dienen k&ouml;nnen. Dadurch k&ouml;nnen Funktionen nicht nur der Berechnung &uuml;ber festgelegten 
+				Werten dienen, sondern dynamische, zur Laufzeit berechnete Werte entgegennehmen. Dies wird unter anderem zur <?= link_to("abstraktion"); ?>
+				genutzt.</p>
+				<p>Eine Funktion zur Addition zweier Ganzzahlen sieht beispielsweise in Processing folgenderma&szlig;en aus:</p>
+<pre>
+int addiere(int a, int b) {
+  return a + b;
+}
+</pre>
+				<p>Funktionen dienen der Ver&auml;nderung von Zust&auml;nden. Das kann sowohl die Berechnung eines Ergebnisses, welches am Ende der
+				Funktion als Wert zur&uuml;ckgegeben wird, als auch ein sogenannter Neben- oder Seiteneffekt sein. Nebeneffekte wirken sich dabei
+				auf Zust&auml;nde des Prozesses aus, welche nicht im unmittelbaren Zusammenhang der Funktion stehen.</p>
+				<h2 id="was_sind_parameter">Was sind Parameter einer Funktion?</h2>
+				<p>Bei einem Funktionsparameter handelt es sich um einen Wert, welcher einer Funktion &uuml;bergeben wird und auf 
+				Basis dessen diese Funktion den zur&uuml;ckzugebenden Wert berechnet. Ein Parameter dient also dazu, bestimmte Gr&ouml;&szlig;en
+				in die Funktion einzuf&uuml;hren, die den zu errechnenden Wert beeinflu&szlig;en.</p>
+				<p>Parameter m&uuml;ssen der im Funktionskopf angegebenen <a href="<?= url_for("algorithmus"); ?>#spezifikation">Anforderungsspezifikation</a> 
+				folgen. Das bedeutet, dass sie in einer festgelegten Reihenfolge &uuml;bergeben werden und von einem bestimmten Typ (Bsp.: 
+				<code>Integer</code> oder <code>String</code>) sein m&uuml;ssen.</p>
+				<p>Im vorangegangenen Codebeispiel sind <code>a</code> und <code>b</code> zwei Parameter vom Typ <code>int</code>, welche der Funktion
+				<code>addiere()</code> &uuml;bergeben werden.</p>
+			</div>
+			<ul class="go">
+				<li>&laquo; <?= link_to("mengen_und_zahlen"); ?> <span class="space">|</span> </li>
+				<li><a href="<?= url_for("start"); ?>#contents">Inhaltsverzeichnis</a> <span class="space">|</span> </li>
+				<li><?= link_to("bild_und_bildlichkeit"); ?> &raquo;</li>
+			</ul>
+			<div id="sources">
+				<h3>Quellen</h3>
+				<ol>
+					<li>Wikipedia: Funktion (Mathematik). <a href="http://de.wikipedia.org/wiki/Funktion_%28Mathematik%29">http://de.wikipedia.org/wiki/Funktion_%28Mathematik%29</a>. Aufgerufen am 21.02.2007.</li>
+					<li><a href="<?= url_for("literatur"); ?>#nake-algorithmus">Frieder Nake: Funktion Algorithmus Programm und so</a></li>
+					<li>Wikipedia: Funktion (Programmierung). <a href="http://de.wikipedia.org/wiki/Funktion_%28Programmierung%29">http://de.wikipedia.org/wiki/Funktion_%28Programmierung%29</a>. Aufgerufen am 21.02.2007.</li>
+				</ol>
+			</div>

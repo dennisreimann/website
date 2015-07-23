@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Microformats | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/microformats' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='Anläßlich meines Vortrags beim ersten Bremer Webmontag musste ich natürlich ein bißchen recherchieren und da ich die Informationen ja sowieso zusammengetragen hab, kann ich sie auch gleich hier teilen - es folgt meine kleine Einführung in das Thema Microformats.' name='description' />
+    <meta content='Microformats' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Softwareentwickler
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2006-07-05T19:36:00+02:00'>
+            <div class='top'>Jul '06</div>
+            <div class='day'> 5</div>
+          </time>
+          <h1>Microformats</h1>
+        </header>
+        <div class='content'><p>Anläßlich meines Vortrags beim <a title="Ankündigung des ersten Bremer Webmontags" href="/blog/erster-bremer-webmontag/">ersten Bremer Webmontag</a> musste ich natürlich ein bißchen recherchieren und da ich die Informationen ja sowieso zusammengetragen hab, kann ich sie auch gleich hier teilen - es folgt meine kleine Einführung in das Thema <a title="Microformats-Website" href="http://microformats.org/">Microformats</a>.</p>&#x000A;&#x000A;<h4>Was sind Microformats und wozu dienen sie?</h4>&#x000A;&#x000A;&#x000A;<p>Microformats sind kein neuer Standard, sondern eine Erweiterung bisheriger Standards wie zum Beispiel XML und XHTML. Sie ermöglichen es, Daten semantisch so auszeichnen, dass sie maschinenlesbar und somit vielfältiger einsetzbar werden. Microformats setzen auf bereits definierten Strukturen auf und bieten die Möglichkeit zur standardisierten Beschreibung von Content sind damit ein weiterer Schritt Richtung <a title="Wikipedia Artikel zum Semantic Web" href="http://de.wikipedia.org/wiki/Semantic_Web">Semantic Web</a>.</p>&#x000A;&#x000A;<h4>Microformats in der Praxis</h4>&#x000A;&#x000A;&#x000A;<p>Damit das Thema nicht abstrakter klingt als es eigentlich sein muss hier gleich mal ein Beispiel - nehmen wir die <em>Kontaktdaten auf einer Website</em>:</p>&#x000A;&#x000A;<p>XHTML bietet uns zur Auszeichnung einer Adresse das Element <code>address</code> (welches <a href="http://www.w3.org/MarkUp/html3/address.html">laut Spezifikation</a> nur dafür bestimmt ist, Kontaktinformationen zu der aktuellen Seite bereitzustellen, das soll uns in diesem Beispiel aber nicht stören). Leider bietet dieses Element keine Möglichkeiten, um die darin enthaltene Adresse näher zu beschreiben. Handelt es sich um eine Privat- oder Firmenadresse? Ist das angegebene eine reale (Anschrift, Telefonnummer) oder eine virtuelle (E-Mail, Website) Adresse?&#x000A;Für Menschen ist es natürlich kein Problem zu erkennen, um welche Form von Angabe es sich dabei handelt - wie sieht es aber aus, wenn zum Beispiel ein Parser die Informationen weiterverarbeiten soll?</p>&#x000A;&#x000A;<p>Genau dort setzen Microformats ein, denn sie geben uns die Möglichkeit den Content näher zu beschreiben. Ich sagte ja bereits, dass es sich um eine Erweiterung schon bestehender Standards handelt - also erfindet man keine neuen Tags oder ähnliches, sondern sucht sich Formate, die unsere Daten am besten repräsentieren können. Bei Adressdaten ist dies zum Beispiel die <a title="Mikroformats-Wiki: hCard" href="http://microformats.org/wiki/hcard">vCard</a> - dieses offene Format erlaubt es vielfältige Angaben zu machen und wird von jedem digitalen Adressbuch unterstützt.</p>&#x000A;&#x000A;<p>Wenn wir unsere <a title="Beispiel aus dem Microformats-Wiki" href="http://microformats.org/wiki/hcard#Examples">Adresse mit Microformats auszeichnen</a>, bietet das den Vorteil, dass die Daten nicht mehr nur einfach auf unserer Website zur Verfügung stehen, sondern sich auch parsen und aufbereiten lassen. Beispielsweise bietet Technorati einen Service an, mit dem sich aus den hCards auf einer Website direkt <a title="Technorati Microformats Search" href="http://kitchen.technorati.com/search">vCard-Dateien erzeugen</a> lassen.</p>&#x000A;&#x000A;<p>Klingt gut, aber wo kommt das alles noch zum Einsatz? Am besten weiterlesen&#8230;</p>&#x000A;&#x000A;<h4>Welche Formate gibt es?</h4>&#x000A;&#x000A;&#x000A;<p>Microformats feierten zwar grade erst ihr <a title="Microformats Geburtstags-Party" href="http://microformats.org/blog/2006/06/30/thanks-for-a-wonderful-birthday-party/">einjähriges Bestehen</a>, dennoch gibt es schon einige Formate. Hier mal ein paar Beispiele, welche grade im Web2.0  (<a href="http://kitchen.technorati.com/search">Technorati</a>, <a title="Upcoming - Social Event Calendar" href="http://upcoming.org/">Upcoming</a>, Integration in <a href="http://www.flock.com/">Flock</a>) zum Einsatz kommen:</p>&#x000A;&#x000A;<ul>&#x000A;    <li><a title="zur hCard Spezifikation" href="http://microformats.org/wiki/hcard">hCard</a> - Adressdaten (siehe Beispiel)</li>&#x000A;    <li><a title="zur hCalendar Spezifikation" href="http://microformats.org/wiki/hcalendar">hCalendar</a> - Termine, iCal äquivalent</li>&#x000A;    <li><a title="zur rel-tag Spezifikation" href="http://microformats.org/wiki/rel-tag">rel-tag</a> - Links taggen/verschlagworten</li>&#x000A;    <li><a title="zur XFN Specification" href="http://gmpg.org/xfn/">XFN</a> - XHTML Friends Network, Beziehungen unter Personen darstellen</li>&#x000A;</ul>&#x000A;&#x000A;&#x000A;<p>Darüber hinaus gibt es noch weitere Definitionen und Vorschläge für Formate, im Wiki findet man eine <a title="Alle Microformats und ihre Spezifikationen" href="http://microformats.org/wiki/Main_Page#Specifications">Übersicht mit den jeweiligen Spezifikationen</a>.</p>&#x000A;&#x000A;<h4>Ausblick in die Zukunft</h4>&#x000A;&#x000A;&#x000A;<p>Microformats haben ihre Berechtigung und werden im Zusammenhang mit den Begriffen Semantic Web und Structured Blogging auch noch mehr Aufmerksamkeit bekommen.&#x000A;Es ergeben sich interessante Anwendungsfälle wie zum Beispiel die Adress- oder Terminverwaltung: So würde das lästige Abgleichen von Daten entfallen, wenn man diese von einer Website abonnieren könnte. Über XFN ließe sich das <a title="Beispiel aus der XFN-Einführung" href="http://gmpg.org/xfn/intro">Kontaktnetz darstellen</a> und  Berichte oder Rezensionen könnten von verschiedenen Diensten (z.B. Amazon) angezapft und einheitlich dargestellt werden.</p>&#x000A;&#x000A;<p>Meiner Meinung nach ein Thema mit viel Potenzial, auf dass es sich lohnt, ein Auge zu werfen.</p>&#x000A;&#x000A;<h4>Weiterführende Links:</h4>&#x000A;&#x000A;&#x000A;<ul>&#x000A;    <li><a href="http://mikroformate.pbwiki.com/">Deutsches Microformats-Wiki</a></li>&#x000A;    <li><a href="http://blog.codeeg.com/tails-firefox-extension">Tails-Extension für den Firefox</a> - zeigt Microformats auf Websites an</li>&#x000A;    <li><a href="http://www.structuredblogging.de/">StructuredBlogging - Blog-Extension zum Einsatz von Microformats</a></li>&#x000A;</ul>&#x000A;&#x000A;&#x000A;</div>
+        <div class='follow'>
+          <p>
+            Guter Artikel? Folge mir auf
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            oder
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iOS app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>iOctocat</a>
+          </h3>
+          <p itemprop='description'>
+            ist GitHub für die Hosentasche - deine Projekte und das was dort passiert
+            immer dabei mit deinem
+            <span itemprop='device'>iPhone und iPod Touch.</span>
+            <br />
+            Die App ist
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">im App Store erhältlich</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Kontaktdetails</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

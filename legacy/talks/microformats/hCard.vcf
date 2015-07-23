@@ -1,0 +1,16 @@
+BEGIN:VCARD
+PRODID:-//suda.co.uk//X2V 0.8 (BETA)//EN
+SOURCE:http://dennisbloete.de/
+NAME://dennisbloete | Mediengestalter
+VERSION:3.0
+N;LANGUAGE=de;CHARSET=UTF-8:Blöte;Dennis;;;
+ORG;CHARSET=UTF-8:Freiberuflicher Mediengestalter
+FN;LANGUAGE=de;CHARSET=UTF-8:Dennis Blöte
+EMAIL:mail@dennisbloete.de
+ADR;LANGUAGE=de;CHARSET=UTF-8;TYPE=work:;;Zentaurenstr. 14;Bremen;Bremen;28199;Deutschland
+TEL;TYPE=work:+49 (4 21) 5 48 75 17
+TEL;TYPE=cell:+49 (1 63) 6 84 56 99
+PHOTO;VALUE=uri:http://dennisbloete.de/stuff/avatars/avatar_dennis.jpg
+URL:http://dennisbloete.de/
+END:VCARD
+

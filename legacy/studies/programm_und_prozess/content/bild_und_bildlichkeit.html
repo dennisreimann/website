@@ -1,0 +1,69 @@
+			<div id="content">
+				<h1>Bild und Bildlichkeit</h1>
+				<p>Lange haben wir uns mit den Fragen nach der Definition von Bild und Bildlichkeit besch&auml;ftigt, 
+				viel diskutiert und es dennoch nicht zu einer klaren Antwort geschafft - aber kann es diese &uuml;berhaupt 
+				geben?</p>
+				<h2>Was ist ein Bild?</h2>
+				<p>Einige unserer Ann&auml;herungen. Ein Bild...</p>
+				<ul>
+					<li>ist etwas Begrenztes, es hat einen festen Rahmen</li>
+					<li>ist endlich, fertig, hergestellt</li>
+					<li>ben&ouml;tigt einen Betrachter, sonst ist es nur ein Gegenstand</li>
+					<li>ergibt sich aus dem Zusammenwirken von Objekt, Interpretation und Repr&auml;sentant</li>
+					<li>ist statisch</li>
+				</ul>
+				<p>Dem Begriff &bdquo;Bild&rdquo; kann man sich &uuml;ber unterschiedliche Betrachtungswinkel n&auml;hern:</p>
+				<ul>
+					<li>
+						<strong>Mathematisch</strong> gesehen beschreibt der Begriff Bild die Teilmenge von Werten einer Funktion 
+						<code>f</code> auf einer beliebigen Menge, welche <code>f</code> in der Zielmenge tats&auml;chlich 
+						annimmt.<sup><a href="#sources">[1]</a></sup>
+					</li>
+					<li>Die in der <strong>Rhethorik</strong> genutzten Metaphern werden auch als Bilder bezeichnet: Worte, welche 
+					nicht gem&auml;&szlig; ihrer w&ouml;rtlichen Bedeutung, sondern in einer &uuml;bertragenen Bedeutung gebraucht 
+					werden. Dabei besteht zwischen der w&ouml;rtlich bezeichneten und der &uuml;bertragen gemeinten Sache eine 
+					Beziehung der &Auml;hnlichkeit.<sup><a href="#sources">[2]</a></sup></li>
+				</ul>
+				<blockquote cite="https://lars.mdc.de/lernbuch/index.php/2006/11/19/was-ist-ein-bild/#comment-8">Die Farb-
+				Auftr&auml;ge auf dem Papier und der Leinwand geh&ouml;ren zum Bild als einem Gegenstand, der das ist, was er ist, 
+				und sonst nichts. Wir k&ouml;nnen sie dann aber als Repr&auml;sentamina von Zeichen nehmen und somit das Bild zu 
+				etwas machen, das f&uuml;r ein Anderes steht und interpretiert werden will.<sup><a href="#sources">[3]</a></sup></blockquote>
+				<h2>Was ist ein Abbild?</h2>
+				<p>Als Abbild bezeichnen wir die Repr&auml;sentation bzw. Interpretation eines Bildes.</p>
+				<blockquote cite="http://de.wikipedia.org/wiki/Abbild">Gegen&uuml;ber dem Wort Bild verweist das Wort Abbild auf das Bild 
+				in seiner Beziehung zur Au&szlig;enwelt, auf das, was im Bild widergespiegelt, &bdquo;abgebildet&rdquo; werden soll, so dass 
+				es in ihm (wieder-)erkennbar wird.<sup><a href="#sources">[4]</a></sup></blockquote>
+				<h2 id="was_ist_eine_matrix">Was ist eine Matrix?</h2>
+				<p>Eine Matrix ist eine bestimmte Repr&auml;sentationsform einzelner Werte - ein rechteckiges Schema einzelner in ihr 
+				abgebildeter Elemente. Sie verf&uuml;gt &uuml;ber Spalten und Zeilen, &uuml;ber welche die einzelnen Elemente genau
+				adressiert werden k&ouml;nnen.</p>
+				<p><img src="img/matrix.png" alt="" /></p>
+				<p>Ein digitales Bild entsteht durch die Festlegung der Orte und Farbwerte der in ihm enthaltenen Elemente/Pixel.
+				Dabei werden zun&auml;chst die Orte und anschlie&szlig;end die Farbwerte diskretisiert.</p>
+				<p>Ein Pixel = <code>((i, j), (r, g, b))</code>, also ein Paar aus Ort und Farbe.</p>
+				<p>Das Tripel <code>(r, g, b)</code> ist ein Vektor, eine einzeilige Matrix.</p>
+				<p><strong>Beispiel:</strong> RxGxBx<br />
+				R = {1, 2, ..., 255}<br />
+				G = {1, 2, ..., 255}<br />
+				B = {1, 2, ..., 255}</p>
+				<p>Digitale Bilder &bdquo;existieren, wie jedes Bild, sichtbar und still an der Wand oder auf dem Monitor; sie existieren jedoch 
+				gleichzeitig auch unsichtbar im Zustand rasender Berechnung hinter der Bildfl&auml;che. Man kann das so ausdr&uuml;cken: Digitale 
+				Bilder weisen eine Oberfl&auml;che (f&uuml;rs Auge) und eine Unterfl&auml;che (f&uuml;r den Prozessor) auf. Man muss sie umdrehen, 
+				um sie zu verstehen, doch dann sieht man sie nicht mehr. Die schmale L&uuml;cke in dieser Doppelexistenz wird in der interaktiven 
+				Kunst zu neuartiger Kreativit&auml;t genutzt.&rdquo;<sup><a href="#sources">[5]</a></sup></p>
+			</div>
+			<ul class="go">
+				<li>&laquo; <?= link_to("funktionen_und_parameter"); ?> <span class="space">|</span> </li>
+				<li><a href="<?= url_for("start"); ?>#contents">Inhaltsverzeichnis</a> <span class="space">|</span> </li>
+				<li><?= link_to("processing"); ?> &raquo;</li>
+			</ul>
+			<div id="sources">
+				<h3>Quellen</h3>
+				<ol>
+					<li>Wikipedia: Bild (Mathematik). <a href="http://de.wikipedia.org/wiki/Bild_%28Mathematik%29">http://de.wikipedia.org/wiki/Bild_%28Mathematik%29</a>. Aufgerufen am 20.02.2007.</li>
+					<li>Wikipedia: Metapher. <a href="http://de.wikipedia.org/wiki/Metapher">http://de.wikipedia.org/wiki/Metapher</a>. Aufgerufen am 20.02.2007.</li>
+					<li>Frieder Nake. <a href="https://lars.mdc.de/lernbuch/index.php/2006/11/19/was-ist-ein-bild/#comment-8">Kommentar in Lars' Lernbuchblog</a>. Aufgerufen am 26.11.2006.</li>
+					<li>Wikipedia: Abbild. <a href="http://de.wikipedia.org/wiki/Abbild">http://de.wikipedia.org/wiki/Abbild</a>. Aufgerufen am 21.02.2007.</li>
+					<li>Ank&uuml;ndigung Bremer Symposium: &bdquo;Entschwinden uns die Bilder? Ins Universum der digitalen Kunst!&rdquo;. <a href="http://www.uni-protokolle.de/nachrichten/id/97298/">http://www.uni-protokolle.de/nachrichten/id/97298/</a>. Aufgerufen am 21.02.2007.</li>
+				</ol>
+			</div>

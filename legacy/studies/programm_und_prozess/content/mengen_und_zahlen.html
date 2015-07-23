@@ -1,0 +1,50 @@
+			<div id="content">
+				<h1>Was ist eine Menge?</h1>
+				<blockquote>Eine Menge ist der gedankliche Zusammenhang irgendwelcher Dinge zu einem neuen
+				Ganzen.<br />Die Menge zieht quasi einen Kreis um jene Dinge herum, die in ihr zu einem gedanklichen
+				Ganzen vereint werden. Betonung liegt auf &bdquo;in Gedanken&rdquo;, was naturgem&auml;&szlig; beinhaltet,
+				dass die zusammengefassten Gegenst&auml;nde selbst schon gedanklicher Art sind. Die Menge aller B&auml;me
+				des Teutoburger Waldes w&auml;re so etwas. Oder die Menge aller Schreibwerkzeuge in meinem 
+				Schreibtisch.<sup><a href="#sources">[1]</a></sup></blockquote>
+				<h2>Zahlenmengen</h2>
+				<p>Eine genau definierte Menge von Zahlen wird als Zahlenmenge bezeichnet. Zu den &uuml;blichen 
+				Zahlenmengen geh&ouml;ren:<sup><a href="#sources">[2]</a></sup></p>
+				<ul>
+					<li><img class="symbol" src="img/symbol_natuerliche_zahlen.png" alt="" /> - Nat&uuml;rliche Zahlen: Menge aller positiven ganzen Zahlen</li>
+					<li><img class="symbol" src="img/symbol_ganze_zahlen.png" alt="" /> - Ganze Zahlen: Erweiterung der nat&uuml;rlichen Zahlen um negative ganze Zahlen</li>
+					<li><img class="symbol" src="img/symbol_rationale_zahlen.png" alt="" /> - Rationale Zahlen: Menge aller Bruchzahlen</li>
+					<li><img class="symbol" src="img/symbol_reelle_zahlen.png" alt="" /> - Reelle Zahlen: Synthese aus den rationalen und den irrationalen Zahlen - unendliche, nicht periodische und demzufolge nicht als Bruch darstellbare Zahlen</li>
+					<li><img class="symbol" src="img/symbol_komplexe_zahlen.png" alt="" /> - Komplexe Zahlen: Ihre Grundlage ist die Einf&uuml;hrung einer imagin&auml;ren Zahl i, deren Quadrat -1 ergibt (i2 = -1). Komplexe Zahlen bestehen aus einem reellen und einem imagin&auml;ren Teil.</li>
+				</ul>
+				<p>Jede der genannten Mengen ist eine Teilmenge der auf sie folgenden Menge (Inklusion).<br />
+				Es gilt also: <img class="symbol" src="img/zahlenbereiche.png" style="top:6px;" alt="" /></p>
+				<h3 id="gleitkommazahlen">Gleitkommazahlen</h3>
+				<blockquote>Gottes Werk sind die Nat&uuml;rlichen Zahlen, alles andere ist Menschenwerk.</blockquote>
+				<p>Bei der Betrachtung von Zahlen haben wir uns besonders mit den Gleitkommazahlen auseinandergesetzt.</p>
+				<blockquote cite="http://de.wikipedia.org/wiki/Gleitkommazahl">Eine Gleitkommazahl [...] ist eine approximative Darstellung einer reellen Zahl. 
+				Die Menge der Gleitkommazahlen ist eine endliche Teilmenge der rationalen Zahlen. Zusammen mit den auf ihnen definierten Operationen bilden die 
+				Gleitkommazahlen eine endliche Arithmetik, die vor allem im Hinblick auf numerische Berechnungen mit Computern entwickelt 
+				wurde.<sup><a href="#sources">[3]</a></sup></blockquote>
+				<p>Im Gegensatz zu Festkommazahlen, bei denen die Stelle des Kommas festgeschrieben ist, wird bei einer Gleitkommazahl die Stelle
+				des Kommas zus&auml;tzlich gespeichert. Die dahinter stehende Idee ist, dass die Werte einer Gleitkommazahl so notiert werden, dass 
+				man mit den Bits m&ouml;glichst viel machen kann. Sie sollen bei geringem Speicherverbrauch sehr gro&szlig;e Werte abbilden, was 
+				jedoch den Nachteil hat, dass es zu Ungenauigkeiten bei Berechnungen kommen kann (Stellenausl&ouml;schung).</p>
+				<p>Eine Gleitkommazahl, welche in der Programmierung durch den Datentyp <code>float</code> repr&auml;sentiert wird, besteht
+				aus einer <em>Mantisse</em>, einer <em>Basis</em> und einem <em>Exponenten</em>.</p>
+				<p><img class="symbol" src="img/beispiel_gleitkommazahl.png" alt="" /></p>
+				<p>Die Mantisse enth&auml;lt den Wert der Zahl - je h&ouml;her die Anzahl der Mantissenstellen, desto exakter wird die Zahl 
+				approximiert. Der Exponent gibt die Stelle des Kommas und damit die Gr&ouml;&szlig;enordnung der Zahl an.<sup><a href="#sources">[3]</a></sup></p>
+			</div>
+			<ul class="go">
+				<li>&laquo; <?= link_to("formale_sprachen"); ?> <span class="space">|</span> </li>
+				<li><a href="<?= url_for("start"); ?>#contents">Inhaltsverzeichnis</a> <span class="space">|</span> </li>
+				<li><?= link_to("funktionen_und_parameter"); ?> &raquo;</li>
+			</ul>
+			<div id="sources">
+				<h3>Quellen</h3>
+				<ol>
+					<li><a href="<?= url_for("literatur"); ?>#nake-algorithmus">Frieder Nake: Funktion Algorithmus Programm und so</a></li>
+					<li>Wikipedia: Zahlenmengen. <a href="http://de.wikipedia.org/wiki/Zahlenmengen">http://de.wikipedia.org/wiki/Zahlenmengen</a>. Aufgerufen am 20.02.2007.</li>
+					<li>Wikipedia: Gleitkommazahl. <a href="http://de.wikipedia.org/wiki/Gleitkommazahl">http://de.wikipedia.org/wiki/Gleitkommazahl</a>. Aufgerufen am 20.02.2007.</li>
+				</ol>
+			</div>

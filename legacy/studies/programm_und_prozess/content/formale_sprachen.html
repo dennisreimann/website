@@ -1,0 +1,39 @@
+			<div id="content">
+				<h1>Formale Sprachen</h1>
+				<p>Als formale Sprachen werden Teilmengen von W&ouml;rtern &uuml;ber einem Alphabet bezeichnet. Sie sind &bdquo;ein Alphabet,
+				eine Anzahl von Formulierungsregeln, die das Format der Symbolketten bestimmen, die mit diesem Alphabet gebildet wurden, und 
+				die ihrerseits legale Ausdr&uuml;cke in dieser Sprache darstellen, und schlie&szlig;licheine Anzahl von Transformationsregeln 
+				f&uuml;r diese Ausdr&uuml;cke.&rdquo;<sup><a href="#sources">[1]</a></sup></p>
+				<p>Der Begriff formal trifft eine klare Abgrenzung gegen&uuml;ber den <a href="<?= url_for("programmiersprachen"); ?>#was_ist_eine_natuerliche_sprache">nat&uuml;rlichen Sprachen</a>. 
+				Der wichtigste Unterschied dabei ist, dass in formalen Sprachen die Semantik (Bedeutung der S&auml;tze) keine Rolle spielt, 
+				die Syntax (Lehre von Satzbau und Grammatik) hingegen die zentrale Rolle einnimmt:</p>
+				<blockquote>Eine der Eigenschaften formaler Sprachen, ja ihr Wesen besteht darin, da&szlig; ihre s&auml;mtlichen Transformationsregeln
+				rein syntaktisch sind, also erlaubte Umordnung von Symbolketten in der Sprache beschreiben, einschlie&szlig;lich der Entfernung alter
+				und der Einf&uuml;hrung neuer Symbole [...] ganz unabh&auml;ngig von einer Interpretation, der solche Symbole m&ouml;glicherweise
+				au&szlig;erhalb des Rahmens der Sprache selbst ausgesetzt sind.<sup><a href="#sources">[2]</a></sup></blockquote>
+				<p>Transformationen sind unabh&auml;ngig von Semantik - Bedeutung im eigentlichen Sinne gibt es in formalen Sprachen nicht, sie bezieht 
+				sich wenn dann auf den gleichf&ouml;rmigen Aussagegehalt zweier Ausdr&uuml;cke. Beispielsweise lie&szlig;e sich sagen, dass der 
+				algebraische Ausdruck <code>ab + ac</code> die gleiche Bedeutung hat wie <code>(a + b) c</code>, was sich jedoch lediglich auf
+				die Syntax, nicht aber auf die Semantik bezieht.<br />
+				Deutlich wird dies auch an einem Beispiel aus der deutschen Sprache:</p>
+				<blockquote>&raquo;Ich habe noch nie einen Mann gesehen, der gr&ouml;&szlig;er als Peter ist.&laquo; Wir k&ouml;nnen ihn in den Satz
+				transformieren: &raquo;Ich habe noch nie einen gr&ouml;&szlig;eren Mann als Peter gesehen.&laquo; Diese Transformation beh&auml;lt
+				eindeutig die Bedeutung des fr&uuml;heren Satzes bei. Wenn wir hingegen dieselbe Transformationsregel auf den Satz anwenden:
+				&raquo;Ich habe noch nie einen Mann gesehen, der gr&ouml;&szlig;er als Elisabeth ist.&laquo;, so erhalten wir den Satz: &raquo;Ich habe 
+				noch nie einen gr&ouml;&szlig;en Mann als Elisabeth gesehen.&laquo;, und die Regel pa&szlig;t nicht mehr. Die von uns angewandte Regel
+				ist nicht rein syntaktisch. Sie bezieht sich nicht nur auf die <em>Form</em> von uninterpretierten Symbolketten, sondern auch auf deren
+				<em>Bedeutung</em>.<sup><a href="#sources">[3]</a></sup></blockquote>
+			</div>
+			<ul class="go">
+				<li>&laquo; <?= link_to("programmiersprachen"); ?> <span class="space">|</span> </li>
+				<li><a href="<?= url_for("start"); ?>#contents">Inhaltsverzeichnis</a> <span class="space">|</span> </li>
+				<li><?= link_to("mengen_und_zahlen"); ?> &raquo;</li>
+			</ul>
+			<div id="sources">
+				<h3>Quellen</h3>
+				<ol>
+					<li><a href="<?= url_for("literatur"); ?>#weiz78">[Weiz78, 91]</a></li>
+					<li><a href="<?= url_for("literatur"); ?>#weiz78">[Weiz78, 100]</a></li>
+					<li><a href="<?= url_for("literatur"); ?>#weiz78">[Weiz78, 101]</a></li>
+				</ol>
+			</div>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>One Yubikey to rule them all | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/one-yubikey-to-rule-them-all' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='Software mit JavaScript' name='description' />
+    <meta content='masquerade, OpenID, security, yubico, yubikey' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Software developer
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2008-05-26T22:14:00+02:00'>
+            <div class='top'>May '08</div>
+            <div class='day'>26</div>
+          </time>
+          <h1>One Yubikey to rule them all</h1>
+        </header>
+        <div class='content'><p><a href="http://yubico.com/"><img class="align-right" src="/images/content/yubikey.jpg" alt="The Yubikey" /></a></p>&#x000A;&#x000A;<p>I first came across the Yubikey listening to <a href="http://twit.tv/sn141">Episode 141 of Security Now</a> and thought that it is pretty interesting thing. After listening to <a href="http://www.twit.tv/sn143">Episode 143</a> - which is all about <a href="http://yubico.com/">Yubico</a> and the <a href="http://yubico.com/products/yubikey/">Yubikey</a> - I was convinced and ordered one to try it out: I received it last week and played with it over the weekend - this thing is so cool that I directly integrated support for it into <a href="/blog/rails-openid-server-masquerade/">masquerade</a>&#8230;</p>&#x000A;&#x000A;<h4>What is it all about?</h4>&#x000A;&#x000A;&#x000A;<p>The Yubikey is a new authentication device - a USB-keyboard with only one button.</p>&#x000A;&#x000A;<blockquote>The user inserts the YubiKey in any computer with a USB port on any platform or browser â€“ no client software install needed â€“ then press the YubiKey button to generate a one time passcode.</blockquote>&#x000A;&#x000A;&#x000A;<p>You can add it to your keychain, insert it into every computer you work on and use it to authenticate yourself without remembering a password&#8230; it requires no battery and is so easy, that even your mother could use it, since there is only one button to push ;)</p>&#x000A;&#x000A;<p>But wait: This is the point where I have to mention that the website that asks for authentication (lets call it the relying party) has to support Yubikeys&#8230; this is a disadvantage of course, because at this point there are just a handful of public sites on the internet that authenticate via Yubikey. Even though it will take some time until this will hit the mainstream, the Yubikey is the perfect solution for todays intranets or other websites that require multifactor-authentication. And it is so <a href="#how-to-integrate">easy to integrate</a>, that adoption could spread rapidly&#8230;</p>&#x000A;&#x000A;<p>I won&#8217;t go into further details about what the Yubikey is and what it can be used for, because there are other good resources on that out there and I want to talk about how to integrate authentication with Yubikeys. Just consult the <a href="http://yubico.com">Yubico website</a> or listen to <a href="http://www.twit.tv/sn143">Episode 143 of Security Now</a> if you want to get further technical details. <a href="http://www.twit.tv/sn143">&#x000A;</a></p>&#x000A;&#x000A;<h4>How does it work?</h4>&#x000A;&#x000A;&#x000A;<p>There are different ways to authenticate on websites that support Yubikeys and you can try them with this <a href="http://yubico.com/developers/try/">demo</a>. How you have to authenticate depends on the integration at the relying party: There is the possibility of using only the one time password generated by the Yubikey or combining it with a legacy login (for instance username and password). The latter can be used to achieve multifactor-authentication since the user has to have his Yubikey and also provide his password. So what is this one time password about?</p>&#x000A;&#x000A;<h4>A Yubico one time password</h4>&#x000A;&#x000A;&#x000A;<blockquote>[The Yubikey is] designed to do two things: To generate the user’s unique identity and a one time pass code that only works the very second it’s used. Every time the user presses the button it generates a new pass code.</blockquote>&#x000A;&#x000A;&#x000A;<p>The one time password is exactly 44 characters long and consists of the user&#8217;s identity (the first twelve characters, which are always the same) and a secure token (the remaining 32 characters). This combination is used to verify the Yubikey and is inserted into the password field like any normal password. But who verifies the one time password?  This leads to how to integrate&#8230;</p>&#x000A;&#x000A;<h4 id="how-to-integrate">How to integrate?</h4>&#x000A;&#x000A;&#x000A;<p>The relying party has to use the <a href="http://yubico.com/developers/api/">Yubico web service</a> to verify the entered passwords. Up to now there is only this way of verifying, which means that the whole system depens on the Yubico web service being available - but the software is open source and there are <a href="http://yubico.com/developers/library/">server-side libraries</a> written in Java and C that can be used to decrypt the one time password, so one could set up  an independent verification service.</p>&#x000A;&#x000A;<p>To ease the use of the Yubico web service, there are already <a href="http://yubico.com/developers/clients/">client-side libraries</a> for the most common languages out there available, which can be used by the relying parties to add Yubikey support. I used the <a href="http://code.google.com/p/ruby-yubico/">Ruby library</a> to integrate it into <a href="/blog/rails-openid-server-masquerade/">my OpenID server project</a> which was rather easy. Those of you being familiar with Ruby on Rails might want to take a look at the <a href="https://github.com/dennisreimann/masquerade/commit/cf7774e1f178d9baa6473ed4430208480fce9227">Yubikey support commit to masquerade</a> to get an impression about the details I&#8217;m going to talk about in the next paragraphs.</p>&#x000A;&#x000A;<h4 id="how-to-integrate">How to add support for Yubikeys into existing applications?</h4>&#x000A;&#x000A;&#x000A;<p>First of all you will have to let users associate their account with their Yubikey. I did this by <a href="https://github.com/dennisreimann/masquerade/tree/cf7774e1f178d9baa6473ed4430208480fce9227/db/migrate/004_add_yubico_identity_to_account.rb">adding an attribute &#8220;yubico_identity&#8221;</a> to the account, which is used to map the Yubikey to the account (remember: the identity are the first twelve characters, that always stay the same). Users can <a href="https://github.com/dennisreimann/masquerade/tree/cf7774e1f178d9baa6473ed4430208480fce9227/app/controllers/yubikey_associations_controller.rb">associate</a> their account with their Yubikey by entering a one time password, which gets validated by the web service. If the web service confirms, the first twelve characters get extracted from the OTP and serve as Yubikey identifier. I also added the possibility to remove the association (for instance in case your Yubikey gets lost).</p>&#x000A;&#x000A;<p>The last step is to <a href="https://github.com/dennisreimann/masquerade/tree/cf7774e1f178d9baa6473ed4430208480fce9227/app/controllers/sessions_controller.rb">distinguish between a Yubikey and normal passwords</a> that get entered into your login form. This is easy to, because Yubikeys are always 44 characters long and normal passwords most likely are not ;)</p>&#x000A;&#x000A;<p>So if a password with a length other than 44 characters gets entered you authenticate the user like you always did and if it is a Yubikey, you verify it against the Yubico web service (using the client-side library for your programming language). In case the web service confirms the OTP you just have to extract the identity and find the belonging account.</p></div>
+        <div class='follow'>
+          <p>
+            Liked this post? Follow me on
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            or
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iPhone app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>
+              iOctocat
+            </a>
+          </h3>
+          <p itemprop='description'>
+            is GitHub in your pocket: The go to app for staying up to date with your
+            projects on your
+            <span itemprop='device'>iPhone, and iPod Touch.</span>
+            <br />
+            It is
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">available on the App Store</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Contact details</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

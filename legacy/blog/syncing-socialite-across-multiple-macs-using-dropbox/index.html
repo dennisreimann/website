@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Syncing Socialite across multiple Macs (using Dropbox) | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/syncing-socialite-across-multiple-macs-using-dropbox' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='Softwareentwicklung mit JavaScript' name='description' />
+    <meta content='Dropbox, Mac, OSX, Socialite' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Software developer
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2009-12-08T18:00:00+01:00'>
+            <div class='top'>Dec '09</div>
+            <div class='day'> 8</div>
+          </time>
+          <h1>Syncing Socialite across multiple Macs (using Dropbox)</h1>
+        </header>
+        <div class='content'><p>If you are working on multiple Macs (i.e. having a personal and one at work) you probably know this problem: You would like to sync some application data between these machines, so that you don&#8217;t have to manage separate todo-lists, items in your inbox that you&#8217;ve already read on one machine but are marked as unread on the other, etc. I&#8217;m using <a href="https://www.dropbox.com/referrals/NTk4MDU4MDk">Dropbox</a> (disclaimer: If you sign up using this link, I&#8217;ll get some more disk space, thank you!) to sync various applications (<a href="http://culturedcode.com/things/">Things</a>, <a href="http://billingsapp.com/">Billings</a> and <a href="http://www.realmacsoftware.com/socialite/">Socialite</a> for example), but you can use any other cloud storage solution if you like.</p>&#x000A;&#x000A;<p>In this little tutorial I&#8217;ll explain how to sync the data with Dropbox and I&#8217;m using Socialite as an example. It basically works like this for any app that stores its data in an <em>Application Support</em> folder, but Socialite requires some extra steps people are <a href="http://www.realmacsoftware.com/forums/index.php/forums/viewthread/26653/">frequently</a> <a href="http://www.realmacsoftware.com/forums/index.php/forums/viewthread/27518/">asking</a> about, so here we go:</p>&#x000A;&#x000A;<ol>&#x000A;    <li>Go to your Dropbox folder and create a new folder called <em>Synced Application Support</em> (or whatever you like)</li>&#x000A;    <li>Quit any running instance of the application you would like to sync (in this case <em>Socialite</em>).</li>&#x000A;    <li>Got to your <em>~/Library/Application Support</em> and move the <em>Socialite</em> folder into the Dropbox folder you just created (<em>Synced Application Support</em>)</li>&#x000A;    <li>Open your Terminal.app and symlink the moved folder:&#x000A;`$ ln -s ~/Dropbox/Synced\ Application\ Support/Socialite/ ~/Library/&#8220;Application\ Support&#8220;/Socialite`</li>&#x000A;    <li>Start the app and see if it worked</li>&#x000A;</ol>&#x000A;&#x000A;&#x000A;<p>After this five steps you should be up and running with most of your apps (syncing Things is as easy as that). Unfortunately Socialite requires some extra steps if you are using Twitter (and who isn&#8217;t these days), because it keeps the OAuth authentication tokens in the keychain, so that you need to sync them too. Fortunately this isn&#8217;t a big deal, because now you know how to sync your data, so go ahead and…</p>&#x000A;&#x000A;<ol>&#x000A;    <li>Quit Socialite</li>&#x000A;    <li>Open your Keychain and create a new keychain called Socialite and save it within your <em>Synced Application Support/Socialite</em> folder</li>&#x000A;    <li>Right click the new Socialite keychain, edit the settings and uncheck the checkboxes so that you won&#8217;t be bothered with authentication request every now and then</li>&#x000A;    <li>Use the search bar at the upper right corner to search for twitter.com and move all items used by Socialite to the new Socialite keychain</li>&#x000A;    <li>Start Socialite and see if your Twitter services are still working - if not: Delete all items in your Socialite keychain, remove the Twitter services from Socialite, restart Socialite, add them again and move the freshly created twitter.com items in your Login keychain to the Socialite keychain.</li>&#x000A;</ol>&#x000A;&#x000A;&#x000A;<p>Okay, that&#8217;s it, I hope it&#8217;s helpful to some of you and I also hope that someday syncing will be baked into Socialite, though <a href="http://www.realmacsoftware.com/forums/index.php/forums/viewthread/26653/#115067">Realmac Software currenty doesn&#8217;t have any plans for implementing that</a>.</p></div>
+        <div class='follow'>
+          <p>
+            Liked this post? Follow me on
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            or
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iPhone app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>
+              iOctocat
+            </a>
+          </h3>
+          <p itemprop='description'>
+            is GitHub in your pocket: The go to app for staying up to date with your
+            projects on your
+            <span itemprop='device'>iPhone, and iPod Touch.</span>
+            <br />
+            It is
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">available on the App Store</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Contact details</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

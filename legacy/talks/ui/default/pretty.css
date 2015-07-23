@@ -1,0 +1,60 @@
+/* Following are the presentation styles -- edit away! */
+
+body {background: #000 -16px 0 no-repeat; color: #fff; font-size: 2em; font-family: "DIN Light", Verdana, Helvetica, Arial, Tahoma, "Trebuchet MS", sans-serif; }
+:link, :visited {text-decoration: none; color: #fff;}
+h1, h2, h3, h4 { font-size: 100%; margin: 0; padding: 0; }
+
+ul, pre {margin: 0; }
+pre {line-height: 1em;}
+html, body {margin: 0; padding: 0; }
+
+img { border: 0; }
+#header img { position: absolute; top: 15px; right: 15px; }
+
+.slide code {padding: 2px 0.25em; font-weight: bold; }
+.slide code.bad, code del {color: red;}
+.slide code.old {color: silver;}
+.slide pre {padding: 0; margin: 0.25em 0 0.5em 0.5em; font-size: 90%;}
+.slide pre code {display: block;}
+.slide ul {margin-left: 5%; margin-right: 7%; list-style: disc;}
+
+.slide li {margin-top: 0.75em; margin-right: 0;}
+.slide ul ul {line-height: 1;}
+.slide ul ul li {margin: .2em; font-size: 85%; list-style: square;}
+.slide img.leader {display: block; margin: 0 auto;}
+
+div#header {background: #fff url(bgline.gif) 0 100% repeat-x; line-height: 1px; }
+div#footer {font-size: 0.5em; font-weight: bold; padding: 1em 50px;}
+#footer h1, #footer h2 {display: block; padding: 0 1em;}
+#footer h2 {font-style: italic;}
+
+div.long {font-size: 0.75em;}
+.slide h1 {position: absolute; top: 10px; left: 50px; z-index: 1; margin: 0; color: #000; white-space: nowrap; }
+.slide h3 {font-size: 130%;}
+
+div#controls {position: absolute; left: 50%; bottom: 0; width: 50%; text-align: right; font: bold 0.9em Verdana, Helvetica, sans-serif;}
+html>body div#controls {position: fixed; padding: 0 0 1em 0; top: auto;}
+div#controls form {position: absolute; bottom: 0; right: 0; width: 100%; margin: 0; padding: 0;}
+#controls #navLinks a {padding: 0 7px; margin: 0 0.5em; background: #333; border: none; cursor: pointer;}
+#controls #navLinks a:hover { background: #6C3; }
+#controls #navList {height: 1em;}
+#controls #navList #jumplist {position: absolute; bottom: 0; right: 0;}
+
+#currentSlide {text-align: center; font-size: 0.5em; }
+
+#slide0 {padding-top: 3.5em; font-size: 90%;}
+#slide0 h1 {position: static; color: #FFF; font-size: 250% !important; margin: 1em 0 0; padding: 0; white-space: normal;}
+#slide0 h2 {margin: 0.7em 0 0 0; color: #666; }
+#slide0 h3 {margin-top: 3.5em; font-size: 1.5em;}
+#slide0 h4 {margin-top: 0; font-size: 1em;}
+
+ul.urls {list-style: none; display: inline; margin: 0;}
+.urls li {display: inline; margin: 0;}
+.note {display: none;}
+.external {border-bottom: 1px dotted gray;}
+html>body .external {border-bottom: none;}
+.external:after {content: " \274F"; font-size: smaller; }
+
+.incremental, .incremental *, .incremental *:after {color: #000 !important; visibility: visible;}
+img.incremental { visibility: hidden !important; border: 3em solid grey; }
+.slide .current { }

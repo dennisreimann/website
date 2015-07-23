@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Codeshelver: Tagging GitHub repositories | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/codeshelver-tag-github-repositories' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='Softwareentwicklung mit Ruby on Rails' name='description' />
+    <meta content='CouchDB, ExpressJS, GitHub, GreaseMonkey, JavaScript, CoffeeScript, nodeJS' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Software developer
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2010-07-18T12:37:00+02:00'>
+            <div class='top'>Jul '10</div>
+            <div class='day'>18</div>
+          </time>
+          <h1>Codeshelver: Tagging GitHub repositories</h1>
+        </header>
+        <div class='content'><p><a href="http://codeshelver.com"><img class="align-right size-medium wp-image-728" title="Codeshelver" src="/images/content/codeshelver-300x162.png" alt="Codeshelver lets you clean up your GitHub watchlist by storing repositories you would like to remember on your shelf." width="218" height="118" /></a>Last week I polished my latest spare time project so that I could release it into the wild: <a href="http://codeshelver.com/">Codeshelver</a> lets you clean up your <a href="https://github.com/">GitHub</a> watchlist by tagging repositories you would like to remember. If you are a GitHub fanboy like me you probably know the problem: Almost daily an interesting project appears in your timeline and you want to remember it, because you might need something like that in the future. You hit the <em>watch</em> button and from now on you are notified about every single commit, issue and wiki change of that project- This is great for code you are using on a daily basis but doesn&#8217;t make sense for repositories you would just like to remember, because it practically spams your dashboard timeline with things you are not really interested in.</p>&#x000A;&#x000A;<p>I had the idea for this project on my mind for some time, but didn&#8217;t get around to realizing it because I lacked the motivation to build it with the common stack of technologies. A few weeks ago I started to play with <a href="http://nodejs.org/">nodeJS</a> and tried to come up with something that was beyond the Hello World examples so I stumbled upon <a href="http://expressjs.com/">ExpressJS</a>, which could be described as the <a href="http://www.sinatrarb.com/">Sinatra</a> of NodeJS. And so I had my use case for trying out some new technologies to which I also added <a href="http://www.greasespot.net/">GreaseMonkey</a> and <a href="http://couchdb.apache.org/">CouchDB</a> to make it more buzzwordy.</p>&#x000A;&#x000A;<p>All in all it was fairly easy to develop the app as I just had to knit some good libraries together like <a href="https://github.com/visionmedia/express">express</a>, <a href="https://github.com/felixge/node-couchdb">node-couchdb</a> and <a href="https://github.com/shimondoodkin/nodejs-autorestart">nodejs-autorestart</a> which I&#8217;m currently using to make the deployment a little easier. Talking about deployment: I had some problems figuring out how to do it the best way, everyone seems to be using Ubuntu&#8217;s <a href="http://howtonode.org/deploying-node-upstart-monit">Upstart and Monit for deploying NodeJS apps</a>. I&#8217;d prefer a more generic solution, but I haven&#8217;t found a really satisfying way yet, so I&#8217;m just killing and restarting the processes.</p>&#x000A;&#x000A;<p>There are some features in the pipeline that I&#8217;d like to add once some more people are using the service and I gather more data, which would offer the possibility to evaluate things like <a href="https://github.com/explore">trending</a> and <a href="https://github.com/repositories">interesting repositories</a>. Now that ExpressJS 1.0 is around the corner I&#8217;ll migrate the app and will most likely use <a href="http://www.slideshare.net/tim.lossen.de/coffeescript-7-reasons-you-are-gonna-hate-it">CoffeeScript</a> for that, because it looks very promising and <a href="http://geekiriki.blogspot.com/2010/07/getting-started-with-nodejs-and.html">easy to integrate</a> - it will also give me one more buzzword up my sleeve ;)</p>&#x000A;&#x000A;<p>Please go ahead and try <a href="http://codeshelver.com">Codeshelver</a>, let me know what you think and leave comments and feedback here!</p></div>
+        <div class='follow'>
+          <p>
+            Liked this post? Follow me on
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            or
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iPhone app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>
+              iOctocat
+            </a>
+          </h3>
+          <p itemprop='description'>
+            is GitHub in your pocket: The go to app for staying up to date with your
+            projects on your
+            <span itemprop='device'>iPhone, and iPod Touch.</span>
+            <br />
+            It is
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">available on the App Store</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Contact details</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

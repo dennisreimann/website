@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>OpenID Attribute Exchange</title>
+<!-- metadata -->
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20060717" />
+<meta name="author" content="Dennis Blöte" />
+<meta name="company" content="//dennisbloete" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/pretty.css" type="text/css" media="screen, projection" id="prettyProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<link rel="stylesheet" href="idm-academia/idm-academia.css" type="text/css" media="screen, projection" id="presentationStyles" />
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<!-- Master -->
+	<div class="layout">
+		<div id="controls"><!-- DO NOT EDIT --></div>
+		<div id="currentSlide"><!-- DO NOT EDIT --></div>
+		<div id="header">
+			<img id="openid_logo" src="idm-academia/logo_openid.gif" alt="OpenID" />
+			<img id="tzi_logo" src="idm-academia/logo_tzi.png" alt="TZI" />
+		</div>
+	</div>
+
+	<!-- Folien -->
+	<div class="presentation">
+
+		<div class="slide">
+			<h1>OpenID Attribute Exchange</h1>
+			<h2 class="note">Am Beispiel IdM im akademischen Umfeld</h1>
+			<h3>Dennis Blöte<br />IdentityCamp Bremen, 07. Juni 2008</h3>
+		</div>
+
+		<div class="slide">
+			<h1>Fragerunde</h1>
+			<ul class="incremental show-first">
+				<li>Wem sagt Identity Management etwas?</li>
+				<li>Wem sagt OpenID etwas?</li>
+				<li>Wer hat eine OpenID?</li>
+				<li>Wer ist Relying Party?</li>
+				<li>Wer ist Identity Provider?</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>OpenID and me</h1>
+			<h2>masquerade</h2>
+			<ul>
+				<li>OpenID-Server (Open Source, Ruby on Rails)</li>
+				<li>Identity Provider</li>
+			</ul>
+			<h2>Mein Bachelor-Report</h2>
+			<ul>
+				<li>IdM im akademischen Umfeld</li>
+				<li>Pilotsystem mit OpenID</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Problemstellung</h1>
+			<p>An der Uni gibt es eine Vielzahl verschiedener Benutzerkonten und
+			Anwendungen, auf die der Zugriff separat verwaltet wird:</p>
+			<ul>
+				<li>WLAN</li>
+				<li>Webmail</li>
+				<li>StudIP (eLearning)</li>
+				<li>Wikis</li>
+				<li>…</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Motivation</h1>
+			<p>Durch die Einführung von IdM können wir …</p>
+			<ul>
+				<li>Single-Sign-On implementieren</li>
+				<li>Personen ihre Stammdaten selbst pflegen lassen</li>
+				<li>Daten weiteren Anwendungen zur Verfügung stellen
+					<ul>
+						<li>Situated Software (bspw. Wiki)</li>
+						<li>Nutzung der Identität „nach außen”</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Warum verwenden wir OpenID?</h1>
+			<ul>
+				<li>gute Akzeptanz und zunehmende Verbreitung</li>
+				<li>benutzerzentriertes Identitätsmanagement</li>
+				<li>Relying Party ist einfach zu implementieren
+					<ul>
+						<li>Libraries und Referenzimplementierungen
+						für viele Programmiersprachen vorhanden</li>
+						<li class="no_bullet">» Situated Software</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Identität und Attribute</h1>
+			<p>Die digitale Identität besteht aus allen verfügbaren
+			personenbezogenen Daten, den <em>Attributen</em>.</p>
+			<ul>
+				<li>Stammdaten (Name, Matrikelnummer, E-Mail, …)</li>
+				<li>Eigenschaften (ist Student, nimmt an LV teil, …)</li>
+				<li>Rechte und Privilegien, bspw:
+					<ul>
+						<li>Zugriff auf Lehrveranstaltungsplaner</li>
+						<li>Zugang zu Lehrmaterialien</li>
+						<li>Vergünstigungen durch Studentenstatus</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Austausch der Attribute</h1>
+			<p>OpenID selbst verifiziert nur den URL-Besitz.</p>
+			<p>Datenaustausch erfolgt über die Protokoll-Erweiterungen:</p>
+			<ul>
+				<li>SReg - Simple Registration</li>
+				<li>AX - Attribute Exchange</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>SReg - Simple Registration</h1>
+			<ul>
+				<li>Von den meisten Identity Providern unterstützt</li>
+				<li>Fixes Set von acht Attributen
+					<ul>
+						<li>nickname, email, gender, fullname, country, ...</li>
+						<li>Keine manuelle Erweiterung möglich!</li>
+					</ul>
+				</li>
+				<li>Theoretisch veraltet, da AX flexibler ist</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>AX - Attribute Exchange</h1>
+			<ul>
+				<li>Bisher kaum unterstützt</li>
+				<li>Namensraum für die Definition von Attributen</li>
+				<li>Attribut besteht aus
+					<ul>
+						<li>Type Identifier (URL als Definition)</li>
+						<li class="no_bullet">Bsp.: <a href="http://axschema.org/contact/email">http://axschema.org/contact/email</a></li>
+						<li>Title (Attributbezeichner für den Endnutzer)</li>
+						<li>Count (Anzahl der gewünschten Werte)</li>
+						<li>Value (Wert der Eigenschaft)</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>AX im praktischen Einsatz</h1>
+			<ul>
+				<li>Voraussetzung: Relying Party und Identity Provider unterstützen das gleiche Set an Attributen</li>
+				<li>Einziger Standard bisher: <a href="http://www.axschema.org/">AXSchema.org</a></li>
+				<li>Besondere Anwendungsfälle erfordern eigene Schemata</li>
+				<li>Diese im Hinblick auf bestehende Standards definieren!</li>
+				<li class="no_bullet">» Portabilität (siehe Punkt 1)</a></li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Fazit und Ausblick</h1>
+			<ul>
+				<li>OpenID und AX ermöglichen leichtgewichtiges IdM</li>
+				<li>AX wird der Standard zum Datenaustausch werden</li>
+				<li>Viel Standardisierungsarbeit nötig!</li>
+				<li>In der Ferne: AX Store Requests</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Weiterführende Links</h1>
+			<ul>
+				<li><a href="http://dennisreimann.de/blog/on-openid-attribute-exchange/">Meine Zusammenfassung über AX</a></li>
+				<li><a href="http://www.axschema.org/">AXSchema.org</a></li>
+				<li><a href="http://factoryjoe.com/blog/2007/11/01/hcard-for-openid-simple-registration-and-attribute-exchange/">Chris Messina zu Standardisierung</a></li>
+				<li><a href="http://tantek.com/log/2007/11.html#d02t2318">Tantek Çelik zu Standardisierung</a></li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h2>Danke für die Aufmerksamkeit!</h2><br />
+			<h2>Fragen und Anregungen?</h2>
+		</div>
+
+	</div>
+
+</body>
+</html>

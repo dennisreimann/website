@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://dennisreimann.de/sitemap.xml

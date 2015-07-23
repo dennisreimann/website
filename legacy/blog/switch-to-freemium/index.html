@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Switching to Freemium | Dennis Reimann, Softwareentwickler</title>
+    <script src='/javascripts/head.min.js'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        head.js(
+          "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js",
+          "http://www.google-analytics.com/ga.js",
+          "/fancybox/jquery.fancybox-1.3.4.pack.js",
+          "/fancybox/jquery.easing-1.3.pack.js",
+          "/javascripts/website.js",
+          function(){Website.init()});
+      //]]>
+    </script>
+    <link href='/atom.xml' rel='alternate' title='//dennisreimann' type='application/atom+xml' />
+    <link href='/stylesheets/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <link href='http://dennisreimann.de/blog/switch-to-freemium' rel='canonical' />
+    <link href='http://openid.dennisreimann.de/server' rel='openid2.provider openid.server' />
+    <link href='http://openid.dennisreimann.de/dennisreimann' rel='openid2.local_id openid.delegate' />
+    <!--[if IE]>
+      <link href='/stylesheets/ie.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8' name='google-site-verification' />
+    <meta content='app-id=669642611,affiliate-data=10l5ET' name='apple-itunes-app' />
+    <meta content='Lessons learned from switching my GitHub iPhone app iOctocat to a freemium model on the iOS App Store.' name='description' />
+    <meta content='App Store, GitHub, iPhone, iOS, App' name='keywords' />
+  </head>
+  <body>
+    <div id="header">
+      <div id='identity'>
+        <a href='/' id='logo'>
+          <span id='slashes'>//</span>
+          <span id='name'>dennisreimann</span>
+        </a>
+        <div id='claim'>
+          Software developer
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <article>
+        <header>
+          <time class='pubdate' datetime='2013-12-17T19:25:00+01:00'>
+            <div class='top'>Dec '13</div>
+            <div class='day'>17</div>
+          </time>
+          <hgroup>
+            <h1>Switching to Freemium</h1>
+            <h2>Lessons learned from changing iOctocat's price model</h2>
+          </hgroup>
+        </header>
+        <div class='content'><p>A few weeks ago - on November 7th - I changed the price model of <a href="http://ioctocat.com">iOctocat</a>&#x000A;to freemium. The initial download became free and it offers most of the features the full pro version&#x000A;has, but limited to public repositories. The pro upgrade is available as an in-app purchase and gives&#x000A;access to private repositories, adds support for multiple accounts and Gitub Enterprise, as well as&#x000A;push notifications. The upgrade costs $9.99 (or 8,99 EUR), which is just as much as before the switch.</p>&#x000A;&#x000A;<p>There were four reasons for deciding to change the price model:</p>&#x000A;&#x000A;<ol>&#x000A;<li><em>A potentially bigger market:</em> Seeing <a href="https://github.com/blog/1470-five-years">GitHub&#8217;s growth</a> compared&#x000A;to the low number of sales I am making (more on that later), the assumption is that there is a bigger&#x000A;market to tackle, which I am currently not reaching.</li>&#x000A;<li><em>Stagnating sales:</em> This is the main reason to face the fact something might need&#x000A;improvement. Of course this could be related to other things as well, but my impression from conversations&#x000A;was that a good percentage of people were put off by the high price (at least in App Store terms) of the app&#x000A;and they had no good way to find out, whether or not the investment would be worth it.</li>&#x000A;<li>The ever present <em>lack of demo versions:</em> I do not want to bemoan the fact that Apple does not seem to care&#x000A;and leaves it to each developer to find the right way to approach this*, but from the users perspective I can&#x000A;totally understand that trying apps is kind of the only way to verify whether or not it is worth its price.</li>&#x000A;<li><em>Kick it like GitHub:</em> I just like the fact, that the new price model fits very well with GitHub offering its&#x000A;functionality for free for open source projects. This makes it a natural fit and was the final trigger to make&#x000A;me want to do the switch.</li>&#x000A;</ol>&#x000A;&#x000A;&#x000A;<p>So let&#8217;s get to the interesting part: Sales figures and actual numbers.</p>&#x000A;&#x000A;<h3>Before</h3>&#x000A;&#x000A;<p>First off, the last 30 days before the switch, which can be considered a good baseline of how v2 was selling&#x000A;in general up to then:</p>&#x000A;&#x000A;<ul>&#x000A;<li>266 paid sales/downloads</li>&#x000A;<li>1397 EUR revenue</li>&#x000A;</ul>&#x000A;&#x000A;&#x000A;<p><a href="/images/content/ioctocat_before_freemium.png"><img src="/images/content/ioctocat_before_freemium.png" alt="iOctocat paid sales before the freemium switch" /></a></p>&#x000A;&#x000A;<p>As you can see this is a bumpy mixture of sales varying from 5 to 14, averaging at around 9 sales per day.&#x000A;It seems that deviations like that are pretty normal for apps in that range, at least that is the impression&#x000A;I got from talking to some fellow developers.</p>&#x000A;&#x000A;<h3>After</h3>&#x000A;&#x000A;<p>Here are the first 30 days after after the switch:</p>&#x000A;&#x000A;<ul>&#x000A;<li>217 paid sales</li>&#x000A;<li>6261 downloads</li>&#x000A;<li>1110 EUR revenue</li>&#x000A;</ul>&#x000A;&#x000A;&#x000A;<p><a href="/images/content/ioctocat_after_freemium.png"><img src="/images/content/ioctocat_after_freemium.png" alt="iOctocat paid sales after the freemium switch" /></a></p>&#x000A;&#x000A;<p><a href="/images/content/ioctocat_after_freemium_downloads.png"><img src="/images/content/ioctocat_after_freemium_downloads.png" alt="iOctocat paid sales after the freemium switch" /></a></p>&#x000A;&#x000A;<p>The first chart shows the number of paid sales, the second one the number of downloads. On freemium&#x000A;launch day the app got 2009 downloads and went hockey stick from there - unfortunately in the&#x000A;<a href="http://onstartups.com/Portals/150/images//OnStartups-Hockey-Stick-cartoon.jpg">wrong direction</a> ;)</p>&#x000A;&#x000A;<p>However, it still has about 100 downloads per day, which shows that there is a bigger market than the app was&#x000A;reaching before. Nevertheless the 10x growth in download numbers did not result in more sales yet - the&#x000A;conversion rate of the first 30 days is ~3.5%. Of course you cannot expect people that download the app just&#x000A;to try it to buy the pro version immediately, even if they think the app is useful to them. That is why I think&#x000A;of this switch as some kind of long-term investment.</p>&#x000A;&#x000A;<h3>Improving conversions</h3>&#x000A;&#x000A;<p>Right now the app now is missing out on what would have been potential customers before: People who just use&#x000A;public repositories and do not need any of the pro features do not have to pay anymore which might be&#x000A;<a href="https://twitter.com/tvdeyen/status/410907972009996288">crazy indeed</a>. This is the point I thought about most&#x000A;when I tried to come up with a good pricing model. I could have charged a low amount for public repository&#x000A;access, but I decided that this approach would have more cons than pros&#8230;</p>&#x000A;&#x000A;<p><strong> Pros </strong></p>&#x000A;&#x000A;<ul>&#x000A;<li>I think the app is definitely valuable to people even if they are using it in an open source context.</li>&#x000A;<li>This would have also prevented some frustrating one star reviews that seem to be unavoidable when you&#x000A;are offering stuff for free: There will always be someone who does not appreciate your work or&#x000A;just likes to rant in App Store reviews.</li>&#x000A;</ul>&#x000A;&#x000A;&#x000A;<p><strong> Cons </strong></p>&#x000A;&#x000A;<ul>&#x000A;<li>Even if I would have charged only 79 cents I do not think the app would have gotten a fifth of the downloads&#x000A;it got the free way. You just cannot beat the magic price tag &#8220;free&#8221; and giving people a no brainer opportunity&#x000A;to try the app outweighs the income of some potential sales in this case <em>imho</em>.</li>&#x000A;<li>I personally prefer to pay for an app upfront and get full access immediately, maybe that is why the model of&#x000A;letting customers pay twice (once for basic access, then again for the pro features) just does not seem right&#x000A;to me.</li>&#x000A;<li>With a userbase of people who are developers themselves, I know that at least some users are buying the pro&#x000A;upgrade even if they do not need the addtional features. This might sound romantic, but sometimes I get feedback&#x000A;from customers who know that their &#8220;donation&#8221; helps to&#x000A;<a href="https://twitter.com/dvdln/status/398847329006276608">ensure the future development</a> of the app &lt;3</li>&#x000A;<li>As I mentioned before I just like the way this fits with GitHubs pricing.</li>&#x000A;</ul>&#x000A;&#x000A;&#x000A;<p>However, I am still thinking about how to make an upgrade more desirable for heavy users of the free version.&#x000A;The features it offers without paying go far beyond a demo version and even though I do not really like to&#x000A;artificially limit the functionality I might cut off some features worth paying for, so that the app does not&#x000A;miss out on too many people who would also be willing to pay for what they get - especially with the things in&#x000A;mind I still want to tackle, like the iPad interface.</p>&#x000A;&#x000A;<p>One more point I will definitely change: Right now the app is not really trying to upsell anyone. Once you&#x000A;added your account you do not get to see any possibility to upgrade, besides a shy little button on the&#x000A;repository lists. The only place I advertise it prominently is the accounts list, but users of the free version&#x000A;rarely return to that, because they can only have a single account. That was an oversight on my part or maybe&#x000A;just me being naive&#8230;</p>&#x000A;&#x000A;<h3>Conclusion</h3>&#x000A;&#x000A;<p>Unfortunately changing the pricing model did not turn out to be a quick win for iOctocat, but as I said I consider&#x000A;the move to freemium as a long-term investment and already have some ideas on how to improve the current situation.&#x000A;I am curious to see what kind of results the upcoming months will yield, but I do not think I will switch back to&#x000A;an upfront payment model whatever happens, because of the reasons I outlined in the introduction of this article.</p>&#x000A;&#x000A;<p>From a users perspective I can totally see the benefit of the freemium model and with more and more apps&#x000A;on the App Store taking this route I can imagine the rate of people that are willing to pay upfront go down.&#x000A;Nevertheless I might consider cutting off some more features from the free version to give more non-pro users&#x000A;a reason to upgrade. I would not really like to do this and I can imagine some push back from users of the free&#x000A;version, but I still want to work on the app and improve it - and making some more revenue would give me better&#x000A;options to do just that.</p>&#x000A;&#x000A;<h6>Last but not least&#8230;</h6>&#x000A;&#x000A;<p><em>* Technical sidenote:</em> Along with iOS 7 Apple gave developers a new/better way for utilizing App Store receipts&#x000A;(see <a href="https://developer.apple.com/wwdc/videos/">WWDC 2013 Session 308</a>), which makes it possible to implement&#x000A;various ways of demo functionality. iOctocat uses the App Store receipt to check the version the user bought&#x000A;initially so that customers who bought the app prior to the switch do not have to pay again. Likewise one could&#x000A;implement a limited period of time with full access to give the users a trial version (which I might cover in&#x000A;another blog post sometime&#8230;)</p></div>
+        <div class='follow'>
+          <p>
+            Liked this post? Follow me on
+            <a class="twitter" href="https://twitter.com/dennisreimann">Twitter</a>
+            or
+            <a class="github" href="https://github.com/dennisreimann">GitHub</a>
+          </p>
+        </div>
+        <div class='teaser' id='iOctocat' itemscope='itemscope' itemtype='http://schema.org/SoftwareApplication'>
+          <a href='http://ioctocat.com'>
+            <img alt='iPhone app for GitHub' itemprop='image' src='/images/ioctocat.png' />
+          </a>
+          <h3 itemprop='name'>
+            <a href='http://ioctocat.com'>
+              iOctocat
+            </a>
+          </h3>
+          <p itemprop='description'>
+            is GitHub in your pocket: The go to app for staying up to date with your
+            projects on your
+            <span itemprop='device'>iPhone, and iPod Touch.</span>
+            <br />
+            It is
+            <a href="http://ioctocat.com/appstore-iphone" itemprop="url">available on the App Store</a>
+          </p>
+          <link href='http://schema.org/SocialNetworkingApplication' itemprop='SoftwareApplicationCategory' />
+        </div>
+      </article>
+    </div>
+    <div id="footer">
+      <div class='vcard' id='contact'>
+        <span class='fn'>Dennis Reimann</span>
+        <p class='adr'>
+          <span class='street-address'>Ottjen-Alldag-Str. 32</span>
+          <br />
+          <span class='postal-code'>D-28277</span>
+          <span class='locality'>Bremen</span>
+        </p>
+        <p>
+          <span class='web'><a class="url" href="http://dennisreimann.de/" rel="me">dennisreimann.de</a></span>
+          <br />
+          <span class='mail'><a class="email" href="mailto:mail@dennisreimann.de" rel="me">mail@dennisreimann.de</a></span>
+          <br />
+          <span class='tel'>+49 (0)151 22 63 03 17</span>
+        </p>
+        <p>
+          <small><a href="/contact">Contact details</a></small>
+        </p>
+        <ul class='social'>
+          <li><a href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
+          <li><a href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
+          <li><a href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
+        </ul>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-376258-21']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+      //]]>
+    </script>
+  </body>
+</html>

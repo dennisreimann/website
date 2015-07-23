@@ -1,0 +1,19 @@
+.slide h2 { margin: -1em 0 1em 0; }
+.slide ul { margin: 0 7% 0 -16px; }
+#header img { top: 12px; }
+img#tag-xhtml { position: absolute; top: 32%; right: 25%; z-index: 1; }
+img#tag-semantic-web { position: absolute; top: 53%; right: 33%; z-index: 2; }
+code { margin-left: -16px; font-size: 75%; }
+.up { margin-top: -1em !important; }
+.hl-1,
+.slide pre .current .hl-1 { color: #777; }
+.hl-mf,
+.slide pre .current .hl-mf { color: #6C3; }
+
+img.align-left { float: left; margin-right: 2em; }
+div.incremental { margin: 0; }
+.slide .current,
+.slide .current a { color: #6C3; }
+.slide pre .current { color: white; }
+.big { font-size: 150%; font-weight: bold; }
+#slide0 img.incremental { border: 3em solid grey; }

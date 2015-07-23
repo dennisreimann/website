@@ -1,0 +1,34 @@
+			<div id="content">
+				<h1>Reflexionen</h1>
+				<p>Dies ist mein Lernbuch zum Kurs &bdquo;Programm &amp; Prozess. Grundlagen der Programmierung von Bildern.&rdquo; -
+				aber warum und wozu eingentlich?</p>
+				<p>Wir lernen vor allem durch Reflexion des aufgenommenen Wissens, was nicht zuletzt auch der eigentliche Sinn des
+				Studierens ist. Nicht die blo&szlig;e Einnahme des Stoffs, sondern die (kritische) Auseinandersetzung damit l&auml;sst 
+				uns auf den Grund der Inhalte blicken und uns unseren eigenen Zugang zu ihnen finden.</p>
+				<p>In der Informatik bezeichnet der Begriff Reflexion den Umstand, dass ein Programm zur Laufzeit Einblicke in die
+				eigene Struktur gewinnt. In diesem Sinne l&auml;sst sich auch dieses Lernbuch auffassen: In einzelnen Schritten aufgebaut,
+				um letztendlich ein Gro&szlig;es Ganzes zu ergeben, die eigenen Fortschritte aufzuzeigen und wom&ouml;glich auch zum
+				Nachschlagen zu dienen.</p>
+				<blockquote>Lernen ist Spuren legen</blockquote>
+				<p>W&auml;hrend des Kurses haben wir uns mit <a href="#contents">so manchen Themen</a> besch&auml;ftigt, uns oft 
+				zun&auml;chst naiv gen&auml;hert, diskutiert, experimentiert, Gedanken niedergeschrieben und somit Spuren gelegt, um 
+				zu einem sp&auml;teren Zeitpunkt zur&uuml;ckkehren und reflektieren zu k&ouml;nnen.</p>
+				<p>Dieses Lernbuch ist das Ergebnis der Aufarbeitung meiner Mitschriften, erg&auml;nzt um einige Inhalte aus den
+				&Uuml;bungsaufgaben und sp&auml;tere Anmerkungen zu den Inhalten - geeignet um auch sp&auml;ter noch zur&uuml;ck zu
+				blicken und zu reflektieren.</p>
+				<h3 id="contents">Inhaltsverzeichnis</h3>
+				<ol>
+<?php foreach($pages as $link => $name) { ?>
+					<li><?= link_to($link); ?></li>
+<?php } ?>
+				</ol>
+				<h3 id="uebungen">&Uuml;bungsaufgaben</h3>
+				<ol start="5">
+					<li><a href="content/pp_aufg05-vasarely.pdf">Victor Vasarely</a> (PDF) - <a href="programs/Verschachtelte_Iterationen" class="program inline">Verschachtelte Iterationen</a></li>
+					<li><a href="content/pp_aufg06-gedichte.pdf">Gedicht: worte sind schatten</a> (PDF)</li>
+					<li><a href="content/pp_aufg07-interactive.pdf">Interactive</a> (PDF) - <a href="programs/Interactive" class="program inline">Interactive</a></li>
+					<li><a href="content/pp_aufg08-heidegger.pdf">Heideggers Sein und Zeit</a> (PDF) - <a href="programs/Bildungsgesetz" class="program inline">Bildungsgesetz</a></li>
+					<li><a href="content/pp_aufg09-albers.pdf">Josef Albers</a> (PDF) - <a href="programs/Homage_to_the_square" class="program inline">Homage to the square</a></li>
+					<li><a href="content/pp_aufg10-systematisch.pdf">Rasterbilder</a> (PDF) - <a href="programs/Systematic" class="program inline">Systematic</a></li>
+				</ol>
+			</div>

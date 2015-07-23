@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Microformats</title>
+<!-- metadata -->
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20060717" />
+<meta name="author" content="Dennis Reimann" />
+<meta name="company" content="//dennisbloete" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/pretty.css" type="text/css" media="screen, projection" id="prettyProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<link rel="stylesheet" href="microformats/microformats.css" type="text/css" media="screen, projection" id="microStyles" />
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<!-- Master -->
+	<div class="layout">
+		<div id="controls"><!-- DO NOT EDIT --></div>
+		<div id="currentSlide"><!-- DO NOT EDIT --></div>
+		<div id="header">
+			<img src="microformats/logo_microformats.gif" alt="microformats" />
+		</div>
+		<div id="footer">
+			<h1>Web Montag Bremen, 17.07.2006</h1>
+			<h2>Microformats</h2>
+		</div>
+	</div>
+
+	<!-- Folien -->
+	<div class="presentation">
+
+		<div class="slide">
+			<h1>Microformats</h1>
+			<h2>Web Montag Bremen, 17.07.2006</h2>
+			<h3>Dennis Bl&ouml;te</h3>
+			<img src="microformats/tag_xhtml.png" id="tag-xhtml" class="incremental" alt="Tag: XHTML" />
+			<img src="microformats/tag_semantic_web.png" id="tag-semantic-web" class="incremental" alt="Tag: Semantic Web" />
+		</div>
+
+		<div class="slide">
+			<h1>Was sind Microformats?</h1>
+			<ul class="incremental show-first up">
+				<li>kein neuer Standard, sondern eine Erweiterung</li>
+				<li>basieren auf bisherigen Formaten (XML, XHTML)</li>
+				<li>semantische Auszeichnung von Microcontent<br />
+						&nbsp;&nbsp;> maschinenlesbares Markup</li>
+				<li>standardisierte Beschreibung von Content<br />
+						&nbsp;&nbsp;> Semantic Web</li>
+				<li>M&ouml;glichkeit Content zug&auml;nglich zu machen</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Einsatz in der Praxis</h1>
+			<h2>Beispiel: Kontaktdaten</h2>
+
+			<pre><code><span class="hl-1">&lt;address&gt;</span>
+  Dennis Bl&ouml;te
+  Freiberuflicher Mediengestalter
+
+  Zentaurenstr. 14
+  28199 Bremen
+
+  Telefon: +49 (421) 5487517
+  Mobil: +49 (163) 6845699
+  Web:  <span class="hl-1">&lt;a href="..."&gt;</span>http://dennisbloete.de<span class="hl-1">&lt;/a&gt;</span>
+  E-Mail:<span class="hl-1"> &lt;a href="mailto:..."&gt;</span>mail@dennisbloete.de<span class="hl-1">&lt;/a&gt;</span>
+<span class="hl-1">&lt;/address&gt;</span>
+			</code></pre>
+		</div>
+
+		<div class="slide">
+			<h1>Einsatz in der Praxis</h1>
+			<h2>Beispiel: Kontaktdaten</h2>
+			<img class="align-left" src="microformats/web1.gif" alt="Gerenderte Version der Kontaktdaten" />
+			<ul class="incremental">
+				<li>f&uuml;r Menschen lesbar</li>
+				<li>f&uuml;r Parser nur ein Haufen Adresse</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Einsatz in der Praxis</h1>
+			<pre class="up"><code><span class="hl-1">&lt;div class="<span class="hl-mf">vcard</span>"&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;/div&gt;</span></code></pre>
+		</div>
+
+		<div class="slide">
+			<h1>Einsatz in der Praxis</h1>
+			<pre class="up"><code><span class="hl-1">&lt;div class="<span class="hl-mf">vcard</span>"&gt;
+  &lt;span class="<span class="hl-mf">fn</span>"&gt;
+    &lt;span class="<span class="hl-mf">given-name</span>"&gt;</span>Dennis<span class="hl-1">&lt;/span&gt;
+    &lt;span class="<span class="hl-mf">family-name</span>"&gt;</span>Bl&ouml;te<span class="hl-1">&lt;/span&gt;
+  &lt;/span&gt;
+
+
+
+
+
+
+
+
+
+
+&lt;/div&gt;</span></code></pre>
+		</div>
+
+		<div class="slide">
+			<h1>Einsatz in der Praxis</h1>
+			<pre class="up"><code><span class="hl-1">&lt;div class="<span class="hl-mf">vcard</span>"&gt;
+  &lt;span class="<span class="hl-mf">fn</span>"&gt;
+    &lt;span class="<span class="hl-mf">given-name</span>"&gt;</span>Dennis<span class="hl-1">&lt;/span&gt;
+    &lt;span class="<span class="hl-mf">family-name</span>"&gt;</span>Bl&ouml;te<span class="hl-1">&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="<span class="hl-mf">org</span>"&gt;</span>Freiberuflicher Mediengestalter<span class="hl-1">&lt;/span&gt;
+  &lt;div class="<span class="hl-mf">adr</span>"&gt;
+    &lt;div class="<span class="hl-mf">street-address</span>"&gt;</span>Zentaurenstr. 14<span class="hl-1">&lt;/div&gt;
+    &lt;span class="<span class="hl-mf">postal-code</span>"&gt;</span>28199<span class="hl-1">&lt;/span&gt;
+    &lt;span class="<span class="hl-mf">locality</span>"&gt;</span>Bremen<span class="hl-1">&lt;/span&gt;
+  &lt;/div&gt;
+
+
+
+
+&lt;/div&gt;</span></code></pre>
+		</div>
+
+				<div class="slide">
+			<h1>Einsatz in der Praxis</h1>
+			<pre class="up"><code><span class="hl-1">&lt;div class="<span class="hl-mf">vcard</span>"&gt;
+  &lt;span class="<span class="hl-mf">fn</span>"&gt;
+    &lt;span class="<span class="hl-mf">given-name</span>"&gt;</span>Dennis<span class="hl-1">&lt;/span&gt;
+    &lt;span class="<span class="hl-mf">family-name</span>"&gt;</span>Bl&ouml;te<span class="hl-1">&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="<span class="hl-mf">org</span>"&gt;</span>Freiberuflicher Mediengestalter<span class="hl-1">&lt;/span&gt;
+  &lt;div class="<span class="hl-mf">adr</span>"&gt;
+    &lt;div class="<span class="hl-mf">street-address</span>"&gt;</span>Zentaurenstr. 14<span class="hl-1">&lt;/div&gt;
+    &lt;span class="<span class="hl-mf">postal-code</span>"&gt;</span>28199<span class="hl-1">&lt;/span&gt;
+    &lt;span class="<span class="hl-mf">locality</span>"&gt;</span>Bremen<span class="hl-1">&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="<span class="hl-mf">tel</span>"&gt;</span>Telefon: <span class="hl-1">&lt;span class="<span class="hl-mf">value</span>"&gt;</span>+49 (4 21) 5 48 75 17<span class="hl-1">&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="<span class="hl-mf">tel</span>"&gt;</span>Mobil: <span class="hl-1">&lt;span class="<span class="hl-mf">value</span>"&gt;</span>+49 (1 63) 6 84 56 99<span class="hl-1">&lt;/span&gt;&lt;/div&gt;</span>
+  E-Mail: <span class="hl-1">&lt;a class="<span class="hl-mf">email</span>" href="mailto:..."&gt;</span>mail@dennisbloete.de<span class="hl-1">&lt;/a&gt;</span>
+  Web: <span class="hl-1">&lt;a class="<span class="hl-mf">url</span>" href="..."&gt;</span>http://dennisbloete.de<span class="hl-1">&lt;/a&gt;
+&lt;/div&gt;</span></code></pre>
+		</div>
+
+		<div class="slide">
+			<h1>Einsatz in der Praxis</h1>
+			<h2>Beispiel: Kontaktdaten</h2>
+			<img class="align-left" src="microformats/web2.gif" alt="Gerenderte Version der Kontaktdaten" />
+			<p class="incremental">mehr Semantik<br />&nbsp;&nbsp;> maschinenlesbar<br />&nbsp;&nbsp;> universell verwertbar</p><br /><br /><br /><br /><br /><div style="clear:both;"></div>
+			<h2 class="incremental">Einsatz:</h2>
+			<ul class="incremental">
+				<li><a href="http://kitchen.technorati.com/search">Technorati Microformats Search</a> > <a href="microformats/hCard.vcf">hCard</a></li>
+				<li><a href="http://blog.codeeg.com/tails-firefox-extension-03/">Tails</a> > Firefox-Extension</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Welche Formate gibt es?</h1>
+			<h2>Viele, hier eine Web2.0-Auswahl:</h2>
+			<ul class="incremental">
+				<li><a title="zur hCard Spezifikation" href="http://microformats.org/wiki/hcard">hCard</a> - Adressdaten (siehe Beispiel)</li>
+				<li><a title="zur hCalendar Spezifikation" href="http://microformats.org/wiki/hcalendar">hCalendar</a> - Termine, iCal &auml;quivalent</li>
+				<li><a title="zur rel-tag Spezifikation" href="http://microformats.org/wiki/rel-tag">rel-tag</a> - Links taggen/verschlagworten</li>
+				<li><a title="zur XFN Specification" href="http://gmpg.org/xfn/">XFN</a> - XHTML Friends Network, Beziehungen darstellen</li>
+			</ul>
+			<p class="incremental" style="margin-top:1.5em;">Dar&uuml;ber hinaus gibt es noch weitere Definitionen und Drafts, siehe <a title="zum Microformats-Wiki" href="http://microformats.org/wiki/">Wiki</a></p>
+		</div>
+
+		<div class="slide">
+			<h1>Ausblick</h1>
+			<h2>Interessante Sachen m&ouml;glich</h2>
+			<ul class="incremental">
+				<li>Adress- oder Terminverwaltung > Website abonnieren</li>
+				<li>Berichte oder Rezensionen von verschiedenen Diensten zusammentragen</li>
+				<li>Darstellung des sozialen Netzes per XFN (Buddy-Listen)</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Links</h1>
+			<h2>Weiterf&uuml;rende Seiten:</h2>
+			<ul>
+				<li><a href="http://mikroformate.pbwiki.com/">Deutsches Microformats-Wiki</a></li>
+				<li><a href="http://blog.codeeg.com/tails-firefox-extension-03/">Tails-Extension f&uuml;r den Firefox</a> > zeigt Microformats auf Websites an</li>
+				<li><a href="http://www.structuredblogging.de/">StructuredBlogging</a> > Blog-Extension zum Einsatz von Microformats</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>&nbsp;</h1>
+			<p class="big">Danke f&uuml;r die Aufmerksamkeit!</p>
+			<p class="incremental big">Fragen?</p>
+		</div>
+
+	</div>
+
+</body>
+</html>
