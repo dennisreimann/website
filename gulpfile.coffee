@@ -10,7 +10,7 @@ browserSync = require("browser-sync").create()
 path =
   dest: "dist"
   rev: ["dist/**/*.{css,js,svg,jpg,png,gif,cur,eot,ttf,woff,woff2}"]
-  copy: ["src/{fonts,images}/**/*", "src/favicon.ico"]
+  copy: ["src/{fonts,images,svgs}/**/*", "src/favicon.ico"]
   views: ["src/**/*.jade"]
   styles: ["src/styles/**/*.{css,styl}"]
   scripts: ["src/scripts/**/*.js"]
@@ -35,7 +35,7 @@ gulp.task "views", ->
     .pipe(p.plumber())
     .pipe(p.resolveDependencies({pattern: /^\s*(?:extends|include) ([\w-]+)$/g}))
     .pipe(p.jade(pretty: true))
-    .pipe(gulp.dest(path.dest))
+    .pipe(dest())
     .pipe(browserSync.stream())
 
 gulp.task "scripts", ->

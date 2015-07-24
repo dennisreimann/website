@@ -3,6 +3,44 @@
   &__name
     margin marginTiny 0
     font-size fontSizeHead
+    font-weight normal
+    color colorHighlight
   &__description
+    margin-bottom marginNormal
+  &__task
+  &__period
+  &__context
+    margin-bottom marginSmall
+    color colorSubtle
     a
       color colorSubtle
+  @media screen
+    &__task
+    &__period
+    &__context
+      padding-left 2em
+      background-size 16px
+      background-repeat no-repeat
+    &__task
+      background-image url(/svgs/icons/task.svg)
+      background-position 2px 1px
+    &__context
+      background-image url(/svgs/icons/context.svg)
+      background-position 2px 1px
+    &__period
+      background-image url(/svgs/icons/period.svg)
+      background-position 2px 0
+  @media print
+    &__task
+    &__period
+    &__context
+      &:before
+        display inline-block
+        margin-right marginTiny
+        color colorSubtle
+    &__task:before
+      content "Aufgabe:"
+    &__context:before
+      content "Kunde:"
+    &__period:before
+      content "Zeitraum:"

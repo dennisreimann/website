@@ -3,24 +3,23 @@ M_width   = 640px
 L_width   = 960px
 
 mq_to(to)
-  s("all and (max-width: %s)", to - 1)
+  s("screen and (max-width: %s)", to - 1)
 mq_from(from)
-  s("all and (min-width: %s)", from)
+  s("screen and (min-width: %s)", from)
 mq_from_to(from, to)
-  s("all and (min-width: %s) and (max-width: %s)", from, to - 1)
+  s("screen and (min-width: %s) and (max-width: %s)", from, to - 1)
+mq_from_and_print(from)
+  s("screen and (min-width: %s), print", from)
 
 up_to_S = mq_to(S_width)
 up_to_M = mq_to(M_width)
 up_to_L = mq_to(L_width)
-up_to_XL = mq_to(XL_width)
 
 S_and_up = mq_from(S_width)
 M_and_up = mq_from(M_width)
 L_and_up = mq_from(L_width)
-XL_and_up = mq_from(XL_width)
+L_and_up_and_print = mq_from_and_print(L_width)
 
 S_to_M = mq_from_to(S_width, M_width)
 S_to_L = mq_from_to(S_width, L_width)
 M_to_L = mq_from_to(M_width, L_width)
-M_to_XL = mq_from_to(M_width, XL_width)
-L_to_XL = mq_from_to(L_width, XL_width)

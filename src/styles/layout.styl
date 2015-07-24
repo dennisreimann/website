@@ -1,23 +1,29 @@
-@media up_to_L
-  body
+body
+  @media screen
+    margin 0 auto
+  @media up_to_L
     max-width widthMain
-  header
-    margin-bottom marginLarge
-
-@media L_and_up
-  body
+  @media L_and_up_and_print
     width widthMain + widthSpace + widthAside
-  header
+
+header
+  @media up_to_L
+    margin-bottom marginLarge
+  @media L_and_up_and_print
     overflow hidden
     margin-bottom marginHuge
     .logo
       float right
       width widthAside
       margin-right logoJump
-  main
+
+main
+  @media L_and_up_and_print
     clear both
     width widthMain
-  footer
+
+footer
+  @media L_and_up_and_print
     overflow hidden
     margin-top marginHuge
     h2
