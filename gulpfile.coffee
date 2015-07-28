@@ -18,6 +18,13 @@ path =
 
 dest = (folder = "") -> gulp.dest("#{path.dest}/#{folder}")
 
+lookupRevved = (fileName, includeHost=true) ->
+  revs = try
+    require("./#{path.dest}/rev-manifest.json")
+  catch
+    undefined
+  if revs then revs[fileName] else fileName
+
 gulp.task "clean", (cb) ->
   del(path.dest, cb)
 
@@ -31,10 +38,14 @@ gulp.task "legacy", (cb) ->
     .pipe(dest())
 
 gulp.task "views", ->
+  jadeConf =
+    pretty: true
+    locals:
+      stylesMainUrl: lookupRevved("styles/main.css")
   gulp.src(path.views)
     .pipe(p.plumber())
     .pipe(p.resolveDependencies({pattern: /^\s*(?:extends|include) ([\w-]+)$/g}))
-    .pipe(p.jade(pretty: true))
+    .pipe(p.jade(jadeConf))
     .pipe(dest())
     .pipe(browserSync.stream())
 
@@ -64,13 +75,13 @@ gulp.task "styles", ->
     .pipe(dest("styles"))
     .pipe(browserSync.stream())
 
-gulp.task "browser-sync", ->
+gulp.task "browserSync", ->
   browserSync.init(
     server:
       baseDir: path.dest
   )
 
-gulp.task "rev", ->
+gulp.task "revAssets", ->
   revAll = new p.revAll()
   gulp.src(path.rev)
     .pipe(revAll.revision())
@@ -85,5 +96,6 @@ gulp.task "watch", ->
   gulp.watch path.scripts, ["scripts"]
 
 gulp.task "build", (cb) -> runSequence(["copy", "views", "styles", "scripts"], cb)
-gulp.task "develop", (cb) -> runSequence("clean", "build", ["watch", "browser-sync"], cb)
+gulp.task "develop", (cb) -> runSequence("clean", "build", ["watch", "browserSync"], cb)
 gulp.task "production", (cb) -> runSequence("clean", "legacy", "build", ["rev"], cb)
+gulp.task "rev", (cb) -> runSequence("revAssets", "views", cb)
