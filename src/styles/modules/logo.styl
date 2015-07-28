@@ -1,9 +1,10 @@
 .logo
   display block
   width widthAside
-  margin-left (logoJump * -1)
   background #FFF
   text-decoration none
+  @media L_and_up_and_print
+    margin-left (logoJump * -1)
   &__slashes
   &__name
     display inline-block
