@@ -1,29 +1,29 @@
 			<div id="content">
 				<h1>Was ist ein Algorithmus?</h1>
-				<p>Um ein gemeinsames Vokabular und Verst&auml;ndnis aufzubauen, welches wir fortan in der 
+				<p>Um ein gemeinsames Vokabular und Verst&auml;ndnis aufzubauen, welches wir fortan in der
 				Veranstaltung benutzen wollten, machten wir uns an diese Frage und kamen &uuml;ber anf&auml;nglich
 				eher naive Ans&auml;tze einer geeigneten Definition immer n&auml;her:</p>
 				<ul>
-					<li>Er beschreibt einen zu beschreitenden (vorher definierten) Weg, welcher zur Erreichung eines 
+					<li>Er beschreibt einen zu beschreitenden (vorher definierten) Weg, welcher zur Erreichung eines
 					Ziels zu gehen ist.</li>
 					<li>Folge von mechanisch ausf&uuml;hrbaren Anweisungen</li>
 					<li>Eine schrittweise L&ouml;sung eines Problems mittels einer endlichen Anzahl von Regeln.
 					Algorithmen sind Verfahren, mit denen sich Probleme verschiedenster Art l&ouml;sen lassen.</li>
 				</ul>
-				<p>Der Begriff &bdquo;Algorithmus&rdquo; ist scheinbar abstrakt genug, um ein oft genanntes 
-				Beispiel - den Vergleich mit einem Kochrezept - zu erlauben. Aber <a href="#sind_kochrezepte_algorithmen">ist 
+				<p>Der Begriff &bdquo;Algorithmus&rdquo; ist scheinbar abstrakt genug, um ein oft genanntes
+				Beispiel - den Vergleich mit einem Kochrezept - zu erlauben. Aber <a href="#sind_kochrezepte_algorithmen">ist
 				dem wirklich so?</a> Bevor wir uns der Frage widmeten, konkretisierten wir erstmal unsere Beschreibungen.
 				Meine Definition dazu: <em>Ein Algorithmus ist die Beschreibung einer Methode zur L&ouml;sung einer Aufgabenstellung.
 				Durch Iteration bzw. Rekursion wird das Problem schrittweise gel&ouml;st/das Ergebnis aufgebaut.</em></p>
 				<p>Ein Algorithmus setzt sich aus einzelnen Anweisungen zusammen. Dabei kann man die Instruktionen als Werkzeug
-				ansehen, den gesammten Algorithmus hingegen als Automaten.</p>
+				ansehen, den gesamten Algorithmus hingegen als Automaten.</p>
 				<h2 id="eigenschaften_eine_algorithmus">Welche Eigenschaften hat ein Algorithmus?</h2>
 				<p>In unseren Ann&auml;herungen waren einige Begriffe dabei, die sich wiederholten: Schrittweise, genau und
 				in endlichen Schritten durchf&uuml;hrbar soll er sein. Besser definiert<sup><a href="#sources">[1]</a></sup> bedeutet das:</p>
 				<dl>
 					<dt id="spezifikation">Spezifikation</dt>
 					<dd>
-						<p>Die <em>Anforderungen</em>, welche der Algorithmus an die Eingabegr&ouml;&szlig;en stellt und die <em>Zusicherungen</em>, 
+						<p>Die <em>Anforderungen</em>, welche der Algorithmus an die Eingabegr&ouml;&szlig;en stellt und die <em>Zusicherungen</em>,
 						welche er bez&uuml;glich der Ausgabe macht.</p>
 						<dl>
 							<dt>Eingabespezifikation</dt>
@@ -68,7 +68,7 @@
 					</dd>
 				</dl>
 				<h3 id="exakt_praezise_effektiv_und_endlich">Exakt, pr&auml;zise, effektiv und endlich</h3>
-				<blockquote>Was sich &uuml;berhaupt sagen l&auml;sst, l&auml;sst sich klar sagen, und wovon man nicht sprechen kann, dar&uuml;ber muss man 
+				<blockquote>Was sich &uuml;berhaupt sagen l&auml;sst, l&auml;sst sich klar sagen, und wovon man nicht sprechen kann, dar&uuml;ber muss man
 				schweigen. <span class="author">-- Ludwig Wittgenstein</span></blockquote>
 				<p>Damit die Maschine mit unseren Anweisungen umgehen kann, m&uuml;ssen wir sie exakt, pr&auml;zise, effektiv und endlich
 				formulieren.</p>
@@ -77,7 +77,7 @@
 				which qualify the action. There is no need to add the formality of a &bdquo;please&rdquo; or even a &bdquo;thank you&rdquo;.
 				A command should not be confused with a request; you can fully expect that it will be obeyed.<sup><a href="#sources">[2]</a></sup></blockquote>
 				<h3>Terminiert ein Algorithmus zwangsl&auml;ufig?</h3>
-				<p>Zur Terminierung sei angemerkt, dass die Beschreibung des Verfahrens zwar deterministisch (der n&auml;chste Schritt ist fest 
+				<p>Zur Terminierung sei angemerkt, dass die Beschreibung des Verfahrens zwar deterministisch (der n&auml;chste Schritt ist fest
 				vorgegeben) seien kann, dies aber nicht zwangsl&auml;fig bedeutet, dass der Algorithmus zu einem Ende kommt.<br />
 				Algorithmen, welche der Berechnung von Ergebnissen dienen, sollten nat&uuml;rlich die Anforderung erf&uuml;llen, mit der R&uuml;ckgabe
 				eines Ergebniswerts zu terminieren. Dar&uuml;ber hinaus gibt es allerdings auch Programme, deren eigentliche Leistung durch sogenannte
@@ -85,7 +85,7 @@
 				der st&auml;ndigen Befehlsverarbeitung in der CPU dient.</p>
 				<blockquote>Zweitens kann es vorkommen, da&szlig; ein effektives Verfahren zwar in der Lage ist, prinzipiell eine bestimmte Berechnung
 				durchzuf&uuml;hren, daf&uuml;r aber eine so lange Zeit braucht, da&szlig; das Verfahren praktisch wertlos ist. Nehmen wir beispielsweise das
-				Schachspiel. Da es eine Regel gibt, nach der ein Schachspiel beendet ist, wenn es dreimal zur selben Stellung der Figuren gekommen ist, ist 
+				Schachspiel. Da es eine Regel gibt, nach der ein Schachspiel beendet ist, wenn es dreimal zur selben Stellung der Figuren gekommen ist, ist
 				Schach sicherlich ein endliches Spiel. Deshalb ist es prinzipiell m&ouml;glich, ein Verfahren zu formulieren, mit dem eine Liste aller Spiele
 				- Zug um Zug - erstellt werden kann, die m&ouml;glicherweise gespielt werden k&ouml;nnen. Aber diese Berechnung w&uuml;rden selbst auf den
 				schnellsten Computern, die man sich vorstellen kann, Ewigkeiten dauern.<sup><a href="#sources">[3]</a></sup></blockquote>
@@ -96,7 +96,7 @@
 					<li><strong>Vorbereitung:</strong> Einf&uuml;hrung von Hilfsgr&ouml;&szlig;en</li>
 					<li><strong>Pr&uuml;fung auf Trivialfall/L&ouml;sung:</strong> Wenn die L&ouml;sung vorliegt, dann beende mit Ergebnis</li>
 					<li><strong>Problemreduktion/Ergebnisaufbau:</strong> Reduziere die Problemstellung X auf eine einfachere Form X'</li>
-					<li><strong>Rekursion bzw. Iteration:</strong> Rufe zur Weiterverarbeitung den Algorithmus mit X' erneut auf 
+					<li><strong>Rekursion bzw. Iteration:</strong> Rufe zur Weiterverarbeitung den Algorithmus mit X' erneut auf
 					(Rekursion) oder fahre mit X' anstelle von X bei Schritt 2 fort (Iteration).</li>
 				</ol>
 				<h2 id="sind_kochrezepte_algorithmen">Sind Kochrezepte Algorithmen?</h2>
@@ -104,7 +104,7 @@
 				welche nicht zwangsl&auml;ufig in programmierbaren Funktionen enden m&uuml;ssen, so lassen sich im Alltag
 				viele Formen davon finden: Beispielsweise das Abfertigen eines Kassiervorgangs im Supermarkt, das Spielen
 				einer Melodie beim Musizieren oder eben auch beim Kochen nach einem Rezept.</p>
-				<p>Nach unserer <a href="#eigenschaften_eine_algorithmus">Definition</a> ist ein Kochrezept allerdings kein 
+				<p>Nach unserer <a href="#eigenschaften_eine_algorithmus">Definition</a> ist ein Kochrezept allerdings kein
 				Algorithmus, da es ist beispielsweise nicht effektiv durchf&uuml;hrbar ist: Beschreibungen wie &bdquo;eine Prise
 				Salz&rdquo; oder &rdquo;man schmecke ab&rdquo; sind nicht von einem Computer ausf&uuml;hrbar, da sie zu ungenau sind.<br />
 				Des Weiteren d&uuml;rfte wohl auch jeder zustimmen, dass selbst wenn man nach einem Rezept kocht, das Ergebnis geschmacklich
@@ -114,10 +114,10 @@
 			</div>
 			<div id="further">
 				<h2>Schon gewusst?</h2>
-				<blockquote cite="http://de.wikipedia.org/wiki/Algorithmus">Der erste f&uuml;r einen Computer gedachte Algorithmus wurde 1842 von 
-				<a href="http://de.wikipedia.org/wiki/Ada_Lovelace">Ada Lovelace</a> in ihren Notizen zu Charles Babbages Analytical Engine, 
-				festgehalten. Sie gilt deshalb als die erste Programmiererin. Weil <a href="http://de.wikipedia.org/wiki/Charles_Babbage">Charles 
-				Babbage</a> seine Analytical Engine nicht vollenden konnte, wurde Ada Lovelaces Algorithmus nie darauf 
+				<blockquote cite="http://de.wikipedia.org/wiki/Algorithmus">Der erste f&uuml;r einen Computer gedachte Algorithmus wurde 1842 von
+				<a href="http://de.wikipedia.org/wiki/Ada_Lovelace">Ada Lovelace</a> in ihren Notizen zu Charles Babbages Analytical Engine,
+				festgehalten. Sie gilt deshalb als die erste Programmiererin. Weil <a href="http://de.wikipedia.org/wiki/Charles_Babbage">Charles
+				Babbage</a> seine Analytical Engine nicht vollenden konnte, wurde Ada Lovelaces Algorithmus nie darauf
 				implementiert.<sup><a href="#sources">[6]</a></sup></blockquote>
 			</div>
 			<ul class="go">
