@@ -14,7 +14,6 @@ path =
   views: ["src/**/*.jade"]
   styles: ["src/styles/**/*.{css,styl}"]
   scripts: ["src/scripts/**/*.js"]
-  legacy: ["legacy/**/*"]
 
 dest = (folder = "") -> gulp.dest("#{path.dest}/#{folder}")
 
@@ -32,10 +31,6 @@ gulp.task "copy", (cb) ->
   gulp.src(path.copy)
     .pipe(dest())
     .pipe(browserSync.stream())
-
-gulp.task "legacy", (cb) ->
-  gulp.src(path.legacy)
-    .pipe(dest())
 
 gulp.task "views", ->
   jadeConf =
@@ -97,5 +92,5 @@ gulp.task "watch", ->
 
 gulp.task "build", (cb) -> runSequence(["copy", "views", "styles", "scripts"], cb)
 gulp.task "develop", (cb) -> runSequence("clean", "build", ["watch", "browserSync"], cb)
-gulp.task "production", (cb) -> runSequence("clean", "legacy", "build", ["rev"], cb)
+gulp.task "production", (cb) -> runSequence("clean", "build", ["rev"], cb)
 gulp.task "rev", (cb) -> runSequence("revAssets", "views", cb)

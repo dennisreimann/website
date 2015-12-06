@@ -1,9 +1,0 @@
-/*********************************************
-  Projekt
-  Fixes for IE 6 and below
-  ---------------------------------------
-  By: Dennis Blöte (dennisbloete.de)
-*********************************************/
-html           { filter: expression(document.execCommand("BackgroundImageCache", false, true)); }
-.clearfix      { /* Hides from IE-mac \*/ height: 1%; /* End hide from IE-mac */ }
-.clearfix      { display: inline-block; width: 100%; }
