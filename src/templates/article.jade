@@ -1,0 +1,13 @@
+extends ../templates/layout
+
+block main
+  article.article
+    header.article__header
+      hgroup
+        h1.article__title= mvb.article.title
+        if mvb.article.subtitle
+          h2.article__subtitle= mvb.article.subtitle
+    .article__content!= mvb.article.content
+    footer.article__footer
+      span Geschrieben am
+      time.article__date= mvb.article.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")

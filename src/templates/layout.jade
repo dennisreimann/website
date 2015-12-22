@@ -13,11 +13,12 @@ html
     link(href=stylesMainUrl media="all" rel="stylesheet")
     link(href="http://openid.dennisreimann.de/server" rel="openid2.provider openid.server")
     link(href="http://openid.dennisreimann.de/dennisreimann" rel="openid2.local_id openid.delegate")
+    link(href="/atom.xml" rel="alternate" type="application/atom+xml")
   body
-    header
+    header#header
       include header
-    main
+    main#main
       block main
-    footer
+    footer#footer
       include footer
     include analytics

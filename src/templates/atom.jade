@@ -1,0 +1,20 @@
+doctype xml
+feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="de" xml:base="https://dennisreimann.de")
+  id https://dennisreimann.de/atom.xml
+  title //dennisreimann
+  subtitle Freiberuflicher Softwareentwickler
+  summary Frontend-Entwicklung mit JavaScript, CSS und HTML
+  updated= mvb.articles[0].date.toISOString()
+  link(href="/")
+  link(rel="self" href="/atom.xml")
+  author
+    name Dennis Reimann
+    email mail@dennisreimann.de
+  for article in mvb.articles
+    entry
+      id= article.id
+      title= article.title
+      link(href=article.permalink)
+      updated= article.date.toISOString()
+      summary= article.description
+      content(type="html")= article.content

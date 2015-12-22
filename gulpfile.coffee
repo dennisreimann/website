@@ -7,45 +7,74 @@ mqpacker = require("css-mqpacker")
 csswring = require("csswring")
 browserSync = require("browser-sync").create()
 
-path =
+paths =
   dest: "dist"
   rev: ["dist/**/*.{css,js,svg,jpg,png,gif,cur,eot,ttf,woff,woff2}"]
   copy: ["src/{fonts,images,svgs}/**/*", "src/favicon.ico"]
-  views: ["src/**/*.jade"]
+  pages: ["src/pages/**/*.jade"]
   styles: ["src/styles/**/*.{css,styl}"]
   scripts: ["src/scripts/**/*.js"]
+  articles: ["src/articles/**/*.md"]
+  feedTemplate: "src/templates/atom.jade"
+  articleTemplate: "src/templates/article.jade"
+  articlesBasepath: "articles"
 
-dest = (folder = "") -> gulp.dest("#{path.dest}/#{folder}")
+dest = (folder = "") -> gulp.dest("#{paths.dest}/#{folder}")
 
 lookupRevved = (fileName, includeHost=true) ->
   revs = try
-    require("./#{path.dest}/rev-manifest.json")
+    require("./#{paths.dest}/rev-manifest.json")
   catch
     undefined
-  if revs then revs[fileName] else fileName
+  file = if revs then revs[fileName] else fileName
+  "/#{file}"
+
+mvbConf =
+  glob: paths.articles
+  template: paths.articleTemplate
+  permalink: (article) ->
+    "/#{paths.articlesBasepath}/#{article.id}.html"
+
+templateData = ->
+  stylesMainUrl: lookupRevved("styles/main.css")
 
 gulp.task "clean", (cb) ->
-  del(path.dest, cb)
+  del(paths.dest, cb)
 
 gulp.task "copy", (cb) ->
-  gulp.src(path.copy)
+  gulp.src(paths.copy)
     .pipe(dest())
     .pipe(browserSync.stream())
 
-gulp.task "views", ->
-  jadeConf =
-    pretty: true
-    locals:
-      stylesMainUrl: lookupRevved("styles/main.css")
-  gulp.src(path.views)
+gulp.task "articles", ->
+  gulp.src(paths.articles)
     .pipe(p.plumber())
-    .pipe(p.resolveDependencies({pattern: /^\s*(?:extends|include) ([\w-]+)$/g}))
-    .pipe(p.jade(jadeConf))
+    .pipe(p.mvb(mvbConf))
+    .pipe(p.data(templateData))
+    .pipe(p.jade(pretty: true))
+    .pipe(dest(paths.articlesBasepath))
+    .pipe(browserSync.stream())
+
+gulp.task "pages", ->
+  gulp.src(paths.pages)
+    .pipe(p.plumber())
+    .pipe(p.resolveDependencies(pattern: /^\s*(?:extends|include) ([\w-]+)$/g))
+    .pipe(p.mvb(mvbConf))
+    .pipe(p.data(templateData))
+    .pipe(p.jade(pretty: true))
     .pipe(dest())
     .pipe(browserSync.stream())
+
+gulp.task "feed", ->
+  gulp.src(paths.feedTemplate)
+    .pipe(p.plumber())
+    .pipe(p.mvb(mvbConf))
+    .pipe(p.jade(pretty: true))
+    .pipe(p.rename("atom.xml"))
+    .pipe(dest())
 
 gulp.task "scripts", ->
-  gulp.src(path.scripts)
+  gulp.src(paths.scripts)
     .pipe(p.plumber())
     .pipe(p.sourcemaps.init())
     .pipe(p.babel())
@@ -60,7 +89,7 @@ gulp.task "styles", ->
     autoprefixer(browsers: ["last 2 versions"])
     csswring
   ]
-  gulp.src(path.styles)
+  gulp.src(paths.styles)
     .pipe(p.plumber())
     .pipe(p.sourcemaps.init())
     .pipe(p.stylus(paths: ["src/styles/lib"], import: ["mediaQueries", "mixins", "variables"]))
@@ -73,24 +102,27 @@ gulp.task "styles", ->
 gulp.task "browserSync", ->
   browserSync.init(
     server:
-      baseDir: path.dest
+      baseDir: paths.dest
   )
 
 gulp.task "revAssets", ->
   revAll = new p.revAll()
-  gulp.src(path.rev)
+  gulp.src(paths.rev)
     .pipe(revAll.revision())
     .pipe(dest())
     .pipe(revAll.manifestFile())
     .pipe(dest())
 
 gulp.task "watch", ->
-  gulp.watch path.copy, ["copy"]
-  gulp.watch path.views, ["views"]
-  gulp.watch path.styles, ["styles"]
-  gulp.watch path.scripts, ["scripts"]
+  gulp.watch paths.copy, ["copy"]
+  gulp.watch paths.pages, ["pages"]
+  gulp.watch paths.styles, ["styles"]
+  gulp.watch paths.scripts, ["scripts"]
+  gulp.watch paths.articles, ["articles", "pages", "feed"]
+  gulp.watch paths.feedTemplate, ["feed"]
+  gulp.watch paths.articleTemplate, ["articles"]
 
-gulp.task "build", (cb) -> runSequence(["copy", "views", "styles", "scripts"], cb)
-gulp.task "develop", (cb) -> runSequence("clean", "build", ["watch", "browserSync"], cb)
-gulp.task "production", (cb) -> runSequence("clean", "build", ["rev"], cb)
-gulp.task "rev", (cb) -> runSequence("revAssets", "views", cb)
+gulp.task "build", ["copy", "pages", "articles", "feed", "styles", "scripts"]
+gulp.task "develop", (cb) -> runSequence("build", ["watch", "browserSync"], cb)
+gulp.task "production", (cb) -> runSequence("build", ["rev"], cb)
+gulp.task "rev", (cb) -> runSequence("revAssets", ["pages", "articles"], cb)
