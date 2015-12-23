@@ -36,6 +36,7 @@
   "scripts": {
     "dev": "gulp clean && gulp develop",
     "build": "gulp clean && gulp build",
+    "production": "gulp clean && gulp production",
     "clean": "gulp clean"
   }
 }

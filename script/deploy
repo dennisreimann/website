@@ -3,10 +3,10 @@
 set -e
 
 echo "Building..."
-./node_modules/.bin/gulp production
+npm run production
 
-rm -rf dist/includes
+echo "Uploading to Uberspace..."
+rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude dist/ uberdennis:html
 
-echo "Uploading..."
-rsync -ravzulO dist/ uberdennis:html
-
+echo "Uploading to CDN..."
+rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude dist/ dennisreimann@rsync.keycdn.com:zones/dennisreimann/

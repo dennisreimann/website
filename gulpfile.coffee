@@ -10,7 +10,7 @@ browserSync = require("browser-sync").create()
 paths =
   dest: "dist"
   rev: ["dist/**/*.{css,js,svg,jpg,png,gif,cur,eot,ttf,woff,woff2}"]
-  copy: ["src/{fonts,images,svgs}/**/*", "src/favicon.ico"]
+  copy: ["src/{fonts,images,svgs}/**/*", "src/favicon.ico", "src/.htaccess"]
   pages: ["src/pages/**/*.jade"]
   styles: ["src/styles/**/*.{css,styl}"]
   scripts: ["src/scripts/**/*.js"]
