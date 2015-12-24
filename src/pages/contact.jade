@@ -1,64 +1,54 @@
 extends ../templates/layout
 
 block main
-  section#about.
-    <img alt="Dennis Reimann" src="images/dennis_reimann.png" width="146" height="190">
-    <table>
-      <tbody>
-        <tr>
-          <th>Name</th>
-          <td>Dennis Reimann</td>
-        </tr>
-        <tr>
-          <th>Beruf</th>
-          <td>Softwareentwickler</td>
-        </tr>
-        <tr>
-          <th>Schwerpunkt</th>
-          <td>Frontend-Entwicklung mit JavaScript, HTML und CSS</td>
-        </tr>
-        <tr>
-          <th>USt-IdNr.</th>
-          <td>DE247768646</td>
-        </tr>
-        <tr>
-          <th>Addresse</th>
-          <td>
-            Ottjen-Alldag-Str. 32
-            <br>
-            28277 Bremen
-            <br>
-            Deutschland
-            <br>
-          </td>
-        </tr>
-        <tr>
-          <th>E-Mail</th>
-          <td>
-            <a href="mailto:mail@dennisreimann.de">mail@dennisreimann.de</a>
-            (<a href="https://stuff.dennisreimann.de/dennisreimann.asc">PGP-Key</a>)
-          </td>
-        </tr>
-        <tr>
-          <th>Telefon</th>
-          <td><a href="tel:+49-151-22630317">+49 (0)151 22 63 03 17</a></td>
-        </tr>
-        <tr>
-          <th>Skype</th>
-          <td><a href="skype:dbloete?add">dbloete</a></td>
-        </tr>
-      </tbody>
-    </table>
-  
-  section#social.
-    <header>
-      <h2>Anderswo im Internet</h2>
-    </header>
-    <ul>
-      <li><a class="social-github" href="https://github.com/dennisreimann" rel="me">GitHub</a></li>
-      <li><a class="social-twitter" href="https://twitter.com/dennisreimann" rel="me">Twitter</a></li>
-      <li><a class="social-xing" href="http://www.xing.com/profile/Dennis_Reimann5" rel="me">XING</a></li>
-    </ul>
+  section#about
+    img(alt="Dennis Reimann" src=assetUrl("images/dennis_reimann.png") width="146" height="190")
+    table
+      tbody
+        tr
+          th Name
+          td Dennis Reimann
+        tr
+          th Beruf
+          td Softwareentwickler
+        tr
+          th Schwerpunkt
+          td Frontend-Entwicklung mit JavaScript, HTML und CSS
+        tr
+          th USt-IdNr.
+          td DE247768646
+        tr
+          th Addresse
+          td
+            | Ottjen-Alldag-Str. 32
+            br
+            | 28277 Bremen
+            br
+            | Deutschland
+        tr
+          th E-Mail
+          td
+            a(href="mailto:mail@dennisreimann.de") mail@dennisreimann.de
+            | &nbsp;(
+            a(href="https://stuff.dennisreimann.de/dennisreimann.asc") PGP-Key
+            | )
+        tr
+          th Telefon
+          td: a(href="tel:+49-151-22630317") +49 (0)151 22 63 03 17
+        tr
+          th Skype
+          td: a(href="skype:dbloete?add") dbloete
+        tr
+          th Profile
+          td
+            ul
+              li
+                a(href="https://github.com/dennisreimann" rel="me") GitHub
+              li
+                a(href="https://twitter.com/dennisreimann" rel="me") Twitter
+              li
+                a(href="http://www.xing.com/profile/Dennis_Reimann5" rel="me") XING
+
     
   section#imprint.
     <header>
@@ -69,9 +59,9 @@ block main
       <p>
         Dennis Reimann
         <br>
-        Am Deich 75
+        Ottjen-Alldag-Str. 32
         <br>
-        D-28199 Bremen
+        28277 Bremen
       </p>
       <h3>Urheber- und Kennzeichenrecht</h3>
       <p>
