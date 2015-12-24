@@ -6,6 +6,9 @@ autoprefixer = require("autoprefixer")
 mqpacker = require("css-mqpacker")
 csswring = require("csswring")
 browserSync = require("browser-sync").create()
+argv = require("yargs").argv
+
+assetHost = argv.assetHost or ""
 
 paths =
   dest: "dist"
@@ -21,13 +24,13 @@ paths =
 
 dest = (folder = "") -> gulp.dest("#{paths.dest}/#{folder}")
 
-lookupRevved = (fileName, includeHost=true) ->
+assetUrl = (fileName, includeHost = true) ->
   revs = try
     require("./#{paths.dest}/rev-manifest.json")
   catch
     undefined
   file = if revs then revs[fileName] else fileName
-  "/#{file}"
+  "#{assetHost}/#{file}"
 
 mvbConf =
   glob: paths.articles
@@ -35,8 +38,8 @@ mvbConf =
   permalink: (article) ->
     "/#{paths.articlesBasepath}/#{article.id}.html"
 
-templateData = ->
-  stylesMainUrl: lookupRevved("styles/main.css")
+templateData =
+  assetUrl: assetUrl
 
 gulp.task "clean", (cb) ->
   del(paths.dest, cb)
@@ -101,6 +104,7 @@ gulp.task "styles", ->
 
 gulp.task "browserSync", ->
   browserSync.init(
+    open: false
     server:
       baseDir: paths.dest
   )
