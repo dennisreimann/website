@@ -8,6 +8,7 @@ csswring = require("csswring")
 browserSync = require("browser-sync").create()
 argv = require("yargs").argv
 
+isDev = argv.dev?
 assetHost = argv.assetHost or ""
 
 paths =
@@ -17,7 +18,7 @@ paths =
   pages: ["src/pages/**/*.jade"]
   styles: ["src/styles/**/*.{css,styl}"]
   scripts: ["src/scripts/**/*.js"]
-  articles: ["src/articles/**/*.md"]
+  articles: if isDev then ["src/articles/*.md", "src/drafts/*.md"] else ["src/articles/*.md"]
   feedTemplate: "src/templates/atom.jade"
   articleTemplate: "src/templates/article.jade"
   articlesBasepath: "articles"
