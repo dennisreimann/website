@@ -10,5 +10,9 @@ block main
             h2.article__subtitle= mvb.article.subtitle
       .article__content!= mvb.article.content
       footer.article__footer
-        span Geschrieben am
-        time.article__date= mvb.article.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
+        if mvb.article.lang == "en"
+          span Written on
+          time.article__date= mvb.article.date.toString().replace(/\w+\s(\w+)\s(\d+)\s(\d+).*/,"$1 $2, $3")
+        else
+          span Geschrieben am
+          time.article__date= mvb.article.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
