@@ -6,4 +6,7 @@ block main
       for article in mvb.articles
         li.articles__item
           time.articles__item__date= article.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
-          a.articles__item__link(href=article.permalink)= article.title
+          a.articles__item__link(href=article.permalink)
+            span.articles__item__title= article.title
+            if article.subtitle
+              span.articles__item__subtitle= article.subtitle

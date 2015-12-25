@@ -1,5 +1,24 @@
 .articles
   &__item
+    + .articles__item
+      @media up_to_M
+        margin-top marginLarge
+      @media M_and_up
+        margin-top marginSmall
     &__date
-      margin-right marginNormal
       color colorSubtle
+      @media up_to_M
+        display block
+      @media M_and_up
+        margin-right marginNormal
+    &__title
+      font-weight bold
+      @media up_to_M
+        display block
+    &__subtitle
+      color colorText
+      text-decoration none
+      @media up_to_M
+        display block
+      @media M_and_up
+        margin-left marginSmall
