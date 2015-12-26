@@ -1,5 +1,17 @@
 extends ../templates/layout
 
+block title
+  title
+    = mvb.article.title
+    if mvb.article.subtitle
+      = " – "
+      = mvb.article.subtitle
+    = " • Frontend-Entwicklung mit JavaScript, CSS und HTML"
+block meta
+  meta(name="description" content=(mvb.article.description || mvb.article.content.replace(/(<([^>]+)>)/ig, "").substring(0, 150)))
+  if mvb.article.tags
+    meta(name="keywords" content=mvb.article.tags.join(','))
+    
 block main
   section
     article.article
