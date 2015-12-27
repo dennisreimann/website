@@ -98,3 +98,16 @@ block main
 
     p.more
       a.more__link(href="https://archive.dennisreimann.de/projects") Vorige Projekte
+      
+  section
+    h2 Blog
+    ul.articles
+      for article in mvb.articles.reverse()
+        li.articles__item
+          time.articles__item__date= article.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
+          a.articles__item__link(href=article.permalink)
+            span.articles__item__title= article.title
+            if article.subtitle
+              span.articles__item__subtitle= article.subtitle
+    p.more
+      a.more__link(href="https://archive.dennisreimann.de/") Blog-Archiv

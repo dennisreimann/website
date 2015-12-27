@@ -27,6 +27,6 @@ Nach so langer Zeit in einem Projekt fühlt es sich nun nach einer guten Woche U
 
 Ich werde mich definitiv weiter im Frontend austoben, habe angefangen [Elm](http://elm-lang.org/) zu lernen und freue mich darauf, nächstes Jahr wieder mehr auf Konferenzen unterwegs zu sein. Zum Einstieg ist schon das Ticket für die [BOB Konferenz](http://bobkonf.de/de/index.html) gebucht, die sich um funktionale Programmierung dreht – ein Thema, dass mittlerweile auch den JavaScript-Kosmos erreicht hat und sicherlich die kommenden Jahre über weiteren Zulauf erfahren wird.
 
-Endlich komme ich auch wieder dazu, in der Freizeit an kleineren eigenen Projekten zu arbeiten. Eins davon ist  [gulp-mvb](https://github.com/dennisreimann/gulp-mvb), ein Gulp-Plugin zum Generieren eines minimalistischen Blogs. Ganz uneigennützig kommt es direkt auch hier zum Einsatz, aber dazu im kommenden Artikel mehr …
+Endlich komme ich auch wieder dazu, in der Freizeit an kleineren eigenen Projekten zu arbeiten. Eins davon ist  [gulp-mvb](gulp-mvb.html), ein Gulp-Plugin zum Generieren eines minimalistischen Blogs. Ganz uneigennützig kommt es direkt auch hier zum Einsatz, aber dazu im kommenden Artikel mehr …
 
 Die alten Blogartikel sind unterdessen ins [Archiv](https://archive.dennisreimann.de/) gewandert.

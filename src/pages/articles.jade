@@ -6,7 +6,7 @@ block title
 block main
   section
     ul.articles
-      for article in mvb.articles
+      for article in mvb.articles.reverse()
         li.articles__item
           time.articles__item__date= article.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
           a.articles__item__link(href=article.permalink)
