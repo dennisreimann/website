@@ -56,7 +56,8 @@ gulp.task "articles", ->
     .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
-    .pipe(p.jade(pretty: true))
+    .pipe(p.jade())
+    .pipe(p.minifyHtml({ empty: true }))
     .pipe(dest(paths.articlesBasepath))
     .pipe(browserSync.stream())
 
@@ -66,7 +67,8 @@ gulp.task "pages", ->
     .pipe(p.resolveDependencies(pattern: /^\s*(?:extends|include) ([\w-]+)$/g))
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
-    .pipe(p.jade(pretty: true))
+    .pipe(p.jade())
+    .pipe(p.minifyHtml({ empty: true }))
     .pipe(dest())
     .pipe(browserSync.stream())
 
@@ -74,7 +76,7 @@ gulp.task "feed", ->
   gulp.src(paths.feedTemplate)
     .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
-    .pipe(p.jade(pretty: true))
+    .pipe(p.jade())
     .pipe(p.rename("atom.xml"))
     .pipe(dest())
 
