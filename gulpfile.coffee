@@ -18,6 +18,7 @@ paths =
   pages: ["src/pages/**/*.jade"]
   styles: ["src/styles/**/*.{css,styl}"]
   scripts: ["src/scripts/**/*.js"]
+  optimizeImages: ["src/{images,svgs}/**/*"]
   articles: if isDev then ["src/articles/*.md", "src/drafts/*.md"] else ["src/articles/*.md"]
   feedTemplate: "src/templates/atom.jade"
   articleTemplate: "src/templates/article.jade"
@@ -109,6 +110,11 @@ gulp.task "browserSync", ->
     server:
       baseDir: paths.dest
   )
+
+gulp.task "optimizeImages", ->
+  gulp.src(paths.optimizeImages)
+    .pipe(p.imagemin())
+    .pipe(gulp.dest("src"))
 
 gulp.task "revAssets", ->
   revAll = new p.revAll()
