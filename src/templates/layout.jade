@@ -9,10 +9,11 @@ html
     meta(name="google-site-verification" content="BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8")
     meta(name="theme-color" content="#71B239")
     meta(name="viewport" content="width=device-width,initial-scale=1")
-    link(href=assetUrl("styles/main.css") media="all" rel="stylesheet")
     link(href="http://openid.dennisreimann.de/server" rel="openid2.provider openid.server")
     link(href="http://openid.dennisreimann.de/dennisreimann" rel="openid2.local_id openid.delegate")
     link(href="/atom.xml" rel="alternate" type="application/atom+xml")
+    style
+      include ../../dist/styles/main.css
   body
     header#header
       include header

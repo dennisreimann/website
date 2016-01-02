@@ -98,11 +98,11 @@ gulp.task "styles", ->
   ]
   gulp.src(paths.styles)
     .pipe(p.plumber())
-    .pipe(p.sourcemaps.init())
+    #.pipe(p.sourcemaps.init())
     .pipe(p.stylus(paths: ["src/styles/lib"], import: ["mediaQueries", "mixins", "variables"]))
     .pipe(p.concat("main.css"))
     .pipe(p.postcss(processors))
-    .pipe(p.sourcemaps.write("./maps"))
+    #.pipe(p.sourcemaps.write("./maps"))
     .pipe(dest("styles"))
     .pipe(browserSync.stream())
 
@@ -135,7 +135,7 @@ gulp.task "watch", ->
   gulp.watch paths.feedTemplate, ["feed"]
   gulp.watch paths.articleTemplate, ["articles"]
 
-gulp.task "build", ["copy", "pages", "articles", "feed", "styles", "scripts"]
+gulp.task "build", runSequence("styles", ["copy", "pages", "articles", "feed", "scripts"])
 gulp.task "develop", (cb) -> runSequence("build", ["watch", "browserSync"], cb)
 gulp.task "production", (cb) -> runSequence("build", ["rev"], cb)
 gulp.task "rev", (cb) -> runSequence("revAssets", ["pages", "articles"], cb)
