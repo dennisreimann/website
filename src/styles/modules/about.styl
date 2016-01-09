@@ -1,7 +1,11 @@
 #about
   img
-    float right
-    margin .25em 0 .25em 1em
+    @media up_to_M
+      margin 0 0 marginLarge 0
+    @media M_and_up
+      float right
+      margin marginTiny 0 marginTiny marginLarge
+
   table
     th
     td
