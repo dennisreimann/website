@@ -188,30 +188,21 @@ RewriteRule ^ - [env=proto:https]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ - [env=proto:http]
 
-# rewrite www urls to root counterpart
-RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
-
-# rewrite other hosts to dennisreimann.de
-RewriteCond %{HTTP_HOST} !^dennisreimann.de$ [NC]
-RewriteRule (.*) %{ENV:PROTO}://dennisreimann.de/$1 [R=301,L]
-
-# Force SSL
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-
 # CUSTOM
 
+RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} ^/stuff/tatort.ics/export/
-RewriteRule stuff/tatort.ics/export/(.*) %{ENV:PROTO}://stuff.dennisreimann.de/tatort/$1 [R=301,L]
+RewriteRule stuff/tatort.ics/export/(.*) https://stuff.dennisreimann.de/tatort/$1 [R=301,L]
 
+RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} ^/stuff
-RewriteRule stuff/(.*) %{ENV:PROTO}://stuff.dennisreimann.de/$1 [R=301,L]
+RewriteRule stuff/(.*) https://stuff.dennisreimann.de/$1 [R=301,L]
 
+RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} ^/consulting [OR]
@@ -478,10 +469,19 @@ RewriteCond %{REQUEST_URI} ^/blog/penisverletzungen-durch-masturbation-mit-staub
 RewriteCond %{REQUEST_URI} ^/blog/capybara-finder-for-cucumber-rails-deprecated-tableish [OR]
 RewriteCond %{REQUEST_URI} ^/blog/wartungsfreundliche-web-applikationen-mit-ruby-on-rails [OR]
 RewriteCond %{REQUEST_URI} ^/blog/how-to-deploy-to-older-os-versions-with-the-iphone-sdk-3-0
-RewriteRule (.*) %{ENV:PROTO}://archive.dennisreimann.de/$1 [R=301,L]
+RewriteRule (.*) https://archive.dennisreimann.de/$1 [R=301,L]
 
+RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+) $1.html [L]
+
+# Force SSL
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# rewrite root hosts to www.dennisreimann.de (CDN)
+RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
+RewriteRule (.*) https://www.dennisreimann.de/$1 [R=301,L]
 
 </IfModule>
 

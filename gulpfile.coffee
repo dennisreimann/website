@@ -13,7 +13,7 @@ assetHost = argv.assetHost or ""
 
 paths =
   dest: "dist"
-  rev: ["dist/**/*.{css,js,svg,jpg,png,gif,cur,eot,ttf,woff,woff2}"]
+  rev: ["dist/**/*.{css,js,map,svg,jpg,png,gif,ttf,woff,woff2}"]
   copy: ["src/{fonts,images,svgs}/**/*", "src/favicon.ico", "src/.htaccess"]
   pages: ["src/pages/**/*.jade"]
   styles: ["src/styles/**/*.{css,styl}"]
@@ -57,7 +57,7 @@ gulp.task "articles", ->
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
     .pipe(p.jade())
-    .pipe(p.minifyHtml({ empty: true }))
+    .pipe(p.minifyHtml(empty: true))
     .pipe(dest(paths.articlesBasepath))
     .pipe(browserSync.stream())
 
@@ -99,7 +99,10 @@ gulp.task "styles", ->
   gulp.src(paths.styles)
     .pipe(p.plumber())
     #.pipe(p.sourcemaps.init())
-    .pipe(p.stylus(paths: ["src/styles/lib"], import: ["mediaQueries", "mixins", "variables"]))
+    .pipe(p.stylus(
+      paths: ["src/styles/lib"],
+      import: ["mediaQueries", "mixins", "variables"]
+    ))
     .pipe(p.concat("main.css"))
     .pipe(p.postcss(processors))
     #.pipe(p.sourcemaps.write("./maps"))
@@ -135,7 +138,7 @@ gulp.task "watch", ->
   gulp.watch paths.feedTemplate, ["feed"]
   gulp.watch paths.articleTemplate, ["articles"]
 
-gulp.task "build", runSequence("styles", ["copy", "pages", "articles", "feed", "scripts"])
+gulp.task "build", (cb) -> runSequence("styles", ["copy", "pages", "articles", "feed", "scripts"], cb)
 gulp.task "develop", (cb) -> runSequence("build", ["watch", "browserSync"], cb)
-gulp.task "production", (cb) -> runSequence("build", ["rev"], cb)
 gulp.task "rev", (cb) -> runSequence("revAssets", ["pages", "articles"], cb)
+gulp.task "production", (cb) -> runSequence("build", "rev", cb)
