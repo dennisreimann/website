@@ -1,6 +1,7 @@
 gulp = require("gulp")
 del = require("del")
 p = require("gulp-load-plugins")()
+fs = require('fs')
 runSequence = require("run-sequence")
 autoprefixer = require("autoprefixer")
 mqpacker = require("css-mqpacker")
@@ -26,13 +27,21 @@ paths =
 
 dest = (folder = "") -> gulp.dest("#{paths.dest}/#{folder}")
 
-assetUrl = (fileName, includeHost = true) ->
+revvedFile = (filePath) ->
   revs = try
     require("./#{paths.dest}/rev-manifest.json")
   catch
     undefined
-  file = if revs then revs[fileName] else fileName
-  "#{assetHost}/#{file}"
+  file = if revs then revs[filePath] else filePath
+
+assetUrl = (filePath, includeHost = true) ->
+  filePath = revvedFile(filePath)
+  "#{if includeHost then assetHost else ''}/#{filePath}"
+
+assetInline = (filePath) ->
+  filePath = "./#{paths.dest}/#{revvedFile(filePath)}"
+  content = fs.readFileSync(filePath, 'utf8')
+  content
 
 mvbConf =
   glob: paths.articles
@@ -42,6 +51,7 @@ mvbConf =
 
 templateData =
   assetUrl: assetUrl
+  assetInline: assetInline
 
 gulp.task "clean", (cb) ->
   del(paths.dest, cb)
@@ -122,7 +132,7 @@ gulp.task "optimizeImages", ->
     .pipe(gulp.dest("src"))
 
 gulp.task "revAssets", ->
-  revAll = new p.revAll()
+  revAll = new p.revAll(prefix: assetHost)
   gulp.src(paths.rev)
     .pipe(revAll.revision())
     .pipe(dest())
