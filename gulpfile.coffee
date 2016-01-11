@@ -43,6 +43,9 @@ assetInline = (filePath) ->
   content = fs.readFileSync(filePath, 'utf8')
   content
 
+isEnglish = (context) ->
+  context.mvb?.article?.lang is "en"
+
 mvbConf =
   glob: paths.articles
   template: paths.articleTemplate
@@ -52,6 +55,7 @@ mvbConf =
 templateData =
   assetUrl: assetUrl
   assetInline: assetInline
+  isEnglish: isEnglish
 
 gulp.task "clean", (cb) ->
   del(paths.dest, cb)
