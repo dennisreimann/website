@@ -102,7 +102,7 @@ block main
   section
     h2 Blog
     ul.articles
-      for article in mvb.articles.reverse()
+      for article in mvb.articles
         li.articles__item
           time.articles__item__date= article.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
           a.articles__item__link(href=article.permalink)
