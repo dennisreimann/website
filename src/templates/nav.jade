@@ -12,8 +12,7 @@ ul.nav
   +navItem("articles", nav.isArticles)
     a.nav__item__link(href="/articles.html") Blog
   +navItem("contact", nav.isContact)
-    a.nav__item__link(href="/contact.html")
-      if isEnglish(locals)
-        | Contact
-      else
-        | Kontakt
+    if isEnglish(locals)
+      a.nav__item__link(href="/contact.html") Contact
+    else
+      a.nav__item__link(href="/kontakt.html") Kontakt

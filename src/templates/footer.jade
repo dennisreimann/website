@@ -24,8 +24,7 @@ h2 Kontakt
     li.social__item
       a(href="https://www.xing.com/profile/Dennis_Reimann5" rel="me") XING
   p.more
-    a.more__link(href="/contact.html")
-      if isEnglish(locals)
-        | Contact details &amp; Imprint
-      else
-        | Kontaktdetails &amp; Impressum
+    if isEnglish(locals)
+      a.more__link(href="/contact.html") Contact details &amp; Imprint
+    else
+      a.more__link(href="/kontakt.html") Kontaktdetails &amp; Impressum

@@ -1,4 +1,8 @@
 a.logo(href="/")
   span.logo__slashes //
   span.logo__name dennisreimann
-  span.logo__claim Softwareentwickler
+  span.logo__claim
+    if isEnglish(locals)
+      | Software developer
+    else
+      | Softwareentwickler

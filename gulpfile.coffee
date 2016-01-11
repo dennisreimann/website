@@ -46,8 +46,12 @@ assetInline = (filePath) ->
   content = fs.readFileSync(filePath, "utf8")
   content
 
-isEnglish = (context) ->
-  context.mvb?.article?.lang is "en"
+isEnglish = (filePath) ->
+  (context) ->
+    if filePath.match(/^pages\/contact/)
+      true
+    else
+      context.mvb?.article?.lang is "en"
 
 mvbConf =
   glob: paths.articles
@@ -60,11 +64,11 @@ templateData = (file) ->
   {
     assetUrl: assetUrl
     assetInline: assetInline
-    isEnglish: isEnglish
+    isEnglish: isEnglish(filePath)
     isDev: isDev
     nav:
       isHome: filePath.match(/^pages\/index/)
-      isContact: filePath.match(/^pages\/contact/)
+      isContact: filePath.match(/^pages\/(contact|kontakt)/)
       isArticles: filePath.match(/^(pages\/articles|articles\/|drafts\/)/)
   }
 
