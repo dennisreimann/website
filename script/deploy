@@ -3,10 +3,7 @@
 set -e
 
 echo "Building..."
-npm run production
+npm run production #-- --assetHost=//cdn.dennisreimann.de
 
-echo "Uploading to CDN..."
-rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude dist/ dennisreimann@rsync.keycdn.com:zones/dennisreimann/
-
-echo "Uploading to Uberspace..."
+echo "Uploading..."
 rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude dist/ uberdennis:html

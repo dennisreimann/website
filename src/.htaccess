@@ -475,13 +475,9 @@ RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+) $1.html [L]
 
-# Force SSL
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-
-# rewrite root hosts to www.dennisreimann.de (CDN)
-RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
-RewriteRule (.*) https://www.dennisreimann.de/$1 [R=301,L]
+# rewrite unknown hosts (including www) to dennisreimann.de
+RewriteCond %{HTTP_HOST} !^dennisreimann.de$ [NC]
+RewriteRule (.*) https://dennisreimann.de/$1 [R=301,L]
 
 </IfModule>
 
