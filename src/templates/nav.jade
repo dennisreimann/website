@@ -1,0 +1,19 @@
+mixin navItem(type, current)
+  li(class="nav__item nav__item--#{type}#{current ? ' nav__item--current' : ''}")
+    block
+
+ul.nav
+  +navItem("home", nav.isHome)
+    a.nav__item__link(href="/")
+      if isEnglish(locals)
+        | Homepage
+      else
+        | Startseite
+  +navItem("articles", nav.isArticles)
+    a.nav__item__link(href="/articles.html") Blog
+  +navItem("contact", nav.isContact)
+    a.nav__item__link(href="/contact.html")
+      if isEnglish(locals)
+        | Contact
+      else
+        | Kontakt

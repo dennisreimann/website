@@ -1,7 +1,8 @@
 gulp = require("gulp")
 del = require("del")
 p = require("gulp-load-plugins")()
-fs = require('fs')
+fs = require("fs")
+path = require("path")
 runSequence = require("run-sequence")
 autoprefixer = require("autoprefixer")
 mqpacker = require("css-mqpacker")
@@ -13,6 +14,7 @@ isDev = argv.dev?
 assetHost = argv.assetHost or ""
 
 paths =
+  src: "src"
   dest: "dist"
   rev: ["dist/**/*.{css,js,map,svg,jpg,png,gif,ttf,woff,woff2}"]
   copy: ["src/{fonts,images,svgs}/**/*", "src/favicon.ico", "src/.htaccess"]
@@ -21,6 +23,7 @@ paths =
   scripts: ["src/scripts/**/*.js"]
   optimizeImages: ["src/{images,svgs}/**/*"]
   articles: if isDev then ["src/articles/*.md", "src/drafts/*.md"] else ["src/articles/*.md"]
+  templates: "src/templates/*.jade"
   feedTemplate: "src/templates/atom.jade"
   articleTemplate: "src/templates/article.jade"
   articlesBasepath: "articles"
@@ -40,7 +43,7 @@ assetUrl = (filePath, includeHost = true) ->
 
 assetInline = (filePath) ->
   filePath = "./#{paths.dest}/#{revvedFile(filePath)}"
-  content = fs.readFileSync(filePath, 'utf8')
+  content = fs.readFileSync(filePath, "utf8")
   content
 
 isEnglish = (context) ->
@@ -52,10 +55,18 @@ mvbConf =
   permalink: (article) ->
     "/#{paths.articlesBasepath}/#{article.id}.html"
 
-templateData =
-  assetUrl: assetUrl
-  assetInline: assetInline
-  isEnglish: isEnglish
+templateData = (file) ->
+  filePath = path.relative(paths.src, file.path)
+  {
+    assetUrl: assetUrl
+    assetInline: assetInline
+    isEnglish: isEnglish
+    isDev: isDev
+    nav:
+      isHome: filePath.match(/^pages\/index/)
+      isContact: filePath.match(/^pages\/contact/)
+      isArticles: filePath.match(/^(pages\/articles|articles\/|drafts\/)/)
+  }
 
 gulp.task "clean", (cb) ->
   del(paths.dest, cb)
@@ -149,6 +160,7 @@ gulp.task "watch", ->
   gulp.watch paths.styles, ["styles"]
   gulp.watch paths.scripts, ["scripts"]
   gulp.watch paths.articles, ["articles", "pages", "feed"]
+  gulp.watch paths.templates, ["articles", "pages"]
   gulp.watch paths.feedTemplate, ["feed"]
   gulp.watch paths.articleTemplate, ["articles"]
 

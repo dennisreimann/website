@@ -1,0 +1,29 @@
+navItemActive(current = false)
+  if current
+    border-top-color colorHighlight
+  color colorDarkBlue
+  background #fff
+  text-decoration none
+
+
+.nav
+  display flex
+  justify-content flex-start
+  align-content stretch
+  list-style none
+  margin-left wrapSpace * -1
+  margin-right wrapSpace * -1
+
+  &__item
+    flex 0
+
+    &__link
+      display block
+      padding marginNormal wrapSpace
+      color inherit
+      text-decoration none
+      border-top 4px solid colorDarkBlue
+      &:hover
+        navItemActive(false)
+      .nav__item--current &
+        navItemActive(true)
