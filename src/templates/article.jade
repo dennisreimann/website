@@ -9,9 +9,9 @@ block title
       = mvb.article.subtitle
     = " • Dennis Reimann: Frontend-Entwicklung mit JavaScript, CSS und HTML"
 block meta
-  meta(name="description" content=articleDescription(mvb.article))
+  meta(name="description" content=article.description(mvb.article))
   if mvb.article.tags
-    meta(name="keywords" content=articleKeywords(mvb.article))
+    meta(name="keywords" content=article.keywords(mvb.article))
     
 block main
   section
@@ -27,11 +27,11 @@ block main
           if isEnglish(locals)
             span Written on
             | &nbsp;
-            time.article__date= articleLocaleDate(mvb.article)
+            time.article__date= article.englishDate(mvb.article)
           else
             span Geschrieben am 
             | &nbsp;
-            time.article__date= articleSimpleDate(mvb.article)
+            time.article__date= article.germanDate(mvb.article)
         .article__nav
           - prevArticle = mvb.article.previousArticle
           - nextArticle = mvb.article.nextArticle

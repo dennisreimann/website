@@ -1,13 +1,13 @@
 mixin articles(articles)
   ul.articles
-    for article in articles
+    for a in articles
       li.articles__item
         time.articles__item__date
           if isEnglish(locals)
-            = articleLocaleDate(article)
+            = article.englishDate(a)
           else 
-            = articleSimpleDate(article)
-        a.articles__item__link(href=article.permalink)
-          span.articles__item__title= article.title
-          if article.subtitle
-            span.articles__item__subtitle= article.subtitle
+            = article.germanDate(a)
+        a.articles__item__link(href=a.permalink)
+          span.articles__item__title= a.title
+          if a.subtitle
+            span.articles__item__subtitle= a.subtitle

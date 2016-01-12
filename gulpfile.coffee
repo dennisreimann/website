@@ -70,14 +70,15 @@ templateData = (file) ->
       isHome: filePath.match(/^pages\/index/)
       isContact: filePath.match(/^pages\/(contact|kontakt)/)
       isArticles: filePath.match(/^(pages\/articles|articles\/|drafts\/)/)
-    articleSimpleDate: (a) ->
-      a.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
-    articleLocaleDate: (a) ->
-      a.date.toString().replace(/\w+\s(\w+)\s(\d+)\s(\d+).*/,"$1 $2, $3")
-    articleDescription: (a) ->
-      a.description or a.content.replace(/(<([^>]+)>)/ig, "").substring(0, 150)
-    articleKeywords: (a) ->
-      a.tags.join(',')
+    article:
+      germanDate: (a) ->
+        a.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
+      englishDate: (a) ->
+        a.date.toString().replace(/\w+\s(\w+)\s(\d+)\s(\d+).*/,"$1 $2, $3")
+      description: (a) ->
+        a.description or a.content.replace(/(<([^>]+)>)/ig, "").substring(0, 150)
+      keywords: (a) ->
+        a.tags.join(',')
   }
 
 gulp.task "clean", (cb) ->
