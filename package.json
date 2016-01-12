@@ -26,6 +26,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-resolve-dependencies": "^2.2.0",
     "gulp-rev-all": "^0.8.22",
+    "gulp-sitemap": "^2.2.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.1.1",
     "gulp-uglify": "^1.5.1",

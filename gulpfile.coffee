@@ -21,6 +21,7 @@ paths =
   pages: ["src/pages/**/*.jade"]
   styles: ["src/styles/**/*.{css,styl}"]
   scripts: ["src/scripts/**/*.js"]
+  sitemap: ["dist/**/*.html"]
   optimizeImages: ["src/{images,svgs}/**/*"]
   articles: if isDev then ["src/articles/*.md", "src/drafts/*.md"] else ["src/articles/*.md"]
   templates: "src/templates/*.jade"
@@ -175,6 +176,14 @@ gulp.task "revAssets", ->
     .pipe(revAll.revision())
     .pipe(dest())
     .pipe(revAll.manifestFile())
+    .pipe(dest())
+
+gulp.task "sitemap", ->
+  gulp.src(paths.sitemap)
+    .pipe(p.sitemap(
+      siteUrl: "https://dennisreimann.de"
+      changefreq: "weekly"
+    ))
     .pipe(dest())
 
 gulp.task "watch", ->
