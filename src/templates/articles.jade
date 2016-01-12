@@ -1,0 +1,13 @@
+mixin articles(articles)
+  ul.articles
+    for article in articles
+      li.articles__item
+        time.articles__item__date
+          if isEnglish(locals)
+            = articleLocaleDate(article)
+          else 
+            = articleSimpleDate(article)
+        a.articles__item__link(href=article.permalink)
+          span.articles__item__title= article.title
+          if article.subtitle
+            span.articles__item__subtitle= article.subtitle

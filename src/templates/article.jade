@@ -1,4 +1,5 @@
 extends ../templates/layout
+include ../templates/articles
 
 block title
   title
@@ -8,9 +9,9 @@ block title
       = mvb.article.subtitle
     = " • Frontend-Entwicklung mit JavaScript, CSS und HTML"
 block meta
-  meta(name="description" content=(mvb.article.description || mvb.article.content.replace(/(<([^>]+)>)/ig, "").substring(0, 150)))
+  meta(name="description" content=articleDescription(mvb.article))
   if mvb.article.tags
-    meta(name="keywords" content=mvb.article.tags.join(','))
+    meta(name="keywords" content=articleKeywords(mvb.article))
     
 block main
   section
@@ -22,11 +23,22 @@ block main
             h2.article__subtitle= mvb.article.subtitle
       .article__content!= mvb.article.content
       footer.article__footer
-        if isEnglish(locals)
-          span Written on
-          | &nbsp;
-          time.article__date= mvb.article.date.toString().replace(/\w+\s(\w+)\s(\d+)\s(\d+).*/,"$1 $2, $3")
-        else
-          span Geschrieben am
-          | &nbsp;
-          time.article__date= mvb.article.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
+        .article__meta
+          if isEnglish(locals)
+            span Written on
+            | &nbsp;
+            time.article__date= articleLocaleDate(mvb.article)
+          else
+            span Geschrieben am 
+            | &nbsp;
+            time.article__date= articleSimpleDate(mvb.article)
+        .article__nav
+          - prevArticle = mvb.article.previousArticle
+          - nextArticle = mvb.article.nextArticle
+          h5.article__nav__title
+            if isEnglish(locals)
+              | More articles
+            else
+              | Weitere Artikel
+          +articles([prevArticle, nextArticle].filter(function(e){return e})).article__nav__items
+          

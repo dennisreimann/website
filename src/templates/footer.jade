@@ -7,6 +7,7 @@ h2 Kontakt
     span.postal-code 28277
     | &nbsp;
     span.locality Bremen
+    
   p
     span.web
       a.url(href="https://dennisreimann.de/" rel="me") dennisreimann.de
@@ -16,13 +17,9 @@ h2 Kontakt
     br
     span.tel
       a.email(href="tel:+4915122630317" rel="me") +49 (0)151 22 63 03 17
-  ul.social
-    li.social__item
-      a(href="https://github.com/dennisreimann" rel="me") GitHub
-    li.social__item
-      a(href="https://twitter.com/dennisreimann" rel="me") Twitter
-    li.social__item
-      a(href="https://www.xing.com/profile/Dennis_Reimann5" rel="me") XING
+  
+  include social
+  
   p.more
     if isEnglish(locals)
       a.more__link(href="/contact.html") Contact details &amp; Imprint

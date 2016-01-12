@@ -1,4 +1,5 @@
 extends ../templates/layout
+include ../templates/articles
 
 block title
   title Blog • Frontend-Entwicklung mit JavaScript, CSS und HTML
@@ -6,11 +7,4 @@ block title
 block main
   section
     h2 Blog
-    ul.articles
-      for article in mvb.articles.reverse()
-        li.articles__item
-          time.articles__item__date= article.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
-          a.articles__item__link(href=article.permalink)
-            span.articles__item__title= article.title
-            if article.subtitle
-              span.articles__item__subtitle= article.subtitle
+    +articles(mvb.articles.reverse())

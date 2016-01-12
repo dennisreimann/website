@@ -1,6 +1,28 @@
 .article
   &__header
     margin-bottom marginNormal
+
   &__footer
-    margin-top marginHuge
+    margin-top marginLarge
     color colorSubtle
+
+  &__meta
+    margin-bottom marginLarge
+
+  &__nav
+    &__title
+      margin-bottom marginSmall
+
+    &__items
+      display flex
+      flex-wrap wrap
+      justify-content space-between
+
+    &__item
+      flex 0 1 auto
+      margin-bottom marginNormal
+      &:first-child
+        margin-right marginLarge
+
+    &__description
+      margin-right marginTiny
