@@ -58,6 +58,16 @@ mvbConf =
   template: paths.articleTemplate
   permalink: (article) ->
     "/#{paths.articlesBasepath}/#{article.id}.html"
+  grouping: (articles) ->
+    byYear = {}
+    articles.forEach (article) ->
+      year = article.date.toISOString().replace(/-.*/, "")
+      byYear[year] ||= []
+      byYear[year].push(article)
+    articlesByYear = []
+    Object.keys(byYear).reverse().forEach (year) ->
+      articlesByYear.push(year: year, articles: byYear[year])
+    byYear: articlesByYear
 
 templateData = (file) ->
   filePath = path.relative(paths.src, file.path)
@@ -74,7 +84,7 @@ templateData = (file) ->
       germanDate: (a) ->
         a.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
       englishDate: (a) ->
-        a.date.toString().replace(/\w+\s(\w+)\s(\d+)\s(\d+).*/,"$1 $2, $3")
+        a.date.toString().replace(/\w+\s(\w+)\s(\d+)\s(\d+).*/, "$1 $2, $3")
       description: (a) ->
         a.description or a.content.replace(/(<([^>]+)>)/ig, "").substring(0, 150)
       keywords: (a) ->

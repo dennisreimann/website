@@ -7,4 +7,9 @@ block title
 block main
   section
     h2 Blog
-    +articles(mvb.articles.reverse())
+    each articlesByYear in mvb.groupedArticles.byYear
+      section.articles_group
+        h3.articles_group__title
+          span.articles_group__title__year= articlesByYear.year
+          small.articles_group__title__count #{articlesByYear.articles.length} Artikel
+        +articles(articlesByYear.articles)
