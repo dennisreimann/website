@@ -3,16 +3,14 @@ mixin navItem(type, current)
     block
 
 ul.nav
-  +navItem("home", nav.isHome)
-    a.nav__item__link(href="/")
-      if isEnglish(locals)
-        | Homepage
-      else
-        | Startseite
-  +navItem("articles", nav.isArticles)
+  +navItem("home", h.nav.isHome)
+    a.nav__item__link(href="/")= h.t(locals, "Startseite", "Homepage")
+  +navItem("articles", h.nav.isArticles)
     a.nav__item__link(href="/articles.html") Blog
-  +navItem("contact", nav.isContact)
-    if isEnglish(locals)
+  +navItem("contact", h.nav.isProjects)
+    a.nav__item__link(href="/projekte.html")= h.t(locals, "Projekte", "Projects")
+  +navItem("contact", h.nav.isContact)
+    if h.isEnglish(locals)
       a.nav__item__link(href="/contact.html") Contact
     else
       a.nav__item__link(href="/kontakt.html") Kontakt

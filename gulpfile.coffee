@@ -1,14 +1,13 @@
 gulp = require("gulp")
 del = require("del")
 p = require("gulp-load-plugins")()
-fs = require("fs")
-path = require("path")
 runSequence = require("run-sequence")
 autoprefixer = require("autoprefixer")
 mqpacker = require("css-mqpacker")
 csswring = require("csswring")
 browserSync = require("browser-sync").create()
 argv = require("yargs").argv
+templateHelper = require("./lib/templateHelper")
 
 isDev = argv.dev?
 assetHost = argv.assetHost or ""
@@ -31,29 +30,6 @@ paths =
 
 dest = (folder = "") -> gulp.dest("#{paths.dest}/#{folder}")
 
-revvedFile = (filePath) ->
-  revs = try
-    require("./#{paths.dest}/rev-manifest.json")
-  catch
-    undefined
-  file = if revs then revs[filePath] else filePath
-
-assetUrl = (filePath, includeHost = true) ->
-  filePath = revvedFile(filePath)
-  "#{if includeHost then assetHost else ''}/#{filePath}"
-
-assetInline = (filePath) ->
-  filePath = "./#{paths.dest}/#{revvedFile(filePath)}"
-  content = fs.readFileSync(filePath, "utf8")
-  content
-
-isEnglish = (filePath) ->
-  (context) ->
-    if filePath.match(/^pages\/contact/)
-      true
-    else
-      context.mvb?.article?.lang is "en"
-
 mvbConf =
   glob: paths.articles
   template: paths.articleTemplate
@@ -71,26 +47,7 @@ mvbConf =
     byYear: articlesByYear
 
 templateData = (file) ->
-  filePath = path.relative(paths.src, file.path)
-  {
-    assetUrl: assetUrl
-    assetInline: assetInline
-    isEnglish: isEnglish(filePath)
-    isDev: isDev
-    nav:
-      isHome: filePath.match(/^pages\/index/)
-      isContact: filePath.match(/^pages\/(contact|kontakt)/)
-      isArticles: filePath.match(/^(pages\/articles|articles\/|drafts\/)/)
-    article:
-      germanDate: (a) ->
-        a.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
-      englishDate: (a) ->
-        a.date.toString().replace(/\w+\s(\w+)\s(\d+)\s(\d+).*/, "$1 $2, $3")
-      description: (a) ->
-        a.description or a.content.replace(/(<([^>]+)>)/ig, "").substring(0, 150)
-      keywords: (a) ->
-        a.tags.join(',')
-  }
+  h: templateHelper.createHelper(file, isDev, assetHost)
 
 gulp.task "clean", (cb) ->
   del(paths.dest, cb)
@@ -125,6 +82,7 @@ gulp.task "feed", ->
   gulp.src(paths.feedTemplate)
     .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
+    .pipe(p.data(templateData))
     .pipe(p.jade(pretty: true))
     .pipe(p.rename("atom.xml"))
     .pipe(dest())

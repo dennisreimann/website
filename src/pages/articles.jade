@@ -13,3 +13,5 @@ block main
           span.articles_group__title__year= articlesByYear.year
           small.articles_group__title__count #{articlesByYear.articles.length} Artikel
         +articles(articlesByYear.articles)
+    p.more
+      a.more__link(href="https://archive.dennisreimann.de/") Blog-Archiv

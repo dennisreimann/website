@@ -16,10 +16,10 @@ html
     link(href="http://openid.dennisreimann.de/dennisreimann" rel="openid2.local_id openid.delegate")
     link(href="/atom.xml" rel="alternate" type="application/atom+xml")
     //- make css play nice with browser sync: don't nline in dev mode
-    if isDev
-      link(href=assetUrl("styles/main.css") media="all" rel="stylesheet")
+    if h.isDev
+      link(href=h.assetUrl("styles/main.css") media="all" rel="stylesheet")
     else
-      style!= assetInline("styles/main.css")
+      style!= h.assetInline("styles/main.css")
   body
     nav#nav
       .wrap

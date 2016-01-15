@@ -4,17 +4,17 @@ feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="de" xml:base="https://dennisr
   title //dennisreimann
   subtitle Freiberuflicher Softwareentwickler
   summary Dennis Reimann: Frontend-Entwicklung mit JavaScript, CSS und HTML
-  updated= mvb.articles[0].date.toISOString()
+  updated= h.articles.feedDate(mvb.articles)
   link(href="/")
   link(rel="self" href="/atom.xml")
   author
     name Dennis Reimann
     email mail@dennisreimann.de
-  for article in mvb.articles
+  for a in mvb.articles
     entry
-      id= article.id
-      title= article.title
-      link(href=article.permalink)
-      updated= article.date.toISOString()
-      summary= article.description
-      content(type="html")= article.content
+      id= a.id
+      title= a.title
+      link(href=a.permalink)
+      updated= h.article.feedDate(a)
+      summary= a.description
+      content(type="html")= a.content

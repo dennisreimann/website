@@ -1,8 +1,4 @@
 a.logo(href="/")
   span.logo__slashes //
   span.logo__name dennisreimann
-  span.logo__claim
-    if isEnglish(locals)
-      | Software developer
-    else
-      | Softwareentwickler
+  span.logo__claim= h.t(locals, "Softwareentwickler", "Software developer")

@@ -7,6 +7,9 @@ h2 Kontakt
     span.postal-code 28277
     | &nbsp;
     span.locality Bremen
+    if h.isEnglish(locals)
+      br
+      span.country Germany
     
   p
     span.web
@@ -21,7 +24,7 @@ h2 Kontakt
   include social
   
   p.more
-    if isEnglish(locals)
+    if h.isEnglish(locals)
       a.more__link(href="/contact.html") Contact details &amp; Imprint
     else
       a.more__link(href="/kontakt.html") Kontaktdetails &amp; Impressum
