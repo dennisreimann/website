@@ -8,6 +8,7 @@ csswring = require("csswring")
 browserSync = require("browser-sync").create()
 argv = require("yargs").argv
 templateHelper = require("./lib/templateHelper")
+highlightjs = require("highlight.js")
 
 isDev = argv.dev?
 assetHost = argv.assetHost or ""
@@ -16,9 +17,9 @@ paths =
   src: "src"
   dest: "dist"
   rev: ["dist/**/*.{css,js,map,svg,jpg,png,gif,ttf,woff,woff2}"]
-  copy: ["src/{fonts,images,svgs}/**/*", "src/favicon.ico", "src/.htaccess"]
+  copy: ["src/{fonts,images,svgs}/**/*", "src/favicon.ico", "src/.htaccess", "src/{styles,}/vendor/highlightjs.css"]
   pages: ["src/pages/**/*.jade"]
-  styles: ["src/styles/**/*.{css,styl}"]
+  styles: ["src/styles/**/*.styl"]
   scripts: ["src/scripts/**/*.js"]
   sitemap: ["dist/**/*.html"]
   optimizeImages: ["src/{images,svgs}/**/*"]
@@ -35,6 +36,8 @@ mvbConf =
   template: paths.articleTemplate
   permalink: (article) ->
     "/#{paths.articlesBasepath}/#{article.id}.html"
+  highlight: (code) ->
+    highlightjs.highlightAuto(code).value
   grouping: (articles) ->
     byYear = {}
     articles.forEach (article) ->

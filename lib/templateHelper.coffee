@@ -59,6 +59,8 @@ module.exports =
           a.description or a.content.replace(/(<([^>]+)>)/ig, "").substring(0, 150)
         keywords: (a) ->
           a.tags.join(',')
+        hasCode: (a) ->
+          !!a.content.match(/class="hljs.*"/)
 
       articles:
         feedDate: (articles) ->

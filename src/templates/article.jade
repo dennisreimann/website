@@ -12,6 +12,10 @@ block meta
   meta(name="description" content=h.article.description(mvb.article))
   if mvb.article.tags
     meta(name="keywords" content=h.article.keywords(mvb.article))
+      
+block foot
+  if h.article.hasCode(mvb.article)
+    link(href=h.assetUrl("styles/vendor/highlightjs.css") media="all" rel="stylesheet")
     
 block main
   section
