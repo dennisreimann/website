@@ -8,7 +8,7 @@ paths =
 
 revvedFile = (filePath) ->
   revs = try
-    require("./#{paths.dest}/rev-manifest.json")
+    require("./../#{paths.dest}/rev-manifest.json")
   catch
     undefined
   file = if revs then revs[filePath] else filePath
