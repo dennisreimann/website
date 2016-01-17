@@ -13,6 +13,8 @@ tags:
 ---
 Vor ein paar Wochen habe ich dank [Michael](https://twitter.com/naltatis) angefangen, mich näher mit [Elm](http://elm-lang.org) zu beschäftigen und bin mittlerweile regelrecht begeistert. Das letzte Mal, dass ich so ein gutes Gefühl dabei hatte, etwas Neues zu lernen, ist knapp zehn Jahren her: Damals wusste man bei Rails direkt, dass man es mit etwas Besonderem zu tun hat.
 
+<!-- more -->
+
 In 2015 ist die funktionale Programmierung auch stärker ins Frontend vorgerückt und die sich anschließende Paradigmen beeinflußen zunehmend JavaScript und seine Frameworks: [PureScript](http://www.purescript.org/) und [RxJS](https://github.com/ReactiveX/RxJS) sind Beispiele für oft eingesetzte Sprachen und Bibliotheken, welche auf den Konzepten der funktional-reaktiven Programmierung fußen. [React](https://facebook.github.io/react/) und die Bibliotheken in seinem Ökosystem setzen auf [unidirektionalen Datenfluß](http://staltz.com/unidirectional-user-interface-architectures.html) und es ist kein Geheimnis, dass [Redux](http://redux.js.org/) - die mittlerweile als Gold-Standard bezeichnete Implementierung des Flux-Patterns - der [Elm-Architektur](https://gist.github.com/evancz/2b2ba366cae1887fe621) nachempfunden wurden.
 
 ### Was ist Elm?
