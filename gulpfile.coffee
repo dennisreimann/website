@@ -36,8 +36,9 @@ mvbConf =
   template: paths.articleTemplate
   permalink: (article) ->
     "/#{paths.articlesBasepath}/#{article.id}.html"
-  highlight: (code) ->
-    highlightjs.highlightAuto(code).value
+  highlight: (code, lang) ->
+    languages = if lang? then [lang] else undefined
+    highlightjs.highlightAuto(code, languages).value
   grouping: (articles) ->
     byYear = {}
     articles.forEach (article) ->

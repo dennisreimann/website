@@ -10,10 +10,6 @@ pre{
   color: #b9b5b8;
 }
 
-pre .lang-no-highlight * {
-  color: #b9b5b8;
-}
-
 /* Comment */
 .hljs-comment,
 .hljs-quote {
