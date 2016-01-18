@@ -27,10 +27,16 @@ getDate = (article) ->
     article.date
 
 module.exports =
-  createHelper: (file, isDev, assetHost) ->
+  createHelper: (file, isDev, baseUrl, assetHost) ->
     filePath = path.relative(paths.src, file.path)
 
     {
+      baseUrl: (filePath) ->
+        if !filePath.match(/^https?:/)
+          baseUrl + filePath
+        else
+          fileePath
+
       assetUrl: (filePath, includeHost = true) ->
         filePath = revvedFile(filePath)
         "#{if includeHost then assetHost else ''}/#{filePath}"

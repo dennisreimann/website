@@ -1,20 +1,20 @@
 doctype xml
 feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="de" xml:base="https://dennisreimann.de")
-  id https://dennisreimann.de/atom.xml
+  id= h.baseUrl("/atom.xml")
   title //dennisreimann
   subtitle Freiberuflicher Softwareentwickler
   summary Dennis Reimann: Frontend-Entwicklung mit JavaScript, CSS und HTML
   updated= h.articles.feedDate(mvb.articles)
-  link(href="/")
-  link(rel="self" href="/atom.xml")
+  link(href= h.baseUrl("/articles.html"))
+  link(rel="self" href=h.baseUrl("/atom.xml"))
   author
     name Dennis Reimann
     email mail@dennisreimann.de
   for a in mvb.articles
     entry
-      id= a.id
+      id= h.baseUrl(a.permalink)
       title= a.title
-      link(href=a.permalink)
+      link(href=h.baseUrl(a.permalink))
       updated= h.article.feedDate(a)
       summary= a.description
       content(type="html")= a.content

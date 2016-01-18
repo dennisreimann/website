@@ -12,6 +12,7 @@ highlightjs = require("highlight.js")
 
 isDev = argv.dev?
 assetHost = argv.assetHost or ""
+baseUrl = if isDev then "http://localhost:3000" else "https://dennisreimann.de"
 
 paths =
   src: "src"
@@ -51,7 +52,7 @@ mvbConf =
     byYear: articlesByYear
 
 templateData = (file) ->
-  h: templateHelper.createHelper(file, isDev, assetHost)
+  h: templateHelper.createHelper(file, isDev, baseUrl, assetHost)
 
 gulp.task "clean", (cb) ->
   del(paths.dest, cb)
