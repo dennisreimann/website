@@ -11,7 +11,7 @@ tags:
   - Gulp
 ---
 
-Die vergangenen zwei Jahre waren recht arbeitsintensiv, wodurch ich leider das Bloggen hier quasi aufgegeben habe. Nichtsdestotrotz gibt es über diese zwei Jahre und auch die nahe Zukunft viel spannendes zu erzählen, so dass dies hier der Versuch eines Wiedereinstiegs seien soll.
+Die vergangenen zwei Jahre waren recht arbeitsintensiv, wodurch ich leider das Bloggen hier quasi aufgegeben habe. Nichtsdestotrotz gibt es über diese zwei Jahre und auch die nahe Zukunft viel Spannendes zu erzählen, so dass dies hier der Versuch eines Wiedereinstiegs seien soll.
 
 <!-- more -->
 

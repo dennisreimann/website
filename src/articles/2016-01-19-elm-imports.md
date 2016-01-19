@@ -26,7 +26,7 @@ Die Standardbibliothek von Elm ist auf reine Kernfunktionalitäten beschränkt, 
 $ elm-package install evancz/elm-html
 ```
 
-Die Definition eigener Module werden wir uns im später folgenden Artikel zur Syntax näher ansehen. Nun zu den verschiedenen Import-Arten…
+Die Definition eigener Module werden wir uns im später folgenden Artikel zur Syntax näher ansehen. Nun zu den verschiedenen Import-Arten …
 
 ### Qualified Imports
 
@@ -50,13 +50,13 @@ main =
 
 Um HTML zu erzeugen, importieren wir das [`Html`](http://package.elm-lang.org/packages/evancz/elm-html/latest/)-Modul und das dazugehörige Untermodul `Html.Attributes`, welches die Hilfsfunktionen zur Erstellung von Attributen enthält. Darüber hinaus gibt es beispielsweise auch noch das Untermodul `Html.Events`, mit dem man Event-Bindings für die einzelnen Elemente erzeugen kann.
 
-Merkmal des *Qualified Import* ist, dass man das importierte Modul in seiner voll-qualifizierten Form referenzieren muss. Das heißt, dass Funktionen nur über die vollständige Referenzierung inklusive Modulname ausgeführt werden können und auch der Modultyp selbst nur mittels des Qualifiers referenzierbar ist (in diesem Beispiel `Html.Html`).
+Merkmal des *Qualified Import* ist, dass man das importierte Modul in seiner voll-qualifizierten Form referenzieren muss. Funktionen können somit nur über die vollständige Referenzierung inklusive Modulname ausgeführt werden und auch der Modultyp selbst ist nur mittels des Qualifiers (in diesem Beispiel `Html.Html`) referenzierbar.
 
-Wie man sieht führt dies bei häufig verwendeten Modulen zu sehr viel Redundanz, was uns direkt zur nächsten Art Import führt...
+Wie man sieht, führt dies bei häufig verwendeten Modulen zu viel Redundanz, was uns direkt zur nächsten Art Import führt …
 
 ### Unqualified Imports
 
-Mittels des Keywords `exposing` läst sich festlegen, welche Teile des Moduls auch ohne Qualifier verfügbar sind.
+Mittels des Keywords `exposing` lässt sich festlegen, welche Teile des Moduls auch ohne Qualifier verfügbar sind.
 
 
 ```elm
