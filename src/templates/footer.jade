@@ -1,30 +1,30 @@
 h2 Kontakt
 .vcard
-  span.fn Dennis Reimann
-  p.adr
-    span.street-address Ottjen-Alldag-Str. 32
-    br
-    span.postal-code 28277
-    | &nbsp;
-    span.locality Bremen
-    if h.isEnglish(locals)
-      br
-      span.country Germany
-    
   p
-    span.web
-      a.url(href="https://dennisreimann.de/" rel="me") dennisreimann.de
+    span.fn Dennis Reimann
     br
     span.mail
       a.email(href="mailto:mail@dennisreimann.de" rel="me") mail@dennisreimann.de
     br
     span.tel
       a.email(href="tel:+4915122630317" rel="me") +49 (0)151 22 63 03 17
-  
-  include social
-  
+
   p.more
     if h.isEnglish(locals)
       a.more__link(href="/contact.html") Contact details &amp; Imprint
     else
       a.more__link(href="/kontakt.html") Kontaktdetails &amp; Impressum
+      
+  ul.social
+    li.social__item
+      a(href="/atom.xml" rel="me")
+        img.social__item__icon(src=h.assetUrl("svgs/icons/feed.svg"))
+    li.social__item
+      a(href="https://twitter.com/dennisreimann" rel="me")
+        img.social__item__icon(src=h.assetUrl("svgs/icons/twitter.svg"))
+    li.social__item
+      a(href="https://github.com/dennisreimann" rel="me") 
+        img.social__item__icon(src=h.assetUrl("svgs/icons/github.svg"))
+    li.social__item
+      a(href="https://www.xing.com/profile/Dennis_Reimann5" rel="me")
+        img.social__item__icon(src=h.assetUrl("svgs/icons/xing.svg"))

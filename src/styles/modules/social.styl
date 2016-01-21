@@ -1,11 +1,15 @@
 .social
   list-style none
-  margin-left 0
+  margin 0
 
   &__item
     display inline-block
     + *
-      margin-left marginNormal
+      margin-left marginLarge
+
+    &__icon
+      width 40px
+      height 40px
 
   @media print
     display none
