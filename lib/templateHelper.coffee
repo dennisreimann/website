@@ -66,7 +66,7 @@ module.exports =
         keywords: (a) ->
           a.tags.join(',')
         hasCode: (a) ->
-          !!a.content.match(/class="hljs.*"/)
+          !!a.content.match(/class="(hljs|lang-).*"/)
 
       articles:
         feedDate: (articles) ->
