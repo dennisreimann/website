@@ -15,6 +15,8 @@ feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="de" xml:base="https://dennisr
       id= h.baseUrl(a.permalink)
       title= a.title
       link(href=h.baseUrl(a.permalink))
+      if a.alternate
+        link(rel="alternate" type="text/html" href=h.baseUrl(a.alternate.href) title=a.alternate.lang)
       updated= h.article.feedDate(a)
       summary= a.description
       content(type="html")= a.content

@@ -4,7 +4,7 @@ mixin navItem(type, current)
 
 ul.nav
   +navItem("home", h.nav.isHome)
-    a.nav__item__link(href="/")
+    a.nav__item__link(href="/" + h.t(locals, "", "home") + ".html")
       = h.t(locals, "Startseite", "Homepage")
   +navItem("articles", h.nav.isArticles)
     a.nav__item__link(href="/" + h.t(locals, "artikel", "articles") + ".html")
