@@ -2,8 +2,7 @@ doctype xml
 feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="de" xml:base="https://dennisreimann.de")
   id= h.baseUrl("/atom.xml")
   title //dennisreimann
-  subtitle Freiberuflicher Softwareentwickler
-  summary Dennis Reimann: Frontend-Entwicklung mit JavaScript, CSS und HTML
+  subtitle Dennis Reimann: Freiberuflicher Softwareentwickler • Frontend-Entwicklung mit JavaScript, CSS und HTML
   updated= h.articles.feedDate(mvb.articles)
   link(href= h.baseUrl("/articles.html"))
   link(rel="self" href=h.baseUrl("/atom.xml"))
@@ -18,5 +17,6 @@ feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="de" xml:base="https://dennisr
       if a.alternate
         link(rel="alternate" type="text/html" href=h.baseUrl(a.alternate.href) title=a.alternate.lang)
       updated= h.article.feedDate(a)
-      summary= a.description
+      if a.description
+        summary= a.description
       content(type="html")= a.content
