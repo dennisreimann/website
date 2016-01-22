@@ -1,4 +1,5 @@
 extends ../templates/layout
+include ../templates/articles
 
 block main
   section
@@ -56,14 +57,7 @@ block main
       a.more__link(href="/projekte.html") Weitere Projekte
       
   section
-    h2 Blog
-    ul.articles
-      for article in mvb.articles.slice(0,3)
-        li.articles__item
-          time.articles__item__date= article.date.toISOString().replace(/T.*/, "").split("-").reverse().join(".")
-          a.articles__item__link(href=article.permalink)
-            span.articles__item__title= article.title
-            if article.subtitle
-              span.articles__item__subtitle= article.subtitle
+    h2 Artikel
+    +articles(h.articles.filterByNoAlternate(mvb.articles, h.lang(locals)).slice(0,3))
     p.more
-      a.more__link(href="/articles.html") Weitere Artikel
+      a.more__link(href="/artikel.html") Weitere Artikel

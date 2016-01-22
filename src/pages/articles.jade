@@ -8,7 +8,7 @@ block main
   section
     h2 Articles
     each articlesByYear in mvb.groupedArticles.byYear
-      - articles = h.articles.filterByLanguage(articlesByYear.articles, h.lang(locals))
+      - articles = h.articles.filterByNoAlternate(articlesByYear.articles, h.lang(locals))
       section.articles_group
         h3.articles_group__title
           span.articles_group__title__year= articlesByYear.year

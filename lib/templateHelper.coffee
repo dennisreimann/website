@@ -73,14 +73,10 @@ module.exports =
           dates = articles.map((article)-> getDate(article))
           latestUpdate = new Date(Math.max.apply(null, dates))
           latestUpdate.toISOString()
-        filterByLanguage: (articles, lang) ->
-          articles.filter (article) -> article.lang is lang
         filterByNoAlternate: (articles, lang) ->
           articles.filter (article) ->
             alternate = article.alternate
-            console.log alternate
             !alternate or alternate.lang isnt lang
-
 
       lang: (context) ->
         if isEnglish(filePath)(context) then "en" else "de"
