@@ -2,6 +2,9 @@
 title: "Elm Imports"
 subtitle: "Das Modulsystem"
 lang: de
+alternate:
+  lang: en
+  href: /articles/elm-import-modules.html
 tags:
   - Elm
   - Frontend-Entwicklung
