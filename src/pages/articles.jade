@@ -2,16 +2,17 @@ extends ../templates/layout
 include ../templates/articles
 
 block title
-  title Blog • Dennis Reimann: Frontend-Entwicklung mit JavaScript, CSS und HTML
+  title Artiles • Dennis Reimann: Frontend development with JavaScript, CSS and HTML
 
 block main
   section
-    h2 Blog
+    h2 Articles
     each articlesByYear in mvb.groupedArticles.byYear
+      - articles = h.articles.filterByLanguage(articlesByYear.articles, h.lang(locals))
       section.articles_group
         h3.articles_group__title
           span.articles_group__title__year= articlesByYear.year
-          small.articles_group__title__count #{articlesByYear.articles.length} Artikel
-        +articles(articlesByYear.articles)
+          small.articles_group__title__count #{articles.length} #{articles.length == 1 ? "article" : "articles"}
+        +articles(articles)
     p.more
-      a.more__link(href="https://archive.dennisreimann.de/") Blog-Archiv
+      a.more__link(href="https://archive.dennisreimann.de/") Archive

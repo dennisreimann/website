@@ -1,0 +1,18 @@
+extends ../templates/layout
+include ../templates/articles
+
+block title
+  title Artikel • Dennis Reimann: Frontend-Entwicklung mit JavaScript, CSS und HTML
+
+block main
+  section
+    h2 Artikel
+    each articlesByYear in mvb.groupedArticles.byYear
+      - articles = h.articles.filterByNoAlternate(articlesByYear.articles, h.lang(locals))
+      section.articles_group
+        h3.articles_group__title
+          span.articles_group__title__year= articlesByYear.year
+          small.articles_group__title__count #{articles.length} Artikel
+        +articles(articles)
+    p.more
+      a.more__link(href="https://archive.dennisreimann.de/") Blog-Archiv

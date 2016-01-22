@@ -1,30 +1,32 @@
 ---
-title: "Elm Funktionen"
-subtitle: "Syntax, Piping und Currying"
+title: "Elm Functions"
+subtitle: "Syntax, Piping, and Currying"
+lang: en
+alternate:
+  lang: de
+  href: /articles/elm-funktionen.html
 tags:
   - Elm
-  - Frontend-Entwicklung
+  - Frontend development
 ---
 
-Dieser Artikel widmet sich dem zentralen Sprachkonstrukt in Elm: Den Funktionen.  Wie sieht die Definition und der Aufruf von Funktionen aus, wie kann man Funktionen über Piping verbinden und was ist überhaupt Currying? All das sehen wir uns nun an …
+This article spotlights the central construct of the Elm programming language: Functions. What does the definition of a function look like, how can functions be chained via piping and what the heck is currying? Let us have a closer look …
 
 <!-- more -->
 
 ### REPL
 
-Das Kürzel REPL steht für *Read-Evaluate-Print-Loop* und beschreibt eine Laufzeitumgebung, in der man Elm-Code ausführen kann und das Ergebnis direkt angezeigt bekommt. Die REPL ist ein ideales Werkzeug, um kurze Codeschnippsel ausprobieren und sich so mit der Syntax und den Sprachkonstrukten von Elm vertraut zu machen.
-
-Im Folgenden nutzen wir die REPL um die Beispiele in diesem Artikel auszuführen. Die REPL ist Teil einer jeden [Installation von Elm](elm-setup.html) und lässt sich über den folgenden Befehl auf der Kommandozeile öffnen:
+The *read-evaluate-print-loop* is a runtime environment for executing Elm code. The result of an expression is immediately shown, which makes the REPL an ideal tool for running short code samples and getting used to the syntax and language constructs. The REPL is part of the Elm standard installation and it can be opened on the command line:
 
 ```bash
 $ elm-repl
 ```
 
-Mehrzeilige Anweisungen müssen dabei in der REPL durch `\` verbunden werden. Dies ist in normalem Elm-Code nicht so, ich habe die Beispiele aber dementsprechend in diesem Artikel damit ausgezeichnet, so dass sie direkt in die REPL kopiert werden können.
+The examples in this article can be run in the REPL. Multiline statements have to end with `\`. This is not the case for normal Elm code, but the examples in this article use the backslash so that you can copy, paste and execute them in the REPL. I've added the output of each expression in the examples as `-- comment`.
 
-### Funktionsaufrufe
+### Calling functions
 
-Bevor wir uns ansehen, wie man eigene Funktionen definiert, nutzen wir erst einmal das [String-Modul](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/String) aus der Standardbibliothek. Um uns dessen Funktionen und deren Aufrufe näher anzusehen, müssen wir das entsprechende [Modul importieren](elm-imports.html) und können es anschließend verwenden. Den Output eines jeweiligen Befehls habe ich dabei als `-- Kommentar` angeführt.
+Before we take a look at how functions are defined, we will use functions from the [String module](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/String) which is part of the standard library. To use its functions we first need to import it.
 
 ```elm
 import String
@@ -36,18 +38,18 @@ String.append "h" "i"
 -- "hi" : String
 ```
 
-Der Aufruf einer Funktion ohne Argumente teilt uns die Funktionssignatur mit. Wie bei `String.append` zu sehen, besteht diese aus dem Funktionsnamen und der Typangabe von Argumenten und Ergebniswert. Der Ergebniswert wird dabei nicht näher ausgezeichnet, sondern ist einfach das letzte Element der Liste.
+Calling a function without any argument gives us its signature. As you can see with `String.append`, the signature consists of the name and the types of the arguments and the return value. The type of the return value is not separated differently than the argument types, it is just the last element of the list.
 
 ```
 <function: append> : String         -> String         -> String
-| Funktionsname    | Typ Argument 1  | Typ Argument 2  | Typ Ergebnis |
+| function name    | type argument 1 | type argument 2 | type result |
 ```
 
-In Elm werden die **Argumente durch Leezeichen getrennt**, wie bei `String.append "h" "i"` zu sehen. Ebenso werden im Vergleich zu JavaScript **keine Klammern um die Argumente** verwendet. Stattdessen werden Klammern verwendet, um den gesamten Funktionsaufruf zu kapseln, wenn das Ergebnis als Argument für einen weiteren Funktionsaufruf genutzt werden soll. Also direkt zum nächsten Thema …
+In Elm the **arguments are separated with spaces**, as you can see with `String.append "h" "i"`. There are also **no parentheses around the arguments**. Instead one uses parentheses to encapsulate the whole function call in case the result should be used as an argument for another function call. Which brings us to the topic of …
 
-### Piping: Funktionen verbinden
+### Piping: Chaining functions
 
-Funktionsergebnisse können natürlich auch direkt Argumente für weitere Funktionsaufrufe sein. In Elm gibt es dabei zwei Arten, die Aufrufe zu verbinden:
+Of course return values can be used as arguments for subsequent function calls. In Elm there are two ways to chain the calls:
 
 ```elm
 String.repeat 3 (String.toUpper (String.append "h" "i"))
@@ -60,9 +62,7 @@ String.repeat 3 <| String.toUpper <| String.append "h" "i"
 -- "HIHIHI" : String
 ```
 
-Mittels des Pipe-Operators `|>` bzw. `<|` lässt sich das Ergebnis an die nächste Funktion weitergeben. Es wird dabei als letztes Argument der Funktion verwendet, in die es gepiped wird.
-
-Wie man sieht, lässt sich der Datenfluß dabei in beide Richtungen pipen. Die gebräuchliste Art, Funktionsaufrufe durch einen Pipe-Operator zu verbinden ist dabei mittels `|>`, wobei die Funktionen dann auf einzelne Zeilen verteilt werden:
+Using the pipe-operators `|>` or `<|` one can pass through the result to the next function where it is used as the last argument for the function it gets piped into. The data can flow in both directions, though the usual way of chaining functions with the pipe operator is using `|>` and having a single line per function call:
 
 ```elm
 String.append "h" "i" \
@@ -70,9 +70,9 @@ String.append "h" "i" \
     |> String.repeat 3
 ```
 
-### Funktionsdefinition und Typ-Annotation
+### Function definition and type annotation
 
-Um eigene Funktionen zu definieren, gibt man den Namen und die Argumente an und trennt diese durch ein Gleichzeichen vom Funktionsinhalt. Dies kann sowohl als Einzeiler, als auch mehrzeilig geschehen:
+Custom functions are defined with the name and arguments, which are separated from the function body by an equal sign. They can be written on a single line or using multiple lines:
 
 ```elm
 sayHello name = String.append "Hello " name
@@ -83,9 +83,9 @@ sayHello name = \
 -- <function> : String -> String
 ```
 
-Des Weiteren kann man eine Typ-Annotation angeben. Dies ist kein Muss, da der Elm-Compiler über Typ-Inferenz verfügt und die Annotation anhand der im Programm verwendeten Argumente festlegt. Nichtsdestotrotz ist es sinnvoll die erwarteten Argumenttypen selbst anzugeben, weil man dadurch bei versehentlicher Verwendung unterschiedlicher Argumenttypen dem "Raten" des Compilers vorbeugt und nicht zuletzt das Programm zusätzlich dokumentiert.
+In addition to that its advisable to also use a type annotation. This is not a must, as the Elm compiler uses type inference to determine the types based on the argument usage in the program. Nevertheless its better to state the expected argument types explicitly as one ensures the correct type will be used and it also documents the program.
 
-Die Typ-Annotation wird der Funktion direkt vorangestellt und gibt dabei den Funktionsnamen und die Typen der Argumente und des Ergebniswerts an.
+Type annotations are prepended to the function definition and state the function name as well as the types of the arguments and of the return value.
 
 ```elm
 sayHello : String -> String
@@ -93,9 +93,9 @@ sayHello name =
     String.append "Hello " name
 ```
 
-### Anonyme Funktionen / Lambdas
+### Anonymous functions / lambdas
 
-Anonyme Funktionen haben keine Funktionsdefinition – sie werden inline definiert und oft als Argument für Funktionen wie `List.map` genutzt. Die Syntax einer anonymen Funktion sieht vor, dass sie geklammert und der Inhalt mit einem Backslash geprefixt wird:
+Anonymous functions do not have a function definition. They are defined inline and are often used as arguments for functions like `List.map`. They are parenthesized and the content is prefixed with a backslash:
 
 ```elm
 (\x y -> x * y)
@@ -110,9 +110,9 @@ List.map (\n -> sayHello n) ["Alice", "Bob"]
 
 ### Currying
 
-Wie in JavaScript auch, unterstützen Funktionen in Elm *Currying* – die Umwandlung einer Funktion mit mehreren Argumenten in eine Funktion mit einem Argument.
+Functions in Elm support *currying* – a technique of translating the evaluation of a function that takes multiple arguments into a function that takes a single argument.
 
-Im folgenden Beispiel kapselt die Funktion `threeTimes` einen partiellen Aufruf von `String.repeat` und liefert eine Funktion zurück, die das letzte Argument erwartet:
+In the following example the function `threeTimes` encapsulates a partial call of `String.repeat` and returns a function that expects the last argument:
 
 ```elm
 threeTimes = String.repeat 3
@@ -122,4 +122,4 @@ threeTimes "hi"
 -- "hihihi" : String
 ```
 
-Currying wird beispielsweise oft genutzt, um eine Funktion, die mehrere Argumente erwartet, für eine Verwendung in Funktionen, die nur ein Argument liefern (zum Beispiel `List.map`) zu verwenden.
+Currying is often used to prepare a function that expects multiple arguments for use as an argument of a function that passes only one argument (like `List.map`).

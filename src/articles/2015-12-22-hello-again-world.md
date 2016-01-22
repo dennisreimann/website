@@ -1,6 +1,7 @@
 ---
 title: Hello again, World
 subtitle: Ein neuer Anlauf mit dem Blog
+lang: de
 tags:
   - Frontend-Entwicklung
   - Blog
