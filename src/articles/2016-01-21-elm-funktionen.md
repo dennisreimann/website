@@ -128,3 +128,5 @@ threeTimes "hi"
 ```
 
 Currying wird beispielsweise oft genutzt, um eine Funktion, die mehrere Argumente erwartet, für eine Verwendung in Funktionen, die nur ein Argument liefern (zum Beispiel `List.map`) zu verwenden.
+
+Weitere Beispiele und eine tiefergehende Erklärung dazu finden sich bei LambdaCat: [Currying, The Unknown](http://www.lambdacat.com/road-to-elm-currying-the-unknown/).
