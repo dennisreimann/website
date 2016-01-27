@@ -15,7 +15,7 @@ revvedFile = (filePath) ->
 
 isEnglish = (filePath) ->
   (context) ->
-    if filePath and filePath.match(/^pages\/(contact|articles)/)
+    if filePath and filePath.match(/^pages\/(contact|articles|elm)/)
       true
     else
       context.mvb?.article?.lang is "en"
@@ -52,7 +52,7 @@ module.exports =
       nav:
         isHome: filePath.match(/^pages\/index/)
         isContact: filePath.match(/^pages\/(contact|kontakt)/)
-        isArticles: filePath.match(/^(pages\/(articles|artikel)|articles\/|drafts\/)/)
+        isArticles: filePath.match(/^(pages\/(articles|artikel|elm)|articles\/|drafts\/)/)
 
       article:
         feedDate: (a) ->

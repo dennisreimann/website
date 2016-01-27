@@ -1,0 +1,11 @@
+extends ../templates/layout
+include ../templates/_articles
+
+block title
+  title Elm – functional frontend development • Dennis Reimann
+
+block main
+  section
+    - articles = h.articles.filterByNoAlternate(mvb.groupedArticles.byTag["Elm"], h.lang(locals))
+    h2 Articles on Elm
+    +articles(articles, "topic")

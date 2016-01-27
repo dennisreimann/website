@@ -1,5 +1,5 @@
 extends ../templates/layout
-include ../templates/articles
+include ../templates/_articles
 
 block title
   title Articles • Dennis Reimann: Frontend development with JavaScript, CSS and HTML
@@ -13,6 +13,6 @@ block main
         h3.articles_group__title
           span.articles_group__title__year= articlesByYear.year
           small.articles_group__title__count #{articles.length} #{articles.length == 1 ? "article" : "articles"}
-        +articles(articles)
+        +articles(articles, "blog")
     p.more
       a.more__link(href="https://archive.dennisreimann.de/") Archive

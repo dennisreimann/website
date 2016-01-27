@@ -1,0 +1,15 @@
+mixin article_item_blog(a)
+  li.articles__item.articles__item--blog
+    time.articles__item__date= h.t(locals, h.article.germanDate(a), h.article.englishDate(a))
+    a.articles__item__link(href=a.permalink)
+      span.articles__item__title= a.title
+      if a.subtitle
+        span.articles__item__subtitle= a.subtitle
+    span.articles__item__lang
+      | [
+      = a.lang ? a.lang : h.lang(locals)
+      if a.alternate
+        |&nbsp;|&nbsp;
+        span.articles__item__alternate
+          a.articles__item__link(href=a.alternate.href)= a.alternate.lang
+      | ]

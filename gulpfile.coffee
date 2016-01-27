@@ -42,14 +42,30 @@ mvbConf =
     highlightjs.highlightAuto(code, languages).value
   grouping: (articles) ->
     byYear = {}
+    byTag = {}
+
     articles.forEach (article) ->
       year = article.date.toISOString().replace(/-.*/, "")
       byYear[year] ||= []
       byYear[year].push(article)
+
+      tags = article.tags.forEach (tag) ->
+        byTag[tag] ||= []
+        byTag[tag].push(article)
+
+    # year
     articlesByYear = []
     Object.keys(byYear).reverse().forEach (year) ->
       articlesByYear.push(year: year, articles: byYear[year])
-    byYear: articlesByYear
+
+    # tag
+    articlesByTag = byTag
+
+    # groups
+    {
+      byTag: articlesByTag
+      byYear: articlesByYear
+    }
 
 templateData = (file) ->
   h: templateHelper.createHelper(file, isDev, baseUrl, assetHost)

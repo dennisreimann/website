@@ -9,6 +9,11 @@
       @media M_and_up
         margin-top marginSmall
 
+    &--topic
+      + .articles__item--topic
+        @media M_and_up
+          margin-top marginLarge
+
     &__date
       display inline-block
       width 6.25em
@@ -39,3 +44,6 @@
     &__alternate
       .articles__item__link
         color colorGray
+
+    &__description
+      color colorSubtle

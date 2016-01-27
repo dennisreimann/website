@@ -1,5 +1,5 @@
 extends ../templates/layout
-include ../templates/articles
+include ../templates/_articles
 
 block title
   title Frontend-Entwicklung mit JavaScript, CSS und HTML • Dennis Reimann
@@ -61,6 +61,6 @@ block main
       
   section
     h2 Artikel
-    +articles(h.articles.filterByNoAlternate(mvb.articles, h.lang(locals)).slice(0,3))
+    +articles(h.articles.filterByNoAlternate(mvb.articles, h.lang(locals)).slice(0,3), "blog")
     p.more
       a.more__link(href="/artikel.html") Weitere Artikel
