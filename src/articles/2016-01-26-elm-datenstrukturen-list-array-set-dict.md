@@ -1,11 +1,11 @@
 ---
-title: "Elm Datenstrukturen"
+title: "Elm Datenstrukturen (1)"
 subtitle: "Listen, Arrays, Sets und Dictionaries"
 updated: 2016-01-26T10:00
 lang: de
-# alternate:
-#   lang: en
-#   href: /articles/elm-datastructures.html
+alternate:
+  lang: en
+  href: /articles/elm-datastructures-list-array-set-dict.html
 tags:
   - Elm
   - Frontend-Entwicklung
@@ -17,7 +17,7 @@ In Elm gibt es verschiedene Datenstrukturen, die Elemente enthalten können. Die
 
 Alle dieser Datenstrukturen haben gemeinsam, dass sie immer nur den gleichen Typ an Elementen enthalten können – beispielsweise eine Liste von Strings: `List String`. Dies wird durch den Compiler sichergestellt und ist ein Unterschied im Vergleich zu JavaScript, wo Arrays Elemente mit unterschiedlichsten Typen enthalten können.  
 
-Die verschiedenen Datenstrukturen gleichen sich zum Teil durch ein gemeinsames Interface von Funktionen, mit denen man über die enthaltenen Elemente iterieren und diese Verarbeiten kann. Neben den Basisoperationen `map`, `filter`, `foldl`/`foldr` (dem JavaScripter als `reduce` bekannt) stehen auch einfache Abfragefunktionen wie `isEmpty` oder `member` zur Verfügung. Letztere Methode wird von Arrays allerdings nicht unterstützt, womit wir nun auch bei den Unterschieden der einzelnen Datenstrukturen wären …
+Die verschiedenen Datenstrukturen gleichen sich zum Teil durch ein gemeinsames "Interface" von Funktionen, mit denen man über die enthaltenen Elemente iterieren und diese Verarbeiten kann. Neben den Basisoperationen `map`, `filter`, `foldl`/`foldr` (dem JavaScripter als `reduce` bekannt) stehen auch einfache Abfragefunktionen wie `isEmpty` oder `member` zur Verfügung. Letztere wird von Arrays allerdings nicht unterstützt, womit wir nun auch bei den Unterschieden und Anwendungsfällen der einzelnen Datenstrukturen wären …
 
 ### Listen
 
@@ -32,7 +32,7 @@ listByPrepending = 1 :: 2 :: 3 :: 4 :: []
 -- [1,2,3,4] : List number
 ```
 
-Von der Syntax her erinnern Listen an Arrays aus JavaScript, der wichtigste Unterschied dabei ist jedoch, dass sie über die Standardbibliothek keinen Zugriff auf die Elemente per Index unterstützen. Natürlich lässt sich diese Funktionalität implementieren und wird auch über das [List-Extras](http://package.elm-lang.org/packages/circuithub/elm-list-extra/3.9.0/List-Extra) Modul bereitgestellt, jedoch kommt dieser Anwendungsfall in der funktionalen Verarbeitung von Listen eigenlich nicht vor und dürfte nur äußerst selten benötigt werden. Üblicherweise werden Funktionen wie `filter`, `head` und `tail` genutzt, um bestimmte Elemente oder Teilbereiche einer Liste zu selektieren:
+Von der Syntax her erinnern Listen an Arrays aus JavaScript, der wichtigste Unterschied dabei ist jedoch, dass sie über die Standardbibliothek keinen Zugriff auf die Elemente per Index unterstützen. Natürlich lässt sich diese Funktionalität implementieren und wird auch über das [List-Extra](http://package.elm-lang.org/packages/circuithub/elm-list-extra/3.9.0/List-Extra) Modul bereitgestellt, jedoch kommt dieser Anwendungsfall in der funktionalen Verarbeitung von Listen eigenlich nicht vor und dürfte nur äußerst selten benötigt werden. Üblicherweise werden Funktionen wie `filter`, `head` und `tail` genutzt, um bestimmte Elemente oder Teilbereiche einer Liste zu selektieren:
 
 ```elm
 list = [1,2,3,4]
@@ -106,7 +106,7 @@ Sets eignen sich wie zu sehen insbesondere für vergleichende Operationen, bei d
 Die Datenstruktur [`Dict`](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Dict) eignet sich, um Schlüssel-Wert-Paare abzulegen. Die Schlüssel sind dabei eindeutig und können Werte eines jeden vergleichbaren Datentyps sein – neben `String` und `Int` sind somit auch `Float` und `Time`-Werte mögliche Schlüssel.
 Die Werte können von einem beliebigen Typen sein, wie bei den anderen Datentypen auch ist jedoch Vorraussetzung, dass die Werte alle vom gleichen Datentyp sind.
 
-Ein möglicher Datentyp ist dabei der Record, welchen wir in diesem Beispiel verwenden und den wir uns im kommenden Artikel näher ansehen werden:
+Ein möglicher Datentyp ist dabei der Record, welchen wir in diesem Beispiel verwenden und den wir uns im kommenden Artikel über die Datenstrukturen Tuples und Records näher ansehen werden:
 
 ```elm
 import Dict
