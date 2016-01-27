@@ -112,9 +112,9 @@ Ein möglicher Datentyp ist dabei der Record, welchen wir in diesem Beispiel ver
 import Dict
 
 users = Dict.fromList \
-    [ ("dennis", { email = "mail@dennisreimann.de"}) \
-    , ("otherdude", { email = "otherdude@example.org"}) \
-    ]
+  [ ("dennis", { email = "mail@dennisreimann.de"}) \
+  , ("otherdude", { email = "otherdude@example.org"}) \
+  ]
 
 usernames = Dict.keys users
 -- ["dennis","otherdude"] : List String

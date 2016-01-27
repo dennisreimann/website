@@ -42,14 +42,14 @@ import Html.Attributes
 
 main : Html.Html
 main =
-    Html.div
-        [ Html.Attributes.class "wrapper" ]
-        [ Html.h1
-            [ Html.Attributes.class "headline" ]
-            [ Html.text "Hello World" ]
-        , Html.p []
-            [ Html.text "HTML, with qualified imports." ]
-        ]
+  Html.div
+    [ Html.Attributes.class "wrapper" ]
+    [ Html.h1
+      [ Html.Attributes.class "headline" ]
+      [ Html.text "Hello World" ]
+    , Html.p []
+      [ Html.text "HTML, with qualified imports." ]
+    ]
 ```
 
 To generate HTML we import the [`Html`](http://package.elm-lang.org/packages/evancz/elm-html/latest/) module and the accompanying submodule `Html.Attributes`, which includes helper functions for creating HTML attributes. There is also the submodule `Html.Events` for attaching event bindings to elements.
@@ -72,14 +72,14 @@ import Html.Attributes exposing (..)
 
 main : Html
 main =
-    div
-        [ class "wrapper" ]
-        [ h1
-            [ class "headline" ]
-            [ text "Hello World" ]
-        , p []
-            [ text "HTML, with unqualified imports." ]
-        ]
+  div
+    [ class "wrapper" ]
+    [ h1
+      [ class "headline" ]
+      [ text "Hello World" ]
+    , p []
+      [ text "HTML, with unqualified imports." ]
+    ]
 ```
 
 One can expose single module identifiers (module or function names, see the `Html` import) or even all of the modules identifiers, as shown with the import of `Html.Attributes`.

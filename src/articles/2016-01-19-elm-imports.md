@@ -42,14 +42,14 @@ import Html.Attributes
 
 main : Html.Html
 main =
-    Html.div
-        [ Html.Attributes.class "wrapper" ]
-        [ Html.h1
-            [ Html.Attributes.class "headline" ]
-            [ Html.text "Hello World" ]
-        , Html.p []
-            [ Html.text "HTML, mit Qualified Imports." ]
-        ]
+  Html.div
+    [ Html.Attributes.class "wrapper" ]
+    [ Html.h1
+      [ Html.Attributes.class "headline" ]
+      [ Html.text "Hello World" ]
+    , Html.p []
+      [ Html.text "HTML, mit Qualified Imports." ]
+    ]
 ```
 
 Um HTML zu erzeugen, importieren wir das [`Html`](http://package.elm-lang.org/packages/evancz/elm-html/latest/)-Modul und das dazugehörige Untermodul `Html.Attributes`, welches die Hilfsfunktionen zur Erstellung von Attributen enthält. Darüber hinaus gibt es beispielsweise auch noch das Untermodul `Html.Events`, mit dem man Event-Bindings für die einzelnen Elemente erzeugen kann.
@@ -72,14 +72,14 @@ import Html.Attributes exposing (..)
 
 main : Html
 main =
-    div
-        [ class "wrapper" ]
-        [ h1
-            [ class "headline" ]
-            [ text "Hello World" ]
-        , p []
-            [ text "HTML, mit Unqualified Imports." ]
-        ]
+  div
+    [ class "wrapper" ]
+    [ h1
+      [ class "headline" ]
+      [ text "Hello World" ]
+    , p []
+      [ text "HTML, mit Unqualified Imports." ]
+    ]
 ```
 
 Dabei lassen sich wie man sieht sowohl einzelne Identifier (Modul- und Funktionsnamen, siehe `Html`-Import) bereitstellen oder eben einfach alle Identifier des Moduls, wie beim Import von `Html.Attributes`.

@@ -67,8 +67,8 @@ Using the pipe-operators `|>` or `<|` one can pass through the result to the nex
 
 ```elm
 String.append "h" "i" \
-    |> String.toUpper \
-    |> String.repeat 3
+  |> String.toUpper \
+  |> String.repeat 3
 ```
 
 ### Function definition and type annotation
@@ -80,7 +80,7 @@ sayHello name = String.append "Hello " name
 -- <function> : String -> String
 
 sayHello name = \
-    String.append "Hello " name
+  String.append "Hello " name
 -- <function> : String -> String
 ```
 
@@ -91,7 +91,7 @@ Type annotations are prepended to the function definition and state the function
 ```elm
 sayHello : String -> String
 sayHello name =
-    String.append "Hello " name
+  String.append "Hello " name
 ```
 
 ### Anonymous functions / lambdas

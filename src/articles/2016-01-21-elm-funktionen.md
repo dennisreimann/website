@@ -71,8 +71,8 @@ Wie man sieht, lässt sich der Datenfluß dabei in beide Richtungen pipen. Die g
 
 ```elm
 String.append "h" "i" \
-    |> String.toUpper \
-    |> String.repeat 3
+  |> String.toUpper \
+  |> String.repeat 3
 ```
 
 ### Funktionsdefinition und Typ-Annotation
@@ -84,7 +84,7 @@ sayHello name = String.append "Hello " name
 -- <function> : String -> String
 
 sayHello name = \
-    String.append "Hello " name
+  String.append "Hello " name
 -- <function> : String -> String
 ```
 
@@ -95,7 +95,7 @@ Die Typ-Annotation wird der Funktion direkt vorangestellt und gibt dabei den Fun
 ```elm
 sayHello : String -> String
 sayHello name =
-    String.append "Hello " name
+  String.append "Hello " name
 ```
 
 ### Anonyme Funktionen / Lambdas

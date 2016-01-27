@@ -110,9 +110,9 @@ A possible type for values is a record, which we will use in the following examp
 import Dict
 
 users = Dict.fromList \
-    [ ("dennis", { email = "mail@dennisreimann.de"}) \
-    , ("otherdude", { email = "otherdude@example.org"}) \
-    ]
+  [ ("dennis", { email = "mail@dennisreimann.de"}) \
+  , ("otherdude", { email = "otherdude@example.org"}) \
+  ]
 
 usernames = Dict.keys users
 -- ["dennis","otherdude"] : List String
