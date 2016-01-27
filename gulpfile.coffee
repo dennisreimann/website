@@ -178,4 +178,4 @@ gulp.task "watch", ->
 gulp.task "build", (cb) -> runSequence("styles", ["copy", "pages", "articles", "feed", "scripts"], cb)
 gulp.task "develop", (cb) -> runSequence("build", ["watch", "browserSync"], cb)
 gulp.task "rev", (cb) -> runSequence("revAssets", ["pages", "articles"], cb)
-gulp.task "production", (cb) -> runSequence("build", "rev", cb)
+gulp.task "production", (cb) -> runSequence("build", "rev", "sitemap", cb)
