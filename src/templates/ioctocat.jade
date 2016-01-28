@@ -1,0 +1,16 @@
+.ioctocat(itemscope itemtype="http://schema.org/SoftwareApplication")
+  link(itemprop="SoftwareApplicationCategory" href="http://schema.org/SocialNetworkingApplication")
+  a(href="https://ioctocat.com/appstore")
+    img.ioctocat__icon(itemprop="image" src="/images/ioctocat.png" alt="iOS app for GitHub")
+  h3.ioctocat__heading(itemprop="name")
+    a(href="https://ioctocat.com/appstore") iOctocat
+  p.ioctocat__description(itemprop="description")
+    = h.t(locals, "GitHub für unterwegs - deine Projekte und das was dort passiert, immer dabei auf deinem ", "GitHub in your pocket: iOctocat is the app for staying up to date with your projects on your ") 
+    span(itemprop="device")= h.t(locals, "iPhone und iPad", "iPhone and iPad") 
+    | .
+  p.ioctocat__description
+    = h.t(locals, "Die App ist", "The app is") 
+    | 
+    a(href="https://ioctocat.com/appstore" itemprop="url")= h.t(locals, "im App Store erhältlich", "available on the App Store")  
+    | .
+  

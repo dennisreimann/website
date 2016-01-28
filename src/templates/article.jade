@@ -42,4 +42,7 @@ block main
           - nextArticle = mvb.article.nextArticle
           h5.article__nav__title= h.t(locals, "Weitere Artikel", "More articles")
           +articles([nextArticle, prevArticle].filter(function(e){return e}), "blog").article__nav__items
+  
+  section
+    include ../templates/ioctocat
           

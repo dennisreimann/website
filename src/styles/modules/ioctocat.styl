@@ -1,0 +1,26 @@
+.ioctocat
+  overflow hidden
+  margin-top 1.25em
+  border 1px solid lighten(colorLightGray, 1)
+  border-radius .5em
+  padding 15px
+  background-image linear-gradient(lighten(colorLightGray, 7), lighten(colorLightGray, 3))
+
+  &__heading
+    margin-top .25em
+
+  &__icon
+    float left
+    margin 0 15px 10px 0
+
+    @media up_to_M
+      width 80px
+    @media M_and_up
+      width 100px
+
+  &__description
+    &:last-child
+      margin 0
+
+    @media M_and_up
+      margin 0
