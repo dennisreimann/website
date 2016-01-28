@@ -13,5 +13,8 @@ mixin article_item_topic(a)
           a.articles__item__link(href=a.alternate.href)= a.alternate.lang
       | ]
     if a.description
-      p.articles__item__description!= a.description
+      p.articles__item__description
+        != a.description
+        |&nbsp;
+        a.more__link(href=a.permalink + "#more")= h.t(locals, "mehr", "more")
       
