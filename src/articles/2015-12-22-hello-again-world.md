@@ -7,7 +7,6 @@ tags:
   - Blog
   - Galeria Kaufhof
   - Microservices
-  - Elm
   - JavaScript
   - Gulp
 ---

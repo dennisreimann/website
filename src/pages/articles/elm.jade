@@ -7,5 +7,5 @@ block title
 block main
   section
     - articles = h.articles.filterByNoAlternate(mvb.groupedArticles.byTag["Elm"], h.lang(locals))
-    h2 Articles on Elm
+    h2 Elm – functional frontend development
     +articles(articles, "topic")
