@@ -5,7 +5,7 @@ updated: 2016-01-26T10:00
 lang: de
 alternate:
   lang: en
-  href: /articles/elm-datastructures-list-array-set-dict.html
+  href: /articles/elm-data-structures-list-array-set-dict.html
 tags:
   - Elm
   - Frontend-Entwicklung
