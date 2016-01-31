@@ -56,7 +56,7 @@ To generate HTML we import the [`Html`](http://package.elm-lang.org/packages/eva
 
 When using a *qualified import* one has to reference the modules functions by their fully-qualified name. This means you have to state their name including the module name and even the type of the module can only be referenced with the full qualifier (in this case `Html.Html`).
 
-As you can see this leads to some redundance in case a modules is used often. This brings us to the next type of imports …
+As you can see this leads to some redundancy in case a modules is used often. This brings us to the next type of imports …
 
 ### Unqualified Imports
 

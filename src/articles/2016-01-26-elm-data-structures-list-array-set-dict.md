@@ -11,7 +11,7 @@ tags:
   - Frontend-Entwicklung
 ---
 
-In Elm there are different kinds of data structures that can contain elements. This article spotlights the iteratable structures lists, arrays, sets, and dictionaries, which support the basic operations of functional programming like `map`, `filter`, and folding/reducing.
+In Elm there are different kinds of data structures that can contain elements. This article spotlights the iterable structures lists, arrays, sets, and dictionaries, which support the basic operations of functional programming like `map`, `filter`, and folding/reducing.
 
 <!-- more -->
 
