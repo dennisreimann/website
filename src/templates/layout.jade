@@ -31,5 +31,6 @@ html
         block main
       footer#footer
         include footer
-    include analytics
+    if !h.isDev
+      include analytics
     block foot
