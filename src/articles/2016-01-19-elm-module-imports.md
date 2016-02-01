@@ -1,10 +1,10 @@
 ---
-title: "Elm Imports"
+title: "Elm Module und Imports"
 subtitle: "Das Modulsystem"
 lang: de
 alternate:
   lang: en
-  href: /articles/elm-import-modules.html
+  href: /articles/elm-modules-import.html
 tags:
   - Elm
   - Frontend-Entwicklung
@@ -30,7 +30,7 @@ Die Standardbibliothek von Elm ist auf reine Kernfunktionalitäten beschränkt, 
 $ elm-package install evancz/elm-html
 ```
 
-Die Definition eigener Module werden wir uns im später folgenden Artikel zur Syntax näher ansehen. Nun zu den verschiedenen Import-Arten …
+Bevor wir zu der Definition eigener Module kommen, sehen wir uns die verschiedenen Import-Arten an …
 
 ### Qualified Imports
 
@@ -92,12 +92,31 @@ Dabei lassen sich wie man sieht sowohl einzelne Identifier (Modul- und Funktions
 import HelperFunctions as Utils
 ```
 
-Die in `HelperFunctions` definierten Funktionen sind dabei dann über das Prefix `Utils` referenzierbar.
+Die in `HelperFunctions` definierten Funktionen sind dabei dann über das Präfix `Utils` referenzierbar.
 
 ### Wann benutzt man was?
 
 Für den Import von Modulen gibt es ein paar naheliegende Best Practices:
 
 * Grundsätzlich sollte man versuchen, möglichst den *Qualified Import* zu nutzen, weil darüber klar ersichtlich ist, welches Modul welche Funktionalität bereitstellt.
-* Bei oft verwendeten Identifieren ist es jedoch ratsam, auf den *Unqualified Import* zurückzugreifen, um Redundanz zu vermeiden und den Code dadurch leserlicher zu gestalten. Dies ist beispielsweise bei der Verwendung der HTML-Module oft der Fall.
+* Bei oft verwendeten Identifiern ist es jedoch ratsam, auf den *Unqualified Import* zurückzugreifen, um Redundanz zu vermeiden und den Code dadurch leserlicher zu gestalten. Dies ist beispielsweise bei der Verwendung der HTML-Module oft der Fall.
 * Ein *Alias* sollte nicht verwendet werden, um Modulnamen kryptisch zu verkürzen. Man sollte lieber auf eine sprechende Variante setzen, als beispielsweise etwas wie `import Html as H` zu nutzen.
+
+### Eigene Module definieren
+
+So lange wir an einer simplen App arbeiten, die in einer einzigen Datei enthalten ist, ist alles sehr einfach. In diesem Fall braucht man nicht einmal eine Moduldefinition, da der Compiler annimmt, dass man im `Main`-Modul arbeitet. Bei größeren Projekten macht es allerdings Sinn, die Applikation in eigenständige Module aufzuteilen.
+
+Module werden am Anfang einer Datei definiert. Optional kann man angeben, welche Teile der Funktionalität exportiert werden sollen – lässt man diese Anweisung aus, wird alles exportiert, was äquivalent zu der Definition mit `(..)` ist.
+
+```elm
+-- default module definition
+module Main where
+
+-- custom module exporting everything
+module FullAwesomeness (..) where
+
+-- custom module exporting only the specified types and functions
+module Restricted (ImportableType, importableFunction) where
+```
+
+Jetzt wo wir wissen, wie man Module definieren und importieren kann, sehen wir uns im nächsten Schritt das zentrale Sprachkonstrukt in Elm an: [Funktionen](/articles/elm-funktionen.html).

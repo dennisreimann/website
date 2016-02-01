@@ -1,13 +1,13 @@
 ---
-title: "Elm Imports"
+title: "Elm Modules and Imports"
 subtitle: "The module system"
 lang: en
 alternate:
   lang: de
-  href: /articles/elm-imports.html
+  href: /articles/elm-module-imports.html
 tags:
-- Elm
-- Frontend development
+  - Elm
+  - Frontend development
 ---
 
 In the previous article which describes [how to setup your first Elm project](elm-setup-first-project.html) we already needed to import a module. Importing a module exposes its functionality in the context of the program that is loading the module. In Elm there are different ways to import modules and we will have a look at these in this article.
@@ -30,7 +30,7 @@ The standard library covers the most essential parts of the functionality in Elm
 $ elm-package install evancz/elm-html
 ```
 
-We will take a look at how to define custom modules in a later article, for now let us focus on the different ways to import modules …
+Before we will learn how to define custom modules let us focus on the different ways to import modules …
 
 ### Qualified Imports
 
@@ -101,3 +101,22 @@ These are some best practices to consider when importing a module:
 * You should try your best to use *qualified imports* as much as possible, as they offer the clearest way to show which module functionality is coming from.
 * For often used identifiers its best though, to use an *unqualified import*. This prevents redundancy and helps to keep the code clean. The HTML modules are a good example for this.
 * An *alias* should not be used to shorten module names to something meaningless and cryptic like `import Html as H`. Instead one should define a suitable name that reveals the intention or the purpose of the given module.
+
+### Defining custom modules
+
+As long as we are working in a simple app contained in a single file everything is pretty easy. In this case we do not even need a module definition as the compiler assumes we are working inside the `Main` module. When projects grow, it makes sense to split them up into separate modules.
+
+Modules get defined at the top of the file. It is optional to explicitly state what gets exported – in case this statement is left out everything will be exported, which is the same as defining the exports as `(..)`.
+
+```elm
+-- default module definition
+module Main where
+
+-- custom module exporting everything
+module FullAwesomeness (..) where
+
+-- custom module exporting only the specified types and functions
+module Restricted (ImportableType, importableFunction) where
+```
+
+Now that we know how to import and define our own modules, let us take the next step by learning about the central construct of the Elm programming language: [Functions](/articles/elm-functions.html).
