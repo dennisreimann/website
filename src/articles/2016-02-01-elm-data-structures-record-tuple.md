@@ -15,7 +15,7 @@ After we have already covered the iterable data structures in the previous artic
 
 <!-- more -->
 
-Records and tuples can contain an arbitrary amount of elements – as opposed to [lists, arrays, sets , and dictionaries](/articles/elm-data-structures-list-array-set-dict.html) these elements do not have to be of the same data type. Because of that tuples and records are suited well for representing more complex element structures and objects. Before we will cover both of them in detail, let us first talk about _type aliases_, which can be used to further describe records and tuples and make them more expressive.
+Records and tuples can contain an arbitrary amount of elements – as opposed to [lists, arrays, sets, and dictionaries](/articles/elm-data-structures-list-array-set-dict.html) these elements do not have to be of the same data type. Because of that tuples and records are suited well for representing more complex element structures and objects. Before we will cover both of them in detail, let us first talk about _type aliases_, which can be used to further describe records and tuples and make them more expressive.
 
 ### Type Aliases
 

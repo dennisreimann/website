@@ -126,3 +126,5 @@ threeTimes "hi"
 Currying is often used to prepare a function that expects multiple arguments for use as an argument of a function that passes only one argument (like `List.map`).
 
 For more examples and an in-depth explanation head over to LambdaCat: [Currying, The Unknown](http://www.lambdacat.com/road-to-elm-currying-the-unknown/).
+
+Now that you know about functions, let us have a closer look at [data structures in Elm](/articles/elm-data-structures-list-array-set-dict.html).

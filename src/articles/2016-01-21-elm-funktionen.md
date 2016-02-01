@@ -11,7 +11,7 @@ tags:
   - Frontend-Entwicklung
 ---
 
-Dieser Artikel widmet sich dem zentralen Sprachkonstrukt in Elm: Den Funktionen.  Wie sieht die Definition und der Aufruf von Funktionen aus, wie kann man Funktionen über Piping verbinden und was ist überhaupt Currying? All das sehen wir uns nun an …
+Dieser Artikel widmet sich dem zentralen Sprachkonstrukt in Elm: Den Funktionen. Wie sieht die Definition und der Aufruf von Funktionen aus, wie kann man Funktionen über Piping verbinden und was ist überhaupt Currying? All das sehen wir uns nun an …
 
 <!-- more -->
 
@@ -130,3 +130,5 @@ threeTimes "hi"
 Currying wird beispielsweise oft genutzt, um eine Funktion, die mehrere Argumente erwartet, für eine Verwendung in Funktionen, die nur ein Argument liefern (zum Beispiel `List.map`) zu verwenden.
 
 Weitere Beispiele und eine tiefergehende Erklärung dazu finden sich bei LambdaCat: [Currying, The Unknown](http://www.lambdacat.com/road-to-elm-currying-the-unknown/).
+
+Jetzt wo wir uns mit Funktionen auskennen, ist der nächste Schritt, dass wir die [Datenstrukturen in Elm](/articles/elm-datenstrukturen-list-array-set-dict.html) näher beleuchten.

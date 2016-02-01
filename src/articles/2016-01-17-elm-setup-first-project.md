@@ -69,4 +69,4 @@ Right now it is kind of complicated to give custom HTML and CSS to Reactor. In a
 
 Webpacks configuration might seem extensive, but there is the [elm-webpack-starter](https://github.com/pmdesgn/elm-webpack-starter) project which is a good starting point for creating your own, more ambitious setup. I have also used it for creating [my first, tiny elm application](https://github.com/dennisreimann/elm-bike-configurator).
 
-The upcoming articles will spotlight [imports](elm-import-modules.html), the Elm syntax, packages, and patterns.
+The upcoming articles spotlights [the Elm module system](/articles/elm-modules-import.html).

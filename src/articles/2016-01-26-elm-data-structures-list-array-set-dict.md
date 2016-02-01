@@ -123,3 +123,5 @@ userRecords = Dict.values users
 dennis = Dict.get "dennis" users
 -- Just { email = "mail@dennisreimann.de " } : Maybe.Maybe { email : String }
 ```
+
+The next article covers the data structures [record and tuple](/articles/elm-data-structures-record-tuple.html), which can contain elements of different types.
