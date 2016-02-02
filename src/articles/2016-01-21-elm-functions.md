@@ -9,6 +9,8 @@ alternate:
 tags:
   - Elm
   - Frontend development
+  - Functions
+  - Functional Programming
 ---
 
 This article spotlights the central construct of the Elm programming language: Functions. What does the definition of a function look like, how can functions be chained via piping and what the heck is currying? Let us have a closer look …

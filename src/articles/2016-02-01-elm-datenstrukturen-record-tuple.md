@@ -9,6 +9,9 @@ alternate:
 tags:
   - Elm
   - Frontend-Entwicklung
+  - Datenstrukturen
+  - Record
+  - Tupel
 ---
 
 Nachdem wir uns bereits die iterierbaren Datenstrukturen näher angesehen haben, kommen wir nun zu Records und Tupeln, die jeweils Elemente unterschiedlicher Typen enthalten können. Ebenso schauen wir uns an, wie man mittels Destructuring auf ihre Werte zugreifen kann und was ein Typalias ist … <!-- more -->

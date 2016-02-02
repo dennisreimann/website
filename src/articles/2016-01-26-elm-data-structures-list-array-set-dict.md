@@ -8,7 +8,12 @@ alternate:
   href: /articles/elm-datenstrukturen-list-array-set-dict.html
 tags:
   - Elm
-  - Frontend-Entwicklung
+  - Frontend development
+  - Data structures
+  - List
+  - Array
+  - Set
+  - Dict
 ---
 
 In Elm there are different kinds of data structures that can contain elements. This article spotlights the iterable structures lists, arrays, sets, and dictionaries, which support the basic operations of functional programming like `map`, `filter`, and folding/reducing.

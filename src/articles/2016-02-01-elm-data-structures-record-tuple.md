@@ -8,7 +8,10 @@ alternate:
   href: /articles/elm-datenstrukturen-record-tuple.html
 tags:
   - Elm
-  - Frontend-Entwicklung
+  - Frontend development
+  - Data structures
+  - Record
+  - Tuple
 ---
 
 After we have already covered the iterable data structures in the previous article, we will now work wth records and tuples, which can contain elements of different types. We will also have a look at how to access values using destructuring and get to know about type aliases …

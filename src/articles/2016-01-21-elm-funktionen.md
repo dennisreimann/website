@@ -9,6 +9,8 @@ alternate:
 tags:
   - Elm
   - Frontend-Entwicklung
+  - Funktionen
+  - Funktionale Programmierung
 ---
 
 Dieser Artikel widmet sich dem zentralen Sprachkonstrukt in Elm: Den Funktionen. Wie sieht die Definition und der Aufruf von Funktionen aus, wie kann man Funktionen über Piping verbinden und was ist überhaupt Currying? All das sehen wir uns nun an …

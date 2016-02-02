@@ -8,6 +8,8 @@ alternate:
 tags:
   - Elm
   - Frontend development
+  - Webpack
+  - Gulp
 ---
 
 So you are ready to dive into the next generation approach of creating frontends for web applications? How to install Elm and which tools do you need to build your first project? Besides clarifying these questions we will also look at a toolchain that goes beyond the simple *Hello World* …

@@ -8,6 +8,8 @@ alternate:
 tags:
   - Elm
   - Frontend-Entwicklung
+  - Module
+  - Import
 ---
 
 Im vorigen Artikel, der das [Elm-Setup](elm-setup.html) beschreibt, benötigten wir schon ein Modul, das importiert werden musste. Durch das Importieren/Laden eines Moduls werden dessen Funktionalitäten im Kontext der importierenden Datei bereitgestellt. In Elm gibt es verschiedene Formen des Modulimports, die wir uns in diesem Artikel näher ansehen werden.

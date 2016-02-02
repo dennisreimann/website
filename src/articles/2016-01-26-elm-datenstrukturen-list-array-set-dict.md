@@ -9,6 +9,11 @@ alternate:
 tags:
   - Elm
   - Frontend-Entwicklung
+  - Datenstrukturen
+  - List
+  - Array
+  - Set
+  - Dict
 ---
 
 In Elm gibt es verschiedene Datenstrukturen, die Elemente enthalten können. Dieser Artikel widmet sich den iterierbaren Strukturen Listen, Arrays, Sets und Dictionaries, welche sich alle mit den Kernoperationen funktionaler Programmierung (`map`, `filter` und folding/reducing) verarbeiten lassen.

@@ -8,6 +8,8 @@ alternate:
 tags:
   - Elm
   - Frontend development
+  - Module
+  - Import
 ---
 
 In the previous article which describes [how to setup your first Elm project](elm-setup-first-project.html) we already needed to import a module. Importing a module exposes its functionality in the context of the program that is loading the module. In Elm there are different ways to import modules and we will have a look at these in this article.
