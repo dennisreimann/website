@@ -15,7 +15,7 @@ revvedFile = (filePath) ->
 
 isEnglish = (filePath) ->
   (context) ->
-    if filePath and filePath.match(/^pages\/(contact|articles|elm)/)
+    if filePath and filePath.match(/^pages\/(contact|articles)/)
       true
     else
       context.mvb?.article?.lang is "en"
@@ -29,6 +29,7 @@ getDate = (article) ->
 module.exports =
   createHelper: (file, isDev, baseUrl, assetHost) ->
     filePath = path.relative(paths.src, file.path)
+    isElm = filePath.match(/^(pages\/(articles|artikel)\/elm)/) || filePath.match(/^articles\/elm/)
 
     {
       baseUrl: (filePath) ->
@@ -52,7 +53,8 @@ module.exports =
       nav:
         isHome: filePath.match(/^pages\/index/)
         isContact: filePath.match(/^pages\/(contact|kontakt)/)
-        isArticles: filePath.match(/^(pages\/(articles|artikel|elm)|articles\/|drafts\/)/)
+        isArticles: filePath.match(/^(pages\/(articles|artikel)|articles\/|drafts\/)/) #&& !isElm
+        isElm: isElm
 
       article:
         feedDate: (a) ->
