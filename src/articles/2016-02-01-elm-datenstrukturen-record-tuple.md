@@ -136,6 +136,8 @@ Der Zugriff über die Funktion mit Punktnotation ist dabei eine Kurzschreibweise
 
 Generell ist es bei Records in Elm nicht wie bei JavaScript-Objekten möglich, auf nicht existierende Schlüssel zuzugreifen. Dies wird vom Compiler mit einer Fehlermeldung quittiert.
 
+#### Records bearbeiten
+
 Um einen Record zu bearbeiten, kann man auf Basis eines bestehenden Records einen neuen Record erstellen. Dabei wird der Name des bestehenden Records mit `|` von den zu bearbeitenden Eigenschaften getrennt. Es können sowohl ein als auch mehrere Werte angepasst werden:
 
 ```elm
@@ -148,5 +150,46 @@ aliceTheMightyAdmin =
     , isAdmin = True
   }
 ```
+
+#### Erweiterbare Records
+
+Zu guter Letzt sei auch noch das Konzept der erweiterbaren Records erwähnt, welches man sich ähnlich wie Werte-Mixins vorstellen kann. Ein erweiterbarer Record ist ein Typ, der mindestens die definierten Felder hat. Dies lässt sich nutzen, um Funktionen zu schreiben, die Records unterschiedlicher Typen entgegennehmen, welche aber ein gemeinsames Set Felder unterstützen:
+
+```elm
+type alias Authorized user =
+  { user
+    | canEdit : Bool
+    , canDelete : Bool
+  }
+
+alice : Authorized ( User )
+alice =
+  { login = "alice"
+  , isAdmin = False
+  , canEdit = True
+  , canDelete = False
+  }
+
+bob : Authorized {}
+bob =
+  { canEdit = True
+  , canDelete = True
+  }
+
+allowedToEdit: Authorized a -> Bool
+allowedToEdit a =
+  a.canEdit
+
+allowedToEdit alice
+-- True : Bool
+
+allowedToDelete alice
+-- False : Bool
+
+allowedToDelete bob
+-- True : Bool
+```
+
+In diesem Beispiel is `alice` ein `User` (vom Typ der bereits im vorigen Beispiel definiert wurde), `bob` ist dies allerdings nicht. `bob` ist ein einfacher Record mit den Feldern `canEdit` und `canDelete`, die durch den erweiterbaren Recordtyp `Authorized` definiert wurden. Da beide Records jedoch garantieren, diese Felder zu haben, können sie auf die gleiche Art und Weise in den Funktionen `allowedToEdit` und `allowedToDelete` genutzt werden – unabhängig von ihrem exakten Typ.
 
 Nachdem wir nun sowohl die iterierbaren Datenstrukturen als auch Records und Tupel kennen, widmen wir uns im letzten Artikel der Reihe über Datenstrukturen in Elm dem _Union Type_. Im Gegensatz zu den bisher besprochenen Strukturen kann der Union Type aus verschiedenen Datentypen bestehen.

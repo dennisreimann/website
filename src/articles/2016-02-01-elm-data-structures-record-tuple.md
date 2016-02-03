@@ -138,6 +138,8 @@ Using the standalone function with dot notation is a shortcut for the functional
 
 Generally you do not have the options to access keys of a record that do not exist – as opposed to JavaScript objects. The compiler will give you an error for that, which is quite nice and a timesaver.
 
+#### Updating records
+
 To edit records one can create a new record based on an existing one. The name of the existing records and the fields you want to edit are separated by a `|` and one can change single or multiple values:
 
 ```elm
@@ -146,9 +148,50 @@ aliceTheAdmin =
 
 aliceTheMightyAdmin =
   { alice
-    | name = "mighty-alice"
+    | login = "mighty-alice"
     , isAdmin = True
   }
 ```
+
+#### Extensible records
+
+Last but not least there is also the concept of extensible records, which can be thought of as field mixins. An extensible record defines a type that has at least certain fields. This can be used for writing functions that take records which might not be of the same type but which share a common set of fields:
+
+```elm
+type alias Authorized user =
+  { user
+    | canEdit : Bool
+    , canDelete : Bool
+  }
+
+alice : Authorized ( User )
+alice =
+  { login = "alice"
+  , isAdmin = False
+  , canEdit = True
+  , canDelete = False
+  }
+
+bob : Authorized {}
+bob =
+  { canEdit = True
+  , canDelete = True
+  }
+
+allowedToEdit: Authorized a -> Bool
+allowedToEdit a =
+  a.canEdit
+
+allowedToEdit alice
+-- True : Bool
+
+allowedToDelete alice
+-- False : Bool
+
+allowedToDelete bob
+-- True : Bool
+```
+
+In this example `alice` is a `User` (as of the type defined in the earlier example), but `bob` is not. `bob` is just a simple record with the fields `canEdit` and `canDelete` that are defined in the extensible record type `Authorized`. Because both records are guaranteed to have those fields, we can use them in the same manner in the `allowedToEdit` and `allowedToDelete` functions – regardless of their exact type.
 
 After we have looked at the iterable data structures as well as tuples and records the last article in the series about data structures in Elm will cover the _union type_. In contrast to the structures we have seen up to now a union type can be of multiple different data types.
