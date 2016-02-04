@@ -53,7 +53,8 @@ module.exports =
       nav:
         isHome: filePath.match(/^pages\/index/)
         isContact: filePath.match(/^pages\/(contact|kontakt)/)
-        isArticles: filePath.match(/^(pages\/(articles|artikel)|articles\/|drafts\/)/) #&& !isElm
+        isProjects: filePath.match(/^pages\/(projects|projekte)/)
+        isArticles: filePath.match(/^(pages\/(articles|artikel)|articles\/|drafts\/)/) && !isElm
         isElm: isElm
 
       article:
