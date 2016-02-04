@@ -6,6 +6,6 @@ block title
 
 block main
   section
-    - articles = h.articles.filterByNoAlternate(mvb.groupedArticles.byTag["Elm"], h.lang(locals))
+    - articles = h.articles.filterByNoAlternate(mvb.groupedArticles.byTag["Elm"], h.lang(locals)).reverse()
     h2 Elm – Funktionale Frontend-Entwicklung
     +articles(articles, "topic")
