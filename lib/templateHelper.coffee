@@ -80,6 +80,9 @@ module.exports =
           articles.filter (article) ->
             alternate = article.alternate
             !alternate or alternate.lang isnt lang
+        filterByLanguage: (articles, lang) ->
+          articles.filter (article) ->
+            article.lang is lang
 
       lang: (context) ->
         if isEnglish(filePath)(context) then "en" else "de"

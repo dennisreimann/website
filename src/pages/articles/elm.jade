@@ -6,6 +6,20 @@ block title
 
 block main
   section
-    - articles = h.articles.filterByNoAlternate(mvb.groupedArticles.byTag["Elm"], h.lang(locals)).reverse()
+    - articles = h.articles.filterByLanguage(mvb.groupedArticles.byTag["Elm"], h.lang(locals)).reverse()
     h2 Elm – functional frontend development
+    p
+      | Elm is a functional programming language that compiles to JavaScript. Opposed
+      | to JavaScript, Elm is statically typed. The compiler type checks the code and
+      | guarantees to generate reliable code that will not throw any runtime exceptions.
+      | Consequently even the view is statically typed – the templates, which are written
+      | in elm-html, are based on the concept of the Virtual DOM, just like in React.
+    p
+      | The syntax might look odd at first if you have not worked with a functional
+      | programming language before, nevertheless it is very clear and does not take
+      | much time to get used to in my opinion. The following articles introduce you
+      | to the fundamentals of funtional frontend development with Elm.
+      
+    h3 Fundamentals
+    
     +articles(articles, "topic")
