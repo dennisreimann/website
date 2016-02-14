@@ -1,0 +1,3 @@
+mixin icon(type, icon)
+  svg(class="icon icon--#{type}-#{icon}" viewBox="0 0 512 512")&attributes(attributes)
+    use(xlink:href=h.assetUrl("svgs/#{type}.svg") + "##{icon}")

@@ -1,3 +1,5 @@
+include ../templates/_icon
+
 h2= h.t(locals, "Kontakt", "Contact") 
 .vcard
   p
@@ -18,13 +20,13 @@ h2= h.t(locals, "Kontakt", "Contact")
   ul.social
     li.social__item
       a(href="/atom.xml" rel="me")
-        img.social__item__icon(src=h.assetUrl("svgs/icons/feed.svg"))
+        +icon("social", "feed").social__item__icon
     li.social__item
       a(href="https://twitter.com/dennisreimann" rel="me")
-        img.social__item__icon(src=h.assetUrl("svgs/icons/twitter.svg"))
+        +icon("social", "twitter").social__item__icon
     li.social__item
-      a(href="https://github.com/dennisreimann" rel="me") 
-        img.social__item__icon(src=h.assetUrl("svgs/icons/github.svg"))
+      a(href="https://github.com/dennisreimann" rel="me")
+        +icon("social", "github").social__item__icon
     li.social__item
       a(href="https://www.xing.com/profile/Dennis_Reimann5" rel="me")
-        img.social__item__icon(src=h.assetUrl("svgs/icons/xing.svg"))
+        +icon("social", "xing").social__item__icon
