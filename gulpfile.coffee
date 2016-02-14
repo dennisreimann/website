@@ -116,7 +116,7 @@ gulp.task "scripts", ->
     .pipe(p.uglify())
     .pipe(p.sourcemaps.write("./maps"))
     .pipe(dest("scripts"))
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream(match: "**/*.js"))
 
 gulp.task "styles", ->
   processors = [
@@ -135,7 +135,7 @@ gulp.task "styles", ->
     .pipe(p.postcss(processors))
     #.pipe(p.sourcemaps.write("./maps"))
     .pipe(dest("styles"))
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream(match: "**/*.css"))
 
 gulp.task "browserSync", ->
   browserSync.init(
@@ -160,7 +160,7 @@ gulp.task "revAssets", ->
 gulp.task "sitemap", ->
   gulp.src(paths.sitemap)
     .pipe(p.sitemap(
-      siteUrl: "https://dennisreimann.de"
+      siteUrl: baseUrl
       changefreq: "weekly"
     ))
     .pipe(dest())
