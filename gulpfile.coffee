@@ -49,7 +49,7 @@ mvbConf =
       byYear[year] ||= []
       byYear[year].push(article)
 
-      tags = article.tags.forEach (tag) ->
+      tags = (article.tags || []).forEach (tag) ->
         byTag[tag] ||= []
         byTag[tag].push(article)
 

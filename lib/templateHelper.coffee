@@ -1,6 +1,5 @@
 fs = require("fs")
 path = require("path")
-argv = require("yargs").argv
 
 paths =
   src: "src"
