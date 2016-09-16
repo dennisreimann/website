@@ -3,6 +3,8 @@
   margin-left 0
 
   &__item
+    @media M_and_up
+      display flex
     + .articles__item
       @media up_to_M
         margin-top marginLarge
@@ -15,26 +17,29 @@
           margin-top marginLarge
 
     &__date
-      display inline-block
-      width 6.25em
+      flex-basis 6.25em
       color colorSubtle
       @media up_to_M
         display block
       @media M_and_up
         margin-right marginNormal
 
+    &__link
+      flex 1
+
     &__title
       font-weight bold
       @media up_to_M
         display block
+      @media M_and_up
+        margin-right marginSmall
 
     &__subtitle
       color colorText
       text-decoration none
+      white-space nowrap
       @media up_to_M
         display block
-      @media M_and_up
-        margin-left marginSmall
 
     &__lang
       color colorGray
@@ -47,3 +52,7 @@
 
     &__description
       color colorSubtle
+
+  wbr
+    @media up_to_M
+      display none

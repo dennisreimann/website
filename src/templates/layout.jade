@@ -1,5 +1,5 @@
 doctype html
-html
+html(lang=h.t(locals, "de", "en"))
   head
     block title
       title Frontend-Entwicklung mit JavaScript, CSS und HTML • Dennis Reimann
@@ -10,8 +10,8 @@ html
     meta(name="google-site-verification" content="BRi3ql7JvxxFP2KtBRHIV6Rfzn0ZN7xJF1NNtnEUaI8")
     meta(name="theme-color" content="#71B239")
     meta(name="viewport" content="width=device-width,initial-scale=1")
-    //- link(rel="prefetch" as="font" href=assetUrl("fonts/DINWeb-CondBold.woff"))
-    //- link(rel="prefetch" as="font" href=assetUrl("fonts/DINWeb-Light.woff"))
+    link(rel="preload" as="font" type="application/font-woff" crossorigin href=h.assetUrl("fonts/DINWeb-CondBold.woff"))
+    link(rel="preload" as="font" type="application/font-woff" crossorigin href=h.assetUrl("fonts/DINWeb-Light.woff"))
     link(href="http://openid.dennisreimann.de/server" rel="openid2.provider openid.server")
     link(href="http://openid.dennisreimann.de/dennisreimann" rel="openid2.local_id openid.delegate")
     link(href="/atom.xml" rel="alternate" type="application/atom+xml")
