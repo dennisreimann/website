@@ -24,7 +24,7 @@ paths =
   scripts: ["src/scripts/**/*.js"]
   sitemap: ["dist/**/*.html"]
   optimizeImages: ["src/{images,svgs}/**/*"]
-  articles: ["src/articles/*.md"]
+  articles: if isDev then ["src/articles/*.md", "src/drafts/*.md"] else ["src/articles/*.md"]
   templates: "src/templates/*.jade"
   feedTemplate: "src/templates/atom.jade"
   articleTemplate: "src/templates/article.jade"
