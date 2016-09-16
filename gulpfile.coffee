@@ -1,5 +1,4 @@
 gulp = require("gulp")
-del = require("del")
 p = require("gulp-load-plugins")()
 runSequence = require("run-sequence")
 autoprefixer = require("autoprefixer")
@@ -69,9 +68,6 @@ mvbConf =
 
 templateData = (file) ->
   h: templateHelper.createHelper(file, isDev, baseUrl, assetHost)
-
-gulp.task "clean", (cb) ->
-  del(paths.dest, cb)
 
 gulp.task "copy", (cb) ->
   gulp.src(paths.copy)

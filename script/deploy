@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -e
-
-echo "Building …"
-npm run production #-- --assetHost=//cdn.dennisreimann.de
-
-echo "Uploading …"
-rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude dist/ uberdennis:html
