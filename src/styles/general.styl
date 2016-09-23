@@ -66,6 +66,8 @@ p
 ul
 ol
   margin-bottom $margin-large
+  li + li
+    margin-top $margin-small
 
 pre
 code
@@ -82,14 +84,14 @@ pre
 code
   padding .2em .4em
   background $color-lightgray
-  font-size .9em
+  font-size $font-size-small
   pre &
     padding 0
     background none
 
 ul
 ol
-  margin-left $margin-large
+  margin-left $margin-medium
 
 a
   text-decoration none
@@ -100,3 +102,14 @@ a
     color $color-highlight
   footer &
     color $color-subtle
+p
+ul
+ol
+pre
+  +
+    h2
+    h3
+    h4
+    h5
+    h6
+      margin-top $margin-medium
