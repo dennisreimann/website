@@ -117,7 +117,7 @@ gulp.task "styles", ->
     .pipe(p.plumber())
     .pipe(p.stylus(
       paths: ["src/styles/lib"],
-      import: ["mediaQueries", "mixins", "variables"]
+      import: ["mediaQueries", "variables"]
     ))
     .pipe(p.concat("main.css"))
     .pipe(p.postcss(processors))
