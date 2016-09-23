@@ -7,22 +7,22 @@
       display flex
     + .articles__item
       @media up_to_M
-        margin-top marginLarge
+        margin-top $margin-large
       @media M_and_up
-        margin-top marginSmall
+        margin-top $margin-small
 
     &--topic
       + .articles__item--topic
         @media M_and_up
-          margin-top marginLarge
+          margin-top $margin-large
 
     &__date
       flex-basis 6.25em
-      color colorSubtle
+      color $color-subtle
       @media up_to_M
         display block
       @media M_and_up
-        margin-right marginNormal
+        margin-right $margin-normal
 
     &__link
       flex 1
@@ -32,26 +32,26 @@
       @media up_to_M
         display block
       @media M_and_up
-        margin-right marginSmall
+        margin-right $margin-small
 
     &__subtitle
-      color colorText
+      color $color-text
       text-decoration none
       white-space nowrap
       @media up_to_M
         display block
 
     &__lang
-      color colorGray
+      color $color-gray
       @media M_and_up
-        margin-left marginSmall
+        margin-left $margin-small
 
     &__alternate
       .articles__item__link
-        color colorGray
+        color $color-gray
 
     &__description
-      color colorSubtle
+      color $color-subtle
 
   wbr
     @media up_to_M

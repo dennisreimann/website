@@ -16,17 +16,17 @@ html
     font-size 16px
 
 body
-  color colorText
+  color $color-text
   background #FFF
 
 section
-  margin-bottom marginHuge
+  margin-bottom $margin-huge
 
 h1
-  margin-bottom marginTiny
+  margin-bottom $margin-tiny
   font-family DINCondBold
   font-weight normal
-  font-size fontSizeHuge
+  font-size $font-size-huge
   line-height 1.2
 
 h2
@@ -36,36 +36,36 @@ h5
 h6
   font-family DINLight
   font-weight normal
-  color colorSubtle
+  color $color-subtle
   letter-spacing -.02em
   pre + &
-    margin-top marginHuge
+    margin-top $margin-huge
 
 h2
-  margin-bottom marginSmall
-  font-size fontSizeLarge
+  margin-bottom $margin-small
+  font-size $font-size-large
   line-height 1.25
 
 h3
   margin-top 1em
-  margin-bottom marginTiny
-  font-size fontSizeHead
+  margin-bottom $margin-tiny
+  font-size $font-size-head
   line-height 1.4
 
 h4
 h5
 h6
   margin-top 1em
-  margin-bottom marginTiny
-  font-size fontSizeSubhead
+  margin-bottom $margin-tiny
+  font-size $font-size-subhead
   line-height 1.4
 
 p
-  margin-bottom marginNormal
+  margin-bottom $margin-normal
 
 ul
 ol
-  margin-bottom marginLarge
+  margin-bottom $margin-large
 
 pre
 code
@@ -74,14 +74,14 @@ code
 
 pre
   overflow-x auto
-  margin-bottom marginLarge
+  margin-bottom $margin-large
   padding .4em .8em
   color #b9b5b8
-  background darken(colorDarkBlue, 5)
+  background darken($color-darkblue, 5)
 
 code
   padding .2em .4em
-  background colorLightGray
+  background $color-lightgray
   font-size .9em
   pre &
     padding 0
@@ -89,7 +89,7 @@ code
 
 ul
 ol
-  margin-left marginLarge
+  margin-left $margin-large
 
 a
   text-decoration none
@@ -97,6 +97,6 @@ a
   &:active
     text-decoration underline
   main &
-    color colorHighlight
+    color $color-highlight
   footer &
-    color colorSubtle
+    color $color-subtle

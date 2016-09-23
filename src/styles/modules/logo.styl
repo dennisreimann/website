@@ -1,11 +1,11 @@
 .logo
   display block
-  width widthAside
+  width $width-aside
   background #FFF
   &:hover
     text-decoration none
   @media screen and (min-width: 720px), print
-    margin-left (logoJump * -1)
+    margin-left ($logo-jump * -1)
   &__slashes
   &__name
     display inline-block
@@ -14,11 +14,11 @@
     letter-spacing -.03em
     color #000
   &__slashes
-    color colorHighlight
+    color $color-highlight
     margin-right .075em
   &__claim
     display block
     font-family DINLight
     margin -.5em 0 0 1.2em
-    font-size fontSizeLarge
-    color colorSubtle
+    font-size $font-size-large
+    color $color-subtle

@@ -1,19 +1,19 @@
 .project
-  margin-bottom marginHuge
+  margin-bottom $margin-huge
   &__name
-    margin marginTiny 0
-    font-size fontSizeHead
+    margin $margin-tiny 0
+    font-size $font-size-head
     font-weight normal
-    color colorHighlight
+    color $color-highlight
   &__description
-    margin-bottom marginNormal
+    margin-bottom $margin-normal
   &__task
   &__period
   &__context
-    margin-bottom marginSmall
-    color colorSubtle
+    margin-bottom $margin-small
+    color $color-subtle
     a
-      color colorSubtle
+      color $color-subtle
   @media screen
     &__task
     &__period
@@ -36,8 +36,8 @@
     &__context
       &:before
         display inline-block
-        margin-right marginTiny
-        color colorSubtle
+        margin-right $margin-tiny
+        color $color-subtle
     &__task:before
       content "Aufgabe:"
     &__context:before

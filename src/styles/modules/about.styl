@@ -1,10 +1,10 @@
 #about
   img
     @media up_to_M
-      margin 0 0 marginLarge 0
+      margin 0 0 $margin-large 0
     @media M_and_up
       float right
-      margin marginTiny 0 marginTiny marginLarge
+      margin $margin-tiny 0 $margin-tiny $margin-large
 
   table
     th
@@ -13,5 +13,5 @@
       vertical-align top
       text-align left
     th
-      color colorSubtle
+      color $color-subtle
       font-weight normal

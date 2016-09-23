@@ -1,7 +1,7 @@
 navItemActive(current = false)
   if current
-    border-top-color colorHighlight
-  color colorDarkBlue
+    border-top-color $color-highlight
+  color $color-darkblue
   background #fff
   text-decoration none
 
@@ -10,8 +10,8 @@ navItemActive(current = false)
   justify-content flex-start
   align-content stretch
   list-style none
-  margin-left wrapSpace * -1
-  margin-right wrapSpace * -1
+  margin-left $wrap-space * -1
+  margin-right $wrap-space * -1
 
   &__item
     flex 0 auto
@@ -24,10 +24,10 @@ navItemActive(current = false)
 
     &__link
       display block
-      padding marginNormal wrapSpace
+      padding $margin-normal $wrap-space
       color inherit
       text-decoration none
-      border-top 4px solid colorDarkBlue
+      border-top 4px solid $color-darkblue
       &:hover
         navItemActive(false)
       .nav__item--current &
