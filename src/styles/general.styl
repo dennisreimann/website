@@ -8,10 +8,12 @@
 html
   line-height 1.5
   font-family Helvetica, Arial, Tahoma, Verdana, sans-serif
-  @media screen
-    font-size 14px
   @media print
     font-size 10pt
+  @media up_to_M
+    font-size 14px
+  @media M_and_up
+    font-size 16px
 
 body
   color colorText
