@@ -69,31 +69,24 @@ mvbConf =
 templateData = (file) ->
   h: templateHelper.createHelper(file, isDev, baseUrl, assetHost)
 
+buildHtml = (src, dst) ->
+  gulp.src(src)
+    .pipe(p.plumber())
+    .pipe(p.mvb(mvbConf))
+    .pipe(p.data(templateData))
+    .pipe(p.jade(pretty: true))
+    .pipe(p.minifyHtml(empty: true))
+    .pipe(dest(dst))
+    .pipe(browserSync.stream())
+
 gulp.task "copy", (cb) ->
   gulp.src(paths.copy)
     .pipe(dest())
     .pipe(browserSync.stream())
 
-gulp.task "articles", ->
-  gulp.src(paths.articles)
-    .pipe(p.plumber())
-    .pipe(p.mvb(mvbConf))
-    .pipe(p.data(templateData))
-    .pipe(p.jade(pretty: true))
-    .pipe(p.minifyHtml(empty: true))
-    .pipe(dest(paths.articlesBasepath))
-    .pipe(browserSync.stream())
+gulp.task "pages", -> buildHtml(paths.pages)
 
-gulp.task "pages", ->
-  gulp.src(paths.pages)
-    .pipe(p.plumber())
-    .pipe(p.resolveDependencies(pattern: /^\s*(?:extends|include) ([\w-]+)$/g))
-    .pipe(p.mvb(mvbConf))
-    .pipe(p.data(templateData))
-    .pipe(p.jade(pretty: true))
-    .pipe(p.minifyHtml(empty: true))
-    .pipe(dest())
-    .pipe(browserSync.stream())
+gulp.task "articles", -> buildHtml(paths.articles, paths.articlesBasepath)
 
 gulp.task "feed", ->
   gulp.src(paths.feedTemplate)
@@ -122,14 +115,12 @@ gulp.task "styles", ->
   ]
   gulp.src(paths.styles)
     .pipe(p.plumber())
-    #.pipe(p.sourcemaps.init())
     .pipe(p.stylus(
       paths: ["src/styles/lib"],
       import: ["mediaQueries", "mixins", "variables"]
     ))
     .pipe(p.concat("main.css"))
     .pipe(p.postcss(processors))
-    #.pipe(p.sourcemaps.write("./maps"))
     .pipe(dest("styles"))
     .pipe(browserSync.stream(match: "**/*.css"))
 
@@ -163,13 +154,13 @@ gulp.task "sitemap", ->
 
 gulp.task "watch", ->
   gulp.watch paths.copy, ["copy"]
-  gulp.watch paths.pages, ["pages"]
   gulp.watch paths.styles, ["styles"]
   gulp.watch paths.scripts, ["scripts"]
-  gulp.watch paths.articles, ["articles", "pages", "feed"]
-  gulp.watch paths.templates, ["articles", "pages"]
   gulp.watch paths.feedTemplate, ["feed"]
   gulp.watch paths.articleTemplate, ["articles"]
+  gulp.watch paths.templates, ["articles", "pages"]
+  gulp.watch(paths.pages).on("change", (file) -> buildHtml(file.path))
+  gulp.watch(paths.articles).on("change", (file) -> buildHtml(file.path, paths.articlesBasepath))
 
 gulp.task "build", (cb) -> runSequence("styles", ["copy", "pages", "articles", "feed", "scripts"], cb)
 gulp.task "develop", (cb) -> runSequence("build", ["watch", "browserSync"], cb)
