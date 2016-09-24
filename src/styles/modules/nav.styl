@@ -9,9 +9,13 @@ navItemActive(current = false)
   display flex
   justify-content flex-start
   align-content stretch
+  align-items flex-end
   list-style none
   margin-left $wrap-space * -1
   margin-right $wrap-space * -1
+
+  @media print
+    display none
 
   &__item
     flex 0 auto
