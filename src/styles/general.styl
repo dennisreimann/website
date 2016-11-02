@@ -7,7 +7,7 @@
 
 html
   line-height 1.5
-  font-family Helvetica, Arial, Tahoma, Verdana, sans-serif
+  font-family $font-family-base
   @media print
     font-size 10pt
   @media up_to_M
@@ -24,7 +24,7 @@ section
 
 h1
   margin-bottom $margin-tiny
-  font-family DINCondBold
+  font-family $font-family-din-bold
   font-weight normal
   font-size $font-size-huge
   line-height 1.2
@@ -34,7 +34,7 @@ h3
 h4
 h5
 h6
-  font-family DINLight
+  font-family $font-family-din-light
   font-weight normal
   color $color-subtle
   letter-spacing -.02em
@@ -73,6 +73,8 @@ pre
 code
   border-radius .25em
   white-space pre
+  font-family $font-family-code
+  font-size $font-size-code
 
 pre
   overflow-x auto
