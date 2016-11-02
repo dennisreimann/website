@@ -23,9 +23,9 @@ In its simplest form it can be thought of as an enumeration:
 
 ```elm
 type PullRequestState
-  = Proposed
-  | Rejected
-  | Merged
+    = Proposed
+    | Rejected
+    | Merged
 ```
 
 This statement creates the type PullRequestState which can have one of the three mentioned values. These values are also called *tags* and are used to distinguish between the possibilities when handling the union type in a case expression. Depending on the tag, different actions can be performed:
@@ -33,15 +33,15 @@ This statement creates the type PullRequestState which can have one of the three
 ```elm
 branchColor : PullRequestState -> String
 branchColor state =
-  case state of
-    Proposed ->
-      "yellow"
+    case state of
+        Proposed ->
+            "yellow"
 
-    Rejected ->
-      "red"
+        Rejected ->
+            "red"
 
-    Merged ->
-      "green"
+        Merged ->
+            "green"
 ```
 
 So far, so unexciting – the fun begins when we start using compositions of different types. This way we can think of [union types as state machines](http://elm-lang.org/guide/model-the-problem) or even various "classes" of entities.
@@ -49,34 +49,38 @@ So far, so unexciting – the fun begins when we start using compositions of di
 Let us examine this with an example in which we model the availability of a product:
 
 ```elm
+module Main exposing (..)
+
+
 type Availability
-  = SoldOut
-  | InStock Int
-  | Reordered ( Int, Int )
-  | Announced String
+    = SoldOut
+    | InStock Int
+    | Reordered ( Int, Int )
+    | Announced String
 
 
 displayStatus : Availability -> String
 displayStatus availability =
-  case availability of
-    SoldOut ->
-      "Sold out"
+    case availability of
+        SoldOut ->
+            "Sold out"
 
-    InStock amount ->
-      "In stock: " ++ (toString amount) ++ " left."
+        InStock amount ->
+            "In stock: " ++ (toString amount) ++ " left."
 
-    Reordered days ->
-      let
-        min =
-          toString (fst days)
+        Reordered days ->
+            let
+                min =
+                    toString (fst days)
 
-        max =
-          toString (snd days)
-      in
-        "Available again in " ++ min ++ " to " ++ max ++ " days."
+                max =
+                    toString (snd days)
+            in
+                "Available again in " ++ min ++ " to " ++ max ++ " days."
 
-    Announced date ->
-      "Available on " ++ date ++ "."
+        Announced date ->
+            "Available on " ++ date ++ "."
+
 ```
 
 This way we have the option of associating extra information to the tags. And these can even be different types of values, like in this example …
@@ -100,10 +104,10 @@ Each of these items might have a different shape, but as they share the same uni
 ```elm
 availabilities : List Availability
 availabilities =
-  [ SoldOut
-  , InStock 42
-  , Reordered (3,5)
-  ]
+    [ SoldOut
+    , InStock 42
+    , Reordered ( 3, 5 )
+    ]
 
 List.map displayStatus availabilities
 -- ["Sold out","In stock: 42 left.","Available again in 3 to 5 days."] : List String

@@ -36,6 +36,7 @@ As we will be diving deeper into topics like syntax in further articles, let us 
 ```elm
 import Html
 
+
 main = Html.text "Hello World"
 ```
 

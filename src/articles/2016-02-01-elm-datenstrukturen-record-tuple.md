@@ -80,34 +80,38 @@ Komplexere Datenstrukturen lassen sich besser mit Records als mit Tupeln abbilde
 ```elm
 -- record without type definition
 coordinate =
-  { latitude = 53.1201749
-  , longitude = 8.5962037
-  }
+    { latitude = 53.1201749
+    , longitude = 8.5962037
+    }
+
 
 -- record with type definition
 area : { width : Int, height : Int }
 area =
-  { width = 42
-  , height = 23
-  }
+    { width = 42
+    , height = 23
+    }
+
 
 -- record with type definition via type alias
 type alias User =
-  { login : String
-  , isAdmin : Bool
-  }
+    { login : String
+    , isAdmin : Bool
+    }
+
 
 alice : User
 alice =
-  { login = "alice"
-  , isAdmin = False
-  }
+    { login = "alice"
+    , isAdmin = False
+    }
+
 
 bob : User
 bob =
-  { login = "bob"
-  , isAdmin = True
-  }
+    { login = "bob"
+    , isAdmin = True
+    }
 ```
 
 Auf die Werte eines Records lässt sich auf verschiedene Arten zugreifen:
@@ -142,13 +146,14 @@ Um einen Record zu bearbeiten, kann man auf Basis eines bestehenden Records eine
 
 ```elm
 aliceTheAdmin =
-  { alice | isAdmin = True }
+    { alice | isAdmin = True }
+
 
 aliceTheMightyAdmin =
-  { alice
-    | name = "mighty-alice"
-    , isAdmin = True
-  }
+    { alice
+        | name = "mighty-alice"
+        , isAdmin = True
+    }
 ```
 
 #### Erweiterbare Records
@@ -157,28 +162,31 @@ Zu guter Letzt sei auch noch das Konzept der erweiterbaren Records erwähnt, wel
 
 ```elm
 type alias Authorized user =
-  { user
-    | canEdit : Bool
-    , canDelete : Bool
-  }
+    { user
+        | canEdit : Bool
+        , canDelete : Bool
+    }
 
-alice : Authorized ( User )
+
+alice : Authorized (User)
 alice =
-  { login = "alice"
-  , isAdmin = False
-  , canEdit = True
-  , canDelete = False
-  }
+    { login = "alice"
+    , isAdmin = False
+    , canEdit = True
+    , canDelete = False
+    }
+
 
 bob : Authorized {}
 bob =
-  { canEdit = True
-  , canDelete = True
-  }
+    { canEdit = True
+    , canDelete = True
+    }
 
-allowedToEdit: Authorized a -> Bool
+
+allowedToEdit : Authorized a -> Bool
 allowedToEdit a =
-  a.canEdit
+    a.canEdit
 
 allowedToEdit alice
 -- True : Bool

@@ -20,7 +20,7 @@ In Elm gibt es verschiedene Datenstrukturen, die Elemente enthalten können. Die
 
 <!-- more -->
 
-Alle dieser Datenstrukturen haben gemeinsam, dass sie immer nur den gleichen Typ an Elementen enthalten können – beispielsweise eine Liste von Strings: `List String`. Dies wird durch den Compiler sichergestellt und ist ein Unterschied im Vergleich zu JavaScript, wo Arrays Elemente mit unterschiedlichsten Typen enthalten können.  
+Alle dieser Datenstrukturen haben gemeinsam, dass sie immer nur den gleichen Typ an Elementen enthalten können – beispielsweise eine Liste von Strings: `List String`. Dies wird durch den Compiler sichergestellt und ist ein Unterschied im Vergleich zu JavaScript, wo Arrays Elemente mit unterschiedlichsten Typen enthalten können.
 
 Die verschiedenen Datenstrukturen gleichen sich zum Teil durch ein gemeinsames "Interface" von Funktionen, mit denen man über die enthaltenen Elemente iterieren und diese Verarbeiten kann. Neben den Basisoperationen `map`, `filter`, `foldl`/`foldr` (dem JavaScripter als `reduce` bekannt) stehen auch einfache Abfragefunktionen wie `isEmpty` oder `member` zur Verfügung. Letztere wird von Arrays allerdings nicht unterstützt, womit wir nun auch bei den Unterschieden und Anwendungsfällen der einzelnen Datenstrukturen wären …
 
@@ -117,9 +117,9 @@ Ein möglicher Datentyp ist dabei der Record, welchen wir in diesem Beispiel ver
 import Dict
 
 users = Dict.fromList \
-  [ ("dennis", { email = "mail@dennisreimann.de"}) \
-  , ("otherdude", { email = "otherdude@example.org"}) \
-  ]
+    [ ("dennis", { email = "mail@dennisreimann.de"}) \
+    , ("otherdude", { email = "otherdude@example.org"}) \
+    ]
 
 usernames = Dict.keys users
 -- ["dennis","otherdude"] : List String

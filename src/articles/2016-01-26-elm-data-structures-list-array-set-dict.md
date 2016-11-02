@@ -20,7 +20,7 @@ In Elm there are different kinds of data structures that can contain elements. T
 
 <!-- more -->
 
-All of these data structures require that the elements they contain have the same type – i.e. a list of strings: `List String`. The compiler takes care of enforcing the type safety, which is a difference to JavaScript, where arrays can contain elements of any type.  
+All of these data structures require that the elements they contain have the same type – i.e. a list of strings: `List String`. The compiler takes care of enforcing the type safety, which is a difference to JavaScript, where arrays can contain elements of any type.
 
 The different data structures share a common "interface" of functions, which can be used to iterate over the elements and operate on them. Besides the basic operations `map`, `filter`, `foldl`/`foldr` (know to the JavaScripter as `reduce`) there are also functions like `isEmpty` or `member`. The latter is not available for arrays though, which brings us right to the differences and use cases of the different kinds of data structures …
 
@@ -107,7 +107,7 @@ Sets are well suited for operations in which one need to find intersections, uni
 ### Dictionaries
 
 The data structure [`Dict`](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Dict) stores key-value pairs. The keys are unique and can be of any comparable datatype value, so that besides `String` and `Int` also values of the types `Float` and `Time` can be used as keys.
-The values in a dictionary can be of any type as long as all of them have the same type (which is the requirement for all data structure in Elm).  
+The values in a dictionary can be of any type as long as all of them have the same type (which is the requirement for all data structure in Elm).
 
 A possible type for values is a record, which we will use in the following example and take a closer look at in the upcoming article about tuples and records:
 
@@ -115,9 +115,9 @@ A possible type for values is a record, which we will use in the following examp
 import Dict
 
 users = Dict.fromList \
-  [ ("dennis", { email = "mail@dennisreimann.de"}) \
-  , ("otherdude", { email = "otherdude@example.org"}) \
-  ]
+    [ ("dennis", { email = "mail@dennisreimann.de"}) \
+    , ("otherdude", { email = "otherdude@example.org"}) \
+    ]
 
 usernames = Dict.keys users
 -- ["dennis","otherdude"] : List String

@@ -23,9 +23,9 @@ In seiner einfachsten Form kann ein Union Type als eine Art Aufzählung oder Enu
 
 ```elm
 type PullRequestState
-  = Proposed
-  | Rejected
-  | Merged
+    = Proposed
+    | Rejected
+    | Merged
 ```
 
 Dieser Ausdruck erstellt den Typ PullRequestState, welcher einen der drei definierten Werte annehmen kann. Diese Werte werden auch *Tags* genannt und dienen dazu, zwischen den einzelnen Möglichkeiten zu unterscheiden, wenn man den Union Type in einer Case-Anweisung verarbeitet. Abhängig vom Tag können dabei verschiedene Aktionen ausgeführt werden:
@@ -33,15 +33,15 @@ Dieser Ausdruck erstellt den Typ PullRequestState, welcher einen der drei defini
 ```elm
 branchColor : PullRequestState -> String
 branchColor state =
-  case state of
-    Proposed ->
-      "yellow"
+    case state of
+        Proposed ->
+            "yellow"
 
-    Rejected ->
-      "red"
+        Rejected ->
+            "red"
 
-    Merged ->
-      "green"
+        Merged ->
+            "green"
 ```
 
 So weit, so unspannend – der Spaß beginnt, sobald wir anfangen Zusammenstellungen verschiedener Typen zu verwenden. Dadurch lassen sich [Union Types als State Machines](http://elm-lang.org/guide/model-the-problem) oder sogar als verschiedene "Klasses" von Daten betrachten.
@@ -49,34 +49,38 @@ So weit, so unspannend – der Spaß beginnt, sobald wir anfangen Zusammenstell
 Sehen wir uns diesen Fal in einem Beispiel an, in dem wir die Verzfügbarkeit eines Produkts modellieren:
 
 ```elm
+module Main exposing (..)
+
+
 type Availability
-  = SoldOut
-  | InStock Int
-  | Reordered ( Int, Int )
-  | Announced String
+    = SoldOut
+    | InStock Int
+    | Reordered ( Int, Int )
+    | Announced String
 
 
 displayStatus : Availability -> String
 displayStatus availability =
-  case availability of
-    SoldOut ->
-      "Sold out"
+    case availability of
+        SoldOut ->
+            "Sold out"
 
-    InStock amount ->
-      "In stock: " ++ (toString amount) ++ " left."
+        InStock amount ->
+            "In stock: " ++ (toString amount) ++ " left."
 
-    Reordered days ->
-      let
-        min =
-          toString (fst days)
+        Reordered days ->
+            let
+                min =
+                    toString (fst days)
 
-        max =
-          toString (snd days)
-      in
-        "Available again in " ++ min ++ " to " ++ max ++ " days."
+                max =
+                    toString (snd days)
+            in
+                "Available again in " ++ min ++ " to " ++ max ++ " days."
 
-    Announced date ->
-      "Available on " ++ date ++ "."
+        Announced date ->
+            "Available on " ++ date ++ "."
+
 ```
 
 Auf diese Art haben wir die Möglichkeit, zusätzliche Informationen an das Tag anzuhängen. Und diese weiteren Informationen können von verschiedensten Typen sein, wie in diesem Beispiel …
@@ -100,10 +104,10 @@ Jeder dieser Einträge hat eine andere Form, doch alle Einträge sind vom gleich
 ```elm
 availabilities : List Availability
 availabilities =
-  [ SoldOut
-  , InStock 42
-  , Reordered (3,5)
-  ]
+    [ SoldOut
+    , InStock 42
+    , Reordered ( 3, 5 )
+    ]
 
 List.map displayStatus availabilities
 -- ["Sold out","In stock: 42 left.","Available again in 3 to 5 days."] : List String
