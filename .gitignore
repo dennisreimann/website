@@ -1,3 +1,5 @@
+elm-package.json
 dist
 gulp-mvb
 node_modules
+playground.elm
