@@ -3,6 +3,21 @@
   "name": "website",
   "description": "dennisreimann.de",
   "repository": "dennisreimann.de:repos/website.git",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=7.0.0"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "predev": "npm run clean",
+    "dev": "gulp develop --dev",
+    "prebuild": "npm run clean",
+    "build": "gulp build",
+    "preproduction": "npm run clean",
+    "production": "gulp production",
+    "predeploy": "npm run production",
+    "deploy": "rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude dist/ uberdennis:html"
+  },
   "devDependencies": {
     "autoprefixer": "^6.4.1",
     "browser-sync": "^2.16.0",
@@ -33,19 +48,5 @@
     "highlight.js": "^9.6.0",
     "run-sequence": "^1.2.2",
     "yargs": "^5.0.0"
-  },
-  "engines": {
-    "node": ">=0.12.0"
-  },
-  "scripts": {
-    "clean": "rm -rf dist",
-    "predev": "npm run clean",
-    "dev": "gulp develop --dev",
-    "prebuild": "npm run clean",
-    "build": "gulp build",
-    "preproduction": "npm run clean",
-    "production": "gulp production",
-    "predeploy": "npm run production",
-    "deploy": "rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude dist/ uberdennis:html"
   }
 }
