@@ -14,6 +14,7 @@ tags:
   - Array
   - Set
   - Dict
+description: "In Elm there are different kinds of data structures that can contain elements. This article spotlights the iterable structures lists, arrays, sets, and dictionaries."
 ---
 
 In Elm there are different kinds of data structures that can contain elements. This article spotlights the iterable structures lists, arrays, sets, and dictionaries, which support the basic operations of functional programming like `map`, `filter`, and folding/reducing.

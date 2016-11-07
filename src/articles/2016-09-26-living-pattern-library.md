@@ -12,7 +12,9 @@ tags:
   - BEM
   - NPM
   - Handlebars
+description: "Styleguides und Pattern Libraries sind in der UI-Entwicklung schon seit längerem ein großes Thema. Sie bieten Designern und Entwicklern einen Baukasten von Komponenten, aus denen die Interfaces zusammengesetzt werden und sorgen für ein konsistentes Gesamtbild der Website oder Anwendung."
 ---
+
 Styleguides und Pattern Libraries sind in der [UI-Entwicklung](https://www.uiengineering.de/) schon seit längerem ein großes Thema. Sie bieten Designern und Entwicklern einen Baukasten von Komponenten, aus denen die Interfaces zusammengesetzt werden und sorgen für ein konsistentes Gesamtbild der Website oder Anwendung.
 
 Über die Meinung, dass eine gut gepflegte Pattern Library in responsive Webprojekten ab einer gewissen Größe Sinn macht, dürfte mittlerweile Konsenz herrschen. Probleme und Unzufriedenheit treten jedoch oftmals an eben der Stelle auf, wo Pattern Library und Realität voneinander abweichen: Wird der Komponentenbaukasten nicht ständig auf dem neusten Stand gehalten, leben sich Pattern Library und die Zielanwendung auseinander – aus dem ehemaligen Traumpaar werden zwei Einzelteile, die sich gegenseitig als zunehmend lästig empfinden.

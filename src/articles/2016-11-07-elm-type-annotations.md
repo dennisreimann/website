@@ -6,6 +6,7 @@ tags:
   - Elm
   - Frontend development
   - Maybe
+description: "As Elm is a statically typed language, everything has a type. Type annotations are an optional feature and the compiler can infer the types of your functions and value. Even though you do not have to write the type annotations yourself you probably should: They document your code and make it more explicit."
 ---
 
 As Elm is a statically typed language, everything has a type – even [nothing](elm-maybe.html). Type annotations are an optional feature and the compiler can infer the types of your functions and value. Even though you do not have to write the type annotations yourself you probably should: They document your code and make it more explicit.

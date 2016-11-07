@@ -12,6 +12,7 @@ tags:
   - Datenstrukturen
   - Record
   - Tupel
+description: "Records und Tupel können beliebig viele Elemente enthalten – im Gegensatz zu Listen, Arrays, Sets und Dictionaries müssen die enthaltenen Elemente jedoch nicht vom gleichen Datentyp sein."
 ---
 
 Nachdem wir uns bereits die iterierbaren Datenstrukturen näher angesehen haben, kommen wir nun zu Records und Tupeln, die jeweils Elemente unterschiedlicher Typen enthalten können. Ebenso schauen wir uns an, wie man mittels Destructuring auf ihre Werte zugreifen kann und was ein Typalias ist … <!-- more -->

@@ -11,13 +11,14 @@ tags:
   - Frontend-Entwicklung
   - Datenstrukturen
   - Union Type
+description: "Durch die Definition eines Union Type erstellt man immer einen neuen Typ. Ein Union Type kann eine Vereinigung verschiedener Typen sein – jedoch muss er dies nicht."
 ---
 
 Jetzt wo wir bereits die Datenstrukturen [Listen, Arrays, Sets und Dictionaries](/articles/elm-datenstrukturen-list-array-set-dict.html) als auch [Records und Tupel](/articles/elm-datenstrukturen-record-tuple.html) kennen, gibt es nur noch eine weitere Basisstruktur, über die wir sprechen müssen: Den sogenannten *Union Type*.
 
 <!-- more -->
 
-Durch die Definition eines Union Type erstellt an immer einen neuen Typ. Im Gegensatz zu den anderen Datenstrukturen, die wir bisher kennengelernt haben, kann ein Union Type eine Vereinigung verschiedener Typen sein – jedoch muss er dies nicht.
+Durch die Definition eines Union Type erstellt man immer einen neuen Typ. Im Gegensatz zu den anderen Datenstrukturen, die wir bisher kennengelernt haben, kann ein Union Type eine Vereinigung verschiedener Typen sein – jedoch muss er dies nicht.
 
 In seiner einfachsten Form kann ein Union Type als eine Art Aufzählung oder Enumeration betrachtet werden:
 

@@ -4,6 +4,10 @@ include ../../templates/_articles
 block title
   title Elm – functional frontend development • Dennis Reimann
 
+block meta
+  meta(name="description" content="Elm is a functional programming language that compiles to JavaScript. Opposed to JavaScript, Elm is statically typed.")
+  meta(name="keywords" content="Elm,Frontend development,Functional Programming,functions,Elm tutorials,data structures,record,tuple,list,maybe")
+
 block main
   section
     - articles = h.articles.filterByLanguage(mvb.groupedArticles.byTag["Elm"], h.lang(locals)).reverse()
@@ -19,7 +23,7 @@ block main
       | programming language before, nevertheless it is very clear and does not take
       | much time to get used to in my opinion. The following articles introduce you
       | to the fundamentals of funtional frontend development with Elm.
-      
+
     h3 Fundamentals
-    
+
     +articles(articles, "topic")

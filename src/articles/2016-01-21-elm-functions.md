@@ -11,6 +11,7 @@ tags:
   - Frontend development
   - Functions
   - Functional Programming
+description: "This article spotlights the central construct of the Elm programming language: Functions. What does the definition of a function look like, how can functions be chained via piping and what the heck is currying?"
 ---
 
 This article spotlights the central construct of the Elm programming language: Functions. What does the definition of a function look like, how can functions be chained via piping and what the heck is currying? Let us have a closer look …

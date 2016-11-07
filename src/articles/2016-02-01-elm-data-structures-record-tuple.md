@@ -12,6 +12,7 @@ tags:
   - Data structures
   - Record
   - Tuple
+description: "Records and tuples can contain an arbitrary amount of elements – as opposed to lists, arrays, sets, and dictionaries these elements do not have to be of the same data type."
 ---
 
 After we have already covered the iterable data structures in the previous article, we will now work wth records and tuples, which can contain elements of different types. We will also have a look at how to access values using destructuring and get to know about type aliases …

@@ -11,6 +11,7 @@ tags:
   - React
   - PureScript
   - RxJS
+description: "Elm ist eine funktionale Programmiersprache, die zu JavaScript kompiliert. Eine Besonderheit ist dabei die statische Typisierung, welche es in JavaScript nicht gibt und die Elm-seitig über den Compiler realisiert ist."
 ---
 Vor ein paar Wochen habe ich dank [Michael](https://twitter.com/naltatis) angefangen, mich näher mit [Elm](http://elm-lang.org) zu beschäftigen und bin mittlerweile regelrecht begeistert. Das letzte Mal, dass ich so ein gutes Gefühl dabei hatte, etwas Neues zu lernen, ist knapp zehn Jahren her: Damals wusste man bei Rails direkt, dass man es mit etwas Besonderem zu tun hat.
 
