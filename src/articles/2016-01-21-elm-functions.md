@@ -96,6 +96,8 @@ sayHello name =
     String.append "Hello " name
 ```
 
+To learn more about this specific feature, see the dedicated article about [type annotations in Elm](elm-type-annotations.html).
+
 ### Anonymous functions / lambdas
 
 Anonymous functions do not have a function definition. They are defined inline and are often used as arguments for functions like `List.map`. They are parenthesized and the content is prefixed with a backslash:
