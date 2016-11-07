@@ -7,17 +7,16 @@ block title
     if mvb.article.subtitle
       = " – "
       = mvb.article.subtitle
-    = " • Dennis Reimann: Frontend-Entwicklung mit JavaScript, CSS und HTML"
-    
+
 block meta
   meta(name="description" content=h.article.description(mvb.article))
   if mvb.article.tags
     meta(name="keywords" content=h.article.keywords(mvb.article))
-      
+
 block foot
   if h.article.hasCode(mvb.article)
     link(href=h.assetUrl("styles/vendor/highlightjs.css") media="all" rel="stylesheet")
-    
+
 block main
   section
     article.article
@@ -34,7 +33,7 @@ block main
             | &nbsp;
             time.article__date= h.article.englishDate(mvb.article)
           else
-            span Geschrieben am 
+            span Geschrieben am
             | &nbsp;
             time.article__date= h.article.germanDate(mvb.article)
         .article__nav
@@ -42,7 +41,6 @@ block main
           - nextArticle = mvb.article.nextArticle
           h5.article__nav__title= h.t(locals, "Weitere Artikel", "More articles")
           +articles([nextArticle, prevArticle].filter(function(e){return e}), "blog").article__nav__items
-  
+
   section
     include ../templates/ioctocat
-          
