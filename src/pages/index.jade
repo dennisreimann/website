@@ -2,14 +2,14 @@ extends ../templates/layout
 include ../templates/_articles
 
 block title
-  title Frontend-Entwicklung mit JavaScript, CSS und HTML • Dennis Reimann
-    
+  title Frontend-Entwicklung mit Elm, JavaScript, CSS und HTML • Dennis Reimann
+
 block main
   section
     p
       | Als freiberuflicher Softwareentwickler unterstütze ich Unternehmen bei der Realisierung
       | von Webanwendungen. Mein Schwerpunkt liegt dabei auf der Frontend-Entwicklung
-      | mit JavaScript, CSS und HTML. In diesem Bereich beschäftige ich mich insbesondere mit der
+      | mit Elm, JavaScript, CSS und HTML. In diesem Bereich beschäftige ich mich insbesondere mit der
       | Architektur komplexer Webanwendungen und interaktiven JavaScript-Applikation, unter anderem
       | im eCommerce-Umfeld.
 
@@ -55,7 +55,7 @@ block main
 
     p.more
       a.more__link(href="/projekte.html") Weitere Projekte
-      
+
   section
     h2 Artikel
     +articles(h.articles.filterByNoAlternate(mvb.articles, h.lang(locals)).slice(0,3), "blog")
