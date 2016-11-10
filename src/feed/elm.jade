@@ -1,0 +1,18 @@
+include _entry
+
+- articles = h.articles.filterByLanguage(mvb.groupedArticles.byTag["Elm"], "en")
+- feedUrl = h.baseUrl("/articles/elm.xml")
+
+doctype xml
+feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="en" xml:base="https://dennisreimann.de")
+  id= feedUrl
+  title Elm: Functional Frontend Development
+  subtitle Dennis Reimann: Freelance Software Developer
+  updated= h.articles.feedDate(mvb.articles)
+  link(href= h.baseUrl("/articles/elm.html"))
+  link(rel="self" href=feedUrl)
+  author
+    name Dennis Reimann
+    email mail@dennisreimann.de
+  for a in articles
+    +entry(a)

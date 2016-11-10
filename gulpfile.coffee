@@ -25,7 +25,6 @@ paths =
   optimizeImages: ["src/{images,svgs}/**/*"]
   articles: if isDev then ["src/articles/*.md", "src/drafts/*.md"] else ["src/articles/*.md"]
   templates: "src/templates/*.jade"
-  feedTemplate: "src/templates/atom.jade"
   articleTemplate: "src/templates/article.jade"
   articlesBasepath: "articles"
 
@@ -88,14 +87,18 @@ gulp.task "pages", -> buildHtml(paths.pages)
 
 gulp.task "articles", -> buildHtml(paths.articles, paths.articlesBasepath)
 
-gulp.task "feed", ->
-  gulp.src(paths.feedTemplate)
+feedWithTemplate = (template, folder) ->
+  gulp.src("src/feed/#{template}.jade")
     .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
     .pipe(p.jade(pretty: true))
-    .pipe(p.rename("atom.xml"))
-    .pipe(dest())
+    .pipe(p.rename(extname: ".xml"))
+    .pipe(dest(folder))
+
+gulp.task "feed:atom", -> feedWithTemplate("atom")
+gulp.task "feed:elm", -> feedWithTemplate("elm", paths.articlesBasepath)
+gulp.task "feed", ["feed:atom", "feed:elm"]
 
 gulp.task "scripts", ->
   gulp.src(paths.scripts)
@@ -156,7 +159,6 @@ gulp.task "watch", ->
   gulp.watch paths.copy, ["copy"]
   gulp.watch paths.styles, ["styles"]
   gulp.watch paths.scripts, ["scripts"]
-  gulp.watch paths.feedTemplate, ["feed"]
   gulp.watch paths.articleTemplate, ["articles"]
   gulp.watch paths.templates, ["articles", "pages"]
   gulp.watch(paths.pages).on("change", (file) -> buildHtml(file.path))

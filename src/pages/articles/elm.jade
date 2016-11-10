@@ -8,6 +8,9 @@ block meta
   meta(name="description" content="Elm is a functional programming language that compiles to JavaScript. Opposed to JavaScript, Elm is statically typed.")
   meta(name="keywords" content="Elm,Frontend development,Functional Programming,functions,Elm tutorials,data structures,record,tuple,list,maybe")
 
+block alternate
+  link(href="/articles/elm.xml" rel="alternate" type="application/atom+xml")
+
 block main
   section
     - articles = h.articles.filterByLanguage(mvb.groupedArticles.byTag["Elm"], h.lang(locals)).reverse()
