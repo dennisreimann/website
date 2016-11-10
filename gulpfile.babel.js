@@ -28,7 +28,7 @@ const paths = {
   optimizeImages: ['src/{images,svgs}/**/*'],
   articles: isDev ? ['src/articles/*.md', 'src/drafts/*.md'] : ['src/articles/*.md'],
   templates: 'src/templates/*.jade',
-  articconstemplate: 'src/templates/article.jade',
+  articleTemplate: 'src/templates/article.jade',
   articlesBasepath: 'articles',
 };
 
@@ -175,7 +175,7 @@ gulp.task('watch', () => {
   gulp.watch(paths.copy, ['copy']);
   gulp.watch(paths.styles, ['styles']);
   gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.articconstemplate, ['articles']);
+  gulp.watch(paths.articleTemplate, ['articles']);
   gulp.watch(paths.templates, ['articles', 'pages']);
   gulp.watch(paths.pages).on('change', file => buildHtml(file.path));
   gulp.watch(paths.articles).on('change', file => buildHtml(file.path, paths.articlesBasepath));
