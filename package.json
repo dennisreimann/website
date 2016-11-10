@@ -1,8 +1,8 @@
 {
-  "version": "0.0.1",
+  "version": "1.0.0",
   "name": "website",
   "description": "dennisreimann.de",
-  "repository": "dennisreimann.de:repos/website.git",
+  "repository": "git@github.com:dennisreimann/website.git",
   "license": "UNLICENSED",
   "engines": {
     "node": ">=7.0.0"
