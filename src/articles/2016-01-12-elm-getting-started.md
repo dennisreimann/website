@@ -3,6 +3,9 @@ title: Elm lernen
 subtitle: Funktionale Frontend-Entwicklung
 updated: 2016-01-15T10:00
 lang: de
+alternate:
+  lang: en
+  href: https://changelog.com/posts/elm-functional-front-end-development-and-why-you-should-care
 tags:
   - Elm
   - Frontend-Entwicklung
