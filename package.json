@@ -37,18 +37,18 @@
     "gulp-jade": "^1.1.0",
     "gulp-load-plugins": "^1.3.0",
     "gulp-minify-html": "^1.0.6",
-    "gulp-mvb": "file:../gulp-mvb",
+    "gulp-mvb": "^0.5.0",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-resolve-dependencies": "^2.2.0",
     "gulp-rev-all": "^0.8.24",
+    "gulp-rev-delete-original": "^0.2.2",
     "gulp-sitemap": "^4.2.0",
-    "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.5.0",
     "gulp-uglify": "^2.0.0",
     "highlight.js": "^9.8.0",
     "run-sequence": "^1.2.2",
-    "yargs": "^5.0.0"
+    "yargs": "^6.3.0"
   }
 }

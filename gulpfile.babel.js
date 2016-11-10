@@ -19,7 +19,7 @@ const baseUrl = isDev ? 'http://localhost:3000' : 'https://dennisreimann.de';
 const paths = {
   src: 'src',
   dest: 'dist',
-  rev: ['dist/**/*.{css,js,map,svg,jpg,png,gif,ttf,woff,woff2}'],
+  rev: ['dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}'],
   copy: ['src/{fonts,images,svgs}/**/*', 'src/favicon.ico', 'src/.htaccess', 'src/{styles,}/vendor/highlightjs.css'],
   pages: ['src/pages/**/*.jade'],
   styles: ['src/styles/**/*.styl'],
@@ -114,10 +114,8 @@ gulp.task('articles', () => buildHtml(paths.articles, paths.articlesBasepath));
 gulp.task('scripts', () =>
   gulp.src(paths.scripts)
     .pipe(p.plumber())
-    .pipe(p.sourcemaps.init())
     .pipe(p.babel())
     .pipe(p.uglify())
-    .pipe(p.sourcemaps.write('./maps'))
     .pipe(dest('scripts'))
     .pipe(browserSync.stream({match: '**/*.js'}))
 );
@@ -154,13 +152,14 @@ gulp.task('optimizeImages', () =>
     .pipe(gulp.dest('src'))
 );
 
-gulp.task('revAssets', function() {
+gulp.task('revAssets', () => {
   const revAll = new p.revAll({prefix: assetHost});
   return gulp.src(paths.rev)
     .pipe(revAll.revision())
+    .pipe(p.revDeleteOriginal())
     .pipe(dest())
     .pipe(revAll.manifestFile())
-    .pipe(dest());
+    .pipe(dest())
 });
 
 gulp.task('sitemap', () =>
