@@ -36,7 +36,7 @@ const dest = (folder = '') => gulp.dest(`${paths.dest}/${folder}`);
 
 const mvbConf = {
   glob: paths.articles,
-  template: paths.articconstemplate,
+  template: paths.articleTemplate,
   permalink(article) {
     return `/${paths.articlesBasepath}/${article.id}.html`;
   },

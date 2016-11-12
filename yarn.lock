@@ -2574,11 +2574,12 @@ gulp-minify-html@^1.0.6:
     minimize "^1.5.0"
     through2 "^0.6.1"
 
-gulp-mvb@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/gulp-mvb/-/gulp-mvb-0.5.0.tgz#7efdbc949b8b6c680d1d2d4de1c56a6324453027"
+gulp-mvb@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/gulp-mvb/-/gulp-mvb-0.5.1.tgz#17a8319eefd8b538dfa27d1894b4d89ecc885047"
   dependencies:
     glob "^6.0.1"
+    gulp-util "^3.0.7"
     marked "^0.3.5"
     through2 "^2.0.0"
     util-extend "^1.0.1"
