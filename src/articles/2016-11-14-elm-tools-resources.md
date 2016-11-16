@@ -30,6 +30,8 @@ This is a potpourri of tools and resources I found valuable when working with El
 
 - [Elm Oracle](https://github.com/ElmCast/elm-oracle) intends to be a standalone program that can be used by all editor plugins to query information about a project's source code. You can use it to query for information about values in Elm source files.
 
+- [elm-new](https://github.com/simonewebdesign/elm-new) is a CLI tool that generates a file hierarchy for starting a new Elm project. It brings you up to speed and enables you to code right away instead of wasting time with the initial boilerplate.
+
 ### Learning
 
 - [Elm For Beginners](http://courses.knowthen.com/p/elm-for-beginners) is a free video course by James Moore. I cannot recommend it enough ans this course covers the language basics and introduces you to the fundamentals of functional programming as they are needed. For beginners this is a great and practical video course.
