@@ -115,13 +115,13 @@ Modules get defined at the top of the file. It is optional to explicitly state w
 
 ```elm
 -- default module definition
-module Main where
+module Main
 
 -- custom module exporting everything
-module FullAwesomeness (..) where
+module FullAwesomeness exposing (..)
 
 -- custom module exporting only the specified types and functions
-module Restricted (ImportableType, importableFunction) where
+module Restricted exposing (ImportableType, importableFunction)
 ```
 
 Now that we know how to import and define our own modules, let us take the next step by learning about the central construct of the Elm programming language: [Functions](/articles/elm-functions.html).

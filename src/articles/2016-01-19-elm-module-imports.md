@@ -115,13 +115,13 @@ Module werden am Anfang einer Datei definiert. Optional kann man angeben, welche
 
 ```elm
 -- default module definition
-module Main where
+module Main
 
 -- custom module exporting everything
-module FullAwesomeness (..) where
+module FullAwesomeness exposing (..)
 
 -- custom module exporting only the specified types and functions
-module Restricted (ImportableType, importableFunction) where
+module Restricted exposing (ImportableType, importableFunction)
 ```
 
 Jetzt wo wir wissen, wie man Module definieren und importieren kann, sehen wir uns im nächsten Schritt das zentrale Sprachkonstrukt in Elm an: [Funktionen](/articles/elm-funktionen.html).
