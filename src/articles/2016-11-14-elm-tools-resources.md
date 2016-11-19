@@ -30,7 +30,11 @@ This is a potpourri of tools and resources I found valuable when working with El
 
 - [Elm Oracle](https://github.com/ElmCast/elm-oracle) intends to be a standalone program that can be used by all editor plugins to query information about a project's source code. You can use it to query for information about values in Elm source files.
 
+- [elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter/) gets you going with a boilerplate Webpack config for developing Elm apps. It has a dev server with live reloading, hot module replacement and a production build step for exporting your app.
+
 - [elm-new](https://github.com/simonewebdesign/elm-new) is a CLI tool that generates a file hierarchy for starting a new Elm project. It brings you up to speed and enables you to code right away instead of wasting time with the initial boilerplate.
+
+- [elm-version-manager](https://github.com/mattludwigs/elm-version-manager) offers simple management of Elm versions, inspired by projects like rbenv or nvm. It gives you commands for installing different versions of Elm and switching to them on a per project basis.
 
 ### Learning
 

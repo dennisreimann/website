@@ -25,4 +25,4 @@ Adding on to my previous list of [Elm tools and resources](/elm-tools-resources.
 
 - [html-to-elm](https://atom.io/packages/html-to-elm) converts plain HTML to the according Elm HTML. This can be a real time saver when you are setting up views.
 
-- [elm-instant](https://atom.io/packages/elm-instant) looks promising, but unfortunately it seems pretty alpha – I haven't had luck making it work. It should provide both a visual REPL to try your code as well as a preview pane to immediately see the output of calling functions you have in your files.
+- [elm-instant](https://atom.io/packages/elm-instant) provides both a visual REPL to try your code as well as a preview pane to immediately see the output of calling functions you have in your files.
