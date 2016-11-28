@@ -9,8 +9,8 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "predev": "npm run clean",
-    "dev": "gulp develop --dev",
+    "prestart": "npm run clean",
+    "start": "gulp develop --dev",
     "prebuild": "npm run clean",
     "build": "gulp build",
     "preproduction": "npm run clean",
