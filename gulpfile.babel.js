@@ -21,14 +21,14 @@ const paths = {
   dest: 'dist',
   rev: ['dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}'],
   copy: ['src/{fonts,images,svgs}/**/*', 'src/favicon.ico', 'src/.htaccess', 'src/{styles,}/vendor/highlightjs.css'],
-  pages: ['src/pages/**/*.jade'],
+  pages: ['src/pages/**/*.pug'],
   styles: ['src/styles/**/*.styl'],
   scripts: ['src/scripts/**/*.js'],
   sitemap: ['dist/**/*.html'],
   optimizeImages: ['src/{images,svgs}/**/*'],
   articles: isDev ? ['src/articles/*.md', 'src/drafts/*.md'] : ['src/articles/*.md'],
-  templates: 'src/templates/*.jade',
-  articleTemplate: 'src/templates/article.jade',
+  templates: 'src/templates/*.pug',
+  articleTemplate: 'src/templates/article.pug',
   articlesBasepath: 'articles',
 };
 
@@ -84,17 +84,17 @@ const buildHtml = (src, dst) =>
     .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
-    .pipe(p.jade({pretty: true}))
+    .pipe(p.pug({pretty: true}))
     .pipe(p.minifyHtml({empty: true}))
     .pipe(dest(dst))
     .pipe(browserSync.stream())
 
 const feedWithTemplate = (template, folder) =>
-  gulp.src(`src/feed/${template}.jade`)
+  gulp.src(`src/feed/${template}.pug`)
     .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
-    .pipe(p.jade({pretty: true}))
+    .pipe(p.pug({pretty: true}))
     .pipe(p.rename({extname: '.xml'}))
     .pipe(dest(folder))
 

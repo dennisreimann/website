@@ -1,5 +1,5 @@
 mixin navItem(type, current)
-  li(class="nav__item nav__item--#{type}#{current ? ' nav__item--current' : ''}")
+  li(class=`nav__item nav__item--${type}${current ? ' nav__item--current' : ''}`)
     block
 
 ul.nav

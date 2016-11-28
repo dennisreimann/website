@@ -3,6 +3,6 @@ include _articleItemTopic
 
 mixin articles(articles, articleType)
   - articlePartial = "article_item_" + articleType
-  ul(class="articles articles--#{articleType}")
+  ul(class=`articles articles--${articleType}`)
     for article in articles
       +#{articlePartial}(article)

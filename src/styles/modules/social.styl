@@ -4,12 +4,18 @@
 
   &__item
     display inline-block
-    + *
+
+    + .social__item
       margin-left $margin-normal
 
     &__icon
       width 40px
       height 40px
+
+  &__link
+    display inline-block
+    + .social__link
+      margin-left $margin-normal
 
   @media print
     display none
