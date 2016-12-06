@@ -2,9 +2,8 @@
   overflow hidden
   margin-top 1.25em
   border 1px solid lighten($color-lightgray, 1)
-  border-radius .5em
-  padding 15px
   background-image linear-gradient(lighten($color-lightgray, 7), lighten($color-lightgray, 3))
+  @extend $escape-wrap
 
   a
     color $color-subtle
@@ -17,10 +16,10 @@
 
   &__icon
     float left
-    margin 0 15px 10px 0
+    margin $space-tiny $space-medium $space-normal 0
 
     @media up_to_M
-      width 60px
+      width 80px
     @media M_and_up
       width 100px
 

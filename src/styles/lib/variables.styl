@@ -28,3 +28,18 @@ $font-family-base = Helvetica, Arial, Tahoma, Verdana, sans-serif
 $font-family-code = "Fira Code", Hasklig, "Source Code Pro",  "DejaVu Sans Mono", Hack, Meslo, Menlo, Inconsolata, Consolas, "Liberation Mono", Courier, monospace
 $font-family-din-bold = DINCondBold
 $font-family-din-light = DINLight
+
+// 688px = 40rem + 2 * (1.5rem) = $width-main + 2 * $space-large
+$escape-wrap
+  $breakpoint-escape-wrap = 688px
+  $mq-escape-wrap-to = mq_to($breakpoint-escape-wrap)
+  $mq-escape-wrap-from = mq_from_and_print($breakpoint-escape-wrap)
+  @media $mq-escape-wrap-to
+    padding $space-medium $space-large
+    margin-left $space-large * -1
+    margin-right $space-large * -1
+  @media $mq-escape-wrap-from
+    border-radius $space-small
+    padding $space-medium $space-medium
+    margin-left $space-medium * -1
+    margin-right $space-medium * -1
