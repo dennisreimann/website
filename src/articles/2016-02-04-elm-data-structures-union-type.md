@@ -72,10 +72,10 @@ displayStatus availability =
         Reordered days ->
             let
                 min =
-                    toString (fst days)
+                    toString (first days)
 
                 max =
-                    toString (snd days)
+                    toString (second days)
             in
                 "Available again in " ++ min ++ " to " ++ max ++ " days."
 

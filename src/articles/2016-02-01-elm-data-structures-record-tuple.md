@@ -57,7 +57,7 @@ error : ValidationResult
 error = (False, "Something went wrong.")
 ```
 
-Tuple are suitable for creating simple, short data structures – i.e. to return multiple values from a function. For accessing the values of a tuple with two values one can use the functions `fst` and `snd` (read _first_ and _second_), for tuples with three or more values one has to use destructuring.
+Tuple are suitable for creating simple, short data structures – i.e. to return multiple values from a function. For accessing the values of a tuple with two values one can use the functions `first` and `second`, for tuples with three or more values one has to use destructuring.
 
 ### Destructuring
 

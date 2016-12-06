@@ -55,7 +55,7 @@ error : ValidationResult
 error = (False, "Something went wrong.")
 ```
 
-Tupel eignen sich gut für einfache, kurze Datenstrukturen, beispielsweise um aus einer Funktion mehrere Rückgabewerte zu liefern. Bei Zweiertupeln kann man über die Funktionen `fst` und `snd` (für _first_ und _second_) auf die Werte zugreifen, bei Tupeln mit drei oder mehr Werten muss man Destructuring nutzen.
+Tupel eignen sich gut für einfache, kurze Datenstrukturen, beispielsweise um aus einer Funktion mehrere Rückgabewerte zu liefern. Bei Zweiertupeln kann man über die Funktionen `first` und `second` auf die Werte zugreifen, bei Tupeln mit drei oder mehr Werten muss man Destructuring nutzen.
 
 ### Destructuring
 
