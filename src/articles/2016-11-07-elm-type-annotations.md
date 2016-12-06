@@ -1,6 +1,6 @@
 ---
 title: "Elm Type Annotations"
-updated: 2016-11-07T14:00
+elmVersion: 0.18
 lang: en
 tags:
   - Elm

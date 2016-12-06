@@ -1,7 +1,7 @@
 ---
 title: Elm lernen
 subtitle: Funktionale Frontend-Entwicklung
-updated: 2016-01-15T10:00
+updated: 2016-01-15
 lang: de
 alternate:
   lang: en

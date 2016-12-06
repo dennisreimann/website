@@ -1,7 +1,8 @@
 ---
 title: "Elm Data Structures (2)"
 subtitle: "Records and Tuples"
-updated: 2016-02-01T11:00
+updated: 2016-12-06
+elmVersion: 0.18
 lang: en
 alternate:
   lang: de

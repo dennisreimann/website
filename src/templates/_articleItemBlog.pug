@@ -1,6 +1,6 @@
 mixin article_item_blog(a)
   li.articles__item.articles__item--blog
-    time.articles__item__date= h.t(locals, h.article.germanDate(a), h.article.englishDate(a))
+    time.articles__item__date= h.t(locals, h.formatDateGerman(a.date), h.formatDateEnglish(a.date))
     a.articles__item__link(href=a.permalink)
       span.articles__item__title= a.title
       if a.subtitle

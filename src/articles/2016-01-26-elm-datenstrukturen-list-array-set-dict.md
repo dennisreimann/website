@@ -1,7 +1,6 @@
 ---
 title: "Elm Datenstrukturen (1)"
 subtitle: "Listen, Arrays, Sets und Dictionaries"
-updated: 2016-01-26T10:00
 lang: de
 alternate:
   lang: en

@@ -1,7 +1,6 @@
 ---
 title: "Elm Funktionen"
 subtitle: "Syntax, Piping und Currying"
-updated: 2016-01-21T10:00
 lang: de
 alternate:
   lang: en

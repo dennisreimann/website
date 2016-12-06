@@ -1,6 +1,5 @@
 ---
 title: "Elm Tools and Resources"
-updated: 2016-11-14T10:00
 lang: en
 tags:
   - Elm

@@ -18,24 +18,60 @@ block foot
     link(href=h.assetUrl("styles/vendor/highlightjs.css") media="all" rel="stylesheet")
 
 block main
+  - a = mvb.article
+  - update = h.article.getDate(a)
   section
     article.article
       header.article__header
         hgroup
-          h1.article__title= mvb.article.title
-          if mvb.article.subtitle
-            h2.article__subtitle= mvb.article.subtitle
-      .article__content!= mvb.article.content
+          h1.article__title= a.title
+          if a.subtitle
+            h2.article__subtitle= a.subtitle
+      .article__content!= a.content
       footer.article__footer
         .article__meta
-          if h.isEnglish(locals)
-            span Written on
-            | &nbsp;
-            time.article__date= h.article.englishDate(mvb.article)
-          else
-            span Geschrieben am
-            | &nbsp;
-            time.article__date= h.article.germanDate(mvb.article)
+          p
+            if h.isEnglish(locals)
+              span Published on&nbsp;
+              time.article__date= h.formatDateEnglish(a.date)
+            else
+              span Veröffentlicht am&nbsp;
+              time.article__date= h.formatDateGerman(a.date)
+            if update && update != a.date
+              = " – "
+              if h.isEnglish(locals)
+                span updated on&nbsp;
+                time.article__date= h.formatDateEnglish(update)
+              else
+                span aktualisiert am&nbsp;
+                time.article__date= h.formatDateEnglish(update)
+            | .
+            p
+              if a.elmVersion
+                if h.isEnglish(locals)
+                  | Code samples for Elm #{a.elmVersion}.
+                else
+                  | Code-Beispiele für Elm #{a.elmVersion}.
+                = " "
+              if h.isEnglish(locals)
+                = " You got remarks or corrections? Typos or grammatical improvements? "
+                a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Let me know!
+              else
+                = " Du hast Anmerkungen oder Verbesserungen? "
+                a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Lass es mich wissen!
+            p
+              if h.isEnglish(locals)
+                = " Liked the article? Follow me on "
+                a(href="https://twitter.com/dennisreimann") Twitter
+                = " or "
+                a(href="https://twitter.com/dennisreimann") GitHub
+                | !
+              else
+                = " Dir hat der Artikel gefallen? Folge mir auf "
+                a(href="https://twitter.com/dennisreimann") Twitter
+                = " oder "
+                a(href="https://twitter.com/dennisreimann") GitHub
+                | !
         .article__nav
           - prevArticle = mvb.article.previousArticle
           - nextArticle = mvb.article.nextArticle

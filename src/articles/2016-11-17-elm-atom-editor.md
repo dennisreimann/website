@@ -1,6 +1,5 @@
 ---
 title: "Elm Atom Plugins"
-updated: 2016-11-17T11:00
 lang: en
 tags:
   - Elm

@@ -1,7 +1,6 @@
 ---
 title: "Living Pattern Libraries"
 subtitle: "Wie man Styleguide-Zombies killt …"
-updated: 2016-09-26T10:00
 lang: de
 tags:
   - Pattern Library

@@ -1,7 +1,8 @@
 ---
 title: "Elm Data Structures (3)"
 subtitle: "Union Types"
-updated: 2016-02-04T11:00
+updated: 2016-12-06
+elmVersion: 0.18
 lang: en
 alternate:
   lang: de
