@@ -7,6 +7,7 @@ import mqpacker from 'css-mqpacker';
 import csswring from 'csswring';
 import highlightjs from 'highlight.js';
 import BrowserSync from 'browser-sync';
+import debounce from './lib/debounce';
 import templateHelper from './lib/templateHelper';
 
 const p = gulpLoadPlugins();
@@ -24,7 +25,7 @@ const paths = {
   pages: ['src/pages/**/*.pug'],
   styles: ['src/styles/**/*.styl'],
   scripts: ['src/scripts/**/*.js'],
-  sitemap: ['dist/**/*.html'],
+  html: ['dist/**/*.html'],
   optimizeImages: ['src/{images,svgs}/**/*'],
   articles: isDev ? ['src/articles/*.md', 'src/drafts/*.md'] : ['src/articles/*.md'],
   templates: 'src/templates/*.pug',
@@ -87,7 +88,6 @@ const buildHtml = (src, dst) =>
     .pipe(p.pug({pretty: true}))
     .pipe(p.minifyHtml({empty: true}))
     .pipe(dest(dst))
-    .pipe(browserSync.stream())
 
 const feedWithTemplate = (template, folder) =>
   gulp.src(`src/feed/${template}.pug`)
@@ -163,7 +163,7 @@ gulp.task('revAssets', () => {
 });
 
 gulp.task('sitemap', () =>
-  gulp.src(paths.sitemap)
+  gulp.src(paths.html)
     .pipe(p.sitemap({
       siteUrl: baseUrl,
       changefreq: 'weekly'
@@ -179,6 +179,7 @@ gulp.task('watch', () => {
   gulp.watch(paths.templates, ['articles', 'pages']);
   gulp.watch(paths.pages).on('change', file => buildHtml(file.path));
   gulp.watch(paths.articles).on('change', file => buildHtml(file.path, paths.articlesBasepath));
+  gulp.watch(paths.html).on('change', () => debounce('reload', browserSync.reload, 500));
 });
 
 gulp.task('build', cb => runSequence('styles', ['copy', 'pages', 'articles', 'feed', 'scripts'], cb));
