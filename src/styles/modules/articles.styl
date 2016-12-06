@@ -8,14 +8,14 @@
       flex-wrap wrap
     + .articles__item
       @media up_to_M
-        margin-top $margin-large
+        margin-top $space-large
       @media M_and_up
-        margin-top $margin-small
+        margin-top $space-small
 
     &--topic
       + .articles__item--topic
         @media M_and_up
-          margin-top $margin-large
+          margin-top $space-large
 
     &__date
       flex-basis 6.25em
@@ -23,7 +23,7 @@
       @media up_to_M
         display block
       @media M_and_up
-        margin-right $margin-normal
+        margin-right $space-normal
 
     &__link
       flex 1
@@ -33,7 +33,7 @@
       @media up_to_M
         display block
       @media M_and_up
-        margin-right $margin-small
+        margin-right $space-small
 
     &__subtitle
       color $color-text
@@ -45,7 +45,7 @@
     &__lang
       color $color-gray
       @media M_and_up
-        margin-left $margin-small
+        margin-left $space-small
 
     &__alternate
       .articles__item__link

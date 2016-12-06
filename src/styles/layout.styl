@@ -1,14 +1,14 @@
 #nav
-  margin-bottom $margin-huge
+  margin-bottom $space-huge
   color #fff
   background $color-darkblue
 
 #header
   @media up_to_L
-    margin-bottom $margin-large
+    margin-bottom $space-large
   @media L_and_up_and_print
     overflow hidden
-    margin-bottom $margin-huge
+    margin-bottom $space-huge
     .logo
       float right
       width $width-aside
@@ -20,12 +20,23 @@
     width $width-main
 
 #footer
-  margin-bottom $margin-large
+  margin-bottom $space-large
   @media L_and_up_and_print
     overflow hidden
-    margin-top $margin-huge
+    margin-top $space-huge
     h2
       display none
     .vcard
       float right
       width $width-aside
+
+.wrap
+  padding-left $space-large
+  padding-right $space-large
+
+  @media screen
+    margin 0 auto
+  @media up_to_L
+    max-width $width-main
+  @media L_and_up_and_print
+    width $width-main + $width-space + $width-aside

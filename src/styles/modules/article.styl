@@ -1,20 +1,20 @@
 .article
   &__header
-    margin-bottom $margin-normal
+    margin-bottom $space-normal
 
   &__footer
-    margin-top $margin-large
+    margin-top $space-large
     color $color-subtle
 
   &__meta
-    margin-bottom $margin-large
+    margin-bottom $space-large
 
   &__nav
     @media print
       display none
 
     &__title
-      margin-bottom $margin-small
+      margin-bottom $space-small
 
     &__items
       display flex
@@ -23,9 +23,9 @@
 
     &__item
       flex 0 1 auto
-      margin-bottom $margin-normal
+      margin-bottom $space-normal
       &:first-child
-        margin-right $margin-large
+        margin-right $space-large
 
     &__description
-      margin-right $margin-tiny
+      margin-right $space-tiny
