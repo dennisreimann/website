@@ -73,20 +73,33 @@ ol
 
 pre
 code
-  border-radius .25em
   white-space pre
   font-family $font-family-code
   font-size $font-size-code
 
 pre
   overflow-x auto
-  margin-bottom $margin-huge
-  padding .4em .8em
+  margin-bottom $space-huge
   color #b9b5b8
-  background darken($color-darkblue, 5)
+  background darken($color-darkblue, 8)
+  // 688px = 40rem + 2 * (1.5rem) = $width-main + 2 * $space-large
+  $breakpoint-pre = 688px
+  $mq-pre-to = mq_to($breakpoint-pre)
+  $mq-pre-from = mq_from_and_print($breakpoint-pre)
+  @media $mq-pre-to
+    padding $space-medium $space-large
+    margin-left $space-large * -1
+    margin-right $space-large * -1
+  @media $mq-pre-from
+    border-radius $space-small
+    padding $space-medium $space-medium
+    margin-left $space-medium * -1
+    margin-right $space-medium * -1
+
 
 code
   padding .2em .4em
+  border-radius $space-tiny
   background $color-lightgray
   font-size $font-size-small
   pre &
