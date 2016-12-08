@@ -86,7 +86,6 @@ const buildHtml = (src, dst) =>
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
     .pipe(p.pug({pretty: true}))
-    .pipe(p.minifyHtml({empty: true}))
     .pipe(dest(dst))
 
 const feedWithTemplate = (template, folder) =>
@@ -171,6 +170,12 @@ gulp.task('sitemap', () =>
     .pipe(dest())
 );
 
+gulp.task('html:optimize', cb =>
+  gulp.src(paths.html)
+    .pipe(p.minifyHtml({empty: true}))
+    .pipe(dest())
+);
+
 gulp.task('watch', () => {
   gulp.watch(paths.copy, ['copy']);
   gulp.watch(paths.styles, ['styles']);
@@ -182,7 +187,8 @@ gulp.task('watch', () => {
   gulp.watch(paths.html).on('change', () => debounce('reload', browserSync.reload, 500));
 });
 
+gulp.task('optimize', ['html:optimize']);
 gulp.task('build', cb => runSequence('styles', ['copy', 'pages', 'articles', 'feed', 'scripts'], cb));
 gulp.task('develop', cb => runSequence('build', ['watch', 'browserSync'], cb));
 gulp.task('rev', cb => runSequence('revAssets', ['pages', 'articles'], cb));
-gulp.task('production', cb => runSequence('build', 'rev', 'sitemap', cb));
+gulp.task('production', cb => runSequence('build', 'rev', ['sitemap', 'optimize'], cb));
