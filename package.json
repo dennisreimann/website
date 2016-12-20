@@ -9,13 +9,13 @@
   },
   "scripts": {
     "clean": "rimraf dist/*",
-    "prestart": "npm run clean",
+    "prestart": "yarn run clean",
     "start": "gulp develop --dev",
-    "prebuild": "npm run clean",
+    "prebuild": "yarn run clean",
     "build": "gulp build",
-    "preproduction": "npm run clean",
-    "production": "gulp production",
-    "predeploy": "npm run production",
+    "preprod": "yarn run clean",
+    "prod": "gulp production",
+    "predeploy": "yarn run prod",
     "deploy": "rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude dist/ uberdennis:html"
   },
   "devDependencies": {
