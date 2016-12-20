@@ -88,10 +88,14 @@ code
   padding .2em .4em
   border-radius $space-tiny
   background $color-lightgray
-  font-size $font-size-small
+  font-size $font-size-code
   pre &
     padding 0
     background none
+    font-size $font-size-small
+
+mark
+  background $color-mark
 
 ul
 ol
@@ -111,6 +115,8 @@ ol
 pre
   +
     h2
+      margin-top $space-large
+  +
     h3
     h4
     h5
