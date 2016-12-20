@@ -21,7 +21,7 @@ const paths = {
   src: 'src',
   dest: 'dist',
   rev: ['dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}'],
-  copy: ['src/{fonts,images,svgs}/**/*', 'src/favicon.ico', 'src/.htaccess', 'src/{styles,}/vendor/highlightjs.css'],
+  copy: ['src/static/**/*', 'src/static/.htaccess'],
   pages: ['src/pages/**/*.pug'],
   styles: ['src/styles/**/*.styl'],
   scripts: ['src/scripts/**/*.js'],
