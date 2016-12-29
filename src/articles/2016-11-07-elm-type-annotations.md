@@ -1,5 +1,6 @@
 ---
 title: "Elm Type Annotations"
+ogImage: elm
 elmVersion: 0.18
 lang: en
 tags:

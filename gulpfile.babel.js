@@ -1,4 +1,5 @@
 import { argv } from 'yargs';
+import path from 'path';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import runSequence from 'run-sequence';
@@ -15,7 +16,9 @@ const browserSync = BrowserSync.create();
 
 const isDev = (argv.dev != null);
 const assetHost = argv.assetHost || '';
-const baseUrl = isDev ? 'http://localhost:3000' : 'https://dennisreimann.de';
+const defaultScheme = isDev ? 'http' : 'https';
+const siteHost = isDev ? 'localhost:3000' : 'dennisreimann.de';
+const siteUrl = `${defaultScheme}://${siteHost}`;
 
 const paths = {
   src: 'src',
@@ -77,7 +80,10 @@ const mvbConf = {
 };
 
 const templateData = file => ({
-  h: templateHelper.createHelper(file, isDev, baseUrl, assetHost)
+  h: templateHelper.createHelper(file, isDev, siteHost, assetHost, defaultScheme),
+  page: {
+    permalink: path.relative(paths.src, file.path).replace(/^pages/, '').replace(/\.pug$/, '.html')
+  }
 });
 
 const buildHtml = (src, dst) =>
@@ -163,10 +169,7 @@ gulp.task('revAssets', () => {
 
 gulp.task('sitemap', () =>
   gulp.src(paths.html)
-    .pipe(p.sitemap({
-      siteUrl: baseUrl,
-      changefreq: 'weekly'
-    }))
+    .pipe(p.sitemap({ siteUrl, changefreq: 'weekly' }))
     .pipe(dest())
 );
 

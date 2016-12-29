@@ -1,6 +1,7 @@
 ---
 title: Elm Datenstrukturen (2)
 subtitle: Records und Tupel
+ogImage: elm
 updated: 2016-12-06
 elmVersion: 0.18
 lang: de

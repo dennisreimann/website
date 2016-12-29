@@ -1,6 +1,7 @@
 ---
 title: "Elm Data Structures (1)"
 subtitle: "Lists, Arrays, Sets, and Dictionaries"
+ogImage: elm
 lang: en
 alternate:
   lang: de

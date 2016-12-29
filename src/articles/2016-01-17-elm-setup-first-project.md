@@ -1,6 +1,7 @@
 ---
 title: "Elm Setup"
 subtitle: "Installation and building the first project"
+ogImage: elm
 lang: en
 alternate:
   lang: de

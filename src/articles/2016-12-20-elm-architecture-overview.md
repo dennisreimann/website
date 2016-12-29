@@ -1,6 +1,7 @@
 ---
 title: The Elm Architecture
 subtitle: Simple, yet powerful – An overview by example
+ogImage: elm
 lang: en
 tags:
   - Elm

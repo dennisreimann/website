@@ -1,7 +1,7 @@
 include _entry
 
 - articles = mvb.articles
-- feedUrl = h.baseUrl("/atom.xml")
+- feedUrl = h.siteUrl("/atom.xml")
 
 doctype xml
 feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="de" xml:base="https://dennisreimann.de")
@@ -9,7 +9,7 @@ feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="de" xml:base="https://dennisr
   title Dennis Reimann: Freiberuflicher Softwareentwickler
   subtitle Frontend-Entwicklung mit Elm, JavaScript, CSS und HTML
   updated= h.articles.feedDate(mvb.articles)
-  link(href= h.baseUrl("/articles.html"))
+  link(href= h.siteUrl("/articles.html"))
   link(rel="self" href=feedUrl)
   author
     name Dennis Reimann

@@ -2,11 +2,30 @@ extends ../../templates/layout
 include ../../templates/_articles
 
 block title
-  title Elm – functional frontend development • Dennis Reimann
+  title=h.title("Elm – functional frontend development")
 
 block meta
   meta(name="description" content="Elm is a functional programming language that compiles to JavaScript. Opposed to JavaScript, Elm is statically typed.")
   meta(name="keywords" content="Elm,Frontend development,Functional Programming,functions,Elm tutorials,data structures,record,tuple,list,maybe")
+
+block og
+  meta(property="og:type" content="article")
+  meta(property="og:title" content=h.title("Elm – functional frontend development"))
+  meta(property="og:description" content="Elm is a functional programming language that compiles to JavaScript. Opposed to JavaScript, Elm is statically typed.")
+  meta(property="article:author" content="https://www.facebook.com/profile.php?id=100008783506280")
+  meta(property="article:section" content="Technology")
+  meta(property="og:image" content=h.assetUrl("images/og/elm.png", "http"))
+  meta(property="og:image:secure_url" content=h.assetUrl("images/og/elm.png", "https"))
+  meta(property="article:tag" content="Elm")
+  meta(property="article:tag" content="Frontend development")
+  meta(property="article:tag" content="Functional Programming")
+  meta(property="article:tag" content="functions")
+  meta(property="article:tag" content="Elm tutorials")
+  meta(property="article:tag" content="data structures")
+  meta(property="article:tag" content="record")
+  meta(property="article:tag" content="tuple")
+  meta(property="article:tag" content="list")
+  meta(property="article:tag" content="maybe")
 
 block alternate
   link(href="/articles/elm.xml" rel="alternate" type="application/atom+xml")

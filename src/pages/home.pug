@@ -2,18 +2,18 @@ extends ../templates/layout
 include ../templates/_articles
 
 block title
-  title Frontend development with Elm, JavaScript, CSS, and HTML • Dennis Reimann
+  title=h.title("Frontend development with Elm, JavaScript, CSS, and HTML")
 
 block main
   section
     p
       | As a freelance software developer I help companies with consulting and by developing
       | web applications. Major focus of my work is frontend development with Elm, JavaScript, CSS,
-      | and HTML. In this area I am involved in the architecture of complex websites and 
+      | and HTML. In this area I am involved in the architecture of complex websites and
       | interactive JavaScript applications, especially in the field of ecommerce.
     p.more
       a.more__link(href="/projekte.html") Projects
-      
+
   section
     h2 Articles
     +articles(h.articles.filterByNoAlternate(mvb.articles, h.lang(locals)).slice(0,3), "blog")

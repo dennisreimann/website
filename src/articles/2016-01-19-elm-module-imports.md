@@ -1,6 +1,7 @@
 ---
 title: "Elm Module und Imports"
 subtitle: "Das Modulsystem"
+ogImage: elm
 lang: de
 alternate:
   lang: en

@@ -2,11 +2,30 @@ extends ../../templates/layout
 include ../../templates/_articles
 
 block title
-  title Elm – Funktionale Frontend-Entwicklung • Dennis Reimann
+  title=h.title("Elm – Funktionale Frontend-Entwicklung")
 
 block meta
   meta(name="description" content="Elm ist eine funktionale Programmiersprache, die zu JavaScript kompiliert. Eine Besonderheit ist dabei die statische Typisierung, welche es in JavaScript nicht gibt und die in Elm über den Compiler realisiert ist.")
   meta(name="keywords" content="Elm,Frontend Entwicklung,Funktionale Programmierung,Funktionen,Elm Tutorials,Datenstrukturen,Record,Tuple,List,Maybe")
+
+block og
+  meta(property="og:type" content="article")
+  meta(property="og:title" content=h.title("Elm – Funktionale Frontend-Entwicklung"))
+  meta(property="og:description" content="Elm ist eine funktionale Programmiersprache, die zu JavaScript kompiliert. Eine Besonderheit ist dabei die statische Typisierung, welche es in JavaScript nicht gibt und die in Elm über den Compiler realisiert ist.")
+  meta(property="article:author" content="https://www.facebook.com/profile.php?id=100008783506280")
+  meta(property="article:section" content="Technology")
+  meta(property="og:image" content=h.assetUrl("images/og/elm.png", "http"))
+  meta(property="og:image:secure_url" content=h.assetUrl("images/og/elm.png", "https"))
+  meta(property="article:tag" content="Elm")
+  meta(property="article:tag" content="Frontend Entwicklung")
+  meta(property="article:tag" content="Funktionale Programmierung")
+  meta(property="article:tag" content="Funktionen")
+  meta(property="article:tag" content="Elm Tutorials")
+  meta(property="article:tag" content="Datenstrukturen")
+  meta(property="article:tag" content="record")
+  meta(property="article:tag" content="tuple")
+  meta(property="article:tag" content="list")
+  meta(property="article:tag" content="maybe")
 
 block main
   section

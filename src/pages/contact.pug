@@ -1,7 +1,10 @@
 extends ../templates/layout
 
 block title
-  title Contact • Dennis Reimann: Frontend development with Elm, JavaScript, CSS, and HTML
+  title=h.title("Contact: Frontend development with Elm, JavaScript, CSS, and HTML")
+
+block og
+  include ../templates/contact_og
 
 block main
   section#about

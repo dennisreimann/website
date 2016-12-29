@@ -1,5 +1,6 @@
 ---
 title: "Elm Atom Plugins"
+ogImage: elm
 lang: en
 tags:
   - Elm

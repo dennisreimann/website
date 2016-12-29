@@ -3,16 +3,28 @@ include ../templates/_articles
 include ../templates/_icon
 
 block title
-  title
-    = mvb.article.title
-    if mvb.article.subtitle
-      = " – "
-      = mvb.article.subtitle
+  title= h.article.title(mvb.article)
 
 block meta
   meta(name="description" content=h.article.description(mvb.article))
   if mvb.article.tags
     meta(name="keywords" content=h.article.keywords(mvb.article))
+
+block og
+  meta(property="og:type" content="article")
+  meta(property="og:title" content=h.article.title(mvb.article))
+  meta(property="og:description" content=h.article.description(mvb.article))
+  meta(property="article:author" content="https://www.facebook.com/profile.php?id=100008783506280")
+  meta(property="article:section" content="Technology")
+  meta(property="article:published_time" content=h.article.feedDate(mvb.article))
+  if mvb.article.ogImage
+    meta(property="og:image" content=h.assetUrl(`images/og/${mvb.article.ogImage}.png`, "http"))
+    meta(property="og:image:secure_url" content=h.assetUrl(`images/og/${mvb.article.ogImage}.png`, "https"))
+    meta(property="og:image:width" content=1600)
+    meta(property="og:image:height" content=838)
+  if mvb.article.tags
+    for tag in mvb.article.tags
+      meta(property="article:tag" content=tag)
 
 block foot
   if h.article.hasCode(mvb.article)
