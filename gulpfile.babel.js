@@ -20,7 +20,7 @@ const baseUrl = isDev ? 'http://localhost:3000' : 'https://dennisreimann.de';
 const paths = {
   src: 'src',
   dest: 'dist',
-  rev: ['dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}'],
+  rev: ['!dist/files/**/*', 'dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}'],
   copy: ['src/static/**/*', 'src/static/.htaccess'],
   pages: ['src/pages/**/*.pug'],
   styles: ['src/styles/**/*.styl'],

@@ -33,11 +33,11 @@ The basic structure of your application and modules looks like this:
 
 To cover each of these parts in detail I came up with a [(very) simple blog example](/files/elm-architecture-overview-example.html):
 The app shows a list of articles which can be expanded to show the full content by clicking on the title.
-Not quite a Medium competitor, but for us figuring out the most important thing about The Elm Architecture it will work :)
+Not quite a Medium competitor, but for us figuring out the most important things about The Elm Architecture it will work :)
 
 ## Model
 
-<mark>The model part represents the form of your data as well as the actual state.</mark>
+<mark>The model part represents the form of your data as well as the actual state.</mark> &#8203;
 You will have at least one type alias that defines your models:
 Most likely this type alias references a [record](/articles/elm-data-structures-record-tuple.html) that describes the shape of your data.
 
@@ -75,13 +75,13 @@ initialModel =
 
 The model is the only place where the state of your application resides.
 It is a single state tree of immutable data.
-Each time this data is transformed by the Update function you get a new model containing the updated state.
+Each time this data is transformed by the `update` function you get a new model containing the updated state.
 
 ## View
 
 The view is represented by one or many stateless functions.
 These functions generate HTML based on the model:
-<mark>Their input is the model or a part thereof; their output is the markup that represents the current state.</mark>
+&#8203; <mark>Their input is the model or a part thereof; their output is the markup that represents the current state.</mark>
 
 There is no need to mutate the DOM manually, the markup – written in elm-html – is entirely declarative.
 
@@ -117,7 +117,7 @@ You register event handlers that emit messages to the runtime that will trigger 
 
 ## Update
 
-<mark>The `update` function is the only place your model gets transformed.</mark>
+<mark>The `update` function is the only place your model gets transformed.</mark> &#8203;
 It receives a message as well as the model, then updates the model according to the message and returns it.
 
 In case of our example app the `update` gets invoked when the user clicks the article:
@@ -156,7 +156,7 @@ It's no surprise that this simple, yet powerful way of state management became v
 
 The main function is the entry of an Elm program.
 It takes care of wiring up the three parts described above.
-<mark>The runtime is contained in a program that gets initialized with the `model`, `view`, and `update` – this program is then returned by the main function.</mark>
+&#8203; <mark>The runtime is contained in a program that gets initialized with the `model`, `view`, and `update` – this program is then returned by the main function.</mark>
 
 Supplemented with the imports of your module this can be considered the boilerplate of your application.
 The simple case with a `beginnerProgram` might look like this:
@@ -180,9 +180,11 @@ main =
 
 The `Html.beginnerProgram` encapsulates the basics of The Elm Architecture.
 It wires up the model, view, and update functions and provides the setup for handling user interaction and managing state.
-Once initialized <mark>the program executes a continuous loop, taking in actions from the user, changing the state and representing the changes in the view.</mark>
+Once initialized &#8203; <mark>the program executes a continuous loop, taking in actions from the user, changing the state and representing the changes in the view.</mark> &#8203;
 
-![Diagram of The Elm Architecture](/images/articles/elm-arch.svg)
+<div class="image image--centered image--320">
+![Diagram of The Elm Architecture](/files/elm-architecture-overview-diagram.svg)
+</div>
 
 ### Dealing with effects
 
@@ -202,7 +204,7 @@ The user interacts with the view which produces messages, which are handled by t
 This function is the only place your *model* gets transformed.
 The *runtime* encapsulates all of these parts and provides a continuous loop of these interactions.
 
-With this, <mark>The Elm Architecture offers a solid foundation for modularity, code reuse, and testing.</mark>
+With this, &#8203; <mark>The Elm Architecture offers a solid foundation for modularity, code reuse, and testing.</mark> &#8203;
 It also facilitates onboarding new developers as the basic structure of every Elm app is the same.
 
 As the [official guide](https://guide.elm-lang.org/architecture) states:
