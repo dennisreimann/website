@@ -30,7 +30,7 @@ I hope it will be a handy resource if you are searching for an easy way to achie
 
 <div class="tldr">
   <p>**TL;DR** My goal was finding a good and easily manageable way to ship my first Phoenix app.
-  Too keep the setup easy I am making a few assumptions here:</p>
+  To keep the setup easy I am making a few assumptions:</p>
 
   <ul>
     <li>The build happens on the production system, no CI or separate build server involved.</li>
@@ -172,6 +172,9 @@ If this works you can then leave the postgres console by typing `\q`.
 We are getting closer: The server has everything set up so that we can prepare our Phoenix application for deployment.
 The official guide uses Exrm to build the releases, but we will use its successor [Distillery](https://github.com/bitwalker/distillery) which is required by Gatling.
 
+**First off: This guide naively assumes the app being named `MyApp`.**<br>
+Change this to your liking, your mileage may vary ;)
+
 ### Preparing the Distillery release
 
 Whether or not you are using Phoenix or Gatling, Distillery is a good tool for building Elixir releases and it offers detailed documentation.
@@ -196,9 +199,6 @@ end
 Being curious about the reasoning for that setting [I opened an issue](https://github.com/hashrocket/gatling/issues/29).
 
 ### Preparing the app
-
-**First off: This guide naively assumes the app being named `MyApp`.**<br>
-Change this to your liking, your mileage may vary ;)
 
 We will configure the production env using environment variables.
 I prefer this approach to the Phoenix' standard of a separate `prod.secret.exs` file.

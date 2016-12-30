@@ -14,6 +14,12 @@ block main
       | im eCommerce-Umfeld.
 
   section
+    h2 Artikel
+    +articles(h.articles.filterByNoAlternate(mvb.articles, h.lang(locals)).slice(0,3), "blog")
+    p.more
+      a.more__link(href="/artikel.html") Weitere Artikel
+
+  section
     h2 Kunden und Projekte
     ol.projects
       li.project
@@ -55,9 +61,3 @@ block main
 
     p.more
       a.more__link(href="/projekte.html") Weitere Projekte
-
-  section
-    h2 Artikel
-    +articles(h.articles.filterByNoAlternate(mvb.articles, h.lang(locals)).slice(0,3), "blog")
-    p.more
-      a.more__link(href="/artikel.html") Weitere Artikel
