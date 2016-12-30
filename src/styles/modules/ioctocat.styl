@@ -1,18 +1,13 @@
 .ioctocat
+  @extend $boxed
   overflow hidden
-  margin-top 1.25em
-  border 1px solid lighten($color-lightgray, 1)
-  background-image linear-gradient(lighten($color-lightgray, 7), lighten($color-lightgray, 3))
-  @extend $escape-wrap
-
-  a
-    color $color-subtle
+  margin-top $space-large
 
   @media print
     display none
 
   &__heading
-    margin-top .25em
+    margin-top $space-tiny
 
   &__icon
     float left

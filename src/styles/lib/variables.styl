@@ -44,3 +44,12 @@ $escape-wrap
     padding $space-medium $space-medium
     margin-left $space-medium * -1
     margin-right $space-medium * -1
+
+$boxed
+  @extend $escape-wrap
+  border 1px solid lighten($color-lightgray, 1)
+  background-image linear-gradient(lighten($color-lightgray, 10), lighten($color-lightgray, 5))
+  > :last-child
+    margin-bottom 0
+  a
+    color $color-subtle
