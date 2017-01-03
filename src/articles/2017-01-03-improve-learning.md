@@ -17,7 +17,7 @@ This article explains how I started replacing my former naive and tiring way of 
 Let me give you some context first:
 At the end of the last year I deliberately decided to take two months off from client work.
 Most of the last three years I have spent working on large client projects and felt too tired to consume much new tech alongside.
-So I wanted to some time to catch up and work on my own projects – basically
+So I wanted some time to catch up and work on my own projects – basically
 [sharpening the saw](https://blog.codinghorror.com/sharpening-the-saw/).
 
 ### Do you feel me?
@@ -25,7 +25,7 @@ So I wanted to some time to catch up and work on my own projects – basically
 Don't get me wrong: I learned tons of stuff working on these client projects, but not exactly the topics I felt I should be focusing on.
 My backlog of things I wanted to read, podcasts I wanted to listen to, and conference talks I wanted to watch had grown to a point where consuming all of these became almost unattainable.
 
-I love working in the web industry as it gives my a chance to challenge my thinking and knowledge basically every day.
+I love working in the web industry as it gives me a chance to challenge my thinking and knowledge basically every day.
 Yet this becomes stressful and tiring when you start feeling like you are missing out on something.
 This is me sounding like a complete moron, nevertheless I do not seem to be the only one and the fact that
 ["JavaScript fatigue"](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4#.ofpunnu8k)
@@ -38,12 +38,12 @@ Your horizon grows and so do your lists of things to read, watch, and listen to.
 ## Make it actionable
 
 The first and foremost point to deal with this is to &#8203;<mark>**make all of these items actionable**</mark>. &#8203;
-This means to categorize and filter based on where and when you will actually apply the new knowledge.
-The major benefit: Your learning will be more effective and amplified by putting it into use. 
+This means to categorize and filter based on where and when you will actually apply the desired knowledge.
+Major benefit: Your learning will be more effective and amplified by putting it into use. 
 It feels like Captain Obvious talking here, but I fall into the trap of not doing it this way time and time again.  
 
 How does it work?
-Think of it as a &#8203;<abbr title="Getting Things Done">GTD</abbr>&#8203; approach for the things you are interested in:
+Think of it as a &#8203;<abbr title="Getting Things Done">GTD</abbr>&#8203; approach for the things you are interested in: &#8203;
 <mark>Inbox Zero for your reading and watch lists.</mark> &#8203;
 Your milage may vary, but to give you an idea of how this looks in practice, here is what I am doing currently:
 
@@ -60,7 +60,7 @@ I know they will come in handy when I get to the API part in one of my projects,
 Grooming my "article backlog" I stored them as notes in my "Evaluate API options" task for the particular project.
 
 You tuck away the articles you want to consume, connecting them with tasks that actually move you forward.
-You immerse yourself in the topics when the right time has come and you are able to put them into context and action.
+You immerse yourself in the topics when the right time has come and when you are able to put them into context and action.
 This way you do not learn stuff to have it in stock for some day later.
 Which is when you will have most likely forgotten about the details anyways.
 
@@ -85,4 +85,5 @@ We cannot and should not try to stay up to date with all of what it has to offer
 Learn what you really need to learn and are able to apply.
 Get familiar with the underlying fundamentals of the things that matter to you.
 
-And above all:&#8203; <mark>Enjoy this process.</mark>
+And above all: &#8203;
+<mark>Enjoy this process.</mark>
