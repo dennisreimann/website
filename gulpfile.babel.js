@@ -30,7 +30,7 @@ const paths = {
   scripts: ['src/scripts/**/*.js'],
   html: ['dist/**/*.html'],
   optimizeImages: ['src/{images,svgs}/**/*'],
-  articles: isDev ? ['src/articles/*.md', 'src/drafts/*.md'] : ['src/articles/*.md'],
+  articles: ['src/articles/*.md'],
   templates: 'src/templates/*.pug',
   articleTemplate: 'src/templates/article.pug',
   articlesBasepath: 'articles',
