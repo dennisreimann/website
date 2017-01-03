@@ -183,9 +183,10 @@ The `Html.beginnerProgram` encapsulates the basics of The Elm Architecture.
 It wires up the model, view, and update functions and provides the setup for handling user interaction and managing state.
 Once initialized &#8203; <mark>the program executes a continuous loop, taking in actions from the user, changing the state and representing the changes in the view.</mark> &#8203;
 
-<div class="image image--centered image--320">
-![Diagram of The Elm Architecture](/files/elm-architecture-overview-diagram.svg)
-</div>
+<figure>
+  <img src="/files/elm-architecture-overview-diagram.svg" alt="Diagram of The Elm Architecture" width="320" height="211" />
+  <figcaption>Diagram of The Elm Architecture</figcaption>
+</figure>
 
 ### Dealing with effects
 
