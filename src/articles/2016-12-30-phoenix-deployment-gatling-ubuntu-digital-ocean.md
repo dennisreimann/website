@@ -326,7 +326,7 @@ defmodule MyApp.DeployCallbacks do
 end
 ```
 
-The second file called `upgrade.exs` looks almost the same.
+The second file called `upgrade.exs` also performs migrations before hot upgrading the app.
 It will be used every time we push to the repo after the initial deployment has happened and the app gets upgraded:
 
 ```elixir
@@ -336,6 +336,10 @@ defmodule MyApp.UpgradeCallbacks do
   def before_mix_digest(env) do
     bash("npm", ~w[install], cd: env.build_dir)
     bash("npm", ~w[run deploy], cd: env.build_dir)
+  end
+
+  def before_upgrade_service(env) do
+    bash("mix", ~w[ecto.migrate], cd: env.build_dir)
   end
 end
 ```
