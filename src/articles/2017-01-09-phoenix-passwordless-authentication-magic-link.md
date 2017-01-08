@@ -1,6 +1,7 @@
 ---
 title: Passwordless Authentication in Phoenix
 subtitle: Guide for Implementing Magic Login Links
+ogImage: phoenix
 lang: en
 tags:
   - Phoenix

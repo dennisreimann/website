@@ -28,7 +28,7 @@ I hope it will be a handy resource if you are searching for an easy way to achie
 
 <!-- more -->
 
-<div class="tldr">
+<div class="note">
   <p>**TL;DR** My goal was finding a good and easily manageable way to ship my first Phoenix app.
   To keep the setup easy I am making a few assumptions:</p>
 

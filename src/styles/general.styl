@@ -69,7 +69,10 @@ ul
 ol
   margin-bottom $space-large
   li + li
-    margin-top $space-small
+    margin-top $space-tiny
+  p + &
+    margin-top $space-small * -1
+
 
 pre
 code
@@ -129,6 +132,7 @@ figure
 p
 ul
 ol
+.note
   +
     h2
       margin-top $space-large

@@ -59,19 +59,12 @@ block main
                 span aktualisiert am&nbsp;
                 time.article__date= h.formatDateEnglish(update)
             | .
-            p
-              if a.elmVersion
-                if h.isEnglish(locals)
-                  | Code samples for Elm #{a.elmVersion}.
-                else
-                  | Code-Beispiele für Elm #{a.elmVersion}.
-                = " "
+            if a.elmVersion
+              = " "
               if h.isEnglish(locals)
-                = " You got remarks or corrections? Typos or grammatical improvements? "
-                a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Let me know!
+                | Code samples for Elm #{a.elmVersion}.
               else
-                = " Du hast Anmerkungen oder Verbesserungen? "
-                a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Lass es mich wissen!
+                | Code-Beispiele für Elm #{a.elmVersion}.
             p.social
               if h.isEnglish(locals)
                 = " Liked the article? Follow me on "
@@ -83,6 +76,13 @@ block main
                 a.social__link(href="https://twitter.com/dennisreimann" rel="me")
                   | Twitter
                   +icon("social", "twitter").social__icon
+            p
+              if h.isEnglish(locals)
+                = " You got remarks or corrections? Typos or grammatical improvements? "
+                a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Let me know!
+              else
+                = " Du hast Anmerkungen oder Verbesserungen? "
+                a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Lass es mich wissen!
             p
               if h.isEnglish(locals)
                 | And by the way:

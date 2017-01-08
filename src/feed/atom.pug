@@ -4,10 +4,10 @@ include _entry
 - feedUrl = h.siteUrl("/atom.xml")
 
 doctype xml
-feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="de" xml:base="https://dennisreimann.de")
+feed(xmlns="http://www.w3.org/2005/Atom" xml:lang="en" xml:base="https://dennisreimann.de")
   id= feedUrl
-  title Dennis Reimann: Freiberuflicher Softwareentwickler
-  subtitle Frontend-Entwicklung mit Elm, JavaScript, CSS und HTML
+  title Dennis Reimann
+  subtitle Software development: Elixir, Elm, JavaScript, CSS, and HTML
   updated= h.articles.feedDate(mvb.articles)
   link(href= h.siteUrl("/articles.html"))
   link(rel="self" href=feedUrl)
