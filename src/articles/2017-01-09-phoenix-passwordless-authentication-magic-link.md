@@ -296,7 +296,7 @@ defmodule MyApp.TokenAuthentication do
   """
   def provide_token(nil), do: {:error, :not_found}
 
-  def provide_token(email) when is_bitstring(email) do
+  def provide_token(email) when is_binary(email) do
     User
     |> Repo.get_by(email: email)
     |> send_token()
