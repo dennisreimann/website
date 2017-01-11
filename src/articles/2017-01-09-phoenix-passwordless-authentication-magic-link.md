@@ -2,6 +2,7 @@
 title: Passwordless Authentication in Phoenix
 subtitle: Guide for Implementing Magic Login Links
 ogImage: phoenix
+updated: 2017-01-11
 lang: en
 tags:
   - Phoenix
@@ -80,9 +81,12 @@ While we are at it, let's also adapt the `changeset` function to
 defmodule MyApp.AuthToken do
   use MyApp.Web, :model
 
+  alias MyApp.{Endpoint, User}
+  alias Phoenix.Token
+
   schema "auth_tokens" do
     field :value, :string
-    belongs_to :user, MyApp.User
+    belongs_to :user, User
 
     timestamps(updated_at: false)
   end
@@ -91,22 +95,20 @@ defmodule MyApp.AuthToken do
     struct
     |> cast(%{}, []) # convert the struct without taking any params
     |> put_assoc(:user, user)
-    |> put_change(:value, generate_token(42))
+    |> put_change(:value, generate_token(user))
     |> validate_required([:value, :user])
     |> unique_constraint(:value)
   end
 
   # generate a random and url-encoded token of given length
-  defp generate_token(length) do
-    random = :crypto.strong_rand_bytes(length)
-    random
-    |> Base.url_encode64
-    |> binary_part(0, length)
+  defp generate_token(nil), do: nil
+  defp generate_token(user) do
+    Token.sign(Endpoint, "user", user.id)
   end
 end
 ```
 
-This will generate a random 42 character long string everytime a token is created.
+This uses `Phoenix.Token` to generate a signed 96 character long string everytime a token is created.
 This string is the token value and will be part of the magic link the user receives to sign in.
 
 Having prepared the `AuthToken` model we also need to wire up the other side of the association.
@@ -165,22 +167,14 @@ defmodule MyApp.SessionController do
     Generates and sends magic login token if the user can be found.
   """
   def create(conn, %{"session" => %{"email" => email}}) do
-    case TokenAuthentication.provide_token(email) do
-      {:ok, _user} ->
-        conn
-        |> put_flash(:info, "We have sent you a link for signing in via email. See you soon!")
-        |> redirect(to: page_path(conn, :index))
+    TokenAuthentication.provide_token(email)
 
-      {:error, reason} ->
-        message = case reason do
-          :not_found -> "The email is invalid. Did you sign up with #{email}?"
-          _other -> "Something went wrong. Sorry, we messed up here!"
-        end
-
-        conn
-        |> put_flash(:error, message)
-        |> render("new.html", email: email)
-    end
+    # do not leak information about (non-)existing users.
+    # always reply with success message, even though the
+    # user might not exist.
+    conn
+    |> put_flash(:info, "We have sent you a link for signing in via email to #{email}.")
+    |> redirect(to: page_path(conn, :index))
   end
 
   @doc """
@@ -197,14 +191,9 @@ defmodule MyApp.SessionController do
         |> put_flash(:info, "You signed in successfully.")
         |> redirect(to: page_path(conn, :index))
 
-      {:error, reason} ->
-        message = case reason do
-          :invalid -> "The login token is invalid."
-          _other -> "Something went wrong. Sorry, we messed up here!"
-        end
-
+      {:error, _reason} ->
         conn
-        |> put_flash(:error, message)
+        |> put_flash(:error, "The login token is invalid.")
         |> redirect(to: session_path(conn, :new))
     end
   end
@@ -257,7 +246,7 @@ To do so we will use the `TokenAuthentication.provide_token` function that we al
 alias MyApp.{TokenAuthentication, User}
 
 @doc """
-  Sign up action, most likely UserController#create
+  Sign up action, most likely UserController.create/2
 """
 def create(conn, %{"user" => user_params}) do
   changeset = User.changeset(%User{}, user_params)
@@ -289,7 +278,11 @@ defmodule MyApp.TokenAuthentication do
   """
   import Ecto.Query, only: [where: 3]
 
-  alias MyApp.{AuthToken, Mailer, Repo, AuthenticationEmail, User}
+  alias MyApp.{AuthToken, Endpoint, Mailer, Repo, AuthenticationEmail, User}
+  alias Phoenix.Token
+
+  # token is valid for 30 minutes / 1800 seconds
+  @token_max_age 1_800
 
   @doc """
     Creates and sends a new magic login token to the user or email.
@@ -312,7 +305,7 @@ defmodule MyApp.TokenAuthentication do
   def verify_token_value(value) do
     AuthToken
     |> where([t], t.value == ^value)
-    |> where([t], t.inserted_at > datetime_add(^Ecto.DateTime.utc, -30, "minute"))
+    |> where([t], t.inserted_at > datetime_add(^Ecto.DateTime.utc, ^(@token_max_age * -1), "second"))
     |> Repo.one()
     |> verify_token()
   end
@@ -327,7 +320,17 @@ defmodule MyApp.TokenAuthentication do
       |> Repo.preload(:user)
       |> Repo.delete!
 
-    {:ok, token.user}
+    user_id = token.user.id
+
+    # verify the token matching the user id
+    case Token.verify(Endpoint, "user", token.value, max_age: @token_max_age) do
+      {:ok, ^user_id} ->
+        {:ok, token.user}
+
+      # reason can be :invalid or :expired
+      {:error, reason} ->
+        {:error, reason}
+    end
   end
 
   # User could not be found by email.
@@ -361,9 +364,9 @@ I just love this feature! 💜
 
 The `verify_token_value` function ensures that the token has not expired.
 It does so by limiting the fetch from the database and setting a `where` clause for the time period.
-You could also handle this by fetching the token without the clause and checking the validity in your code.
+You could also handle this by fetching the token without the clause and just using the `Phoenix.Token.verify/4` function providing the `max_age` option.
 This would give you the chance to have different error messages for cases of invalid and expired tokens.
-(I will leave that as an exercise for you)
+(I will leave that as an exercise for you – the `:invalid` and `:expired` cases should get handled in `SessionController.show/2` then)
 
 Once the token is used the `verify_token` function deletes the token.
 This way tokens cannot be redeemed multiple times.
@@ -435,3 +438,11 @@ Things like that can get pretty app-specific, nevertheless I hope this guide giv
 
 The implementation might also serve as a foundation to add more authentication methods.
 By encapsulating the authentication logic into a separate services instead of having it in the controller we can swap it out with a little bit of refactoring.
+
+## Updates
+
+The article got updated thanks to the feedback from [reddit user q1t](https://www.reddit.com/r/elixir/comments/5myy00/comment/dc8gegw)
+and [bobbypriambodo in the Elixir Forum](https://elixirforum.com/t/passwordless-authentication-in-phoenix/3212/2).
+It now incorporates `Phoenix.Token` to sign and verify the token value.
+Also we avoid leaking security information about users that exist in the app.
+Thanks very miuch for the nice feedback!
