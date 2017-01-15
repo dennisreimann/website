@@ -362,7 +362,7 @@ git push production master
 Logged in as the deploy user on our production server we need to perform the initial deployment manually by executing the Gatling deploy task:
 
 ```bash
-sudo mix gatling.deploy
+sudo mix gatling.deploy myapp
 ```
 
 This builds the initial release, looks up an available port and configures nginx to proxy to the app and containing [the necessary settings for using websockets](https://www.nginx.com/blog/websocket-nginx/).
