@@ -34,7 +34,7 @@ I hope it will be a handy resource if you are searching for an easy way to achie
 
   <ul>
     <li>The build happens on the production system, no CI or separate build server involved.</li>
-    <li>We deploy to a single server that hosts the app, nginx as a reverse proxy and the postgres database.
+    <li>We deploy to a single server that hosts the app, NGINX as a reverse proxy and the postgres database.
     The target server is an [Ubuntu 16.04 Digital Ocean droplet](http://www.digitalocean.com/?refcode=63eb025a3190).</li>
     <li>Achieve a Heroku-style `git push` based deployment by using [Gatling](https://github.com/hashrocket/gatling).</li>
   </ul>
@@ -92,7 +92,7 @@ To learn more about this, see the guide for
 
 ## Server Prerequisites
 
-Next up we will set up everything we need to build and run the app, namely Erlang, Elixir, Node, nginx and Postgres.
+Next up we will set up everything we need to build and run the app, namely Erlang, Elixir, Node, NGINX and Postgres.
 To keep it short and easy this guide sticks to system packages where possible.
 
 ### Erlang and Elixir
@@ -125,17 +125,17 @@ For details refer to the
 
 ### Nginx
 
-We need nginx as a reverse proxy for the Phoenix app.
-In an extended setup nginx can also provide load balancing and SSL termination.
-You can install it via the official package as Ubuntu 16.04 ships with a relatively up-to-date version of nginx:
+We need NGINX as a reverse proxy for the Phoenix app.
+In an extended setup NGINX can also provide load balancing and SSL termination.
+You can install it via the official package as Ubuntu 16.04 ships with a relatively up-to-date version of NGINX:
 
 ```bash
-sudo apt-get install nginx
+sudo apt-get install NGINX
 ```
 
 Alternatively you can use the latest and greatest versions by using PPAs, but Gatling assumes configuration and paths that match the official distribution versions.
 Keep this in mind because i.e. the
-[nginx version from the Ubuntu PPA](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#ubuntu-ppa)
+[NGINX version from the Ubuntu PPA](https://www.NGINX.com/resources/wiki/start/topics/tutorials/install/#ubuntu-ppa)
 does not adhere to the usual paths structure and misses `sites-available` and `sites-enabled`.
 
 ### Postgres
@@ -182,8 +182,8 @@ This guide assumes you are familiar with the basic process outlined in the [Gett
 You have installed and initialized Distillery in your project and we can skip to [Using Distillery with Phoenix](https://hexdocs.pm/distillery/use-with-phoenix.html).
 
 In you Phoenix project you have a `rel/config.exs` file which contains your release configuration.
-You can use it as-is, but we need to add the `output_dir` setting for the production environment.
-The reason for that: Gatling assumes the release in the `rel` directory instead of the Distillery default `_build`.
+You can use it as-is or configure additional options for the production environment. 
+Note: `include_erts` has to be set to `true` to enable hot upgrades.
 
 ```elixir
 environment :prod do
@@ -192,11 +192,8 @@ environment :prod do
   # This has to be enabled to support hot upgrades.
   set include_erts: true
   # ...
-  set output_dir: "rel/myapp"
 end
 ```
-
-Being curious about the reasoning for that setting [I opened an issue](https://github.com/hashrocket/gatling/issues/29).
 
 ### Preparing the app
 
@@ -298,7 +295,7 @@ git remote add production deploy@myapp.com:myapp
 ```
 
 Gatling requires a `domains` file in the root of the repo.
-This is read by Gatlings deploy task and used to configure the server names nginx responds to:
+This is read by Gatlings deploy task and used to configure the server names NGINX responds to:
 
 ```nohighlight
 myapp.com
@@ -365,7 +362,7 @@ Logged in as the deploy user on our production server we need to perform the ini
 sudo mix gatling.deploy myapp
 ```
 
-This builds the initial release, looks up an available port and configures nginx to proxy to the app and containing [the necessary settings for using websockets](https://www.nginx.com/blog/websocket-nginx/).
+This builds the initial release, looks up an available port and configures NGINX to proxy to the app and containing [the necessary settings for using websockets](https://www.NGINX.com/blog/websocket-NGINX/).
 It also creates a `init.d` script that is used to manage the app process.
 You can see the available commands for this service by running `sudo service myapp`.
 
@@ -381,6 +378,7 @@ I hope this guide helps you and provides useful information so that you do not h
 There are many options to go beyond this setup and there is also a very detailed guide on
 [deploying into a multi-server load balanced setup on Digital Ocean](http://www.akitaonrails.com/2016/12/23/elixir-phoenix-app-deployed-into-a-load-balanced-digitalocean-setup)
 by Fabio Akita.
+I also wrot a follow-up on [Configuring NGINX for Phoenix applications](/articles/phoenix-nginx-config.html) you might be interested in.
 
 In case you want to try all of this for yourself you can use my
 [Digital Ocean referrer link](http://www.digitalocean.com/?refcode=63eb025a3190) to sign up there.
