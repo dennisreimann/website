@@ -68,7 +68,7 @@ For details see the offical blog on using [NGINX as a WebSocket Proxy](https://w
 One of the first steps I take when setting up a new webserver is securing the connections. 
 Nowadays this is pretty easy and does not involve any additional costs – thanks to the [Let's Encrypt](https://letsencrypt.org/) initiative.
 
-This guide takes of from where you already got you certificates.
+This guide takes off from where you already got you certificates.
 If you first need to obtain a SSL certificate, Digital Ocean has a great guide on [How To Secure Nginx with Let's Encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04?refcode=63eb025a3190).
 Their guide covers obtaining a SSL certificate via Let's Encrypt and automating the renewal.
 Most of the following configuration also resembles the general advise given in the mentioned guide. 
