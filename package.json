@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.5.4",
-    "babel-cli": "^6.18.0",
     "babel-core": "^6.20.0",
     "babel-preset-es2015": "^6.18.0",
     "browser-sync": "^2.18.5",
@@ -30,7 +29,6 @@
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
     "gulp-concat-json": "^1.0.0",
-    "gulp-connect": "^5.0.0",
     "gulp-data": "^1.2.1",
     "gulp-if": "^2.0.1",
     "gulp-imagemin": "^3.1.1",
@@ -41,7 +39,6 @@
     "gulp-postcss": "^6.2.0",
     "gulp-pug": "^3.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-resolve-dependencies": "^2.2.0",
     "gulp-rev-all": "^0.8.24",
     "gulp-rev-delete-original": "^0.2.2",
     "gulp-sitemap": "^4.2.0",
