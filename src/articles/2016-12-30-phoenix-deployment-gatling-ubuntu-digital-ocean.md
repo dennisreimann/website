@@ -271,9 +271,9 @@ To do so, log in as the `deploy` user on the production server and execute these
 [install Gatling](https://github.com/hashrocket/gatling#instructions):
 
 ```bash
-mix archive.install https://github.com/hashrocket/gatling_archives/raw/master/gatling.ez
 mix local.hex
 mix local.rebar
+mix archive.install https://github.com/hashrocket/gatling_archives/raw/master/gatling.ez
 ```
 
 Afterwards we can initialize the app using the `load` task provided by Gatling.
