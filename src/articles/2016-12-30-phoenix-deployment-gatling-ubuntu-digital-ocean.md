@@ -271,9 +271,9 @@ To do so, log in as the `deploy` user on the production server and execute these
 [install Gatling](https://github.com/hashrocket/gatling#instructions):
 
 ```bash
-mix archive.install https://github.com/hashrocket/gatling_archives/raw/master/gatling.ez
 mix local.hex
 mix local.rebar
+mix archive.install https://github.com/hashrocket/gatling_archives/raw/master/gatling.ez
 ```
 
 Afterwards we can initialize the app using the `load` task provided by Gatling.
@@ -378,7 +378,7 @@ I hope this guide helps you and provides useful information so that you do not h
 There are many options to go beyond this setup and there is also a very detailed guide on
 [deploying into a multi-server load balanced setup on Digital Ocean](http://www.akitaonrails.com/2016/12/23/elixir-phoenix-app-deployed-into-a-load-balanced-digitalocean-setup)
 by Fabio Akita.
-I also wrot a follow-up on [Configuring NGINX for Phoenix applications](/articles/phoenix-nginx-config.html) you might be interested in.
+I also wrote a follow-up on [Configuring NGINX for Phoenix applications](/articles/phoenix-nginx-config.html) you might be interested in.
 
 In case you want to try all of this for yourself you can use my
 [Digital Ocean referrer link](http://www.digitalocean.com/?refcode=63eb025a3190) to sign up there.
