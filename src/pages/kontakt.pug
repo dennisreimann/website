@@ -1,14 +1,14 @@
-extends ../templates/layout
+extends /includes/layout
 
 block title
   title=h.title("Kontakt: Frontend-Entwicklung mit Elm, JavaScript, CSS und HTML")
 
 block og
-  include ../templates/contact_og
+  include /includes/contact_og
 
 block main
   section#about
-    include ../templates/contact_image
+    include /includes/contact_image
     table
       tbody
         tr
@@ -47,7 +47,7 @@ block main
           td: a(href="skype:dbloete?add" rel="me") dbloete
         tr.social
           th Profile
-          td: include ../templates/social
+          td: include /includes/social
 
   section#imprint.
     <header>

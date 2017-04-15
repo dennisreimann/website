@@ -1,6 +1,6 @@
-extends ../templates/layout
-include ../templates/_articles
-include ../templates/_icon
+extends /includes/layout
+include /includes/articles
+include /includes/icon
 
 block title
   title= h.article.title(mvb.article)
@@ -104,4 +104,4 @@ block main
           +articles([nextArticle, prevArticle].filter(function(e){return e}), "blog").article__nav__items
 
   section
-    include ../templates/ioctocat
+    include /includes/ioctocat

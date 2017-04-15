@@ -31,12 +31,17 @@ const paths = {
   html: ['dist/**/*.html'],
   optimizeImages: ['src/{images,svgs}/**/*'],
   articles: ['src/articles/*.md'],
-  templates: 'src/templates/*.pug',
+  templates: 'src/templates/**/*.pug',
   articleTemplate: 'src/templates/article.pug',
   articlesBasepath: 'articles'
 }
 
 const dest = (folder = '') => gulp.dest(`${paths.dest}/${folder}`)
+
+const pugConf = {
+  pretty: true,
+  basedir: './src/templates'
+}
 
 const mvbConf = {
   glob: paths.articles,
@@ -90,7 +95,7 @@ const buildHtml = (src, dst) =>
     .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
-    .pipe(p.pug({pretty: true}))
+    .pipe(p.pug(pugConf))
     .pipe(dest(dst))
 
 const feedWithTemplate = (template, folder) =>
@@ -98,7 +103,7 @@ const feedWithTemplate = (template, folder) =>
     .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
-    .pipe(p.pug({pretty: true}))
+    .pipe(p.pug(pugConf))
     .pipe(p.rename({extname: '.xml'}))
     .pipe(dest(folder))
 
