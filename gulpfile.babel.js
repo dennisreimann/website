@@ -1,24 +1,24 @@
-import { argv } from 'yargs';
-import path from 'path';
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import runSequence from 'run-sequence';
-import autoprefixer from 'autoprefixer';
-import mqpacker from 'css-mqpacker';
-import csswring from 'csswring';
-import highlightjs from 'highlight.js';
-import BrowserSync from 'browser-sync';
-import debounce from './lib/debounce';
-import templateHelper from './lib/templateHelper';
+import { argv } from 'yargs'
+import path from 'path'
+import gulp from 'gulp'
+import gulpLoadPlugins from 'gulp-load-plugins'
+import runSequence from 'run-sequence'
+import autoprefixer from 'autoprefixer'
+import mqpacker from 'css-mqpacker'
+import csswring from 'csswring'
+import highlightjs from 'highlight.js'
+import BrowserSync from 'browser-sync'
+import debounce from './lib/debounce'
+import templateHelper from './lib/templateHelper'
 
-const p = gulpLoadPlugins();
-const browserSync = BrowserSync.create();
+const p = gulpLoadPlugins()
+const browserSync = BrowserSync.create()
 
-const isDev = (argv.dev != null);
-const assetHost = argv.assetHost || '';
-const defaultScheme = isDev ? 'http' : 'https';
-const siteHost = isDev ? 'localhost:3000' : 'dennisreimann.de';
-const siteUrl = `${defaultScheme}://${siteHost}`;
+const isDev = (argv.dev != null)
+const assetHost = argv.assetHost || ''
+const defaultScheme = isDev ? 'http' : 'https'
+const siteHost = isDev ? 'localhost:3000' : 'dennisreimann.de'
+const siteUrl = `${defaultScheme}://${siteHost}`
 
 const paths = {
   src: 'src',
@@ -33,58 +33,57 @@ const paths = {
   articles: ['src/articles/*.md'],
   templates: 'src/templates/*.pug',
   articleTemplate: 'src/templates/article.pug',
-  articlesBasepath: 'articles',
-};
+  articlesBasepath: 'articles'
+}
 
-const dest = (folder = '') => gulp.dest(`${paths.dest}/${folder}`);
+const dest = (folder = '') => gulp.dest(`${paths.dest}/${folder}`)
 
 const mvbConf = {
   glob: paths.articles,
   template: paths.articleTemplate,
-  permalink(article) {
-    return `/${paths.articlesBasepath}/${article.id}.html`;
+  permalink (article) {
+    return `/${paths.articlesBasepath}/${article.id}.html`
   },
-  highlight(code, lang) {
-    const languages = (lang != null) ? [lang] : undefined;
-    return highlightjs.highlightAuto(code, languages).value;
+  highlight (code, lang) {
+    const languages = (lang != null) ? [lang] : undefined
+    return highlightjs.highlightAuto(code, languages).value
   },
-  grouping(articles) {
-    const byYear = {};
-    const byTag = {};
+  grouping (articles) {
+    const byYear = {}
+    const byTag = {}
 
-    articles.forEach(function(article) {
-      let tags;
-      const year = article.date.toISOString().replace(/-.*/, '');
-      if (!byYear[year]) { byYear[year] = []; }
-      byYear[year].push(article);
+    articles.forEach(function (article) {
+      const year = article.date.toISOString().replace(/-.*/, '')
+      if (!byYear[year]) { byYear[year] = [] }
+      byYear[year].push(article)
 
-      return tags = (article.tags || []).forEach(function(tag) {
-        if (!byTag[tag]) { byTag[tag] = []; }
-        return byTag[tag].push(article);
-      });
-    });
+      return (article.tags || []).forEach(function (tag) {
+        if (!byTag[tag]) { byTag[tag] = [] }
+        return byTag[tag].push(article)
+      })
+    })
 
     // year
-    const articlesByYear = [];
-    Object.keys(byYear).reverse().forEach(year => articlesByYear.push({year, articles: byYear[year]}));
+    const articlesByYear = []
+    Object.keys(byYear).reverse().forEach(year => articlesByYear.push({year, articles: byYear[year]}))
 
     // tag
-    const articlesByTag = byTag;
+    const articlesByTag = byTag
 
     // groups
     return {
       byTag: articlesByTag,
       byYear: articlesByYear
-    };
+    }
   }
-};
+}
 
 const templateData = file => ({
   h: templateHelper.createHelper(file, isDev, siteHost, assetHost, defaultScheme),
   page: {
     permalink: path.relative(paths.src, file.path).replace(/^pages/, '').replace(/\.pug$/, '.html')
   }
-});
+})
 
 const buildHtml = (src, dst) =>
   gulp.src(src)
@@ -103,18 +102,18 @@ const feedWithTemplate = (template, folder) =>
     .pipe(p.rename({extname: '.xml'}))
     .pipe(dest(folder))
 
-gulp.task('feed:atom', () => feedWithTemplate('atom'));
-gulp.task('feed:elm', () => feedWithTemplate('elm', paths.articlesBasepath));
-gulp.task('feed', ['feed:atom', 'feed:elm']);
+gulp.task('feed:atom', () => feedWithTemplate('atom'))
+gulp.task('feed:elm', () => feedWithTemplate('elm', paths.articlesBasepath))
+gulp.task('feed', ['feed:atom', 'feed:elm'])
 
 gulp.task('copy', cb =>
   gulp.src(paths.copy)
     .pipe(dest())
     .pipe(browserSync.stream())
-);
+)
 
-gulp.task('pages', () => buildHtml(paths.pages));
-gulp.task('articles', () => buildHtml(paths.articles, paths.articlesBasepath));
+gulp.task('pages', () => buildHtml(paths.pages))
+gulp.task('articles', () => buildHtml(paths.articles, paths.articlesBasepath))
 
 gulp.task('scripts', () =>
   gulp.src(paths.scripts)
@@ -123,7 +122,7 @@ gulp.task('scripts', () =>
     .pipe(p.uglify())
     .pipe(dest('scripts'))
     .pipe(browserSync.stream({match: '**/*.js'}))
-);
+)
 
 gulp.task('styles', () =>
   gulp.src(paths.styles)
@@ -140,7 +139,7 @@ gulp.task('styles', () =>
     ]))
     .pipe(dest('styles'))
     .pipe(browserSync.stream({match: '**/*.css'}))
-);
+)
 
 gulp.task('browserSync', () =>
   browserSync.init({
@@ -149,49 +148,50 @@ gulp.task('browserSync', () =>
       baseDir: paths.dest
     }
   })
-);
+)
 
 gulp.task('optimizeImages', () =>
   gulp.src(paths.optimizeImages)
     .pipe(p.imagemin())
     .pipe(gulp.dest('src'))
-);
+)
 
 gulp.task('revAssets', () => {
-  const revAll = new p.revAll({prefix: assetHost});
+  const RevAll = p.revAll
+  const revAll = new RevAll({prefix: assetHost})
   return gulp.src(paths.rev)
     .pipe(revAll.revision())
     .pipe(p.revDeleteOriginal())
     .pipe(dest())
     .pipe(revAll.manifestFile())
     .pipe(dest())
-});
+})
 
 gulp.task('sitemap', () =>
   gulp.src(paths.html)
     .pipe(p.sitemap({ siteUrl, changefreq: 'weekly' }))
     .pipe(dest())
-);
+)
 
 gulp.task('html:optimize', cb =>
   gulp.src(paths.html)
     .pipe(p.minifyHtml({empty: true}))
     .pipe(dest())
-);
+)
 
 gulp.task('watch', () => {
-  gulp.watch(paths.copy, ['copy']);
-  gulp.watch(paths.styles, ['styles']);
-  gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.articleTemplate, ['articles']);
-  gulp.watch(paths.templates, ['articles', 'pages']);
-  gulp.watch(paths.pages).on('change', file => buildHtml(file.path));
-  gulp.watch(paths.articles).on('change', file => buildHtml(file.path, paths.articlesBasepath));
-  gulp.watch(paths.html).on('change', () => debounce('reload', browserSync.reload, 500));
-});
+  gulp.watch(paths.copy, ['copy'])
+  gulp.watch(paths.styles, ['styles'])
+  gulp.watch(paths.scripts, ['scripts'])
+  gulp.watch(paths.articleTemplate, ['articles'])
+  gulp.watch(paths.templates, ['articles', 'pages'])
+  gulp.watch(paths.pages).on('change', file => buildHtml(file.path))
+  gulp.watch(paths.articles).on('change', file => buildHtml(file.path, paths.articlesBasepath))
+  gulp.watch(paths.html).on('change', () => debounce('reload', browserSync.reload, 500))
+})
 
-gulp.task('optimize', ['html:optimize']);
-gulp.task('build', cb => runSequence('styles', ['copy', 'pages', 'articles', 'feed', 'scripts'], cb));
-gulp.task('develop', cb => runSequence('build', ['watch', 'browserSync'], cb));
-gulp.task('rev', cb => runSequence('revAssets', ['pages', 'articles'], cb));
-gulp.task('production', cb => runSequence('build', 'rev', ['sitemap', 'optimize'], cb));
+gulp.task('optimize', ['html:optimize'])
+gulp.task('build', cb => runSequence('styles', ['copy', 'pages', 'articles', 'feed', 'scripts'], cb))
+gulp.task('develop', cb => runSequence('build', ['watch', 'browserSync'], cb))
+gulp.task('rev', cb => runSequence('revAssets', ['pages', 'articles'], cb))
+gulp.task('production', cb => runSequence('build', 'rev', ['sitemap', 'optimize'], cb))
