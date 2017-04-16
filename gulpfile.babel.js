@@ -8,7 +8,6 @@ import mqpacker from 'css-mqpacker'
 import csswring from 'csswring'
 import highlightjs from 'highlight.js'
 import BrowserSync from 'browser-sync'
-import debounce from './lib/debounce'
 import templateHelper from './lib/templateHelper'
 
 const p = gulpLoadPlugins()
@@ -126,7 +125,6 @@ gulp.task('scripts', () =>
     .pipe(p.babel())
     .pipe(p.uglify())
     .pipe(dest('scripts'))
-    .pipe(browserSync.stream({match: '**/*.js'}))
 )
 
 gulp.task('styles', () =>
@@ -143,16 +141,6 @@ gulp.task('styles', () =>
       csswring
     ]))
     .pipe(dest('styles'))
-    .pipe(browserSync.stream({match: '**/*.css'}))
-)
-
-gulp.task('browserSync', () =>
-  browserSync.init({
-    open: false,
-    server: {
-      baseDir: paths.dest
-    }
-  })
 )
 
 gulp.task('optimizeImages', () =>
@@ -192,11 +180,11 @@ gulp.task('watch', () => {
   gulp.watch(paths.templates, ['articles', 'pages'])
   gulp.watch(paths.pages).on('change', file => buildHtml(file.path))
   gulp.watch(paths.articles).on('change', file => buildHtml(file.path, paths.articlesBasepath))
-  gulp.watch(paths.html).on('change', () => debounce('reload', browserSync.reload, 500))
 })
 
 gulp.task('optimize', ['html:optimize'])
 gulp.task('build', cb => runSequence('styles', ['copy', 'pages', 'articles', 'feed', 'scripts'], cb))
+gulp.task('browserSync', cb => browserSync.init(require('./bs-config')))
 gulp.task('develop', cb => runSequence('build', ['watch', 'browserSync'], cb))
 gulp.task('rev', cb => runSequence('revAssets', ['pages', 'articles'], cb))
 gulp.task('production', cb => runSequence('build', 'rev', ['sitemap', 'optimize'], cb))

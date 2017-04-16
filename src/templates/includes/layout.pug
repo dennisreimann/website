@@ -28,7 +28,7 @@ html(lang=h.t(locals, "de", "en") prefix="og: http://ogp.me/ns#")
     link(href="http://openid.dennisreimann.de/dennisreimann" rel="openid2.local_id openid.delegate")
     block alternate
       link(href="/atom.xml" rel="alternate" type="application/atom+xml")
-    //- make css play nice with browser sync: don't nline in dev mode
+    //- make css play nice with browser sync: don't inline in dev mode
     if h.isDev
       link(href=h.assetUrl("styles/main.css") media="all" rel="stylesheet")
     else
@@ -46,4 +46,11 @@ html(lang=h.t(locals, "de", "en") prefix="og: http://ogp.me/ns#")
         include footer
     if !h.isDev
       include analytics
+    script.
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(function(reg) { return reg.update() })
+          .then(function() { return fetch(window.location.href) })
+          .catch(function(err) { console.log('Failed service worker registration:', err) })
+      }
     block foot
