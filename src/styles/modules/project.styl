@@ -1,12 +1,15 @@
 .project
   margin-bottom $space-huge
+
   &__name
     margin $space-tiny 0
     font-size $font-size-head
     font-weight normal
     color $color-highlight
+
   &__description
     margin-bottom $space-normal
+
   &__task
   &__period
   &__context
@@ -14,23 +17,26 @@
     color $color-subtle
     a
       color $color-subtle
+
   @media screen
     &__task
     &__period
     &__context
       padding-left 2em
-      background-size 16px
-      background-repeat no-repeat
-    &__task
-      background-image url(/svgs/project/task.svg)
-      background-position 2px 4px
-    &__context
-      background-image url(/svgs/project/context.svg)
-      background-position 2px 2px
-    &__period
-      background-image url(/svgs/project/period.svg)
-      background-position 2px 3px
+      position relative
+
+    &__icon
+      width 1em
+      height 1em
+      position absolute
+      top 2px
+      left 2px
+      fill $color-gray
+
   @media print
+    &__icon
+      display none
+
     &__task
     &__period
     &__context

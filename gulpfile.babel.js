@@ -12,7 +12,6 @@ import templateHelper from './lib/templateHelper'
 
 const p = gulpLoadPlugins()
 const browserSync = BrowserSync.create()
-
 const isDev = (argv.dev != null)
 const assetHost = argv.assetHost || ''
 const defaultScheme = isDev ? 'http' : 'https'
@@ -25,6 +24,7 @@ const paths = {
   rev: ['!dist/files/**/*', 'dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}'],
   copy: ['src/static/**/*', 'src/static/.htaccess'],
   pages: ['src/pages/**/*.pug'],
+  icons: ['src/icons/**/*.svg'],
   styles: ['src/styles/**/*.styl'],
   scripts: ['src/scripts/**/*.js'],
   html: ['dist/**/*.html'],
@@ -119,6 +119,40 @@ gulp.task('copy', cb =>
 gulp.task('pages', () => buildHtml(paths.pages))
 gulp.task('articles', () => buildHtml(paths.articles, paths.articlesBasepath))
 
+// for config options see:
+// - https://github.com/svg/svgo
+// - https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md
+gulp.task('icons', cb =>
+  gulp.src(paths.icons)
+    .pipe(p.plumber())
+    .pipe(p.svgSprite({
+      mode: {
+        symbol: {
+          dest: '',
+          sprite: 'icons.svg',
+          inline: true
+        }
+      },
+      shape: {
+        id: {
+          separator: '-'
+        },
+        transform: [
+          {
+            svgo: {
+              plugins: [
+                { removeStyleElement: true },
+                { removeUselessStrokeAndFill: true },
+                { removeAttrs: { attrs: '(stroke|fill)' } }
+              ]
+            }
+          }
+        ]
+      }
+    }))
+    .pipe(gulp.dest('src/templates/includes'))
+  )
+
 gulp.task('scripts', () =>
   gulp.src(paths.scripts)
     .pipe(p.plumber())
@@ -174,6 +208,7 @@ gulp.task('html:optimize', cb =>
 
 gulp.task('watch', () => {
   gulp.watch(paths.copy, ['copy'])
+  gulp.watch(paths.icons, ['icons'])
   gulp.watch(paths.styles, ['styles'])
   gulp.watch(paths.scripts, ['scripts'])
   gulp.watch(paths.articleTemplate, ['articles'])
@@ -183,8 +218,8 @@ gulp.task('watch', () => {
 })
 
 gulp.task('optimize', ['html:optimize'])
-gulp.task('build', cb => runSequence('styles', ['copy', 'pages', 'articles', 'feed', 'scripts'], cb))
 gulp.task('browserSync', cb => browserSync.init(require('./bs-config')))
+gulp.task('build', cb => runSequence(['copy', 'icons', 'styles', 'scripts'], ['pages', 'articles', 'feed'], cb))
 gulp.task('develop', cb => runSequence('build', ['watch', 'browserSync'], cb))
 gulp.task('rev', cb => runSequence('revAssets', ['pages', 'articles'], cb))
 gulp.task('production', cb => runSequence('build', 'rev', ['sitemap', 'optimize'], cb))

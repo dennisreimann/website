@@ -34,6 +34,7 @@ html(lang=h.t(locals, "de", "en") prefix="og: http://ogp.me/ns#")
     else
       style!= h.assetInline("styles/main.css")
   body
+    include icons.svg
     nav#nav
       .wrap
         include nav
