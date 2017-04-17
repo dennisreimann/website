@@ -1,0 +1,5 @@
+//- play nice with browser sync: don't inline in dev mode
+if h.isDev
+  link(href=h.assetUrl("styles/main.css") media="all" rel="stylesheet")
+else
+  style!= h.assetInline("styles/main.css")

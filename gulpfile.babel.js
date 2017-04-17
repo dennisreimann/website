@@ -21,12 +21,13 @@ const siteUrl = `${defaultScheme}://${siteHost}`
 const paths = {
   src: 'src',
   dest: 'dist',
-  rev: ['!dist/files/**/*', 'dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}'],
+  rev: ['dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}', '!dist/service-worker.js', '!dist/files/**/*'],
   copy: ['src/static/**/*', 'src/static/.htaccess'],
   pages: ['src/pages/**/*.pug'],
   icons: ['src/icons/**/*.svg'],
   styles: ['src/styles/**/*.styl'],
   scripts: ['src/scripts/**/*.js'],
+  serviceworker: ['src/serviceworker/service-worker.js'],
   html: ['dist/**/*.html'],
   optimizeImages: ['src/{images,svgs}/**/*'],
   articles: ['src/articles/*.md'],
@@ -113,11 +114,32 @@ gulp.task('feed', ['feed:atom', 'feed:elm'])
 gulp.task('copy', cb =>
   gulp.src(paths.copy)
     .pipe(dest())
-    .pipe(browserSync.stream())
 )
 
 gulp.task('pages', () => buildHtml(paths.pages))
 gulp.task('articles', () => buildHtml(paths.articles, paths.articlesBasepath))
+
+gulp.task('serviceworker', () => {
+  let htmlCacheKeys = {}
+  try {
+    const htmlManifest = require(`./${paths.dest}/html-manifest.json`)
+    // prefix keys and values with slash
+    htmlCacheKeys = Object.keys(htmlManifest).reduce((acc, htmlFile) => {
+      acc[`/${htmlFile}`] = `/${htmlManifest[htmlFile]}`
+      return acc
+    }, {})
+    // add extra key for root path
+    htmlCacheKeys['/'] = `/${htmlManifest['index.html']}`
+  } catch (error) { }
+
+  gulp.src(paths.serviceworker)
+    .pipe(p.plumber())
+    .pipe(p.replace('const HTML_CACHE_KEYS = {}', `const HTML_CACHE_KEYS = ${JSON.stringify(htmlCacheKeys, null, '  ')}`))
+    .pipe(p.babel())
+    .pipe(p.stripDebug())
+    .pipe(p.uglify())
+    .pipe(dest())
+})
 
 // for config options see:
 // - https://github.com/svg/svgo
@@ -157,6 +179,7 @@ gulp.task('scripts', () =>
   gulp.src(paths.scripts)
     .pipe(p.plumber())
     .pipe(p.babel())
+    .pipe(p.stripDebug())
     .pipe(p.uglify())
     .pipe(dest('scripts'))
 )
@@ -190,6 +213,8 @@ gulp.task('revAssets', () => {
     .pipe(revAll.revision())
     .pipe(p.revDeleteOriginal())
     .pipe(dest())
+    .pipe(revAll.versionFile())
+    .pipe(dest())
     .pipe(revAll.manifestFile())
     .pipe(dest())
 })
@@ -206,11 +231,21 @@ gulp.task('html:optimize', cb =>
     .pipe(dest())
 )
 
+gulp.task('html:manifest', cb => {
+  const RevAll = p.revAll
+  const revAll = new RevAll({fileNameManifest: 'html-manifest.json'})
+  return gulp.src(paths.html)
+    .pipe(revAll.revision())
+    .pipe(revAll.manifestFile())
+    .pipe(dest())
+})
+
 gulp.task('watch', () => {
   gulp.watch(paths.copy, ['copy'])
   gulp.watch(paths.icons, ['icons'])
   gulp.watch(paths.styles, ['styles'])
   gulp.watch(paths.scripts, ['scripts'])
+  gulp.watch(paths.serviceworker, ['serviceworker'])
   gulp.watch(paths.articleTemplate, ['articles'])
   gulp.watch(paths.templates, ['articles', 'pages'])
   gulp.watch(paths.pages).on('change', file => buildHtml(file.path))
@@ -219,7 +254,7 @@ gulp.task('watch', () => {
 
 gulp.task('optimize', ['html:optimize'])
 gulp.task('browserSync', cb => browserSync.init(require('./bs-config')))
-gulp.task('build', cb => runSequence(['copy', 'icons', 'styles', 'scripts'], ['pages', 'articles', 'feed'], cb))
+gulp.task('build', cb => runSequence(['copy', 'icons', 'styles', 'scripts', 'serviceworker'], ['pages', 'articles', 'feed'], cb))
 gulp.task('develop', cb => runSequence('build', ['watch', 'browserSync'], cb))
 gulp.task('rev', cb => runSequence('revAssets', ['pages', 'articles'], cb))
-gulp.task('production', cb => runSequence('build', 'rev', ['sitemap', 'optimize'], cb))
+gulp.task('production', cb => runSequence('build', 'rev', ['sitemap', 'optimize'], 'html:manifest', 'serviceworker', cb))

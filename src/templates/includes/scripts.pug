@@ -1,0 +1,6 @@
+//- play nice with browser sync: don't inline in dev mode
+if h.isDev
+  script(src=h.assetUrl("scripts/main.js"))
+else
+  script!= h.assetInline("scripts/analytics.js")
+  script!= h.assetInline("scripts/main.js")
