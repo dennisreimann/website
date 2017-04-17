@@ -11,9 +11,8 @@
     "clean": "rimraf dist/*",
     "lint": "standard",
     "start": "yarn run clean && gulp develop --dev",
-    "build": "yarn run clean && gulp build",
     "prod": "yarn run clean && gulp production",
-    "devprod": "yarn run clean && gulp production --dev && serve dist",
+    "devprod": "yarn run clean && gulp production && serve dist",
     "deploy": "yarn run prod && rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude dist/ uberdennis:html"
   },
   "devDependencies": {

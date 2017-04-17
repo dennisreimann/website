@@ -29,6 +29,8 @@ const paths = {
   scripts: ['src/scripts/**/*.js'],
   serviceworker: ['src/serviceworker/service-worker.js'],
   html: ['dist/**/*.html'],
+  js: ['dist/**/*.js'],
+  css: ['dist/**/*.css'],
   optimizeImages: ['src/{images,svgs}/**/*'],
   articles: ['src/articles/*.md'],
   templates: 'src/templates/**/*.pug',
@@ -90,6 +92,8 @@ const templateData = file => ({
   }
 })
 
+// ----- BUILD -----
+
 const buildHtml = (src, dst) =>
   gulp.src(src)
     .pipe(p.plumber())
@@ -123,11 +127,13 @@ gulp.task('serviceworker', () => {
   let htmlCacheKeys = {}
   try {
     const htmlManifest = require(`./${paths.dest}/html-manifest.json`)
+
     // prefix keys and values with slash
     htmlCacheKeys = Object.keys(htmlManifest).reduce((acc, htmlFile) => {
       acc[`/${htmlFile}`] = `/${htmlManifest[htmlFile]}`
       return acc
     }, {})
+
     // add extra key for root path
     htmlCacheKeys['/'] = `/${htmlManifest['index.html']}`
   } catch (error) { }
@@ -179,8 +185,6 @@ gulp.task('scripts', () =>
   gulp.src(paths.scripts)
     .pipe(p.plumber())
     .pipe(p.babel())
-    .pipe(p.stripDebug())
-    .pipe(p.uglify())
     .pipe(dest('scripts'))
 )
 
@@ -192,19 +196,72 @@ gulp.task('styles', () =>
       import: ['mediaQueries', 'variables']
     }))
     .pipe(p.concat('main.css'))
-    .pipe(p.postcss([
-      mqpacker,
-      autoprefixer({browsers: ['last 2 versions']}),
-      csswring
-    ]))
     .pipe(dest('styles'))
 )
+
+gulp.task('build', cb => runSequence(['copy', 'icons', 'styles', 'scripts', 'serviceworker'], ['pages', 'articles', 'feed'], cb))
+
+// ----- DEVELOPMENT -----
+
+gulp.task('watch', () => {
+  gulp.watch(paths.copy, ['copy'])
+  gulp.watch(paths.icons, ['icons'])
+  gulp.watch(paths.styles, ['styles'])
+  gulp.watch(paths.scripts, ['scripts'])
+  gulp.watch(paths.serviceworker, ['serviceworker'])
+  gulp.watch(paths.articleTemplate, ['articles'])
+  gulp.watch(paths.templates, ['articles', 'pages'])
+  gulp.watch(paths.pages).on('change', file => buildHtml(file.path))
+  gulp.watch(paths.articles).on('change', file => buildHtml(file.path, paths.articlesBasepath))
+})
 
 gulp.task('optimizeImages', () =>
   gulp.src(paths.optimizeImages)
     .pipe(p.imagemin())
     .pipe(gulp.dest('src'))
 )
+
+gulp.task('browserSync', cb => browserSync.init(require('./bs-config')))
+
+// ----- PRODUCTION -----
+
+gulp.task('minify:html', cb =>
+  gulp.src(paths.html)
+    .pipe(p.minifyHtml({empty: true}))
+    .pipe(dest())
+)
+
+gulp.task('minify:js', () =>
+  gulp.src(paths.js)
+    .pipe(p.stripDebug())
+    .pipe(p.uglify())
+    .pipe(dest())
+)
+
+gulp.task('minify:css', () =>
+  gulp.src(paths.css)
+    .pipe(p.postcss([
+      mqpacker,
+      autoprefixer({browsers: ['last 2 versions']}),
+      csswring
+    ]))
+    .pipe(dest())
+)
+
+gulp.task('html:sitemap', () =>
+  gulp.src(paths.html)
+    .pipe(p.sitemap({siteUrl, changefreq: 'weekly'}))
+    .pipe(dest())
+)
+
+gulp.task('html:manifest', cb => {
+  const RevAll = p.revAll
+  const revAll = new RevAll({fileNameManifest: 'html-manifest.json'})
+  return gulp.src(paths.html)
+    .pipe(revAll.revision())
+    .pipe(revAll.manifestFile())
+    .pipe(dest())
+})
 
 gulp.task('revAssets', () => {
   const RevAll = p.revAll
@@ -219,42 +276,9 @@ gulp.task('revAssets', () => {
     .pipe(dest())
 })
 
-gulp.task('sitemap', () =>
-  gulp.src(paths.html)
-    .pipe(p.sitemap({ siteUrl, changefreq: 'weekly' }))
-    .pipe(dest())
-)
-
-gulp.task('html:optimize', cb =>
-  gulp.src(paths.html)
-    .pipe(p.minifyHtml({empty: true}))
-    .pipe(dest())
-)
-
-gulp.task('html:manifest', cb => {
-  const RevAll = p.revAll
-  const revAll = new RevAll({fileNameManifest: 'html-manifest.json'})
-  return gulp.src(paths.html)
-    .pipe(revAll.revision())
-    .pipe(revAll.manifestFile())
-    .pipe(dest())
-})
-
-gulp.task('watch', () => {
-  gulp.watch(paths.copy, ['copy'])
-  gulp.watch(paths.icons, ['icons'])
-  gulp.watch(paths.styles, ['styles'])
-  gulp.watch(paths.scripts, ['scripts'])
-  gulp.watch(paths.serviceworker, ['serviceworker'])
-  gulp.watch(paths.articleTemplate, ['articles'])
-  gulp.watch(paths.templates, ['articles', 'pages'])
-  gulp.watch(paths.pages).on('change', file => buildHtml(file.path))
-  gulp.watch(paths.articles).on('change', file => buildHtml(file.path, paths.articlesBasepath))
-})
-
-gulp.task('optimize', ['html:optimize'])
-gulp.task('browserSync', cb => browserSync.init(require('./bs-config')))
-gulp.task('build', cb => runSequence(['copy', 'icons', 'styles', 'scripts', 'serviceworker'], ['pages', 'articles', 'feed'], cb))
-gulp.task('develop', cb => runSequence('build', ['watch', 'browserSync'], cb))
 gulp.task('rev', cb => runSequence('revAssets', ['pages', 'articles'], cb))
-gulp.task('production', cb => runSequence('build', 'rev', ['sitemap', 'optimize'], 'html:manifest', 'serviceworker', cb))
+
+// ----- PUBLIC TASKS -----
+
+gulp.task('develop', cb => runSequence('build', ['watch', 'browserSync'], cb))
+gulp.task('production', cb => runSequence('build', ['minify:js', 'minify:css'], 'rev', 'minify:html', ['html:sitemap', 'html:manifest'], 'serviceworker', cb))
