@@ -76,27 +76,27 @@ block main
                 a.social__link(href="https://twitter.com/dennisreimann" rel="me")
                   | Twitter
                   +icon("social-twitter").social__icon
-            p
-              if h.isEnglish(locals)
-                = " You got remarks or corrections? Typos or grammatical improvements? "
-                a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Let me know!
-              else
-                = " Du hast Anmerkungen oder Verbesserungen? "
-                a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Lass es mich wissen!
-            p
-              if h.isEnglish(locals)
-                | And by the way:
-                = " "
-                strong I am available for hire
-                = " "
-                | – if you are looking for help,
-                = " "
-                a.more__link(href="/contact.html") get in touch
-              else
-                | Übrigens: Ich unterstütze dich oder dein Team auch gerne –
-                | wer Hilfe bei Projekten sucht, kann
-                = " "
-                a.more__link(href="/kontakt.html") mich gerne kontaktieren
+            //- p
+            //-   if h.isEnglish(locals)
+            //-     = " You got remarks or corrections? Typos or grammatical improvements? "
+            //-     a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Let me know!
+            //-   else
+            //-     = " Du hast Anmerkungen oder Verbesserungen? "
+            //-     a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Lass es mich wissen!
+            //- p
+            //-   if h.isEnglish(locals)
+            //-     | And by the way:
+            //-     = " "
+            //-     strong I am available for hire
+            //-     = " "
+            //-     | – if you are looking for help,
+            //-     = " "
+            //-     a.more__link(href="/contact.html") get in touch
+            //-   else
+            //-     | Übrigens: Ich unterstütze dich oder dein Team auch gerne –
+            //-     | wer Hilfe bei Projekten sucht, kann
+            //-     = " "
+            //-     a.more__link(href="/kontakt.html") mich gerne kontaktieren
         .article__nav
           - prevArticle = mvb.article.previousArticle
           - nextArticle = mvb.article.nextArticle

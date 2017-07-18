@@ -6,26 +6,30 @@ block title
   title=h.title("Frontend-Entwicklung mit Elm, JavaScript, CSS und HTML")
 
 block main
-  section
+  section.intro
+    //- p
+    //-   | Als freiberuflicher Softwareentwickler unterstütze ich Unternehmen bei der Realisierung
+    //-   | von Webanwendungen. Mein Schwerpunkt liegt dabei auf der Frontend-Entwicklung
+    //-   | mit Elm, JavaScript, CSS und HTML. In diesem Bereich beschäftige ich mich insbesondere mit der
+    //-   | Architektur komplexer Webanwendungen und interaktiven JavaScript-Applikation, unter anderem
+    //-   | im eCommerce-Umfeld.
     p
-      | Als freiberuflicher Softwareentwickler unterstütze ich Unternehmen bei der Realisierung
-      | von Webanwendungen. Mein Schwerpunkt liegt dabei auf der Frontend-Entwicklung
-      | mit Elm, JavaScript, CSS und HTML. In diesem Bereich beschäftige ich mich insbesondere mit der
-      | Architektur komplexer Webanwendungen und interaktiven JavaScript-Applikation, unter anderem
-      | im eCommerce-Umfeld.
+      | Ich helfe E-Commerce Unternehmen und Webshop-Betreibern, ihre Conversion Rate durch Optimierungen des User Interface zu verbessern.
+      br
+      | Dabei setze ich auf messbare Änderungen der Performance und User Experience, um den Erfolg zu verifizieren.
 
-  section
-    h2 Artikel
-    +articles(h.articles.filterByNoAlternate(mvb.articles, h.lang(locals)).slice(0,3), "blog")
-    p.more
-      a.more__link(href="/artikel.html") Weitere Artikel
+  //- section
+  //-   h2 Artikel
+  //-   +articles(h.articles.filterByNoAlternate(mvb.articles, h.lang(locals)).slice(0,3), "blog")
+  //-   p.more
+  //-     a.more__link(href="/artikel.html") Weitere Artikel
 
   section
     h2 Kunden und Projekte
     ol.projects
       li.project
         h3.project__name
-          a(href="https://www.kl-ruppert.de/" rel="external" target="_blank") K&amp;L Ruppert
+          a(href="https://www.kl-ruppert.de/" rel="external noopener" target="_blank") K&amp;L Ruppert
         p.project__description
           | Responsive Relaunch des K&amp;L Ruppert Webshops.
         p.project__task
@@ -35,17 +39,17 @@ block main
         p.project__context
           +icon("project-context").project__icon.project__icon--context
           | Auftragsarbeit für die&nbsp;
-          a(href="http://talentformation.com/" rel="external" target="_blank") talentformation.com GmbH
+          a(href="http://talentformation.com/" rel="external noopener" target="_blank") talentformation.com GmbH
         p.project__period
           +icon("project-period").project__icon.project__icon--period
-          | Februar 2016 - April 2016
+          | Februar 2016&ndash;April 2016
       li.project
         h3.project__name
-          a(href="https://www.galeria-kaufhof.de/" rel="external" target="_blank") Galeria Kaufhof
+          a(href="https://www.galeria-kaufhof.de/" rel="external noopener" target="_blank") Galeria Kaufhof
         p.project__description
           | Unter dem Projektnamen
           = " "
-          a(href="http://galeria-kaufhof.github.io/general/2014/09/20/jump-ein-technologiesprung-bei-galeria-kaufhof/" rel="external" target="_blank") JUMP
+          a(href="http://galeria-kaufhof.github.io/general/2014/09/20/jump-ein-technologiesprung-bei-galeria-kaufhof/" rel="external noopener" target="_blank") JUMP
           = " "
           | wurde der Galeria Kaufhof Webshop im Sommer 2015 mit einer komplett neuen Technologiebasis
           | gerelauncht. Dabei arbeitete ich seit Frühjahr 2014 als Teil des Teams Frontend-Integration
@@ -61,10 +65,10 @@ block main
           +icon("project-context").project__icon.project__icon--context
           | Auftragsarbeit für die
           = " "
-          a(href="https://neuland-bfi.de" rel="external" target="_blank") neuland bremen GmbH
+          a(href="https://neuland-bfi.de" rel="external noopener" target="_blank") neuland bremen GmbH
         p.project__period
           +icon("project-period").project__icon.project__icon--period
-          | April 2014 - Januar 2016
+          | April 2014&ndash;Januar 2016
 
     p.more
       a.more__link(href="/projekte.html") Weitere Projekte

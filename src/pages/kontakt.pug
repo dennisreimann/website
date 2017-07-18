@@ -15,14 +15,15 @@ block main
           th Name
           td Dennis Reimann
         tr
-          th Beruf
-          td Softwareentwickler
-        tr
           th Schwerpunkt
-          td Frontend-Entwicklung mit Elm, JavaScript, HTML und CSS
-        tr
-          th USt-IdNr.
-          td DE247768646
+          td
+            | User Interface Engineering
+            br
+            | E-Commerce, Webshops
+            br
+            | Web Performance, User Experience
+            br
+            | Design Systeme und Pattern Libraries
         tr
           th Adresse
           td
@@ -31,6 +32,9 @@ block main
             | 28277 Bremen
             br
             | Deutschland
+        tr
+          th USt-IdNr.
+          td DE247768646
         tr
           th Web
           td
@@ -42,63 +46,43 @@ block main
         tr
           th Telefon
           td: a(href="tel:+49-151-22630317" rel="me") +49 (0)151 22 63 03 17
-        tr
-          th Skype
-          td: a(href="skype:dbloete?add" rel="me") dbloete
         tr.social
           th Profile
           td: include /includes/social
 
-  section#imprint.
-    <header>
-      <h2>Impressum</h2>
-    </header>
-    <div class="content">
-      <h3>Inhaltlich Verantwortliche gemäß TMG und § 55 Abs. 2 RStV</h3>
-      <p>
-        Dennis Reimann
-        <br>
-        Ottjen-Alldag-Str. 32
-        <br>
-        28277 Bremen
-      </p>
-      <h3>Urheber- und Kennzeichenrecht</h3>
-      <p>
-        Die vom Autor erstellten Inhalte des Blogs sind unter
-        <a href="http://creativecommons.org/licenses/by-sa/3.0/de/">Creative Commons</a> lizenziert.
-      </p>
-      <p>
-        Für alle weiteren Inhalte dieser Website gilt: Der Autor ist bestrebt, in allen Publikationen
-        die Urheberrechte der verwendeten Bilder, Grafiken, Tondokumente, Videosequenzen und Texte zu
-        beachten, von ihm selbst erstellte Bilder, Grafiken, Tondokumente, Videosequenzen und Texte zu
-        nutzen oder auf lizenzfreie Grafiken, Tondokumente, Videosequenzen und Texte zurückzugreifen.
-      </p>
-      <p>
-        Das Copyright für veröffentlichte, vom Autor selbst erstellte Objekte bleibt allein beim Autor
-        der Seiten. Eine Vervielfältigung oder Verwendung solcher Grafiken, Tondokumente, Videosequenzen
-        und Texte in anderen elektronischen oder gedruckten Publikationen ist ohne ausdrückliche Zustimmung
-        des Autors nicht gestattet.
-      </p>
-      <p>
-        Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte geschützten Marken- und
-        Warenzeichen unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts
-        und den Besitzrechten der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen Nennung
-        ist nicht der Schluss zu ziehen, dass Markenzeichen nicht durch Rechte Dritter geschützt sind!
-      </p>
-      <h3>Haftungshinweis</h3>
-      <p>
-        Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer
-        Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
-      </p>
-    </div>
+  section#imprint
+    header
+      h2 Impressum
 
-  section#webanalytics.
-    <header>
-      <h2>Webanalytics</h2>
-    </header>
-    <div class="content">
-      <h3>Datenschutz</h3>
-      <p>
+    .content
+      h3 Inhaltlich Verantwortliche gemäß TMG und § 55 Abs. 2 RStV
+      p
+        | Dennis Reimann
+        br
+        | Ottjen-Alldag-Str. 32
+        br
+        | 28277 Bremen
+
+      h3 Urheber- und Kennzeichenrecht
+      p
+        | Die vom Autor erstellten Inhalte des Blogs sind unter
+        a(href="http://creativecommons.org/licenses/by-sa/3.0/de/") Creative Commons
+        | lizenziert.
+
+      p Für alle weiteren Inhalte dieser Website gilt: Der Autor ist bestrebt, in allen Publikationen die Urheberrechte der verwendeten Bilder, Grafiken, Tondokumente, Videosequenzen und Texte zu beachten, von ihm selbst erstellte Bilder, Grafiken, Tondokumente, Videosequenzen und Texte zu nutzen oder auf lizenzfreie Grafiken, Tondokumente, Videosequenzen und Texte zurückzugreifen.
+      p Das Copyright für veröffentlichte, vom Autor selbst erstellte Objekte bleibt allein beim Autor der Seiten. Eine Vervielfältigung oder Verwendung solcher Grafiken, Tondokumente, Videosequenzen und Texte in anderen elektronischen oder gedruckten Publikationen ist ohne ausdrückliche Zustimmung des Autors nicht gestattet.
+      p Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen Nennung ist nicht der Schluss zu ziehen, dass Markenzeichen nicht durch Rechte Dritter geschützt sind!
+
+      h3 Haftungshinweis
+      p Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+
+  section#webanalytics
+    header
+      h2 Webanalytics
+
+    .content
+      h3 Datenschutz
+      p.
         Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google“).
         Google Analytics verwendet sog. „Cookies“, Textdateien, die auf Ihrem Computer gespeichert werden
         und die eine Analyse der Benutzung der Website durch Sie ermöglichen. Die durch den Cookie erzeugten
@@ -114,5 +98,3 @@ block main
         gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich nutzen können. Durch die
         Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch
         Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.
-      </p>
-    </div>
