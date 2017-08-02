@@ -2,73 +2,138 @@ extends /includes/layout
 include /includes/icon
 include /includes/articles
 
-block title
-  title=h.title("Frontend-Entwicklung mit Elm, JavaScript, CSS und HTML")
-
 block main
-  section.intro
-    //- p
-    //-   | Als freiberuflicher Softwareentwickler unterstütze ich Unternehmen bei der Realisierung
-    //-   | von Webanwendungen. Mein Schwerpunkt liegt dabei auf der Frontend-Entwicklung
-    //-   | mit Elm, JavaScript, CSS und HTML. In diesem Bereich beschäftige ich mich insbesondere mit der
-    //-   | Architektur komplexer Webanwendungen und interaktiven JavaScript-Applikation, unter anderem
-    //-   | im eCommerce-Umfeld.
-    p
-      | Ich helfe E-Commerce Unternehmen und Webshop-Betreibern, ihre Conversion Rate durch Optimierungen des User Interface zu verbessern.
-      br
-      | Dabei setze ich auf messbare Änderungen der Performance und User Experience, um den Erfolg zu verifizieren.
+  section.wrap.intro
+    :marked
+      # Would you like to increase your products velocity and time to market?
 
-  //- section
-  //-   h2 Artikel
-  //-   +articles(h.articles.filterByNoAlternate(mvb.articles, h.lang(locals)).slice(0,3), "blog")
-  //-   p.more
-  //-     a.more__link(href="/artikel.html") Weitere Artikel
+      Fast iteration is key to ensure you are solving the right problems.
+      You and your team are facing lots of challenges building an innovative product:
+      - How to establish a cohesive experience that fulfills your customers needs?
+      - How to ensure design and development communicate and work efficiently?
+      - Moving quickly, how do you maintain quality, consistency and reliability?
+      - And most meaningfully to you: how to sustain velocity doing all of that?
 
-  section
-    h2 Kunden und Projekte
-    ol.projects
-      li.project
-        h3.project__name
-          a(href="https://www.kl-ruppert.de/" rel="external noopener" target="_blank") K&amp;L Ruppert
-        p.project__description
-          | Responsive Relaunch des K&amp;L Ruppert Webshops.
-        p.project__task
-          +icon("project-task").project__icon.project__icon--task
-          | Aufbau der Frontend-Architektur für den responsive Webshop. Frontendentwicklung mit
-          | JavaScript, CSS und HTML. Build-Prozess, Dokumentation und Pattern Library.
-        p.project__context
-          +icon("project-context").project__icon.project__icon--context
-          | Auftragsarbeit für die&nbsp;
-          a(href="http://talentformation.com/" rel="external noopener" target="_blank") talentformation.com GmbH
-        p.project__period
-          +icon("project-period").project__icon.project__icon--period
-          | Februar 2016&ndash;April 2016
-      li.project
-        h3.project__name
-          a(href="https://www.galeria-kaufhof.de/" rel="external noopener" target="_blank") Galeria Kaufhof
-        p.project__description
-          | Unter dem Projektnamen
-          = " "
-          a(href="http://galeria-kaufhof.github.io/general/2014/09/20/jump-ein-technologiesprung-bei-galeria-kaufhof/" rel="external noopener" target="_blank") JUMP
-          = " "
-          | wurde der Galeria Kaufhof Webshop im Sommer 2015 mit einer komplett neuen Technologiebasis
-          | gerelauncht. Dabei arbeitete ich seit Frühjahr 2014 als Teil des Teams Frontend-Integration
-          | an der Architektur, dem dazugehörigen Styleguide und Anbindung der Microservice-Backendsysteme.
-          | Im Verlauf des Projekts wurden zusätzlich Themen wie Performance-Monitoring/Optimierung
-          | sowie funktionale und visuelle Regressionstests adressiert.
-        p.project__task
-          +icon("project-task").project__icon.project__icon--task
-          | Aufbau der Frontend-Architektur für den Microservice-basierten, full responsive Webshop. Frontendentwicklung mit
-          | JavaScript, CSS und HTML. Build-Prozess, Dokumentation, Tests, Performance-Monitoring und Optimierung
-          | für globale Assets und Styleguide.
-        p.project__context
-          +icon("project-context").project__icon.project__icon--context
-          | Auftragsarbeit für die
-          = " "
-          a(href="https://neuland-bfi.de" rel="external noopener" target="_blank") neuland bremen GmbH
-        p.project__period
-          +icon("project-period").project__icon.project__icon--period
-          | April 2014&ndash;Januar 2016
+      Your goal is faster time to market and increased product value.
+      Your team is eager, but struggling to deliver high quality with the required pace?
 
-    p.more
-      a.more__link(href="/projekte.html") Weitere Projekte
+      ## Enter UI engineering and design systems
+
+      A modular UI toolkit that is easily accessible enables shorter iteration cycles.
+      <mark>A solid design system and component library speed up your releases without compromising quality.</mark>
+      Using these tools and techniques you will…
+      - Deliver a consistent experience across all your products touchpoints
+      - Create a streamlined process that reduces design and engineering time
+      - Give designers and engineers the freedom to work on higher-order tasks
+      - Raise the overall quality of your product and its many interfaces
+
+      In brief: Waste less resources and money while your team can tackle the challenges that matter to your customers.
+
+      ## How can I help?
+
+      As a User Interface Engineer I help product teams to build applications based on a solid design system and component library.
+      With an interdisciplinary skillset of development and design I assist in architecting, integrating and deploying complex systems;
+      taking into account the multitude of concerns like user experience, performance and future maintenance.
+
+      The benefits have various facets:
+      In the domain of e-commerce a consistent and coherent experience translates to customers trust.
+      SaaS teams improve the clarity of their product, which leads to efficiency for the end user.
+      Better performance increases the conversion rates and delights your users.
+      Your whole team speaks a common language and has tighter communication loops.
+
+      I enjoy tackling ambitious goals as part of an interdisciplinary product team.
+      Also, I like to help people improving their skills and efficiency.
+
+  section.cta
+    p Sounds like I can help?
+    a(href="/contact.html") Let's talk!
+
+  section.hashtags
+    .wrap
+      strong #designsystems
+      strong #components
+      strong #ux
+      strong #patternlibrary
+      strong #styleguide
+      strong #performance
+      strong #prototyping
+
+  section.wrap
+    h2 Projects and clients
+    .project
+      h3.project__name
+        | (Project name redacted, not online yet)
+      p.project__description
+        | Responsive relaunch of a B2B webshop and corresponding mobile app,
+        | driven by a component library and frontend prototyping.
+      .project__task
+        +icon("project-task").project__icon.project__icon--task
+        ul
+          li Establishing the design system and component library.
+          li Frontend development with JavaScript, CSS and HTML.
+      p.project__context
+        +icon("project-context").project__icon.project__icon--context
+        | Contract work for the
+        = " "
+        a(href="https://neuland-bfi.de" rel="external noopener" target="_blank") neuland bremen GmbH
+      p.project__period
+        +icon("project-period").project__icon.project__icon--period
+        | February 2017&ndash;June 2017
+    .project
+      h3.project__name
+        | (Project name redacted)
+      p.project__description
+        | Architecture relaunch of a fashion and lifestyle webshop and its infrastructure.
+      .project__task
+        +icon("project-task").project__icon.project__icon--task
+        ul
+          li Frontend architecture for the microservice-based webshop.
+          li Establishing the design system and component library.
+          li Frontend development with JavaScript, CSS and HTML.
+      p.project__context
+        +icon("project-context").project__icon.project__icon--context
+        | Contract work for the
+        = " "
+        a(href="http://talentformation.com/" rel="external noopener" target="_blank") talentformation.com GmbH
+      p.project__period
+        +icon("project-period").project__icon.project__icon--period
+        | May 2016&ndash;November 2016
+    .project
+      h3.project__name
+        a(href="https://www.kl-ruppert.de/" rel="external noopener" target="_blank") K&amp;L Ruppert
+      p.project__description
+        | Responsive relaunch of the K&amp;L Ruppert webshop.
+      .project__task
+        +icon("project-task").project__icon.project__icon--task
+        ul
+          li Frontend architecture for the responsive webshop.
+          li Frontend development with JavaScript, CSS and HTML.
+          li Establishing the build process, documentation and component library.
+      p.project__context
+        +icon("project-context").project__icon.project__icon--context
+        | Contract work for the
+        = " "
+        a(href="http://talentformation.com/" rel="external noopener" target="_blank") talentformation.com GmbH
+      p.project__period
+        +icon("project-period").project__icon.project__icon--period
+        | February 2016&ndash;April 2016
+    .project
+      h3.project__name
+        a(href="https://www.galeria-kaufhof.de/" rel="external noopener" target="_blank") Galeria Kaufhof
+      p.project__description
+        | Architecture relaunch of the Galeria Kaufhof webshop and its infrastructure.
+      .project__task
+        +icon("project-task").project__icon.project__icon--task
+        ul
+          li Frontend architecture for the microservice-based webshop.
+          li Frontend development with JavaScript, CSS and HTML.
+          li Establishing the build process, documentation and style guide.
+          li Performance monitoring and optimization.
+      p.project__context
+        +icon("project-context").project__icon.project__icon--context
+        | Contract work for the
+        = " "
+        a(href="https://neuland-bfi.de" rel="external noopener" target="_blank") neuland bremen GmbH
+      p.project__period
+        +icon("project-period").project__icon.project__icon--period
+        | April 2014&ndash;January 2016
