@@ -1,0 +1,41 @@
+.top
+  color $color-white
+  background-color $color-darkblue
+  padding-top $space-large
+  padding-bottom $space-medium
+
+.cta
+  margin-top $space-medium * -1
+  margin-left auto
+  margin-right auto
+  padding-bottom $space-medium
+  text-align center
+
+  a
+    @extend $font-din-light
+    display inline-block
+    font-size $font-size-large
+    padding $space-small 4rem $space-small
+    border-radius $space-small
+    color $color-white
+    background-color $color-highlight
+    text-decoration none
+    &:hover
+      background-color lighten($color-highlight, 5)
+
+.hashtags
+  padding-top $space-large
+  padding-bottom $space-large
+  color $color-white
+  background-color $color-darkblue
+  text-align center
+
+.hashtag
+  @extend $font-din-light
+  display inline-block
+  font-size $font-size-head
+  text-align center
+  margin $space-tiny $space-medium
+
+  &__hash
+    color $color-gray

@@ -2,11 +2,18 @@ extends /includes/layout
 include /includes/icon
 include /includes/articles
 
+mixin hashtag(word)
+  strong.hashtag
+    span.hashtag__hash #
+    span.hashtag__tag= word
+
 block main
+  section.top
+    .wrap
+      h1 Would you like to increase your products velocity and time to market?
+
   section.wrap.intro
     :marked
-      # Would you like to increase your products velocity and time to market?
-
       Fast iteration is key to ensure you are solving the right problems.
       You and your team are facing lots of challenges building an innovative product:
       - How to establish a cohesive experience that fulfills your customers needs?
@@ -41,99 +48,57 @@ block main
       Better performance increases the conversion rates and delights your users.
       Your whole team speaks a common language and has tighter communication loops.
 
-      I enjoy tackling ambitious goals as part of an interdisciplinary product team.
-      Also, I like to help people improving their skills and efficiency.
-
   section.cta
     p Sounds like I can help?
     a(href="/contact.html") Let's talk!
 
   section.hashtags
     .wrap
-      strong #designsystems
-      strong #components
-      strong #ux
-      strong #patternlibrary
-      strong #styleguide
-      strong #performance
-      strong #prototyping
+      +hashtag("uiengineering")
+      +hashtag("designsystems")
+      +hashtag("uicomponents")
+      +hashtag("patternlibrary")
+      +hashtag("ux")
+      +hashtag("styleguide")
+      +hashtag("webperformance")
+      +hashtag("prototyping")
+      +hashtag("testing")
+      +hashtag("documentation")
 
   section.wrap
-    h2 Projects and clients
-    .project
-      h3.project__name
-        | (Project name redacted, not online yet)
-      p.project__description
-        | Responsive relaunch of a B2B webshop and corresponding mobile app,
-        | driven by a component library and frontend prototyping.
-      .project__task
-        +icon("project-task").project__icon.project__icon--task
-        ul
-          li Establishing the design system and component library.
-          li Frontend development with JavaScript, CSS and HTML.
-      p.project__context
-        +icon("project-context").project__icon.project__icon--context
-        | Contract work for the
-        = " "
-        a(href="https://neuland-bfi.de" rel="external noopener" target="_blank") neuland bremen GmbH
-      p.project__period
-        +icon("project-period").project__icon.project__icon--period
-        | February 2017&ndash;June 2017
-    .project
-      h3.project__name
-        | (Project name redacted)
-      p.project__description
-        | Architecture relaunch of a fashion and lifestyle webshop and its infrastructure.
-      .project__task
-        +icon("project-task").project__icon.project__icon--task
-        ul
-          li Frontend architecture for the microservice-based webshop.
-          li Establishing the design system and component library.
-          li Frontend development with JavaScript, CSS and HTML.
-      p.project__context
-        +icon("project-context").project__icon.project__icon--context
-        | Contract work for the
-        = " "
-        a(href="http://talentformation.com/" rel="external noopener" target="_blank") talentformation.com GmbH
-      p.project__period
-        +icon("project-period").project__icon.project__icon--period
-        | May 2016&ndash;November 2016
-    .project
-      h3.project__name
-        a(href="https://www.kl-ruppert.de/" rel="external noopener" target="_blank") K&amp;L Ruppert
-      p.project__description
-        | Responsive relaunch of the K&amp;L Ruppert webshop.
-      .project__task
-        +icon("project-task").project__icon.project__icon--task
-        ul
-          li Frontend architecture for the responsive webshop.
-          li Frontend development with JavaScript, CSS and HTML.
-          li Establishing the build process, documentation and component library.
-      p.project__context
-        +icon("project-context").project__icon.project__icon--context
-        | Contract work for the
-        = " "
-        a(href="http://talentformation.com/" rel="external noopener" target="_blank") talentformation.com GmbH
-      p.project__period
-        +icon("project-period").project__icon.project__icon--period
-        | February 2016&ndash;April 2016
-    .project
-      h3.project__name
-        a(href="https://www.galeria-kaufhof.de/" rel="external noopener" target="_blank") Galeria Kaufhof
-      p.project__description
-        | Architecture relaunch of the Galeria Kaufhof webshop and its infrastructure.
-      .project__task
-        +icon("project-task").project__icon.project__icon--task
-        ul
-          li Frontend architecture for the microservice-based webshop.
-          li Frontend development with JavaScript, CSS and HTML.
-          li Establishing the build process, documentation and style guide.
-          li Performance monitoring and optimization.
-      p.project__context
-        +icon("project-context").project__icon.project__icon--context
-        | Contract work for the
-        = " "
-        a(href="https://neuland-bfi.de" rel="external noopener" target="_blank") neuland bremen GmbH
-      p.project__period
-        +icon("project-period").project__icon.project__icon--period
-        | April 2014&ndash;January 2016
+    :marked
+      I enjoy tackling ambitious goals as part of an interdisciplinary product team.
+      Also, I like to help people improving their skills and efficiency.
+      I am available for consulting and engineering work offering these kinds of services:
+
+      - UI engineering coaching and workshops
+      - Training for improving interdisciplinary work
+      - Technology reviews and evaluations
+      - Project work as part of a product team
+
+    p.more
+      a.more__link(href="/projects.html") Previous consulting & engineering projects
+
+  section.wrap
+    h2 Public speaking
+    ul
+      li: a.more__link(href="https://webinale.de/session/design-development-und-dazwischen/") webinale 2017: Design, Development und Dazwischen
+      li: a.more__link(href="https://www.ecommerce-camp.de/redner-sessions/detail/session/show/7-tricks-fuer-frueheren-feierabend-und-kunden-die-dich-als-rockstar-feiern/") eCommerce Camp 2017: 7 Tricks für früheren Feierabend und Kunden, die Dich als Rockstar feiern
+      li: a.more__link(href="http://www.berlinops.de/talk/design-development-und-dazwischen-gemeinsam-besser-schneller-und-nachhaltiger-sites-apps-und-shops-bauen/") Berlin Ops 2016: Design, Development und Dazwischen
+      li: a.more__link(href="http://webmontag-bremen.de/events/2016-03") Webmontag Bremen III/2016: Design, Development und Dazwischen
+
+  section.wrap
+    :marked
+      ## Related Projects
+
+      In collaboration with my friend and colleague [Jan Persiel](https://janpersiel.com/)
+      I am leading an initiative and hosting a podcast around the topic of [UI engineering](https://www.uiengineering.de/).
+      The podcast and accompanying website are available in german.
+
+      I have created and open sourced the toolkit we use for most of our project work:
+      The [UIengine](https://github.com/dennisreimann/uiengine) helps to create, document and evolve design systems collaboratively.
+      It is publicly available on GitHub and NPM.
+
+
+  section.wrap
+    :marked
