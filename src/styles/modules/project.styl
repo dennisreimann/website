@@ -22,7 +22,7 @@
     &__task
     &__period
     &__context
-      padding-left 2em
+      padding-left 1.75rem
       position relative
 
     &__icon
@@ -32,6 +32,11 @@
       top 2px
       left 2px
       fill $color-gray
+
+    &__task
+      ul
+        list-style none
+        margin 0
 
   @media print
     &__icon
@@ -45,8 +50,8 @@
         margin-right $space-tiny
         color $color-subtle
     &__task:before
-      content "Aufgabe:"
+      content "Tasks:"
     &__context:before
-      content "Kunde:"
+      content "Client:"
     &__period:before
-      content "Zeitraum:"
+      content "Period:"

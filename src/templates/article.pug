@@ -33,7 +33,7 @@ block foot
 block main
   - a = mvb.article
   - update = h.article.getDate(a)
-  section
+  section.wrap
     article.article
       header.article__header
         hgroup
@@ -100,8 +100,9 @@ block main
         .article__nav
           - prevArticle = mvb.article.previousArticle
           - nextArticle = mvb.article.nextArticle
-          h5.article__nav__title= h.t(locals, "Weitere Artikel", "More articles")
+          h5.article__nav__title
+            a.more__link(href="/articles.html")= h.t(locals, "Weitere Artikel", "More articles")
           +articles([nextArticle, prevArticle].filter(function(e){return e}), "blog").article__nav__items
 
-  section
+  section.wrap
     include /includes/ioctocat

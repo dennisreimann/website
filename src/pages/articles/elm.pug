@@ -31,7 +31,7 @@ block alternate
   link(href="/articles/elm.xml" rel="alternate" type="application/atom+xml")
 
 block main
-  section
+  section.wrap
     - articles = h.articles.filterByLanguage(mvb.groupedArticles.byTag["Elm"], h.lang(locals)).reverse()
     h2 Elm – functional frontend development
     p

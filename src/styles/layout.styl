@@ -5,43 +5,20 @@
 
 #header
   margin-top $space-huge
-  @media up_to_L
-    margin-bottom $space-large
-  @media L_and_up_and_print
-    overflow hidden
-    margin-bottom $space-huge
-    .logo
-      float right
-      width $width-aside
-      margin-right $logo-jump
+  margin-bottom $space-large
 
-#main
-  @media L_and_up_and_print
-    clear both
-    width $width-main
+  .home &
+    display none
 
 #footer
+  margin-top $space-huge
   margin-bottom $space-large
-  @media L_and_up_and_print
-    overflow hidden
-    margin-top $space-huge
-    h2
-      display none
-    .vcard
-      float right
-      width $width-aside
 
 .wrap
   padding-left $space-large
   padding-right $space-large
 
   @media screen
-    margin 0 auto
-  @media up_to_L
     max-width $width-main
-  @media L_and_up_and_print
-    width $width-main + $width-space + $width-aside
-
-.intro
-  font-family $font-family-serif
-  font-size $font-size-head
+    margin-left auto
+    margin-right auto

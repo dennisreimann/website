@@ -19,28 +19,26 @@ html
 
 body
   color $color-text
-  background #FFF
-
+  background $color-white
 
 section
   margin-bottom $space-huge
 
 h1
-  margin-bottom $space-tiny
-  font-family $font-family-din-bold
-  font-weight normal
   font-size $font-size-huge
+  font-weight normal
   line-height 1.2
+  letter-spacing -.015em
+  margin-bottom $space-normal
 
 h2
 h3
 h4
 h5
 h6
-  font-family $font-family-din-light
-  font-weight normal
-  color $color-subtle
+  @extend $font-din-light
   letter-spacing -.02em
+  color $color-subtle
   pre + &
     margin-top $space-huge
 
@@ -50,7 +48,7 @@ h2
   line-height 1.25
 
 h3
-  margin-top 1em
+  margin-top $space-medium
   margin-bottom $space-tiny
   font-size $font-size-head
   line-height 1.4
@@ -68,7 +66,7 @@ p
 
 ul
 ol
-  margin-bottom $space-large
+  margin-bottom $space-medium
   li + li
     margin-top $space-tiny
   p + &
