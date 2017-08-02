@@ -227,7 +227,7 @@ gulp.task('browserSync', cb => browserSync.init(require('./bs-config')))
 
 gulp.task('minify:html', cb =>
   gulp.src(paths.html)
-    .pipe(p.minifyHtml({empty: true}))
+    .pipe(p.htmlmin())
     .pipe(dest())
 )
 

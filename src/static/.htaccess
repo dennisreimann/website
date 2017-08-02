@@ -205,25 +205,25 @@ RewriteRule stuff/(.*) https://stuff.dennisreimann.de/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} ^/kontakt.html [OR]
+RewriteCond %{REQUEST_URI} ^/kontakt.html
 RewriteRule (.*) https://dennisreimann.de/contact.html [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} ^/projekte.html [OR]
+RewriteCond %{REQUEST_URI} ^/projekte.html
 RewriteRule (.*) https://dennisreimann.de/projects.html [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} ^/artikel.html [OR]
+RewriteCond %{REQUEST_URI} ^/artikel.html
 RewriteRule (.*) https://dennisreimann.de/articles.html [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} ^/artikel/elm.html [OR]
+RewriteCond %{REQUEST_URI} ^/artikel/elm.html
 RewriteRule (.*) https://dennisreimann.de/articles/elm.html [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]

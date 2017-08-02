@@ -45,18 +45,18 @@ block main
         .article__meta
           p
             if h.isEnglish(locals)
-              span Published on&nbsp;
+              span Published on
               time.article__date= h.formatDateEnglish(a.date)
             else
-              span Veröffentlicht am&nbsp;
+              span Veröffentlicht am
               time.article__date= h.formatDateGerman(a.date)
             if update && update != a.date
               = " – "
               if h.isEnglish(locals)
-                span updated on&nbsp;
+                span updated on
                 time.article__date= h.formatDateEnglish(update)
               else
-                span aktualisiert am&nbsp;
+                span aktualisiert am
                 time.article__date= h.formatDateEnglish(update)
             | .
             if a.elmVersion
