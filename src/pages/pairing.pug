@@ -1,0 +1,51 @@
+extends /includes/layout
+
+block title
+  title=h.title("Are you looking for someone to pair with on your interface?")
+
+block main
+  section.top
+    .wrap
+      h1 Are you looking for someone to pair with on your interface?
+
+  section.wrap.intro
+    :marked
+      Maybe you are not sure about how to implement something or just need a second opinion.
+      Or you need help planning a feature, creating a wireframe, or mocking something up.
+
+      Each week I am offering up to two hours on Friday, so we can work on UI related things together.
+      It is easy: Just send me an email and we will try to find a time on Friday when we can connect.
+
+      Get in touch: No strings attached!
+      <mark>It is free as in beer, you neither have to pay nor am I expecting anything in return.</mark>
+      Why am I doing this?
+      I am looking for new ways to connect with people; get to know their work, settings and approaches to solving problems.
+      I also like to see other projects and to challenge my opinions and assumptions.
+      That is why I am offering this for free – both of us will benefit and ideally have a good time :)
+
+      If you have something in mind we could work on, do not hesitate to send me a short email.
+      I will answer as fast as I can so we can connect via Skype, Zoom or whatever works for both of us.
+
+  section.cta
+    p What are you waiting for?
+    a(href="mailto:mail@dennisreimann.de?subject=UI pairing&body=Hey Dennis,%0A%0AI'd like to pair on _____________.%0A%0APlease get in touch so we can arrange a call :)%0A%0AThanks,%0A%0A_____________") Get in touch!
+
+  section.availabilities
+    p
+      | Friday, August 11th 2017 is&nbsp;
+      span.availability.availability--booked booked
+      |.
+    p
+      | Friday, August 18th 2017 is&nbsp;
+      span.availability.availability--available available
+      |.
+    p
+      | Friday, August 25th 2017 is&nbsp;
+      span.availability.availability--available available
+      |.
+    p
+      | Friday, September 1st 2017 is&nbsp;
+      span.availability.availability--available available
+      |.
+
+  include /includes/hashtags
