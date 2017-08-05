@@ -1,0 +1,17 @@
+mixin hashtag(word)
+  strong.hashtag&attributes(attributes)
+    span.hashtag__hash #
+    span.hashtag__tag= word
+
+section.hashtags
+  .wrap
+    +hashtag("uiengineering")
+    +hashtag("designsystems")
+    +hashtag("uicomponents")
+    +hashtag("patternlibrary")
+    +hashtag("ux")
+    +hashtag("styleguide")
+    +hashtag("webperformance")
+    +hashtag("prototyping")
+    +hashtag("testing")
+    +hashtag("documentation")

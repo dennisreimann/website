@@ -1,11 +1,4 @@
 extends /includes/layout
-include /includes/icon
-include /includes/articles
-
-mixin hashtag(word)
-  strong.hashtag
-    span.hashtag__hash #
-    span.hashtag__tag= word
 
 block main
   section.top
@@ -52,23 +45,12 @@ block main
     p Sounds like I can help?
     a(href="/contact.html") Let's talk!
 
-  section.hashtags
-    .wrap
-      +hashtag("uiengineering")
-      +hashtag("designsystems")
-      +hashtag("uicomponents")
-      +hashtag("patternlibrary")
-      +hashtag("ux")
-      +hashtag("styleguide")
-      +hashtag("webperformance")
-      +hashtag("prototyping")
-      +hashtag("testing")
-      +hashtag("documentation")
+  include /includes/hashtags
 
   section.wrap
     :marked
       I enjoy tackling ambitious goals as part of an interdisciplinary product team.
-      Also, I like to help people improving their skills and efficiency.
+      Also, I like helping people to improve their skills and efficiency.
       I am available for consulting and engineering work offering these kinds of services:
 
       - UI engineering coaching and workshops
@@ -98,7 +80,3 @@ block main
       I have created and open sourced the toolkit we use for most of our project work:
       The [UIengine](https://github.com/dennisreimann/uiengine) helps to create, document and evolve design systems collaboratively.
       It is publicly available on GitHub and NPM.
-
-
-  section.wrap
-    :marked
