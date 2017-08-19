@@ -18,6 +18,7 @@
 
   a
     @extend $font-din-light
+    position relative
     display inline-block
     font-size $font-size-large
     padding $space-small 4rem $space-small
@@ -25,8 +26,16 @@
     color $color-white
     background-color $color-cta
     text-decoration none
+    box-shadow 0 5px darken($color-cta, 15)
     &:hover
-      background-color lighten($color-cta, 7)
+    &:active
+      background-color lighten($color-cta, 3)
+    &:hover
+      top 1px
+      box-shadow 0 4px darken($color-cta, 10)
+    &:active
+      top 5px
+      box-shadow none
 
 .hashtags
   padding-top $space-large
