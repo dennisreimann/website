@@ -23,7 +23,7 @@ So I wanted some time to catch up and work on my own projects – basically
 ### Do you feel me?
 
 Don't get me wrong: I learned tons of stuff working on these client projects, but not exactly the topics I felt I should be focusing on.
-My backlog of things I wanted to read, podcasts I wanted to listen to, and conference talks I wanted to watch had grown to a point where consuming all of these became almost unattainable.
+My backlog of things I wanted to read, podcasts I wanted to listen to and conference talks I wanted to watch had grown to a point where consuming all of these became almost unattainable.
 
 I love working in the web industry as it gives me a chance to challenge my thinking and knowledge basically every day.
 Yet this becomes stressful and tiring when you start feeling like you are missing out on something.
@@ -33,7 +33,7 @@ became quite a topic in 2016 shows that there is a case here.
 
 <mark>When you are into tech nowadays and eager to stay up to date with *the hot shit™* your streams become floods.</mark> &#8203;
 Guess what happens when you peel the onion of untapped knowledge?
-Your horizon grows and so do your lists of things to read, watch, and listen to. 
+Your horizon grows and so do your lists of things to read, watch and listen to. 
 
 ## Make it actionable
 
@@ -79,7 +79,7 @@ By reflecting the things as you write about them, you research, dig deeper and l
 Writing these articles takes time, but it is time well spent as it gives you a deeper understanding of the topics and your learning process.
 
 One more thing you will notice when you reflect and groom your lists of stuff to learn:    
-Libraries, frameworks, and trends come and go.
+Libraries, frameworks and trends come and go.
 We have the opportunity to work in an exciting industry that moves and changes quickly.
 We cannot and should not try to stay up to date with all of what it has to offer.
 Learn what you really need to learn and are able to apply.

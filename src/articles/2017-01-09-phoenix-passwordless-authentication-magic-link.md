@@ -18,7 +18,7 @@ tags:
 
 There are tons of [different approaches to user authentication](https://www.smashingmagazine.com/2016/06/the-current-state-of-authentication-we-have-a-password-problem/).
 Passwordless or *"magic link"* authentication is [very user friendly](https://www.sitepoint.com/passwordless-authentication-works/),
-relatively easy to implement, and sufficiently secure for most apps.
+relatively easy to implement and sufficiently secure for most apps.
 This article is a step by step guide for implementing passwordless authentication in Phoenix.
 
 <!-- more -->

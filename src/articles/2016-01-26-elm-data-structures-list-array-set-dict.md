@@ -1,6 +1,6 @@
 ---
 title: "Elm Data Structures (1)"
-subtitle: "Lists, Arrays, Sets, and Dictionaries"
+subtitle: "Lists, Arrays, Sets and Dictionaries"
 ogImage: elm
 lang: en
 alternate:
@@ -14,10 +14,10 @@ tags:
   - Array
   - Set
   - Dict
-description: "In Elm there are different kinds of data structures that can contain elements. This article spotlights the iterable structures lists, arrays, sets, and dictionaries."
+description: "In Elm there are different kinds of data structures that can contain elements. This article spotlights the iterable structures lists, arrays, sets and dictionaries."
 ---
 
-In Elm there are different kinds of data structures that can contain elements. This article spotlights the iterable structures lists, arrays, sets, and dictionaries, which support the basic operations of functional programming like `map`, `filter`, and folding/reducing.
+In Elm there are different kinds of data structures that can contain elements. This article spotlights the iterable structures lists, arrays, sets and dictionaries, which support the basic operations of functional programming like `map`, `filter` and folding/reducing.
 
 <!-- more -->
 
@@ -78,7 +78,7 @@ modifiedArray = Array.set 2 7 array
 
 The possibility to work with elements based on the index offers performance gains for use cases like targeted access and replacing of elements. The implementation of [arrays as Relaxed Radix Balanced Trees](http://elm-lang.org/blog/announce/0.12.1) makes accessing and modification of elements and parts of an array very fast, especially when dealing with large arrays.
 
-Nevertheless arrays – as well as sets and dictionaries – are kind of second class data structures in Elm. This due to the fact that a majority of use cases can be modeled easily with lists and that there is [no literal syntax](https://github.com/elm-lang/elm-plans/issues/12) for these data structures. The latter makes dealing with them kind of clunky as they cannot be instantiated with syntactical shortcuts. This also makes arrays, sets, and dictionaries not as well suited for domain-specific languages like elm-html.
+Nevertheless arrays – as well as sets and dictionaries – are kind of second class data structures in Elm. This due to the fact that a majority of use cases can be modeled easily with lists and that there is [no literal syntax](https://github.com/elm-lang/elm-plans/issues/12) for these data structures. The latter makes dealing with them kind of clunky as they cannot be instantiated with syntactical shortcuts. This also makes arrays, sets and dictionaries not as well suited for domain-specific languages like elm-html.
 
 ### Sets
 

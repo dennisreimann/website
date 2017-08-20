@@ -16,7 +16,7 @@ tags:
 description: "By defining a union type one always creates a new type that did not exist before. A union type can be an amalgamation of different types – but it does not have to be."
 ---
 
-Now that we have already looked at the data structures [lists, arrays, sets, and dictionaries](/articles/elm-data-structures-list-array-set-dict.html) as well as [records and tuples](/articles/elm-data-structures-record-tuple.html), there is only one more basic structure we need to talk about: The so called *Union Type*.
+Now that we have already looked at the data structures [lists, arrays, sets and dictionaries](/articles/elm-data-structures-list-array-set-dict.html) as well as [records and tuples](/articles/elm-data-structures-record-tuple.html), there is only one more basic structure we need to talk about: The so called *Union Type*.
 
 <!-- more -->
 

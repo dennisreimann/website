@@ -26,7 +26,7 @@ Elm has three sources from which modules can be imported:
 * Additionally installed modules (via the package manager)
 * Custom modules from the current project
 
-Some of the modules from the standard library are imported by default and can be used without explicitly importing them: In Elm 0.16.0 these are `Basics`, `Debug`, `List`, `Maybe`, `Result`, and `Signal`.
+Some of the modules from the standard library are imported by default and can be used without explicitly importing them: In Elm 0.16.0 these are `Basics`, `Debug`, `List`, `Maybe`, `Result` and `Signal`.
 
 The standard library covers the most essential parts of the functionality in Elm, but there is already a wide range of additional modules that can be installed via the package manager. One of them is the [`elm-html`](http://package.elm-lang.org/packages/evancz/elm-html/latest/) package which we will use in the examples below. To import the package we first need to install it:
 

@@ -17,7 +17,7 @@ tags:
 The beauty of The Elm Architecture lies in its simplicity:
 It structures applications into four parts and it defines how these interact with each other.
 In Elm there is only this one determined way to handle interactions and manage state – 
-and it provides a good foundation for modularity, code reuse, and testing by default.
+and it provides a good foundation for modularity, code reuse and testing by default.
 
 <!-- more -->
 
@@ -158,7 +158,7 @@ It's no surprise that this simple, yet powerful way of state management became v
 
 The main function is the entry of an Elm program.
 It takes care of wiring up the three parts described above.
-&#8203; <mark>The runtime is contained in a program that gets initialized with the `model`, `view`, and `update` – this program is then returned by the main function.</mark>
+&#8203; <mark>The runtime is contained in a program that gets initialized with the `model`, `view` and `update` – this program is then returned by the main function.</mark>
 
 Supplemented with the imports of your module this can be considered the boilerplate of your application.
 The simple case with a `beginnerProgram` might look like this:
@@ -181,7 +181,7 @@ main =
 ```
 
 The `Html.beginnerProgram` encapsulates the basics of The Elm Architecture.
-It wires up the model, view, and update functions and provides the setup for handling user interaction and managing state.
+It wires up the model, view and update functions and provides the setup for handling user interaction and managing state.
 Once initialized &#8203; <mark>the program executes a continuous loop, taking in actions from the user, changing the state and representing the changes in the view.</mark> &#8203;
 
 <figure>
@@ -207,7 +207,7 @@ The user interacts with the view which produces messages, which are handled by t
 This function is the only place your *model* gets transformed.
 The *runtime* encapsulates all of these parts and provides a continuous loop of these interactions.
 
-With this, &#8203; <mark>The Elm Architecture offers a solid foundation for modularity, code reuse, and testing.</mark> &#8203;
+With this, &#8203; <mark>The Elm Architecture offers a solid foundation for modularity, code reuse and testing.</mark> &#8203;
 It also facilitates onboarding new developers as the basic structure of every Elm app is the same.
 
 As the [official guide](https://guide.elm-lang.org/architecture) states:

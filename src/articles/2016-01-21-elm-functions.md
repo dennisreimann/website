@@ -1,6 +1,6 @@
 ---
 title: "Elm Functions"
-subtitle: "Syntax, Piping, and Currying"
+subtitle: "Syntax, Piping and Currying"
 ogImage: elm
 lang: en
 alternate:

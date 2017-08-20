@@ -19,7 +19,7 @@ tags:
 
 The previous article about [deploying Phoenix with Gatling](/articles/phoenix-deployment-gatling-ubuntu-digital-ocean.html) did not go into details for a proper NGINX configuration.
 Using NGINX as a front-end proxy for web applications is a pretty standard setup.
-There are some things to keep in mind concerning Phoenix, SSL, and asset delivery and this article sums up the details. 
+There are some things to keep in mind concerning Phoenix, SSL and asset delivery and this article sums up the details. 
 
 <!-- more -->
 
