@@ -1,51 +1,32 @@
 extends /includes/layout
 
 block title
-  title=h.title("Are you looking for someone to pair with on your interface?")
+  title=h.title("You need help or someone to share ideas with?")
 
 block main
   section.top
     .wrap
-      h1 Are you looking for someone to pair with on your interface?
+      h1 You need help or someone to share ideas with?
 
-  section.wrap.intro
+  section.wrap
     :marked
       Maybe you are not sure about how to implement something or just need a second opinion.
       Or you need help planning a feature, creating a wireframe, or mocking something up.
 
       Each week I am offering up to 90 minutes on Friday, so we can work on UI related things together.
-      It is easy: Just send me an email and we will try to find a time on Friday when we can connect.
+      It is easy: [Choose your preferred date and time](https://calendly.com/dennisreimann/ui-pairing/), I will contact you so we can discuss the details :)
 
-      Get in touch: No strings attached!
-      <mark>It is free as in beer, you neither have to pay nor am I expecting anything in return.</mark>
+      ## No strings attached!
+
+      <mark>It is free, you neither have to pay nor am I expecting anything in return.</mark>
+
       Why am I doing this?
-      I am looking for new ways to connect with people; get to know their work, settings and approaches to solving problems.
-      I also like to see other projects and to challenge my opinions and assumptions.
+      I am looking for new ways to connect with people; get to know their work and approaches to solving problems.
+      I also like to challenge my opinions and assumptions.
       That is why I am offering this for free – both of us will benefit and ideally have a good time :)
 
-      If you have something in mind we could work on, do not hesitate to send me a short email.
-      I will answer as fast as I can so we can connect via Skype, Zoom or whatever works for both of us.
-
   section.cta
-    p What are you waiting for?
-    a(href="mailto:mail@dennisreimann.de?subject=UI pairing&body=Hey Dennis,%0A%0AI'd like to pair on _____________.%0A%0APlease get in touch so we can arrange a call :)%0A%0AThanks,%0A%0A_____________") Get in touch!
-
-  section.availabilities
-    p
-      | Friday, August 25th 2017 is&nbsp;
-      span.availability.availability--booked booked
-      |.
-    p
-      | Friday, September 1st 2017 is&nbsp;
-      span.availability.availability--booked booked
-      |.
-    p
-      | Friday, September 8th 2017 is&nbsp;
-      span.availability.availability--available available
-      |.
-    p
-      | Friday, September 15th 2017 is&nbsp;
-      span.availability.availability--available available
-      |.
+    p If you have something in mind we could work on, do not hesitate …
+    a(href="https://calendly.com/dennisreimann/ui-pairing/" target="_blank") Get in touch!
 
   include /includes/hashtags
