@@ -1,0 +1,38 @@
+$image-size = 110px
+
+.quote
+  hyphens manual
+  text-align left
+  padding-left $space-medium
+  padding-right $space-medium
+  @media M_and_up
+    margin-left $space-xxl
+
+  img
+    width $image-size
+    height $image-size
+    border-radius 50%
+    margin-bottom $space-medium
+    @media M_and_up
+      float left
+      margin-right $space-medium
+
+  blockquote
+    position relative
+    &:before
+    &:before
+      position absolute
+      top -.125em
+      left -1.5rem
+      font-family Georgia
+      font-size 3rem
+      color $color-lightgray
+      content "„"
+      line-height 0
+
+  footer
+    @extend $font-din-light
+    color $color-subtle
+    font-size $font-size-medium
+    @media M_and_up
+      margin-left s("calc(%s + %s)", $image-size, $space-medium)

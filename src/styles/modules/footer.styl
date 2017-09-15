@@ -1,7 +1,11 @@
 #footer
   font-size $font-size-small
-  a
+
+  a:not(.social__link)
     color $color-subtle
+    text-decoration none
+    &:hover
+      text-decoration underline
 
   .social
     margin-top $space-medium

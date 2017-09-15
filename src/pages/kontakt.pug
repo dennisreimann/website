@@ -1,0 +1,109 @@
+extends /includes/layout
+
+block title
+  title=h.title("Dennis Reimann, UI engineer")
+
+block og
+  meta(property="og:type" content="profile")
+  meta(property="og:title" content=h.title("Contact"))
+  meta(property="og:description" content="As a User Interface Engineer I help product teams to build applications based on a solid design system and component library.")
+  meta(property="og:image" content=h.assetUrl("images/dennis_reimann-2x.jpg", "http"))
+  meta(property="og:image:secure_url" content=h.assetUrl("images/dennis_reimann-2x.jpg", "https"))
+  meta(property="profile:gender" content="male")
+  meta(property="profile:first_name" content="Dennis")
+  meta(property="profile:last_name" content="Reimann")
+  meta(property="profile:username" content="dennisreimann")
+
+block main
+  section.wrap#about
+    img(alt="Dennis Reimann" src=h.assetUrl("images/dennis_reimann.jpg") srcset=`${h.assetUrl("images/dennis_reimann-2x.jpg")} 2x`)
+
+    table
+      tbody
+        tr
+          th Name
+          td Dennis Reimann
+        tr
+          th Schwerpunkt
+          td
+            | User Interface Engineering
+            br
+            | Design Systeme
+            br
+            | Frontend Architektur
+            br
+            | Web Performance
+        tr
+          th Adresse
+          td
+            | Ottjen-Alldag-Str. 32
+            br
+            | 28277 Bremen
+            br
+            | Deutschland
+        tr
+          th USt-IdNr.
+          td DE247768646
+        tr
+          th Web
+          td
+            a.url(href="https://dennisreimann.de/" rel="me") dennisreimann.de
+        tr
+          th E-Mail
+          td
+            a(href="mailto:mail@dennisreimann.de" rel="me") mail@dennisreimann.de
+        tr
+          th Telefon
+          td: a(href="tel:+49-151-22630317" rel="me") +49 (0)151 22 63 03 17
+        tr.social
+          th Social Media
+          td
+            a.social__link(href="https://www.xing.com/profile/Dennis_Reimann5" rel="me") XING
+            a.social__link(href="https://twitter.com/dennisreimann" rel="me") Twitter
+            a.social__link(href="https://github.com/dennisreimann" rel="me") GitHub
+
+  section.wrap#imprint
+    header
+      h2 Impressum
+
+    .content
+      h3 Inhaltlich Verantwortliche gemäß TMG und § 55 Abs. 2 RStV
+      p
+        | Dennis Reimann
+        br
+        | Ottjen-Alldag-Str. 32
+        br
+        | 28277 Bremen
+
+      h3 Urheber- und Kennzeichenrecht
+      p
+        | Für alle weiteren Inhalte dieser Website gilt:
+        | er Autor ist bestrebt, in allen Publikationen die Urheberrechte der verwendeten Bilder, Grafiken, Tondokumente, Videosequenzen und Texte zu beachten, von ihm selbst erstellte Bilder, Grafiken, Tondokumente, Videosequenzen und Texte zu nutzen oder auf lizenzfreie Grafiken, Tondokumente, Videosequenzen und Texte zurückzugreifen.
+      p
+        | Das Copyright für veröffentlichte, vom Autor selbst erstellte Objekte bleibt allein beim Autor der Seiten.
+        | Eine Vervielfältigung oder Verwendung solcher Grafiken, Tondokumente, Videosequenzen und Texte in anderen elektronischen oder gedruckten Publikationen ist ohne ausdrückliche Zustimmung des Autors nicht gestattet.
+      p
+        | Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten der jeweiligen eingetragenen Eigentümer.
+        | Allein aufgrund der bloßen Nennung ist nicht der Schluss zu ziehen, dass Markenzeichen nicht durch Rechte Dritter geschützt sind!
+
+      h3 Haftungshinweis
+      p
+        | Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links.
+        | Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+
+  section.wrap#webanalytics
+    header
+      h2 Webanalytics
+
+    .content
+      h3 Datenschutz
+      p
+        | Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google“).
+        | Google Analytics verwendet sog. „Cookies“, Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglichen.
+        | Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website (einschließlich Ihrer IP-Adresse) wird an einen Server von Google in den USA übertragen und dort gespeichert.
+        | Google wird diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die Websiteaktivitäten für die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu erbringen.
+        | Auch wird Google diese Informationen gegebenenfalls an Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im Auftrag von Google verarbeiten.
+        | Google wird in keinem Fall Ihre IP-Adresse mit anderen Daten von Google in Verbindung bringen.
+        | Sie können die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern;
+        | wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich nutzen können.
+        | Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.

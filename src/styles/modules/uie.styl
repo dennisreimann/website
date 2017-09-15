@@ -1,0 +1,27 @@
+$color-uie-brand = #ff183e
+
+.uie
+  color $color-white
+  background-color $color-uie-brand
+  margin-bottom $space-large
+
+  h2
+    color $color-white
+
+  a
+    color $color-white
+    text-decoration underline
+    &:hover
+      color lighten($color-uie-brand, 30)
+      text-decoration none
+
+  .wrap
+    padding-top $space-huge
+    padding-bottom $space-huge
+    @media M_and_up
+      background-image url(/images/uiengineering.jpg)
+      background-size 250px 205px
+      background-position 99% 100%
+      background-repeat no-repeat
+      p:last-child
+        padding-right 250px

@@ -80,7 +80,7 @@ pre
   overflow-x auto
   margin-bottom $space-large
   color #b9b5b8
-  background darken($color-darkblue, 8)
+  background darken($color-blue-dark, 8)
   @extend $escape-wrap
 
 code
@@ -102,12 +102,11 @@ ul
 ol
   margin-left $space-medium * 1.15
 
-a
-  text-decoration none
+main a
+  color $color-gray
+  text-decoration underline
   &:hover
-  &:active
-    text-decoration underline
-  main &
+    text-decoration none
     color $color-highlight
 
 figure
