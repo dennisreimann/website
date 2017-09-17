@@ -13,7 +13,7 @@
     "start": "yarn run clean && gulp develop --dev",
     "prod": "yarn run clean && gulp production",
     "devprod": "yarn run clean && gulp production && serve dist",
-    "deploy": "yarn run prod && rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude --delete-after dist/ uberdennis:html"
+    "deploy": "yarn run prod && rsync -ravzulO --chmod=u=rwX,g=rX --exclude-from=.rsync-exclude --delete-after dist/ dreimann@dennisreimann.de:html"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
