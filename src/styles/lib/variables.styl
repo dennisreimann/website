@@ -38,21 +38,16 @@ $font-din-light
 // 688px = 40rem + 2 * (1.5rem) = $width-main + 2 * $space-large
 $escape-wrap
   $breakpoint-escape-wrap = 688px
-  $mq-escape-wrap-to = mq_to($breakpoint-escape-wrap)
   $mq-escape-wrap-from = mq_from_and_print($breakpoint-escape-wrap)
-  @media $mq-escape-wrap-to
-    padding $space-medium $space-large
-    margin-left $space-large * -1
-    margin-right $space-large * -1
+  padding $space-large $space-large
+  margin-left $space-large * -1
+  margin-right $space-large * -1
   @media $mq-escape-wrap-from
     border-radius $space-small
-    padding $space-medium $space-medium
-    margin-left $space-medium * -1
-    margin-right $space-medium * -1
 
 $boxed
   @extend $escape-wrap
-  border 1px solid lighten($color-lightgray, 1)
-  background-image linear-gradient(lighten($color-lightgray, 10), lighten($color-lightgray, 5))
+  border 1px solid darken($color-lightgray, 5)
+  background-image linear-gradient(lighten($color-lightgray, 7), lighten($color-lightgray, 4))
   > :last-child
     margin-bottom 0
