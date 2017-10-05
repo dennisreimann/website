@@ -154,6 +154,12 @@ gulp.task('icons', cb =>
   gulp.src(paths.icons)
     .pipe(p.plumber())
     .pipe(p.svgSprite({
+      svg: {
+        rootAttributes: {
+          'hidden': true,
+          'role': 'presentation'
+        }
+      },
       mode: {
         symbol: {
           dest: '',

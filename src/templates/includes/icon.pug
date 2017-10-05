@@ -1,4 +1,4 @@
-mixin icon(symbol)
+mixin icon(symbol, title)
   - const classes = `icon--${symbol}`
-  svg.icon(class=classes role="img")&attributes(attributes)
+  svg.icon(class=classes role="img" aria-label=title)&attributes(attributes)
     use(xlink:href=`#${symbol}`)

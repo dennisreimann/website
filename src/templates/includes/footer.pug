@@ -12,16 +12,16 @@ include icon
     ul.social
       li.social__item
         a.social__link(href="https://www.xing.com/profile/Dennis_Reimann5" rel="me")
-          +icon("social-xing").social__icon.social__icon--xing
+          +icon("social-xing", "XING").social__icon.social__icon--xing
       li.social__item
         a.social__link(href="https://twitter.com/dennisreimann" rel="me")
-          +icon("social-twitter").social__icon.social__icon--twitter
+          +icon("social-twitter", "Twitter").social__icon.social__icon--twitter
       li.social__item
         a.social__link(href="https://github.com/dennisreimann" rel="me")
-          +icon("social-github").social__icon.social__icon--github
+          +icon("social-github", "Github").social__icon.social__icon--github
       li.social__item
         a.social__link(href="/atom.xml" rel="me")
-          +icon("social-feed").social__icon.social__icon--feed
+          +icon("social-feed", "Feed").social__icon.social__icon--feed
 
     p.more
       a.more__link(href= h.t(locals, "/kontakt.html", "/contact.html"))
