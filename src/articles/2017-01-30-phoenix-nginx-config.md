@@ -24,7 +24,7 @@ There are some things to keep in mind concerning Phoenix, SSL and asset delivery
 <!-- more -->
 
 <div class="note">
-  <p>**TL;DR** The goal of this article is to highlight some important config parts.
+  <p><strong>TL;DR</strong> The goal of this article is to highlight some important config parts.
   We will not cover the basic setup of NGINX, but what goes into the webapps configuration options to make it secure, performant and easy to maintain:</p>
   <ul>
     <li>Extend a basic configuration with SSL</li>
@@ -39,7 +39,6 @@ Let's start out with the basics:
 This is the raw configuration file for Phoenix that [Gatling](https://github.com/hashrocket/gatling) provides when we set up an app.
 This article is not Gatling specific, but there were some questions about how to extend the initial setup which triggered me to write this up.
 What you find here is general advise on how to setup NGINX for a Phoenix app – the Gatling specific parts are covered at the end.
-
 
 ```nginx
 server {

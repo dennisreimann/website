@@ -24,7 +24,7 @@ This article is a step by step guide for implementing passwordless authenticatio
 <!-- more -->
 
 <div class="note">
-  <p>**TL;DR**
+  <p><strong>TL;DR</strong>
   This guide assumes you are familiar with
   [the basic flow](https://medium.com/aws-activate-startup-blog/increase-engagement-and-enhance-security-with-passwordless-authentication-212d75d4f7cc#.2gxpaxsuv),
   which you might have experienced in Slack or a growing number of apps:
