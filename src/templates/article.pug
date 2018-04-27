@@ -76,6 +76,3 @@ block main
         h5.article__nav__title
           a.more__link(href="/articles.html")= h.t(locals, "Weitere Artikel", "More articles")
         +articles([nextArticle, prevArticle].filter(e =>  e), "blog").article__nav__items
-
-  section.wrap
-    include /includes/ioctocat
