@@ -65,12 +65,6 @@ block main
             else
               | Code-Beispiele für Elm #{a.elmVersion}.
           if h.isEnglish(locals)
-            p.social
-              | Liked the article? Follow me on
-              = " "
-              a.social__link(href="https://twitter.com/dennisreimann" rel="me")
-                | Twitter
-                +icon("social-twitter").social__icon
             p
               | You got remarks or corrections?
               = " "
