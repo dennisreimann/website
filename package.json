@@ -16,10 +16,10 @@
   "scripts": {
     "clean": "rimraf dist/*",
     "lint": "standard",
-    "start": "yarn run clean && gulp develop --dev",
-    "prod": "yarn run clean && gulp production",
-    "devprod": "yarn run clean && gulp production && serve dist",
-    "deploy": "yarn run prod && $npm_package_config_deployment_command dist/ $npm_package_config_deployment_target"
+    "start": "npm run clean && gulp develop --dev",
+    "prod": "npm run clean && gulp production",
+    "devprod": "npm run clean && gulp production && serve dist",
+    "deploy": "npm run prod && $npm_package_config_deployment_command dist/ $npm_package_config_deployment_target"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",

@@ -1,17 +1,13 @@
 language: node_js
 node_js:
 - node
-cache: yarn
-
-before_install:
-# install a custom version of yarn until this issue is resolved:
-# https://github.com/travis-ci/travis-ci/issues/7566
-- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.2.0
-- export PATH="$HOME/.yarn/bin:$PATH"
+cache:
+  directories:
+    - "node_modules"
 
 # create a production build
 script:
-- yarn prod
+- npm run prod
 
 before_deploy:
 # extract the deploy_rsa to the /tmp folder to avoid deploying the decrypted key
@@ -28,6 +24,6 @@ addons:
 deploy:
   skip_cleanup: true
   provider: script
-  script: yarn deploy
+  script: npm run deploy
   on:
     branch: master
