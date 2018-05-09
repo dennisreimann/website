@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /contact.html
+Disallow: /kontakt.html
+
+Sitemap: https://dennisreimann.de/sitemap.xml
