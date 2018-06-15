@@ -7,6 +7,26 @@ block main
 
     .project
       h3.project__name
+        a(href="https://www.breuninger.de/" rel="external noopener") Breuninger
+      p.project__description
+        | Development of backoffice applications.
+
+      .project__task
+        +icon("project-task", h.t(locals, "Aufgabe", "Task")).project__icon.project__icon--task
+        ul
+          li Frontend architecture for the webshop backoffice.
+          li Establishing the component library with Vue.js and Semantic UI.
+          li Frontend development with Vue.js, JavaScript, CSS and HTML.
+      p.project__context
+        +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
+        = "Contract work for the "
+        a(href="http://talentformation.com/" rel="external noopener") talentformation.com GmbH
+      p.project__period
+        +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
+        | August 2017&ndash;February 2018
+
+    .project
+      h3.project__name
         a(href="https://itunes.apple.com/de/app/granit-parts/id476574650?mt=8" rel="external noopener") Granit Parts
       p.project__description
         | Responsive relaunch of a B2B webshop and corresponding mobile app,
@@ -18,8 +38,7 @@ block main
           li Frontend development with JavaScript, CSS and HTML.
       p.project__context
         +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
-        | Contract work for the
-        = " "
+        = "Contract work for the "
         a(href="https://www.neuland-bfi.de" rel="external noopener") neuland bremen GmbH
       p.project__period
         +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
@@ -27,7 +46,7 @@ block main
 
     .project
       h3.project__name
-        a(href="https://www.breuninger.at/" rel="external noopener") Breuninger
+        a(href="https://www.breuninger.de/" rel="external noopener") Breuninger
       p.project__description
         | Architecture relaunch of a fashion and lifestyle webshop and its infrastructure.
       .project__task
@@ -38,8 +57,7 @@ block main
           li Frontend development with JavaScript, CSS and HTML.
       p.project__context
         +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
-        | Contract work for the
-        = " "
+        = "Contract work for the "
         a(href="http://talentformation.com/" rel="external noopener") talentformation.com GmbH
       p.project__period
         +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
@@ -58,8 +76,7 @@ block main
           li Establishing the build process, documentation and component library.
       p.project__context
         +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
-        | Contract work for the
-        = " "
+        = "Contract work for the "
         a(href="http://talentformation.com/" rel="external noopener") talentformation.com GmbH
       p.project__period
         +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
@@ -79,8 +96,7 @@ block main
           li Performance monitoring and optimization.
       p.project__context
         +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
-        | Contract work for the
-        = " "
+        = "Contract work for the "
         a(href="https://www.neuland-bfi.de" rel="external noopener") neuland bremen GmbH
       p.project__period
         +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
