@@ -93,6 +93,22 @@ code
     padding 0
     background none
 
+blockquote
+  hyphens manual
+  color $color-gray
+  position relative
+  padding-left 2em
+  @media M_and_up
+    margin-left $space-xlarge
+  &::before
+    content "„"
+    position absolute
+    font-family Georgia
+    top -.75em
+    left .05em
+    font-size 3em
+    color $color-lightgray
+
 mark
   background $color-mark
 
@@ -129,6 +145,7 @@ figure
 p
 ul
 ol
+blockquote
 .note
   +
     h2
