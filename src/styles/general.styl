@@ -118,12 +118,20 @@ ul
 ol
   margin-left $space-medium * 1.15
 
-main a
-  color $color-gray
-  text-decoration underline
-  &:hover
-    text-decoration none
-    color $color-highlight
+main
+  a
+    color $color-gray
+    text-decoration underline
+    &:hover
+      text-decoration none
+      color $color-highlight
+
+  h1, h2, h3, h4, h5, h6
+    a
+      color $color-highlight
+      text-decoration none
+      &:hover
+        text-decoration underline
 
 figure
   margin-top $space-large
