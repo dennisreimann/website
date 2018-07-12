@@ -1,41 +1,41 @@
-// navItemActive(current = false)
-//   if current
-//     border-top-color $color-highlight
-//   color $color-blue-dark
-//   background #fff
-//   text-decoration none
+navItemActive(current = false)
+  if current
+    border-top-color $color-mark
+  color $color-mark
 
-// .nav
-//   display flex
-//   justify-content flex-start
-//   align-content stretch
-//   align-items flex-end
-//   list-style none
-//   margin-left $space-large * -1
-//   margin-right $space-large * -1
-//   color $color-white
-//   background $color-blue-dark
+#nav
+  background rgba(19, 29, 44, .2)
 
-//   @media print
-//     display none
+.nav
+  display flex
+  justify-content flex-start
+  align-content stretch
+  align-items flex-end
+  list-style none
+  margin -5px ($space-large * -1) 0
+  color $color-white
 
-//   &__item
-//     flex 0 auto
+  @media print
+    display none
 
-//     @media up_to_S
-//       font-size $font-size-small
+  &__item
+    flex 0 auto
+    margin 0
 
-//       &--elm
-//       &--projects
-//         display none
+    @media up_to_S
+      font-size $font-size-small
 
-//     &__link
-//       display block
-//       padding $space-normal $space-large
-//       color inherit
-//       text-decoration none
-//       border-top 4px solid $color-blue-dark
-//       &:hover
-//         navItemActive(false)
-//       .nav__item--current &
-//         navItemActive(true)
+      &--elm
+      &--projects
+        display none
+
+    &__link
+      display block
+      padding $space-medium $space-large
+      color inherit
+      text-decoration none
+      border-top 5px solid transparent
+      &:hover
+        navItemActive(false)
+      .nav__item--current &
+        navItemActive(true)

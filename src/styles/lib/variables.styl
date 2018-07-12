@@ -1,13 +1,14 @@
-$color-highlight = #71B239
-$color-cta = #FC7200
+$color-blue-very-dark = #131D2C
 $color-blue-dark = #2E4F66
-$color-blue-light = #4DB8C3
+$color-blue = #3C5F74
 $color-mark = #F8FCA1
+$color-highlight = #62859A
 $color-subtle = #666
 $color-text = #222
 $color-gray = #999
 $color-lightgray = #EEE
 $color-white = #FFF
+$color-cta = $color-mark
 
 $font-size-code = .8rem
 $font-size-small = .9rem
@@ -51,3 +52,12 @@ $boxed
   background-image linear-gradient(lighten($color-lightgray, 7), lighten($color-lightgray, 4))
   > :last-child
     margin-bottom 0
+
+$backdrop
+  background-color $color-blue-dark
+  background-position 50% 90%
+  background-repeat no-repeat
+  background-image url(/images/backdrop.svg)
+  background-blend-mode luminosity
+  @media L_and_up
+    background-size cover

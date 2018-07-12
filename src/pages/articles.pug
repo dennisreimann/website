@@ -5,8 +5,12 @@ block title
   title=h.title("Articles: Frontend development with Elm, JavaScript, CSS and HTML")
 
 block main
+  section.top
+    .wrap
+      h1 Articles
+
   section.wrap
-    h1 Articles
+    h1
     each articlesByYear in mvb.groupedArticles.byYear
       - articles = h.articles.filterByNoAlternate(articlesByYear.articles, h.lang(locals))
       section.articles_group

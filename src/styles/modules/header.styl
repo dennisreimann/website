@@ -1,6 +1,20 @@
-.logo
-  width 200px
-  height 60px
+#header
+  @extend $backdrop
+  border-top 5px solid $color-blue-very-dark
 
+.logo
+  margin-top $space-huge
+  margin-bottom $space-large
+
+  @media up_to_M
+    width 200px
+    height 60px
+  @media M_to_L
+    width 220px
+    height 66px
   @media screen and (min-width: 720px), print
-    margin-left -20px
+    margin-left -25px
+  @media L_and_up
+    width 260px
+    height 78px
+    margin-left -30px
