@@ -2,12 +2,12 @@ extends /includes/layout
 include /includes/articles
 
 block title
-  title=h.title("Articles: Frontend development with JavaScript, CSS and HTML")
+  title=h.title("Artikel: Frontendentwicklung mit JavaScript, CSS and HTML")
 
 block main
   section.top
     .wrap
-      h1 Articles
+      h1 Artikel
 
   section.wrap
     h1
@@ -16,5 +16,5 @@ block main
       section.articles_group
         h3.articles_group__title
           span.articles_group__title__year= articlesByYear.year
-          small.articles_group__title__count #{articles.length} #{articles.length == 1 ? "article" : "articles"}
+          small.articles_group__title__count #{articles.length} Artikel
         +articles(articles, "blog")
