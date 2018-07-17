@@ -13,10 +13,10 @@ import templateHelper from './lib/templateHelper'
 const p = gulpLoadPlugins()
 const browserSync = BrowserSync.create()
 const isDev = (argv.dev != null)
-const assetHost = argv.assetHost || ''
 const defaultScheme = isDev ? 'http' : 'https'
 const siteHost = isDev ? 'localhost:3000' : 'dennisreimann.de'
 const siteUrl = `${defaultScheme}://${siteHost}`
+const assetHost = argv.assetHost || siteHost
 
 const paths = {
   src: 'src',
@@ -185,7 +185,7 @@ gulp.task('icons', cb =>
       }
     }))
     .pipe(gulp.dest('src/templates/includes'))
-  )
+)
 
 gulp.task('scripts', () =>
   gulp.src(paths.scripts)
@@ -271,7 +271,7 @@ gulp.task('html:manifest', cb => {
 
 gulp.task('revAssets', () => {
   const RevAll = p.revAll
-  const revAll = new RevAll({prefix: assetHost})
+  const revAll = new RevAll() // {prefix: assetHost}
   return gulp.src(paths.rev)
     .pipe(revAll.revision())
     .pipe(p.revDeleteOriginal())
