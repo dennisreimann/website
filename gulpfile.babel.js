@@ -1,8 +1,7 @@
 import { argv } from 'yargs'
-import path from 'path'
-import gulp from 'gulp'
+import { relative } from 'path'
+import { src, dest, series, parallel, task, watch } from 'gulp'
 import gulpLoadPlugins from 'gulp-load-plugins'
-import runSequence from 'run-sequence'
 import autoprefixer from 'autoprefixer'
 import mqpacker from 'css-mqpacker'
 import csswring from 'csswring'
@@ -38,7 +37,7 @@ const paths = {
   articlesBasepath: 'articles'
 }
 
-const dest = (folder = '') => gulp.dest(`${paths.dest}/${folder}`)
+const dist = (folder = '') => dest(`${paths.dest}/${folder}`)
 
 const pugConf = {
   pretty: true,
@@ -88,42 +87,42 @@ const mvbConf = {
 const templateData = file => ({
   h: templateHelper.createHelper(file, isDev, siteHost, assetHost, defaultScheme),
   page: {
-    permalink: path.relative(paths.src, file.path).replace(/^pages/, '').replace(/\.pug$/, '.html')
+    permalink: relative(paths.src, file.path).replace(/^pages/, '').replace(/\.pug$/, '.html')
   }
 })
 
 // ----- BUILD -----
 
-const buildHtml = (src, dst) =>
-  gulp.src(src)
+const buildHtml = (files, dst) =>
+  src(files)
     .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
     .pipe(p.pug(pugConf))
-    .pipe(dest(dst))
+    .pipe(dist(dst))
 
 const feedWithTemplate = (template, folder) =>
-  gulp.src(`src/feed/${template}.pug`)
+  src(`src/feed/${template}.pug`)
     .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
     .pipe(p.pug(pugConf))
     .pipe(p.rename({extname: '.xml'}))
-    .pipe(dest(folder))
+    .pipe(dist(folder))
 
-gulp.task('feed:atom', () => feedWithTemplate('atom'))
-gulp.task('feed:elm', () => feedWithTemplate('elm', paths.articlesBasepath))
-gulp.task('feed', ['feed:atom', 'feed:elm'])
+task('feed:atom', () => feedWithTemplate('atom'))
+task('feed:elm', () => feedWithTemplate('elm', paths.articlesBasepath))
+task('feed', parallel('feed:atom', 'feed:elm'))
 
-gulp.task('copy', cb =>
-  gulp.src(paths.copy)
-    .pipe(dest())
+task('copy', () =>
+  src(paths.copy)
+    .pipe(dist())
 )
 
-gulp.task('pages', () => buildHtml(paths.pages))
-gulp.task('articles', () => buildHtml(paths.articles, paths.articlesBasepath))
+task('pages', () => buildHtml(paths.pages))
+task('articles', () => buildHtml(paths.articles, paths.articlesBasepath))
 
-gulp.task('serviceworker', () => {
+task('serviceworker', () => {
   let htmlCacheKeys = {}
   try {
     const htmlManifest = require(`./${paths.dest}/html-manifest.json`)
@@ -138,20 +137,20 @@ gulp.task('serviceworker', () => {
     htmlCacheKeys['/'] = `/${htmlManifest['index.html']}`
   } catch (error) { }
 
-  gulp.src(paths.serviceworker)
+  return src(paths.serviceworker)
     .pipe(p.plumber())
     .pipe(p.replace('const HTML_CACHE_KEYS = {}', `const HTML_CACHE_KEYS = ${JSON.stringify(htmlCacheKeys, null, '  ')}`))
     .pipe(p.babel())
     .pipe(p.stripDebug())
     .pipe(p.uglify())
-    .pipe(dest())
+    .pipe(dist())
 })
 
 // for config options see:
 // - https://github.com/svg/svgo
 // - https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md
-gulp.task('icons', cb =>
-  gulp.src(paths.icons)
+task('icons', () =>
+  src(paths.icons)
     .pipe(p.plumber())
     .pipe(p.svgSprite({
       svg: {
@@ -183,107 +182,102 @@ gulp.task('icons', cb =>
         ]
       }
     }))
-    .pipe(gulp.dest('src/templates/includes'))
+    .pipe(dest('src/templates/includes'))
 )
 
-gulp.task('scripts', () =>
-  gulp.src(paths.scripts)
+task('scripts', () =>
+  src(paths.scripts)
     .pipe(p.plumber())
     .pipe(p.babel())
-    .pipe(dest('scripts'))
+    .pipe(dist('scripts'))
 )
 
-gulp.task('styles', () =>
-  gulp.src(paths.styles)
+task('styles', () =>
+  src(paths.styles)
     .pipe(p.plumber())
     .pipe(p.stylus({
       paths: ['src/styles/lib'],
       import: ['mediaQueries', 'variables']
     }))
     .pipe(p.concat('main.css'))
-    .pipe(dest('styles'))
+    .pipe(dist('styles'))
 )
 
-gulp.task('build', cb => runSequence(['copy', 'icons', 'styles', 'scripts', 'serviceworker'], ['pages', 'articles', 'feed'], cb))
+task('build', series(parallel('copy', 'icons', 'styles', 'scripts', 'serviceworker'), parallel('pages', 'articles', 'feed')))
 
 // ----- DEVELOPMENT -----
 
-gulp.task('watch', () => {
-  gulp.watch(paths.copy, ['copy'])
-  gulp.watch(paths.icons, ['icons'])
-  gulp.watch(paths.styles, ['styles'])
-  gulp.watch(paths.scripts, ['scripts'])
-  gulp.watch(paths.serviceworker, ['serviceworker'])
-  gulp.watch(paths.articleTemplate, ['articles'])
-  gulp.watch(paths.templates, ['articles', 'pages'])
-  gulp.watch(paths.pages).on('change', file => buildHtml(file.path))
-  gulp.watch(paths.articles).on('change', file => buildHtml(file.path, paths.articlesBasepath))
+task('incremental', () => {
+  watch(paths.copy, parallel('copy'))
+  watch(paths.icons, parallel('icons'))
+  watch(paths.styles, parallel('styles'))
+  watch(paths.scripts, parallel('scripts'))
+  watch(paths.serviceworker, parallel('serviceworker'))
+  watch(paths.articleTemplate, parallel('articles'))
+  watch(paths.templates, parallel('articles', 'pages'))
+  watch(paths.pages).on('change', filePath => task(buildHtml(filePath)))
+  watch(paths.articles).on('change', filePath => task(buildHtml(filePath, paths.articlesBasepath)))
 })
 
-gulp.task('optimizeImages', () =>
-  gulp.src(paths.optimizeImages)
+task('optimizeImages', () =>
+  src(paths.optimizeImages)
     .pipe(p.imagemin())
-    .pipe(gulp.dest('src'))
+    .pipe(dest('src'))
 )
 
-gulp.task('browserSync', cb => browserSync.init(require('./bs-config')))
+task('browserSync', () => browserSync.init(require('./bs-config')))
 
 // ----- PRODUCTION -----
 
-gulp.task('minify:html', cb =>
-  gulp.src(paths.html)
+task('minify:html', () =>
+  src(paths.html)
     .pipe(p.htmlmin())
-    .pipe(dest())
+    .pipe(dist())
 )
 
-gulp.task('minify:js', () =>
-  gulp.src(paths.js)
+task('minify:js', () =>
+  src(paths.js)
     .pipe(p.stripDebug())
     .pipe(p.uglify())
-    .pipe(dest())
+    .pipe(dist())
 )
 
-gulp.task('minify:css', () =>
-  gulp.src(paths.css)
+task('minify:css', () =>
+  src(paths.css)
     .pipe(p.postcss([
       mqpacker,
       autoprefixer({browsers: ['last 2 versions']}),
       csswring
     ]))
-    .pipe(dest())
+    .pipe(dist())
 )
 
-gulp.task('html:sitemap', () =>
-  gulp.src(paths.html)
+task('html:sitemap', () =>
+  src(paths.html)
     .pipe(p.sitemap({siteUrl, changefreq: 'weekly'}))
-    .pipe(dest())
+    .pipe(dist())
 )
 
-gulp.task('html:manifest', cb => {
-  const RevAll = p.revAll
-  const revAll = new RevAll({fileNameManifest: 'html-manifest.json'})
-  return gulp.src(paths.html)
-    .pipe(revAll.revision())
-    .pipe(revAll.manifestFile())
-    .pipe(dest())
-})
+task('html:manifest', () =>
+  src(paths.html)
+    .pipe(p.rev())
+    .pipe(p.rev.manifest('html-manifest.json'))
+    .pipe(dist())
+)
 
-gulp.task('revAssets', () => {
-  const RevAll = p.revAll
-  const revAll = new RevAll() // {prefix: assetHost}
-  return gulp.src(paths.rev)
-    .pipe(revAll.revision())
+task('revAssets', () =>
+  src(paths.rev)
+    .pipe(p.rev())
+    .pipe(p.revCssUrl())
     .pipe(p.revDeleteOriginal())
-    .pipe(dest())
-    .pipe(revAll.versionFile())
-    .pipe(dest())
-    .pipe(revAll.manifestFile())
-    .pipe(dest())
-})
+    .pipe(dist())
+    .pipe(p.rev.manifest())
+    .pipe(dist())
+)
 
-gulp.task('rev', cb => runSequence('revAssets', ['pages', 'articles'], cb))
+task('rev', series('revAssets', parallel('pages', 'articles')))
 
 // ----- PUBLIC TASKS -----
 
-gulp.task('develop', cb => runSequence('build', ['watch', 'browserSync'], cb))
-gulp.task('production', cb => runSequence('build', ['minify:js', 'minify:css'], 'rev', 'minify:html', ['html:sitemap', 'html:manifest'], 'serviceworker', cb))
+task('develop', series('build', parallel('incremental', 'browserSync')))
+task('production', series('build', parallel('minify:js', 'minify:css'), 'rev', 'minify:html', parallel('html:sitemap', 'html:manifest'), 'serviceworker'))
