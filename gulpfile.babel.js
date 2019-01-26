@@ -156,7 +156,6 @@ gulp.task('icons', cb =>
     .pipe(p.svgSprite({
       svg: {
         rootAttributes: {
-          'hidden': true,
           'role': 'presentation'
         }
       },
