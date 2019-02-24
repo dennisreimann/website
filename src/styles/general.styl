@@ -9,13 +9,13 @@ html
   line-height 1.65
   font-family $font-family-base
   @media print
-    font-size 10pt
+    font-size 12pt
   @media up_to_S
-    font-size 14px
-  @media S_to_M
     font-size 15px
+  @media S_to_M
+    font-size 18px
   @media M_and_up
-    font-size 16px
+    font-size 20px
 
 body
   color $color-text
@@ -82,12 +82,13 @@ pre
   color #b9b5b8
   background darken($color-blue-dark, 8)
   @extend $escape-wrap
+  @media print
+    padding-top 0
+    padding-bottom 0
 
 code
-  padding .2em .4em
   border-radius $space-tiny
   background $color-lightgray
-  font-size $font-size-small
   pre &
   mark &
     padding 0
@@ -106,6 +107,10 @@ blockquote
     left .05em
     font-size 3em
     color $color-lightgray
+
+code,
+mark
+  padding .2em .4em
 
 mark
   background $color-mark
