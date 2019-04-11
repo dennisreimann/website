@@ -9,9 +9,47 @@ block main
   section.wrap
     .project
       h3.project__name
+        a(href="https://www.klingel-gruppe.de" rel="external noopener") KLiNGEL Gruppe
+      p.project__description
+        | Architecture relaunch of the webshop and its infrastructure.
+
+      .project__task
+        +icon("project-task", h.t(locals, "Aufgabe", "Task")).project__icon.project__icon--task
+        ul
+          li Establishing the design system and component library.
+          li Frontend development with JavaScript, CSS and HTML.
+      p.project__context
+        +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
+        = "Contract work for the "
+        a(href="https://www.neuland-bfi.de" rel="external noopener") neuland bremen GmbH
+      p.project__period
+        +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
+        | July 2018&ndash;March 2019
+
+    .project
+      h3.project__name
+        a(href="https://www.1und1.de/" rel="external noopener") 1&1
+      p.project__description
+        | Responsive relaunch of the website.
+
+      .project__task
+        +icon("project-task", h.t(locals, "Aufgabe", "Task")).project__icon.project__icon--task
+        ul
+          li Establishing the component library.
+          li Frontend development with JavaScript, CSS and HTML.
+      p.project__context
+        +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
+        = "Contract work for the "
+        a(href="https://www.hmmh.de" rel="external noopener") hmmh multimediahaus AG
+      p.project__period
+        +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
+        | February 2018&ndash;March 2018
+
+    .project
+      h3.project__name
         a(href="https://www.breuninger.de/" rel="external noopener") Breuninger
       p.project__description
-        | Development of backoffice applications.
+        | Development of the webshop and backoffice applications.
 
       .project__task
         +icon("project-task", h.t(locals, "Aufgabe", "Task")).project__icon.project__icon--task
