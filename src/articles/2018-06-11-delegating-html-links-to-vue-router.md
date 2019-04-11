@@ -20,7 +20,9 @@ To do this, bind the event listener to the window in your top-most/main app comp
 ```javascript
 mounted () {
   window.addEventListener('click', event => {
-    const { target } = event
+    // ensure we use the link, in case the click has been received by a subelement
+    let { target } = $event
+    while (target && target.tagName !== 'A') target = target.parentNode
     // handle only links that do not reference external resources
     if (target && target.matches("a:not([href*='://'])") && target.href) {
       // some sanity checks taken from vue-router:
@@ -69,7 +71,9 @@ Here `dynamicContent` is a html string containing the `<a href>` links, which th
 ```javascript
 methods: {
   handleClicks ($event) {
-    const { target } = $event
+    // ensure we use the link, in case the click has been received by a subelement
+    let { target } = $event
+    while (target && target.tagName !== 'A') target = target.parentNode
     // handle only links that occur inside the component and do not reference external resources
     if (target && target.matches(".dynamic-content a:not([href*='://'])") && target.href) {
       // some sanity checks taken from vue-router:

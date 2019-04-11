@@ -71,7 +71,7 @@ const mvbConf = {
 
     // year
     const articlesByYear = []
-    Object.keys(byYear).reverse().forEach(year => articlesByYear.push({year, articles: byYear[year]}))
+    Object.keys(byYear).reverse().forEach(year => articlesByYear.push({ year, articles: byYear[year] }))
 
     // tag
     const articlesByTag = byTag
@@ -107,7 +107,7 @@ const feedWithTemplate = (template, folder) =>
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
     .pipe(p.pug(pugConf))
-    .pipe(p.rename({extname: '.xml'}))
+    .pipe(p.rename({ extname: '.xml' }))
     .pipe(dist(folder))
 
 task('feed:atom', () => feedWithTemplate('atom'))
@@ -246,7 +246,7 @@ task('minify:css', () =>
   src(paths.css)
     .pipe(p.postcss([
       mqpacker,
-      autoprefixer({browsers: ['last 2 versions']}),
+      autoprefixer({ browsers: ['last 2 versions'] }),
       csswring
     ]))
     .pipe(dist())
@@ -254,7 +254,7 @@ task('minify:css', () =>
 
 task('html:sitemap', () =>
   src(paths.html)
-    .pipe(p.sitemap({siteUrl, changefreq: 'weekly'}))
+    .pipe(p.sitemap({ siteUrl, changefreq: 'weekly' }))
     .pipe(dist())
 )
 
