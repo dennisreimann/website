@@ -95,7 +95,6 @@ const templateData = file => ({
 
 const buildHtml = (files, dst) =>
   src(files)
-    .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
     .pipe(p.pug(pugConf))
@@ -103,7 +102,6 @@ const buildHtml = (files, dst) =>
 
 const feedWithTemplate = (template, folder) =>
   src(`src/feed/${template}.pug`)
-    .pipe(p.plumber())
     .pipe(p.mvb(mvbConf))
     .pipe(p.data(templateData))
     .pipe(p.pug(pugConf))
@@ -138,7 +136,6 @@ task('serviceworker', () => {
   } catch (error) { }
 
   return src(paths.serviceworker)
-    .pipe(p.plumber())
     .pipe(p.replace('const HTML_CACHE_KEYS = {}', `const HTML_CACHE_KEYS = ${JSON.stringify(htmlCacheKeys, null, '  ')}`))
     .pipe(p.babel())
     .pipe(p.stripDebug())
@@ -151,7 +148,6 @@ task('serviceworker', () => {
 // - https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md
 task('icons', () =>
   src(paths.icons)
-    .pipe(p.plumber())
     .pipe(p.svgSprite({
       svg: {
         rootAttributes: {
@@ -187,14 +183,12 @@ task('icons', () =>
 
 task('scripts', () =>
   src(paths.scripts)
-    .pipe(p.plumber())
     .pipe(p.babel())
     .pipe(dist('scripts'))
 )
 
 task('styles', () =>
   src(paths.styles)
-    .pipe(p.plumber())
     .pipe(p.stylus({
       paths: ['src/styles/lib'],
       import: ['mediaQueries', 'variables']
@@ -265,7 +259,7 @@ task('html:manifest', () =>
     .pipe(dist())
 )
 
-task('revAssets', () =>
+task('rev', () =>
   src(paths.rev)
     .pipe(p.rev())
     .pipe(p.revCssUrl())
@@ -275,9 +269,8 @@ task('revAssets', () =>
     .pipe(dist())
 )
 
-task('rev', series('revAssets', parallel('pages', 'articles')))
-
 // ----- PUBLIC TASKS -----
 
 task('develop', series('build', parallel('incremental', 'browserSync')))
-task('production', series('build', parallel('minify:js', 'minify:css'), 'rev', 'minify:html', parallel('html:sitemap', 'html:manifest'), 'serviceworker'))
+task('optimize', series(parallel('minify:js', 'minify:css'), 'rev'))
+task('production', series(parallel('pages', 'articles'), 'minify:html', parallel('html:sitemap', 'html:manifest'), 'serviceworker'))
