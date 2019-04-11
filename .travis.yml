@@ -21,6 +21,6 @@ addons:
 deploy:
   skip_cleanup: true
   provider: script
-  script: npm run deploy
+  script: npm run prod && npm run deploy
   on:
     branch: master
