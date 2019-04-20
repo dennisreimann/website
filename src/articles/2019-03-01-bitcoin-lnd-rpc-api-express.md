@@ -13,7 +13,7 @@ tags:
   - Express
   - API
 ---
-I am currently building a dashboard and management application for [Bitcoin full nodes](https://en.bitcoin.it/wiki/Full_node) with Lightning Network integration.
+I am currently building a [dashboard and management application](https://github.com/dennisreimann/blitzbank-dashboard) for [Bitcoin full nodes](https://en.bitcoin.it/wiki/Full_node) with Lightning Network integration.
 It is supposed to be an easy to use add-on, helping people to run their node and being their own bank.
 The plan is to open source an early version during the next weeks and continuously improving it as the Lightning Network matures.
 This post features how I have build parts of the API layer.
