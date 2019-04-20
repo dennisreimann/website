@@ -1,16 +1,30 @@
 import { argv } from 'yargs'
 import { relative } from 'path'
 import { src, dest, series, parallel, task, watch } from 'gulp'
-import gulpLoadPlugins from 'gulp-load-plugins'
 import autoprefixer from 'autoprefixer'
 import mqpacker from 'css-mqpacker'
 import csswring from 'csswring'
 import highlightjs from 'highlight.js'
-import BrowserSync from 'browser-sync'
+import babel from 'gulp-babel'
+import data from 'gulp-data'
+import concat from 'gulp-concat'
+import htmlmin from 'gulp-htmlmin'
+import imagemin from 'gulp-imagemin'
+import mvb from 'gulp-mvb'
+import pug from 'gulp-pug'
+import stripDebug from 'gulp-strip-debug'
+import postcss from 'gulp-postcss'
+import rename from 'gulp-rename'
+import replace from 'gulp-replace'
+import rev from 'gulp-rev'
+import revCssUrl from 'gulp-rev-css-url'
+import revDeleteOriginal from 'gulp-rev-delete-original'
+import sitemap from 'gulp-sitemap'
+import stylus from 'gulp-stylus'
+import svgSprite from 'gulp-svg-sprite'
+import uglify from 'gulp-uglify'
 import templateHelper from './lib/templateHelper'
 
-const p = gulpLoadPlugins()
-const browserSync = BrowserSync.create()
 const isDev = (argv.dev != null)
 const defaultScheme = isDev ? 'http' : 'https'
 const siteHost = isDev ? 'localhost:3000' : 'dennisreimann.de'
@@ -95,17 +109,17 @@ const templateData = file => ({
 
 const buildHtml = (files, dst) =>
   src(files)
-    .pipe(p.mvb(mvbConf))
-    .pipe(p.data(templateData))
-    .pipe(p.pug(pugConf))
+    .pipe(mvb(mvbConf))
+    .pipe(data(templateData))
+    .pipe(pug(pugConf))
     .pipe(dist(dst))
 
 const feedWithTemplate = (template, folder) =>
   src(`src/feed/${template}.pug`)
-    .pipe(p.mvb(mvbConf))
-    .pipe(p.data(templateData))
-    .pipe(p.pug(pugConf))
-    .pipe(p.rename({ extname: '.xml' }))
+    .pipe(mvb(mvbConf))
+    .pipe(data(templateData))
+    .pipe(pug(pugConf))
+    .pipe(rename({ extname: '.xml' }))
     .pipe(dist(folder))
 
 task('feed:atom', () => feedWithTemplate('atom'))
@@ -136,10 +150,10 @@ task('serviceworker', () => {
   } catch (error) { }
 
   return src(paths.serviceworker)
-    .pipe(p.replace('const HTML_CACHE_KEYS = {}', `const HTML_CACHE_KEYS = ${JSON.stringify(htmlCacheKeys, null, '  ')}`))
-    .pipe(p.babel())
-    .pipe(p.stripDebug())
-    .pipe(p.uglify())
+    .pipe(replace('const HTML_CACHE_KEYS = {}', `const HTML_CACHE_KEYS = ${JSON.stringify(htmlCacheKeys, null, '  ')}`))
+    .pipe(babel())
+    .pipe(stripDebug())
+    .pipe(uglify())
     .pipe(dist())
 })
 
@@ -148,7 +162,7 @@ task('serviceworker', () => {
 // - https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md
 task('icons', () =>
   src(paths.icons)
-    .pipe(p.svgSprite({
+    .pipe(svgSprite({
       svg: {
         rootAttributes: {
           'role': 'presentation'
@@ -183,17 +197,17 @@ task('icons', () =>
 
 task('scripts', () =>
   src(paths.scripts)
-    .pipe(p.babel())
+    .pipe(babel())
     .pipe(dist('scripts'))
 )
 
 task('styles', () =>
   src(paths.styles)
-    .pipe(p.stylus({
+    .pipe(stylus({
       paths: ['src/styles/lib'],
       import: ['mediaQueries', 'variables']
     }))
-    .pipe(p.concat('main.css'))
+    .pipe(concat('main.css'))
     .pipe(dist('styles'))
 )
 
@@ -215,30 +229,43 @@ task('incremental', () => {
 
 task('optimizeImages', () =>
   src(paths.optimizeImages)
-    .pipe(p.imagemin())
+    .pipe(imagemin())
     .pipe(dest('src'))
 )
 
-task('browserSync', () => browserSync.init(require('./bs-config')))
+task('serve', done => {
+  const { createServer } = require('http')
+  const handler = require('serve-handler')
+  const opts = require('./serve.json')
+
+  const server = createServer((request, response) =>
+    handler(request, response, opts)
+  )
+
+  server.listen(3000, () => {
+    console.log('Running at http://localhost:3000')
+    done()
+  })
+})
 
 // ----- PRODUCTION -----
 
 task('minify:html', () =>
   src(paths.html)
-    .pipe(p.htmlmin())
+    .pipe(htmlmin())
     .pipe(dist())
 )
 
 task('minify:js', () =>
   src(paths.js)
-    .pipe(p.stripDebug())
-    .pipe(p.uglify())
+    .pipe(stripDebug())
+    .pipe(uglify())
     .pipe(dist())
 )
 
 task('minify:css', () =>
   src(paths.css)
-    .pipe(p.postcss([
+    .pipe(postcss([
       mqpacker,
       autoprefixer({ browsers: ['last 2 versions'] }),
       csswring
@@ -248,29 +275,29 @@ task('minify:css', () =>
 
 task('html:sitemap', () =>
   src(paths.html)
-    .pipe(p.sitemap({ siteUrl, changefreq: 'weekly' }))
+    .pipe(sitemap({ siteUrl, changefreq: 'weekly' }))
     .pipe(dist())
 )
 
 task('html:manifest', () =>
   src(paths.html)
-    .pipe(p.rev())
-    .pipe(p.rev.manifest('html-manifest.json'))
+    .pipe(rev())
+    .pipe(rev.manifest('html-manifest.json'))
     .pipe(dist())
 )
 
 task('rev', () =>
   src(paths.rev)
-    .pipe(p.rev())
-    .pipe(p.revCssUrl())
-    .pipe(p.revDeleteOriginal())
+    .pipe(rev())
+    .pipe(revCssUrl())
+    .pipe(revDeleteOriginal())
     .pipe(dist())
-    .pipe(p.rev.manifest())
+    .pipe(rev.manifest())
     .pipe(dist())
 )
 
 // ----- PUBLIC TASKS -----
 
-task('develop', series('build', parallel('incremental', 'browserSync')))
+task('develop', series('build', 'serve', 'incremental'))
 task('optimize', series(parallel('minify:js', 'minify:css'), 'rev'))
 task('production', series(parallel('pages', 'articles'), 'minify:html', parallel('html:sitemap', 'html:manifest'), 'serviceworker'))
