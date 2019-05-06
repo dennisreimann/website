@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="530px" height="213px" viewBox="0 0 530 213" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>payment-channel-lifecycle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="payment-channel-lifecycle" transform="translate(0.000000, -3.000000)">
+            <rect id="Rectangle" stroke="#4A90E2" stroke-width="3" fill="#D6E9FE" x="150.5" y="47.5" width="242" height="47" rx="8"></rect>
+            <g id="Blockchain" transform="translate(66.000000, 126.000000)" fill="#EEEEEE" stroke="#AAAAAA" stroke-width="3">
+                <rect id="Rectangle" x="1.5" y="1.5" width="47" height="47" rx="8"></rect>
+                <rect id="Rectangle" x="61.5" y="1.5" width="47" height="47" rx="8"></rect>
+                <rect id="Rectangle" x="121.5" y="1.5" width="47" height="47" rx="8"></rect>
+                <rect id="Rectangle" x="181.5" y="1.5" width="47" height="47" rx="8"></rect>
+                <rect id="Rectangle" x="241.5" y="1.5" width="47" height="47" rx="8"></rect>
+                <rect id="Rectangle" x="301.5" y="1.5" width="47" height="47" rx="8"></rect>
+                <rect id="Rectangle" x="361.5" y="1.5" width="47" height="47" rx="8"></rect>
+            </g>
+            <g id="Arrow" transform="translate(90.000000, 60.000000)" fill="#7ED321">
+                <path d="M40.155634,5.71283049 L31.4850022,14.3834623 L45.2202064,19.5872613 L40.155634,5.71283049 Z" id="Rectangle" stroke="#7ED321" stroke-width="3" transform="translate(38.324409, 12.623331) rotate(-60.000000) translate(-38.324409, -12.623331) "></path>
+                <path d="M3.47657329,54.7640669 L3.21250637,56.2406402 L0.259359804,55.7125064 L0.523426715,54.2359331 C2.87516141,41.0858242 7.66613485,30.8637941 14.9202185,23.6097105 C22.1781485,16.3517805 32.3043337,11.6623216 45.2552102,9.5201088 L46.7351014,9.27531904 L47.224681,12.2351014 L45.7447898,12.4798912 C33.375828,14.5258491 23.8225989,18.9499707 17.0415388,25.7310309 C10.2566322,32.5159375 5.72701989,42.1803269 3.47657329,54.7640669 Z" id="Line-2" fill-rule="nonzero"></path>
+            </g>
+            <g id="Arrow" transform="translate(430.500000, 91.500000) rotate(90.000000) translate(-430.500000, -91.500000) translate(405.000000, 63.000000)" fill="#7ED321">
+                <path d="M40.155634,5.71283049 L31.4850022,14.3834623 L45.2202064,19.5872613 L40.155634,5.71283049 Z" id="Rectangle" stroke="#7ED321" stroke-width="3" transform="translate(38.324409, 12.623331) rotate(-60.000000) translate(-38.324409, -12.623331) "></path>
+                <path d="M3.47657329,54.7640669 L3.21250637,56.2406402 L0.259359804,55.7125064 L0.523426715,54.2359331 C2.87516141,41.0858242 7.66613485,30.8637941 14.9202185,23.6097105 C22.1781485,16.3517805 32.3043337,11.6623216 45.2552102,9.5201088 L46.7351014,9.27531904 L47.224681,12.2351014 L45.7447898,12.4798912 C33.375828,14.5258491 23.8225989,18.9499707 17.0415388,25.7310309 C10.2566322,32.5159375 5.72701989,42.1803269 3.47657329,54.7640669 Z" id="Line-2" fill-rule="nonzero"></path>
+            </g>
+            <text id="Blockchain" font-family="MerriweatherSans-Book, Merriweather Sans" font-size="20" font-weight="300" letter-spacing="-0.4" fill="#9B9B9B">
+                <tspan x="219.317383" y="215">Blockchain</tspan>
+            </text>
+            <text id="Payment-Channel" font-family="MerriweatherSans-Book, Merriweather Sans" font-size="20" font-weight="300" letter-spacing="-0.4" fill="#4A90E2">
+                <tspan x="187.006836" y="20">Payment Channel</tspan>
+            </text>
+            <text id="Commitments" font-family="MerriweatherSans-ExtraBldItalic, Merriweather Sans" font-size="24" font-style="italic" font-weight="600" letter-spacing="-0.48" fill="#4A90E2">
+                <tspan x="192.003281" y="80">Commitments</tspan>
+            </text>
+            <text id="Funding" font-family="MerriweatherSans-ExtraBldItalic, Merriweather Sans" font-size="24" font-style="italic" font-weight="600" letter-spacing="-0.48" fill="#7ED321">
+                <tspan x="0.033515625" y="80">Funding</tspan>
+            </text>
+            <text id="Closing" font-family="MerriweatherSans-ExtraBldItalic, Merriweather Sans" font-size="24" font-style="italic" font-weight="600" letter-spacing="-0.48" fill="#7ED321">
+                <tspan x="448.099922" y="80">Closing</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

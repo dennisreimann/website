@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="850px" height="492px" viewBox="0 0 850 492" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>closing-transaction-false</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="closing-transaction-false" transform="translate(1.000000, -10.000000)">
+            <path d="M229,256.5 L707,256.5" id="Line" stroke="#DDDDDD" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4,8"></path>
+            <text id="Alice" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4" fill="#9013FE">
+                <tspan x="0.259765625" y="89">Alice</tspan>
+            </text>
+            <g id="Group" opacity="0.0943312872">
+                <text id="Action" font-family="MerriweatherSans-ExtraBldItalic, Merriweather Sans" font-size="24" font-style="italic" font-weight="600" letter-spacing="-0.48" fill="#7ED321">
+                    <tspan x="660.099922" y="30">Closing</tspan>
+                </text>
+                <text id="Bob" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4" fill="#D0021B">
+                    <tspan x="0.5125" y="437">Bob</tspan>
+                </text>
+                <g id="On-Chain-Action" transform="translate(80.000000, 1.000000)">
+                    <rect id="Rectangle" stroke="#7ED321" stroke-width="3" fill="#E6FFCC" fill-rule="evenodd" x="1.5" y="59.5246914" width="137" height="392.061728" rx="8"></rect>
+                    <text id="Bob-Value" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4" fill="#D0021B">
+                        <tspan x="31.66875" y="436">0 mBTC</tspan>
+                    </text>
+                    <text id="Alice-Value" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4" fill="#9013FE">
+                        <tspan x="26.9664063" y="88">10 mBTC</tspan>
+                    </text>
+                    <text id="On-Chain" font-family="MerriweatherSans-Book, Merriweather Sans" font-size="20" font-weight="300" letter-spacing="-0.4" fill="#7ED321">
+                        <tspan x="21.9164063" y="495">On-Chain</tspan>
+                    </text>
+                </g>
+                <g id="Commitment-B" transform="translate(395.000000, 274.000000)">
+                    <rect id="Rectangle" stroke="#4A90E2" stroke-width="3" fill="#D6E9FE" x="1.5" y="1.5" width="137" height="177" rx="8"></rect>
+                    <g id="SH-A" stroke-width="1" transform="translate(10.000000, 10.000000)">
+                        <g id="Box" transform="translate(64.000000, 0.000000)">
+                            <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="39.5953125" y="44">1</tspan>
+                            </text>
+                            <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">H</tspan>
+                            </text>
+                        </g>
+                        <g id="Box">
+                            <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="35.6402344" y="44">0</tspan>
+                            </text>
+                            <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">S</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <g id="SH-B" stroke-width="1" transform="translate(10.000000, 74.000000)">
+                        <g id="Box" transform="translate(64.000000, 0.000000)">
+                            <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="39.5953125" y="44">1</tspan>
+                            </text>
+                            <text id="Info" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">H</tspan>
+                            </text>
+                        </g>
+                        <g id="Box" stroke="#979797">
+                            <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" stroke="none" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="39.5953125" y="44">1</tspan>
+                            </text>
+                            <text id="Info" stroke="none" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">S</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <text id="Value" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                        <tspan x="31.6541016" y="163">4 mBTC</tspan>
+                    </text>
+                </g>
+                <g id="Commitment-B" transform="translate(237.000000, 274.000000)">
+                    <rect id="Rectangle" stroke="#4A90E2" stroke-width="3" fill="#D6E9FE" x="1.5" y="1.5" width="137" height="177" rx="8"></rect>
+                    <g id="SH-A" stroke-width="1" transform="translate(10.000000, 10.000000)">
+                        <g id="Box" transform="translate(64.000000, 0.000000)">
+                            <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="35.6402344" y="44">0 </tspan>
+                            </text>
+                            <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">H</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <g id="SH-B" stroke-width="1" transform="translate(10.000000, 74.000000)">
+                        <g id="Box" transform="translate(64.000000, 0.000000)">
+                            <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="35.6402344" y="44">0 </tspan>
+                            </text>
+                            <text id="Info" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">Hash</tspan>
+                            </text>
+                        </g>
+                        <g id="Box" stroke="#979797">
+                            <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" stroke="none" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="35.6402344" y="44">0 </tspan>
+                            </text>
+                            <text id="Info" stroke="none" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">Secret</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <text id="Value" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                        <tspan x="31.66875" y="163">0 mBTC</tspan>
+                    </text>
+                </g>
+                <g id="Commitment-A" transform="translate(237.000000, 59.000000)">
+                    <rect id="Rectangle" stroke="#4A90E2" stroke-width="3" fill="#D6E9FE" x="1.5" y="1.5" width="137" height="177" rx="8"></rect>
+                    <g id="SH-A" stroke-width="1" transform="translate(10.000000, 50.000000)">
+                        <g id="Box" transform="translate(64.000000, 0.000000)">
+                            <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="35.6402344" y="44">0 </tspan>
+                            </text>
+                            <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">Hash</tspan>
+                            </text>
+                        </g>
+                        <g id="Box">
+                            <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="35.6402344" y="44">0 </tspan>
+                            </text>
+                            <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">Secret</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <g id="SH-B" stroke-width="1" transform="translate(10.000000, 114.000000)">
+                        <g id="Box" transform="translate(64.000000, 0.000000)">
+                            <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="35.6402344" y="44">0 </tspan>
+                            </text>
+                            <text id="Info" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">H</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <text id="Value" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                        <tspan x="26.9664063" y="32">10 mBTC</tspan>
+                    </text>
+                </g>
+                <g id="Commitment-A" transform="translate(553.000000, 59.000000)">
+                    <rect id="Rectangle" stroke="#4A90E2" stroke-width="3" fill="#D6E9FE" x="1.5" y="1.5" width="137" height="177" rx="8"></rect>
+                    <g id="SH-A" stroke-width="1" transform="translate(10.000000, 50.000000)">
+                        <g id="Box" transform="translate(64.000000, 0.000000)">
+                            <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="36.1089844" y="44">2</tspan>
+                            </text>
+                            <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">H</tspan>
+                            </text>
+                        </g>
+                        <g id="Box">
+                            <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="36.1089844" y="44">2</tspan>
+                            </text>
+                            <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">S</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <g id="SH-B" stroke-width="1" transform="translate(10.000000, 114.000000)">
+                        <g id="Box" transform="translate(64.000000, 0.000000)">
+                            <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="36.1089844" y="44">2</tspan>
+                            </text>
+                            <text id="Info" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">H</tspan>
+                            </text>
+                        </g>
+                        <g id="Box" stroke="#979797">
+                            <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" stroke="none" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="39.5953125" y="44">1</tspan>
+                            </text>
+                            <text id="Info" stroke="none" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">S</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <text id="Value" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                        <tspan x="31.903125" y="32">2 mBTC</tspan>
+                    </text>
+                </g>
+                <g id="Commitment-B" transform="translate(553.000000, 274.000000)">
+                    <rect id="Rectangle" stroke="#4A90E2" stroke-width="3" fill="#D6E9FE" x="1.5" y="1.5" width="137" height="177" rx="8"></rect>
+                    <g id="SH-A" stroke-width="1" transform="translate(10.000000, 10.000000)">
+                        <g id="Box" transform="translate(64.000000, 0.000000)">
+                            <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="36.1089844" y="44">2</tspan>
+                            </text>
+                            <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">H</tspan>
+                            </text>
+                        </g>
+                        <g id="Box">
+                            <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="39.5953125" y="44">1</tspan>
+                            </text>
+                            <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">S</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <g id="SH-B" stroke-width="1" transform="translate(10.000000, 74.000000)">
+                        <g id="Box" transform="translate(64.000000, 0.000000)">
+                            <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="36.1089844" y="44">2</tspan>
+                            </text>
+                            <text id="Info" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">H</tspan>
+                            </text>
+                        </g>
+                        <g id="Box" stroke="#979797">
+                            <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                            <text id="0" stroke="none" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="36.1089844" y="44">2</tspan>
+                            </text>
+                            <text id="Info" stroke="none" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                                <tspan x="7" y="23">S</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <text id="Value" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                        <tspan x="31.9275391" y="163">8 mBTC</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="Commitment-A" transform="translate(395.000000, 59.000000)">
+                <rect id="Rectangle" stroke="#4A90E2" stroke-width="3" fill="#D6E9FE" x="1.5" y="1.5" width="137" height="177" rx="8"></rect>
+                <g id="SH-A" stroke-width="1" transform="translate(10.000000, 50.000000)">
+                    <g id="Box" transform="translate(64.000000, 0.000000)">
+                        <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                        <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                            <tspan x="39.5953125" y="44">1</tspan>
+                        </text>
+                        <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                            <tspan x="7" y="23">H</tspan>
+                        </text>
+                    </g>
+                    <g id="Box">
+                        <rect id="Rectangle" stroke="#9013FE" stroke-width="3" fill="#E8CDFF" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                        <text id="0" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                            <tspan x="39.5953125" y="44">1</tspan>
+                        </text>
+                        <text id="Info" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                            <tspan x="7" y="23">S</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="SH-B" stroke-width="1" transform="translate(10.000000, 114.000000)">
+                    <g id="Box" transform="translate(64.000000, 0.000000)">
+                        <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                        <text id="0" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                            <tspan x="39.5953125" y="44">1</tspan>
+                        </text>
+                        <text id="Info" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                            <tspan x="7" y="23">H</tspan>
+                        </text>
+                    </g>
+                    <g id="Box" stroke="#979797">
+                        <rect id="Rectangle" stroke="#FE1313" stroke-width="3" fill="#F2D6D6" x="1.5" y="1.5" width="53" height="53" rx="8"></rect>
+                        <text id="0" stroke="none" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                            <tspan x="35.6402344" y="44">0</tspan>
+                        </text>
+                        <text id="Info" stroke="none" fill="#FE1313" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="14" font-weight="bold" letter-spacing="-0.4">
+                            <tspan x="7" y="23">S</tspan>
+                        </text>
+                    </g>
+                </g>
+                <text id="Value" fill="#9013FE" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4">
+                    <tspan x="31.6443359" y="32">6 mBTC</tspan>
+                </text>
+            </g>
+            <g id="On-Chain-Action" transform="translate(709.000000, 1.000000)">
+                <rect id="Rectangle" stroke="#7ED321" stroke-width="3" fill="#E6FFCC" fill-rule="evenodd" x="1.5" y="59.5246914" width="137" height="392.061728" rx="8"></rect>
+                <text id="Bob-Value" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4" fill="#D0021B">
+                    <tspan x="31.6541016" y="436">4 mBTC</tspan>
+                </text>
+                <text id="Alice-Value" font-family="MerriweatherSans-Bold, Merriweather Sans" font-size="20" font-weight="bold" letter-spacing="-0.4" fill="#9013FE">
+                    <tspan x="31.6443359" y="88">6 mBTC</tspan>
+                </text>
+                <text id="On-Chain" font-family="MerriweatherSans-Book, Merriweather Sans" font-size="20" font-weight="300" letter-spacing="-0.4" fill="#7ED321">
+                    <tspan x="21.9164063" y="495">On-Chain</tspan>
+                </text>
+            </g>
+            <text id="Action" font-family="MerriweatherSans-ExtraBldItalic, Merriweather Sans" font-size="24" font-style="italic" font-weight="600" letter-spacing="-0.48" fill="#000000">
+                <tspan x="640.862656" y="30">False Close</tspan>
+            </text>
+            <text id="Alice-broadcasts-an" font-family="MerriweatherSans-BookItalic, Merriweather Sans" font-size="20" font-style="italic" font-weight="300" letter-spacing="-0.4" fill="#000000">
+                <tspan x="286.412305" y="496">Alice broadcasts an outdated commitment</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
