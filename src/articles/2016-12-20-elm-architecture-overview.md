@@ -33,7 +33,7 @@ The basic structure of your application and modules looks like this:
 - **Update**: Handles interaction and transforms the model
 - **Runtime**: Wires up Model, View and Update
 
-To cover each of these parts in detail I came up with a [(very) simple blog example](/files/elm-architecture-overview-example.html):
+To cover each of these parts in detail I came up with a [(very) simple blog example](/files/elm/architecture-overview-example.html):
 The app shows a list of articles which can be expanded to show the full content by clicking on the title.
 Not quite a Medium competitor, but for us figuring out the most important things about The Elm Architecture it will work :)
 
@@ -185,7 +185,7 @@ It wires up the model, view and update functions and provides the setup for hand
 Once initialized &#8203; <mark>the program executes a continuous loop, taking in actions from the user, changing the state and representing the changes in the view.</mark> &#8203;
 
 <figure>
-  <img src="/files/elm-architecture-overview-diagram.svg" alt="Diagram of The Elm Architecture" width="320" height="211" />
+  <img src="/files/elm/architecture-overview-diagram.svg" alt="Diagram of The Elm Architecture" width="320" height="211" />
   <figcaption>Diagram of The Elm Architecture</figcaption>
 </figure>
 
