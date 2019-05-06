@@ -1,12 +1,16 @@
 $color-uie-brand = #ff183e
+$color-uiengine-brand = #331833
 
-.uie
+.uie,
+.uiengine
   color $color-white
-  background-color $color-uie-brand
   margin-bottom $space-large
 
   h2
     color $color-white
+
+  p
+    margin-bottom 0
 
   a
     color $color-white
@@ -18,10 +22,32 @@ $color-uie-brand = #ff183e
   .wrap
     padding-top $space-huge
     padding-bottom $space-huge
-    @media M_and_up
-      background-image url(/images/uiengineering.jpg)
-      background-size 250px 205px
+    background-repeat no-repeat
+
+.uie
+  background-color $color-uie-brand
+  .wrap
+    background-image url(/images/uiengineering.jpg)
+    background-size 250px 205px
+    @media up_to_L
+      background-position 50% 100%
+      padding-bottom 210px
+    @media L_and_up
       background-position 99% 100%
-      background-repeat no-repeat
-      p:last-child
-        padding-right 250px
+      p
+        padding-right 260px
+
+.uiengine
+  background-color $color-uiengine-brand
+  padding-top $space-medium
+  padding-bottom $space-medium
+  .wrap
+    background-image url(/images/uiengine.jpg)
+    background-size 332px 220px
+    @media up_to_L
+      background-position 50% 82.5%
+      padding-bottom 300px
+    @media L_and_up
+      background-position 5% 50%
+      h2, p
+        padding-left 360px
