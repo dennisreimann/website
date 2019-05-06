@@ -1,5 +1,6 @@
 ---
 title: Delegating HTML links to vue-router
+ogImage: vue
 lang: en
 tags:
   - Vue.js

@@ -1,5 +1,6 @@
 ---
 title: Using Vue-CLI to serve an Express app
+ogImage: vue
 lang: en
 tags:
   - Vue.js

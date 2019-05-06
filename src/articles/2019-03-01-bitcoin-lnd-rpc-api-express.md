@@ -1,6 +1,7 @@
 ---
 title: Building an API around Bitcoin and LND RPC
 subtitle: With Node.js and Express, for fun and convenience
+ogImage: lightning-network
 lang: en
 tags:
   - Bitcoin

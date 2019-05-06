@@ -1,6 +1,7 @@
 ---
 title: The Payment Channel Lifecycle
 subtitle: ⚡️ Lightning Network explained
+ogImage: lightning-network
 lang: en
 tags:
   - Lightning Network
