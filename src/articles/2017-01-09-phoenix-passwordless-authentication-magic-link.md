@@ -26,9 +26,9 @@ This article is a step by step guide for implementing passwordless authenticatio
 <div class="note">
   <p><strong>TL;DR</strong>
   This guide assumes you are familiar with
-  [the basic flow](https://medium.com/aws-activate-startup-blog/increase-engagement-and-enhance-security-with-passwordless-authentication-212d75d4f7cc#.2gxpaxsuv),
+  <a href="https://medium.com/aws-activate-startup-blog/increase-engagement-and-enhance-security-with-passwordless-authentication-212d75d4f7cc#.2gxpaxsuv">the basic flow</a>,
   which you might have experienced in Slack or a growing number of apps:
-  You provide an email address and get a *magic link email* containing a one time authentication token.
+  You provide an email address and get a <em>magic link email</em> containing a one time authentication token.
   The token is valid for a short period of time, clicking the link redeems it and signs you in – no more passwords!</p>
 </div>
 
