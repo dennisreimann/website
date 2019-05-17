@@ -1,0 +1,42 @@
+$avatar-size = 40px
+
+.wbm-type + .wbm-type
+  margin-top $space-xlarge
+
+.wbm-author
+  display flex
+  align-items center
+  text-decoration none
+  img
+    width $avatar-size
+    height $avatar-size
+    border 1px solid $color-subtle
+    border-radius 50%
+  span
+    margin-left $space-small
+
+.wbm-time
+  color $color-gray
+  text-decoration none
+
+.wbm-likes,
+.wbm-reposts
+  .wbm-items
+    display flex
+    flex-wrap wrap
+  .wbm-author
+    margin $space-small $space-small 0 0
+
+.wbm-links,
+.wbm-replies
+  .wbm-item + .wbm-item
+    margin-top $space-medium
+  .wbm-content
+    padding-left s("calc(%s + %s + %s)", $avatar-size, $space-small, 2px)
+
+.wbm-header
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+  .wbm-time
+    margin-left s("calc(%s + %s + %s)", $avatar-size, $space-small, 2px)

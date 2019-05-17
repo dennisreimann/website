@@ -29,6 +29,7 @@ block og
 block foot
   if h.article.hasCode(mvb.article)
     link(href=h.assetUrl("styles/vendor/highlightjs.css") media="all" rel="stylesheet")
+  script(src=h.assetUrl("scripts/webmentions.js") defer)
 
 block main
   - a = mvb.article
@@ -51,13 +52,13 @@ block main
         p
           if h.isEnglish(locals)
             span Published on
-            time.article__date.dt-published= h.formatDateEnglish(a.date)
+            time.article__date.dt-published(datetime=a.date)= h.formatDateEnglish(a.date)
             = " by "
             span.h-card.p-author
               a.p-name.u-url(href="https://dennisreimann.de/") Dennis Reimann
           else
             span Veröffentlicht am
-            time.article__date.dt-published= h.formatDateGerman(a.date)
+            time.article__date.dt-published(datetime=a.date)= h.formatDateGerman(a.date)
             = " von "
             span.h-card.p-author
               a.p-name.u-url(href="https://dennisreimann.de/") Dennis Reimann
@@ -66,10 +67,10 @@ block main
             br
             if h.isEnglish(locals)
               span Updated on
-              time.article__date.dt-updated= h.formatDateEnglish(update)
+              time.article__date.dt-updated(datetime=update)= h.formatDateEnglish(update)
             else
               span Aktualisiert am
-              time.article__date.dt-updated= h.formatDateEnglish(update)
+              time.article__date.dt-updated(datetime=update)= h.formatDateEnglish(update)
             | .
           if h.isEnglish(locals)
             p.social
@@ -83,7 +84,7 @@ block main
               a(href=`https://github.com/dennisreimann/website/blob/master/src/articles/${a.fileName}`) Let me know!
               br
               #tippin-button(data-dest="DennisReimann")
-                script(src="https://tippin.me/buttons/tip.js")
+                script(src="https://tippin.me/buttons/tip.js" defer)
 
       .article__nav.wrap
         - prevArticle = mvb.article.previousArticle
@@ -91,3 +92,5 @@ block main
         +articles([nextArticle, prevArticle].filter(e =>  e), "blog").article__nav__items
         h5.article__nav__title
           a.more__link(href="/articles.html")= h.t(locals, "Weitere Artikel", "More articles")
+
+      .article__mentions.wrap#articleMentions
