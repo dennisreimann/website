@@ -33,37 +33,44 @@ block foot
 block main
   - a = mvb.article
   - update = h.article.getDate(a)
-  article.article
+  article.article.h-entry
     header.article__header.top
       hgroup.wrap
-        h1.article__title= a.title
+        h1.article__title.p-name= a.title
         if a.subtitle
-          h2.article__subtitle= a.subtitle
-    .article__content.wrap!= a.content
+          h2.article__subtitle.p-summary= a.subtitle
+    .article__content.wrap.e-content!= a.content
     footer.article__footer
       .article__meta.wrap
-        p
-          if h.isEnglish(locals)
-            span Published on
-            time.article__date= h.formatDateEnglish(a.date)
-          else
-            span Veröffentlicht am
-            time.article__date= h.formatDateGerman(a.date)
-          if update && update != a.date
-            = " – "
-            if h.isEnglish(locals)
-              span updated on
-              time.article__date= h.formatDateEnglish(update)
-            else
-              span aktualisiert am
-              time.article__date= h.formatDateEnglish(update)
-          | .
-          if a.elmVersion
-            = " "
+        if a.elmVersion
+          p
             if h.isEnglish(locals)
               | Code samples for Elm #{a.elmVersion}.
             else
               | Code-Beispiele für Elm #{a.elmVersion}.
+        p
+          if h.isEnglish(locals)
+            span Published on
+            time.article__date.dt-published= h.formatDateEnglish(a.date)
+            = " by "
+            span.h-card.p-author
+              a.p-name.u-url(href="https://dennisreimann.de/") Dennis Reimann
+          else
+            span Veröffentlicht am
+            time.article__date.dt-published= h.formatDateGerman(a.date)
+            = " von "
+            span.h-card.p-author
+              a.p-name.u-url(href="https://dennisreimann.de/") Dennis Reimann
+          | .
+          if update && update != a.date
+            br
+            if h.isEnglish(locals)
+              span Updated on
+              time.article__date.dt-updated= h.formatDateEnglish(update)
+            else
+              span Aktualisiert am
+              time.article__date.dt-updated= h.formatDateEnglish(update)
+            | .
           if h.isEnglish(locals)
             p.social
               = "Liked the article? Follow me on "

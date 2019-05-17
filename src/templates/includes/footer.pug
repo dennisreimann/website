@@ -1,13 +1,13 @@
 include icon
 .wrap
   h2= h.t(locals, "Kontakt", "Contact")
-  .vcard
+  .vcard.h-card
     p
-      span.fn Dennis Reimann
+      span.fn.p-name Dennis Reimann
       br
-      a.email(href="mailto:mail@dennisreimann.de" rel="me") mail@dennisreimann.de
+      a.email.u-email(href="mailto:mail@dennisreimann.de" rel="me") mail@dennisreimann.de
       br
-      a.tel(href="tel:+4915122630317" rel="me") +49 (0)151 22 63 03 17
+      a.tel.p-tel(href="tel:+4915122630317" rel="me") +49 (0)151 22 63 03 17
 
     ul.social
       li.social__item
@@ -28,6 +28,9 @@ include icon
       li.social__item
         a.social__link(href="/atom.xml" rel="me")
           +icon("social-feed", "Feed").social__icon.social__icon--feed
+      li.social__item(style="display:none;")
+        a.social__link.u-url(href="https://dennisreimann.de" rel="me")
+          | Dennis Reimann
 
     p.more
       a.more__link(href= h.t(locals, "/kontakt.html", "/contact.html"))
