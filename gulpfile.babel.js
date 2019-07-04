@@ -267,7 +267,7 @@ task('minify:css', () =>
   src(paths.css)
     .pipe(postcss([
       mqpacker,
-      autoprefixer({ browsers: ['last 2 versions'] }),
+      autoprefixer(),
       csswring
     ]))
     .pipe(dist())
