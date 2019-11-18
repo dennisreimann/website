@@ -217,6 +217,14 @@ RewriteRule (.*) https://dennisreimann.de/articles/elm.html [R=301,L]
 RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^/articles/lightning-network-routing-payments-liquidity.html [OR]
+RewriteCond %{REQUEST_URI} ^/articles/lightning-network-payment-channel-lifecycle.html [OR]
+RewriteCond %{REQUEST_URI} ^/articles/bitcoin-lnd-rpc-api-express.html
+RewriteRule ^articles/(.*)$ https://d11n.net/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^dennisreimann.de$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} ^/consulting [OR]
 RewriteCond %{REQUEST_URI} ^/projects [OR]
 RewriteCond %{REQUEST_URI} ^/publications [OR]
