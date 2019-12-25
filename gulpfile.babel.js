@@ -35,7 +35,7 @@ const paths = {
   src: 'src',
   dest: 'dist',
   rev: ['dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}', '!dist/service-worker.js', '!dist/files/**/*'],
-  copy: ['src/static/**/*', 'src/static/.htaccess'],
+  copy: ['src/static/**/*'],
   pages: ['src/pages/**/*.pug'],
   icons: ['src/icons/**/*.svg'],
   styles: ['src/styles/**/*.styl'],
