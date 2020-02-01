@@ -83,6 +83,14 @@ block main
         <input type="image" class="submit" name="submit" src="/files/pay.svg" style="width:209px" alt="Pay with BtcPay, Self-Hosted Bitcoin Payment Processor">
       </form>
 
+      script.
+        const [, a, c] = window.location.search.match(/([\d|.]+)(\w+)/) || []
+        if (a && ['BTC', 'EUR', 'USD'].includes(c)) {
+          document.querySelector('#btcpay-currency').value = c;
+          donation.onCurrency();
+          document.querySelector('#btcpay-input-price').value = a;
+        }
+
       .note
         :markdown-it(html linkify typographer)
           In case Bitcoin isn't your thing, you can also donate fiat money via
