@@ -45,7 +45,7 @@ The guide offers a good introduction and gives you a basic understanding of the 
 Though it describes the manual way to deploy, there are some options for automating the deployment,
 like [edeliver](https://github.com/boldpoker/edeliver) (Capistrano style) or [Gatling](https://github.com/hashrocket/gatling) (Heroku style).
 
-There are many options to go beyond this kind of setup, i.e. using a Docker-based deployment;
+There are many options to go beyond this kind of setup, e.g. using a Docker-based deployment;
 They all seemed to complex for getting my first app out there and Gatling offered a pragmatic way to deploy and leverage hot upgrading – that's why I have chosen it.
 During the setup I came across a few rough edges what might be due to the fact that Gatling is roughly half a year old.
 But before I get down to the nitty-gritty of how to deploy with Gatling, let's get the server set up …
@@ -134,7 +134,7 @@ sudo apt-get install NGINX
 ```
 
 Alternatively you can use the latest and greatest versions by using PPAs, but Gatling assumes configuration and paths that match the official distribution versions.
-Keep this in mind because i.e. the
+Keep this in mind because e.g. the
 [NGINX version from the Ubuntu PPA](https://www.NGINX.com/resources/wiki/start/topics/tutorials/install/#ubuntu-ppa)
 does not adhere to the usual paths structure and misses `sites-available` and `sites-enabled`.
 
@@ -182,7 +182,7 @@ This guide assumes you are familiar with the basic process outlined in the [Gett
 You have installed and initialized Distillery in your project and we can skip to [Using Distillery with Phoenix](https://hexdocs.pm/distillery/use-with-phoenix.html).
 
 In you Phoenix project you have a `rel/config.exs` file which contains your release configuration.
-You can use it as-is or configure additional options for the production environment. 
+You can use it as-is or configure additional options for the production environment.
 Note: `include_erts` has to be set to `true` to enable hot upgrades.
 
 ```elixir

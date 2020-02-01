@@ -19,7 +19,7 @@ tags:
 
 The previous article about [deploying Phoenix with Gatling](/articles/phoenix-deployment-gatling-ubuntu-digital-ocean.html) did not go into details for a proper NGINX configuration.
 Using NGINX as a front-end proxy for web applications is a pretty standard setup.
-There are some things to keep in mind concerning Phoenix, SSL and asset delivery and this article sums up the details. 
+There are some things to keep in mind concerning Phoenix, SSL and asset delivery and this article sums up the details.
 
 <!-- more -->
 
@@ -64,13 +64,13 @@ For details see the offical blog on using [NGINX as a WebSocket Proxy](https://w
 
 ## Securing the app with SSL
 
-One of the first steps I take when setting up a new webserver is securing the connections. 
+One of the first steps I take when setting up a new webserver is securing the connections.
 Nowadays this is pretty easy and does not involve any additional costs – thanks to the [Let's Encrypt](https://letsencrypt.org/) initiative.
 
 This guide takes off from where you already got you certificates.
 If you first need to obtain a SSL certificate, Digital Ocean has a great guide on [How To Secure Nginx with Let's Encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04?refcode=63eb025a3190).
 Their guide covers obtaining a SSL certificate via Let's Encrypt and automating the renewal.
-Most of the following configuration also resembles the general advise given in the mentioned guide. 
+Most of the following configuration also resembles the general advise given in the mentioned guide.
 *The Digital Ocean docs are really good by the way and also applicable for similar setups, not just for their boxes.*
 
 Enough of the praise, here comes the config …
@@ -147,7 +147,7 @@ server {
 
 Noteworthy parts of this rather long config change:
 
-- Personally I prefer to extract the upstream and have it at the top of the config file. 
+- Personally I prefer to extract the upstream and have it at the top of the config file.
   But this is totally optional and you can leave it as it was.
 - We integrated the SSL certificates provided by Let's Encrypt and are redirecting all unencrypted traffic to the secured connection.
 - Depending on your needs you might want to change some of the SSL settings:
@@ -156,7 +156,7 @@ Noteworthy parts of this rather long config change:
 
 Beyond that we have also enabled `http2` support via the `listen` directive.
 This gives us benefits like [connection multiplexing and low-latency transport](https://http2.github.io/faq/#what-are-the-key-differences-to-http1x), which brings us to the next point …
-   
+
 ## Static asset delivery
 
 The `mix phoenix.digest` task already takes care of preparing the assets for efficient delivery.
@@ -168,7 +168,7 @@ The task also outputs a gzip compressed version of the file.
 The webserver can directly serve the compressed version without having to generate it itself.
 NGINX could handle gzipping the assets via the [gzip module](https://www.digitalocean.com/community/tutorials/how-to-add-the-gzip-module-to-nginx-on-ubuntu-16-04?refcode=63eb025a3190), but we do not have to take care of that.
 
-By default the assets get served by the Phoenix app. 
+By default the assets get served by the Phoenix app.
 This is not much of a problem server performance wise, but I encountered these two problems that prevent efficient file delivery:
 - The `Expires` header for browser-caching does not get set, forcing the client to (re)download the file with every request.
 - Even though the gzipped file is present, the uncompressed file gets sent. This means wasted traffic for the client as well as the server.
@@ -177,13 +177,13 @@ Maybe it is just me not finding the correct settings:
 I tried configuring [`Plug.Static`](https://github.com/elixir-lang/plug/blob/master/lib/plug/static.ex) with the `gzip` and `headers` options, but I did not succeed – feedback and pointers in the right direction are appreciated!
 
 So let's turn to our trusted webserver to deliver the static files efficiently.
-We need to add another `location` directive inside the existing one: 
+We need to add another `location` directive inside the existing one:
 This new `location` matches all types of static files we want to deliver with NGINX.
 We suppress the `ETag` header as we will be setting the maximum `Expires` date, which instructs the client to cache the file almost forever.
 
-The `root` path needs to be set and will depend on your deployment scenario and tools. 
+The `root` path needs to be set and will depend on your deployment scenario and tools.
 It is the path where the static files are stored or copied to after the `mix phoenix.digest` task has run.
-Depending on how you deploy (i.e. using Distillery releases) there are different ways to get the files to this path, see this [Elixir Forum post on using Phoenix behind a proxy](https://elixirforum.com/t/phoenix-behind-a-nginx/1313/6) for details.
+Depending on how you deploy (e.g. using Distillery releases) there are different ways to get the files to this path, see this [Elixir Forum post on using Phoenix behind a proxy](https://elixirforum.com/t/phoenix-behind-a-nginx/1313/6) for details.
 
 ```nginx
 server {
@@ -213,7 +213,7 @@ When you are deploying with Gatling you could set this to the `priv/static` dire
 
 ## Applying the changes
 
-The last step is to reload the NGINX configuration so that the changes above get applied: 
+The last step is to reload the NGINX configuration so that the changes above get applied:
 
 ```bash
 sudo service nginx reload

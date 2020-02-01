@@ -21,7 +21,7 @@ In Elm there are different kinds of data structures that can contain elements. T
 
 <!-- more -->
 
-All of these data structures require that the elements they contain have the same type – i.e. a list of strings: `List String`. The compiler takes care of enforcing the type safety, which is a difference to JavaScript, where arrays can contain elements of any type.
+All of these data structures require that the elements they contain have the same type – e.g. a list of strings: `List String`. The compiler takes care of enforcing the type safety, which is a difference to JavaScript, where arrays can contain elements of any type.
 
 The different data structures share a common "interface" of functions, which can be used to iterate over the elements and operate on them. Besides the basic operations `map`, `filter`, `foldl`/`foldr` (know to the JavaScripter as `reduce`) there are also functions like `isEmpty` or `member`. The latter is not available for arrays though, which brings us right to the differences and use cases of the different kinds of data structures …
 
