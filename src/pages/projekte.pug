@@ -9,6 +9,25 @@ block main
   section.wrap
     .project
       h3.project__name
+        a(href="https://www.obi-next.de/" rel="external noopener") OBI next
+      p.project__description
+        | Micro-Frontends Architektur für das Sales Representatives Tool von OBI next.
+
+      .project__task
+        +icon("project-task", h.t(locals, "Aufgabe", "Task")).project__icon.project__icon--task
+        ul
+          li Aufbau des Design Systems und der Komponentenbibliothek.
+          li Frontendentwicklung mit Vue/JavaScript, CSS und HTML.
+      p.project__context
+        +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
+        = "Auftragsarbeit für "
+        a(href="https://www.reply.com/open-reply/de/" rel="external noopener") Open Reply
+      p.project__period
+        +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
+        | Mai 2019&ndash;März 2020
+
+    .project
+      h3.project__name
         a(href="https://www.klingel-gruppe.de" rel="external noopener") KLiNGEL Gruppe
       p.project__description
         | Vertikalisierter Architektur-Relaunch der Webshop-Plattform für die KLiNGEL Gruppe.
