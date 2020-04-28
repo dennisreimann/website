@@ -2,14 +2,12 @@ import { argv } from 'yargs'
 import { relative } from 'path'
 import { src, dest, series, parallel, task, watch } from 'gulp'
 import autoprefixer from 'autoprefixer'
-import mqpacker from 'css-mqpacker'
-import csswring from 'csswring'
+import csso from 'postcss-csso'
 import highlightjs from 'highlight.js'
 import babel from 'gulp-babel'
 import data from 'gulp-data'
 import concat from 'gulp-concat'
 import htmlmin from 'gulp-htmlmin'
-import imagemin from 'gulp-imagemin'
 import mvb from 'gulp-mvb'
 import pug from 'gulp-pug'
 import stripDebug from 'gulp-strip-debug'
@@ -17,11 +15,10 @@ import postcss from 'gulp-postcss'
 import rename from 'gulp-rename'
 import replace from 'gulp-replace'
 import rev from 'gulp-rev'
-import revCssUrl from 'gulp-rev-css-url'
+import revRewrite from 'gulp-rev-rewrite'
 import revDeleteOriginal from 'gulp-rev-delete-original'
 import sitemap from 'gulp-sitemap'
 import stylus from 'gulp-stylus'
-import svgSprite from 'gulp-svg-sprite'
 import uglify from 'gulp-uglify'
 import templateHelper from './lib/templateHelper'
 
@@ -37,14 +34,12 @@ const paths = {
   rev: ['dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}', '!dist/service-worker.js', '!dist/files/**/*'],
   copy: ['src/static/**/*'],
   pages: ['src/pages/**/*.pug'],
-  icons: ['src/icons/**/*.svg'],
   styles: ['src/styles/**/*.styl'],
   scripts: ['src/scripts/**/*.js'],
   serviceworker: ['src/serviceworker/service-worker.js'],
   html: ['dist/**/*.html'],
   js: ['dist/**/*.js'],
   css: ['dist/**/*.css'],
-  optimizeImages: ['src/{images,svgs}/**/*'],
   articles: ['src/articles/*.md'],
   templates: 'src/templates/**/*.pug',
   articleTemplate: 'src/templates/article.pug',
@@ -157,44 +152,6 @@ task('serviceworker', () => {
     .pipe(dist())
 })
 
-// for config options see:
-// - https://github.com/svg/svgo
-// - https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md
-task('icons', () =>
-  src(paths.icons)
-    .pipe(svgSprite({
-      svg: {
-        rootAttributes: {
-          'role': 'presentation'
-        }
-      },
-      mode: {
-        symbol: {
-          dest: '',
-          sprite: 'icons.svg',
-          inline: true
-        }
-      },
-      shape: {
-        id: {
-          separator: '-'
-        },
-        transform: [
-          {
-            svgo: {
-              plugins: [
-                { removeStyleElement: true },
-                { removeUselessStrokeAndFill: true },
-                { removeAttrs: { attrs: '(stroke|fill)' } }
-              ]
-            }
-          }
-        ]
-      }
-    }))
-    .pipe(dest('src/templates/includes'))
-)
-
 task('scripts', () =>
   src(paths.scripts)
     .pipe(babel())
@@ -211,13 +168,12 @@ task('styles', () =>
     .pipe(dist('styles'))
 )
 
-task('build', series(parallel('copy', 'icons', 'styles', 'scripts', 'serviceworker'), parallel('pages', 'articles', 'feed')))
+task('build', series(parallel('copy', 'styles', 'scripts', 'serviceworker'), parallel('pages', 'articles', 'feed')))
 
 // ----- DEVELOPMENT -----
 
 task('incremental', () => {
   watch(paths.copy, parallel('copy'))
-  watch(paths.icons, parallel('icons'))
   watch(paths.styles, parallel('styles'))
   watch(paths.scripts, parallel('scripts'))
   watch(paths.serviceworker, parallel('serviceworker'))
@@ -226,12 +182,6 @@ task('incremental', () => {
   watch(paths.pages).on('change', filePath => task(buildHtml(filePath)))
   watch(paths.articles).on('change', filePath => task(buildHtml(filePath, paths.articlesBasepath)))
 })
-
-task('optimizeImages', () =>
-  src(paths.optimizeImages)
-    .pipe(imagemin())
-    .pipe(dest('src'))
-)
 
 task('serve', done => {
   const { createServer } = require('http')
@@ -266,9 +216,8 @@ task('minify:js', () =>
 task('minify:css', () =>
   src(paths.css)
     .pipe(postcss([
-      mqpacker,
       autoprefixer(),
-      csswring
+      csso()
     ]))
     .pipe(dist())
 )
@@ -286,18 +235,23 @@ task('html:manifest', () =>
     .pipe(dist())
 )
 
-task('rev', () =>
+task('rev-files', () =>
   src(paths.rev)
     .pipe(rev())
-    .pipe(revCssUrl())
     .pipe(revDeleteOriginal())
     .pipe(dist())
     .pipe(rev.manifest())
     .pipe(dist())
 )
 
+task('rev-rewrite', () =>
+  src(paths.css)
+    .pipe(revRewrite({ manifest: src('dist/rev-manifest.json') }))
+    .pipe(dist())
+)
+
 // ----- PUBLIC TASKS -----
 
 task('develop', series('build', 'serve', 'incremental'))
-task('optimize', series(parallel('minify:js', 'minify:css'), 'rev'))
+task('optimize', series(parallel('minify:js', 'minify:css'), series('rev-files', 'rev-rewrite')))
 task('production', series(parallel('pages', 'articles'), 'minify:html', parallel('html:sitemap', 'html:manifest'), 'serviceworker'))

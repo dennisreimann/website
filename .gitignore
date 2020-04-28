@@ -4,4 +4,3 @@ dist
 Main.elm
 node_modules
 src/drafts
-src/templates/includes/icons.svg
