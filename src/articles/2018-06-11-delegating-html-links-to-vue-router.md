@@ -22,7 +22,7 @@ To do this, bind the event listener to the window in your top-most/main app comp
 mounted () {
   window.addEventListener('click', event => {
     // ensure we use the link, in case the click has been received by a subelement
-    let { target } = $event
+    let { target } = event
     while (target && target.tagName !== 'A') target = target.parentNode
     // handle only links that do not reference external resources
     if (target && target.matches("a:not([href*='://'])") && target.href) {
@@ -71,15 +71,15 @@ Here `dynamicContent` is a html string containing the `<a href>` links, which th
 
 ```javascript
 methods: {
-  handleClicks ($event) {
+  handleClicks (event) {
     // ensure we use the link, in case the click has been received by a subelement
-    let { target } = $event
+    let { target } = event
     while (target && target.tagName !== 'A') target = target.parentNode
     // handle only links that occur inside the component and do not reference external resources
     if (target && target.matches(".dynamic-content a:not([href*='://'])") && target.href) {
       // some sanity checks taken from vue-router:
       // https://github.com/vuejs/vue-router/blob/dev/src/components/link.js#L106
-      const { altKey, ctrlKey, metaKey, shiftKey, button, defaultPrevented } = $event
+      const { altKey, ctrlKey, metaKey, shiftKey, button, defaultPrevented } = event
       // don't handle with control keys
       if (metaKey || altKey || ctrlKey || shiftKey) return
       // don't handle when preventDefault called
@@ -94,8 +94,8 @@ methods: {
       // don't handle same page links/anchors
       const url = new URL(target.href)
       const to = url.pathname
-      if (window.location.pathname !== to && $event.preventDefault) {
-        $event.preventDefault()
+      if (window.location.pathname !== to && event.preventDefault) {
+        event.preventDefault()
         this.$router.push(to)
       }
     }
