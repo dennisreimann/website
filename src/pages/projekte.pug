@@ -9,6 +9,45 @@ block main
   section.wrap
     .project
       h3.project__name
+        a(href="https://bitcoindevlist.com/" rel="external noopener") Bitcoin Dev List
+      p.project__description
+        | Spendenportal für Bitcoin Entwickler.
+      .project__task
+        +icon("project-task", h.t(locals, "Aufgabe", "Task")).project__icon.project__icon--task
+        ul
+          li Frontendentwicklung mit HTML, CSS und JavaScript.
+          li Buildprozess und Automatisierung auf GitHub Pages.
+      p.project__context
+        +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
+        = "Freiwillige Arbeit für die Bitcoin Community"
+      p.project__period
+        +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
+        | Juli 2020
+
+    .project
+      h3.project__name
+        a(href="https://btcpayserver.org/" rel="external noopener") BTCPay Server
+      p.project__description
+        | UI-bezogene Feature-Entwicklung. Aufbau und Wartung der offiziellen BTCPay Server
+        | Dokumentation und des Design Systems.
+
+      .project__task
+        +icon("project-task", h.t(locals, "Aufgabe", "Task")).project__icon.project__icon--task
+        ul
+          li Aufbau des Design Systems.
+          li Frontendentwicklung mit Vue/JavaScript, CSS und HTML.
+          li Setup und Betrieb der Dokumentations-Website.
+          li Feature-Entwicklung mit C# und ASP.NEET MVC Core.
+      p.project__context
+        +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
+        = "Auftragsarbeit für die "
+        a(href="https://foundation.btcpayserver.org/" rel="external noopener") BTCPay Server Foundation
+      p.project__period
+        +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
+        | November 2019&ndash;heute
+
+    .project
+      h3.project__name
         a(href="https://www.obi-next.de/" rel="external noopener") OBI next
       p.project__description
         | Micro-Frontends Architektur für das Sales Representatives Tool von OBI next.

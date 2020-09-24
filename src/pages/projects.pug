@@ -9,6 +9,45 @@ block main
   section.wrap
     .project
       h3.project__name
+        a(href="https://bitcoindevlist.com/" rel="external noopener") Bitcoin Dev List
+      p.project__description
+        | Support bitcoin developers so they can focus on building our future.
+      .project__task
+        +icon("project-task", h.t(locals, "Aufgabe", "Task")).project__icon.project__icon--task
+        ul
+          li Frontend development with HTML, CSS and JavaScript.
+          li Build process and automated GitHub Pages deployment.
+      p.project__context
+        +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
+        = "Voluntary work for the Bitcoin community"
+      p.project__period
+        +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
+        | July 2020
+
+    .project
+      h3.project__name
+        a(href="https://btcpayserver.org/" rel="external noopener") BTCPay Server
+      p.project__description
+        | UI related feature development. Establishing and maintaining the technical side of the
+        | official BTCPay Server documentation and helping to improve the content of the docs.
+
+      .project__task
+        +icon("project-task", h.t(locals, "Aufgabe", "Task")).project__icon.project__icon--task
+        ul
+          li Establishing and maintaining the design system.
+          li Frontend development with Vue/JavaScript, CSS and HTML.
+          li Documentation site setup and maintenance.
+          li Feature development with C# and ASP.NET MVC Core.
+      p.project__context
+        +icon("project-context", h.t(locals, "Kontext", "Context")).project__icon.project__icon--context
+        = "Contract work for the "
+        a(href="https://foundation.btcpayserver.org/" rel="external noopener") BTCPay Server Foundation
+      p.project__period
+        +icon("project-period", h.t(locals, "Zeitraum", "Period")).project__icon.project__icon--period
+        | November 2019&ndash;today
+
+    .project
+      h3.project__name
         a(href="https://www.obi-next.de/" rel="external noopener") OBI next
       p.project__description
         | Micro-Frontends architecture for the Sales Representatives Tool at OBI next.
