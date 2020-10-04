@@ -1,36 +1,19 @@
 include icon
 .wrap
-  h2= h.t(locals, "Kontakt", "Contact")
   .vcard.h-card
-    p
-      span.fn.p-name Dennis Reimann
-      br
-      a.email.u-email(href="mailto:mail@dennisreimann.de" rel="me") mail@dennisreimann.de
-      br
-      a.tel.p-tel(href="tel:+4915122630317" rel="me") +49 (0)151 22 63 03 17
-
     ul.social
       li.social__item
         a.social__link(href="https://www.xing.com/profile/Dennis_Reimann5" rel="me")
           +icon("social-xing", "XING").social__icon.social__icon--xing
       li.social__item
-        a.social__link(href="https://twitter.com/dennisreimann" rel="me")
-          +icon("social-twitter", "Twitter").social__icon.social__icon--twitter
-      li.social__item
-        a.social__link(href="https://mastodon.social/@dennisreimann" rel="me")
-          +icon("social-mastodon", "Mastodon").social__icon.social__icon--mastodon
-      li.social__item
         a.social__link(href="https://github.com/dennisreimann" rel="me")
           +icon("social-github", "Github").social__icon.social__icon--github
       li.social__item
-        a.social__link(href="https://t.me/dennisreimann" rel="me")
-          +icon("social-telegram", "Telegram").social__icon.social__icon--telegram
+        a.social__link(href="https://twitter.com/dennisreimann" rel="me")
+          +icon("social-twitter", "Twitter").social__icon.social__icon--twitter
       li.social__item
         a.social__link(href="/atom.xml" rel="me")
           +icon("social-feed", "Feed").social__icon.social__icon--feed
-      li.social__item(style="display:none;")
-        a.social__link.u-url(href="https://dennisreimann.de" rel="me")
-          | Dennis Reimann
 
     p.more
       a.more__link(href= h.t(locals, "/kontakt.html", "/contact.html"))
