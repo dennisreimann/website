@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "name": "website",
   "description": "dennisreimann.de",
-  "repository": "git@github.com:dennisreimann/website.git",
+  "repository": "git@github.com:dennisreimann/dennisreimann.de.git",
   "license": "UNLICENSED",
   "engines": {
     "node": ">=14.0.0"
