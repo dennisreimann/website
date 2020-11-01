@@ -38,6 +38,7 @@ const paths = {
   scripts: ['src/scripts/**/*.js'],
   serviceworker: ['src/serviceworker/service-worker.js'],
   html: ['dist/**/*.html'],
+  sitemap: ['dist/**/*.html', '!dist/**/{contact,datenschutz,kontakt,privacy,donate}.html'],
   js: ['dist/**/*.js'],
   css: ['dist/**/*.css'],
   articles: ['src/articles/*.md'],
@@ -223,7 +224,7 @@ task('minify:css', () =>
 )
 
 task('html:sitemap', () =>
-  src(paths.html)
+  src(paths.sitemap)
     .pipe(sitemap({ siteUrl, changefreq: 'weekly' }))
     .pipe(dist())
 )
