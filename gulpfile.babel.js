@@ -1,5 +1,6 @@
 import { argv } from 'yargs'
 import { relative } from 'path'
+import { readFileSync } from 'fs'
 import { src, dest, series, parallel, task, watch } from 'gulp'
 import autoprefixer from 'autoprefixer'
 import csso from 'postcss-csso'
@@ -245,11 +246,12 @@ task('rev-files', () =>
     .pipe(dist())
 )
 
-task('rev-rewrite', () =>
-  src(paths.css)
-    .pipe(revRewrite({ manifest: src('dist/rev-manifest.json') }))
+task('rev-rewrite', () => {
+  const manifest = readFileSync('dist/rev-manifest.json')
+  return src(paths.css)
+    .pipe(revRewrite({ manifest }))
     .pipe(dist())
-)
+})
 
 // ----- PUBLIC TASKS -----
 

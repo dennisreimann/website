@@ -6,7 +6,8 @@ if (window.fetch) {
     reply: {
       items: [],
       template: mentions => {
-        return mentions.length ? `
+        return mentions.length
+          ? `
           <div class="wbm-type wbm-replies">
             <h4 class="wbm-headline">Replies</h4>
             <div class="wbm-items">
@@ -24,13 +25,15 @@ if (window.fetch) {
                   <div class="wbm-content">${content}</div>
                 </article>`).join('')}
             </div>
-          </div>` : null
+          </div>`
+          : null
       }
     },
     link: {
       items: [],
       template: mentions => {
-        return mentions.length ? `
+        return mentions.length
+          ? `
           <div class="wbm-type wbm-links">
             <h4 class="wbm-headline">Links</h4>
             <div class="wbm-items">
@@ -48,13 +51,15 @@ if (window.fetch) {
                   <div class="wbm-content">${content}</div>
                 </article>`).join('')}
             </div>
-          </div>` : null
+          </div>`
+          : null
       }
     },
     like: {
       items: [],
       template: mentions => {
-        return mentions.length ? `
+        return mentions.length
+          ? `
           <div class="wbm-type wbm-likes">
             <h4 class="wbm-headline">Likes</h4>
             <div class="wbm-items">
@@ -63,13 +68,15 @@ if (window.fetch) {
                   <img src="${author.photo}" alt="${author.name}" />
                 </a>`).join('')}
             </div>
-          </div>` : null
+          </div>`
+          : null
       }
     },
     repost: {
       items: [],
       template: mentions => {
-        return mentions.length ? `
+        return mentions.length
+          ? `
           <div class="wbm-type wbm-reposts">
             <h4 class="wbm-headline">Reposts</h4>
             <div class="wbm-items">
@@ -78,7 +85,8 @@ if (window.fetch) {
                   <img src="${author.photo}" alt="${author.name}" />
                 </a>`).join('')}
             </div>
-          </div>` : null
+          </div>`
+          : null
       }
     }
   }
@@ -111,6 +119,6 @@ if (window.fetch) {
       }
     })
     .catch(error => {
-      console.error(`Could not render webmentions:`, error)
+      console.error('Could not render webmentions:', error)
     })
 }
