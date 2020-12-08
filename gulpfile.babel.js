@@ -3,6 +3,7 @@ import { relative } from 'path'
 import { readFileSync } from 'fs'
 import { src, dest, series, parallel, task, watch } from 'gulp'
 import autoprefixer from 'autoprefixer'
+import BrowserSync from 'browser-sync'
 import csso from 'postcss-csso'
 import highlightjs from 'highlight.js'
 import babel from 'gulp-babel'
@@ -23,6 +24,7 @@ import stylus from 'gulp-stylus'
 import uglify from 'gulp-uglify'
 import templateHelper from './lib/templateHelper'
 
+const browserSync = BrowserSync.create()
 const isDev = (argv.dev != null)
 const defaultScheme = isDev ? 'http' : 'https'
 const siteHost = isDev ? 'localhost:3000' : 'dennisreimann.de'
@@ -33,7 +35,7 @@ const paths = {
   src: 'src',
   dest: 'dist',
   rev: ['dist/**/*.{css,js,map,svg,jpg,png,gif,woff,woff2}', '!dist/service-worker.js', '!dist/files/**/*'],
-  copy: ['src/static/**/*'],
+  copy: ['static/**/*'],
   pages: ['src/pages/**/*.pug'],
   styles: ['src/styles/**/*.styl'],
   scripts: ['src/scripts/**/*.js'],
@@ -185,20 +187,7 @@ task('incremental', () => {
   watch(paths.articles).on('change', filePath => task(buildHtml(filePath, paths.articlesBasepath)))
 })
 
-task('serve', done => {
-  const { createServer } = require('http')
-  const handler = require('serve-handler')
-  const opts = require('./serve.json')
-
-  const server = createServer((request, response) =>
-    handler(request, response, opts)
-  )
-
-  server.listen(3000, () => {
-    console.log('Running at http://localhost:3000')
-    done()
-  })
-})
+task('serve', done => browserSync.init(require('./browser-sync.config'), done))
 
 // ----- PRODUCTION -----
 
